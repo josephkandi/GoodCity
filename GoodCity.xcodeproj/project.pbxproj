@@ -8,11 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		0A0B08CD19E2283F0059A82C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B08CC19E2283F0059A82C /* AppDelegate.swift */; };
-		0A0B08CF19E2283F0059A82C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B08CE19E2283F0059A82C /* ViewController.swift */; };
-		0A0B08D219E2283F0059A82C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A0B08D019E2283F0059A82C /* Main.storyboard */; };
 		0A0B08D419E2283F0059A82C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A0B08D319E2283F0059A82C /* Images.xcassets */; };
 		0A0B08D719E2283F0059A82C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A0B08D519E2283F0059A82C /* LaunchScreen.xib */; };
 		0A0B08E319E2283F0059A82C /* GoodCityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B08E219E2283F0059A82C /* GoodCityTests.swift */; };
+		0A0B08F719E22AC30059A82C /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B08F619E22AC30059A82C /* Int+Extensions.swift */; };
+		0A0B08F919E22AD00059A82C /* NSDate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B08F819E22AD00059A82C /* NSDate+Extensions.swift */; };
+		0A14FFA819E230E800D11CE2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFA619E230E800D11CE2 /* LoginViewController.swift */; };
+		0A14FFA919E230E800D11CE2 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFA719E230E800D11CE2 /* LoginViewController.xib */; };
+		0A14FFAB19E2314200D11CE2 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFAA19E2314200D11CE2 /* ParseClient.swift */; };
+		0A14FFAE19E234BC00D11CE2 /* ItemCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFAC19E234BC00D11CE2 /* ItemCollectionViewController.swift */; };
+		0A14FFAF19E234BC00D11CE2 /* ItemCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFAD19E234BC00D11CE2 /* ItemCollectionViewController.xib */; };
+		0A14FFB219E234DB00D11CE2 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFB019E234DB00D11CE2 /* CameraViewController.swift */; };
+		0A14FFB319E234DB00D11CE2 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFB119E234DB00D11CE2 /* CameraViewController.xib */; };
+		0A14FFB619E2352400D11CE2 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFB419E2352400D11CE2 /* EditItemViewController.swift */; };
+		0A14FFB719E2352400D11CE2 /* EditItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFB519E2352400D11CE2 /* EditItemViewController.xib */; };
+		0A14FFBA19E2354000D11CE2 /* SchedulePickupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFB819E2354000D11CE2 /* SchedulePickupViewController.swift */; };
+		0A14FFBB19E2354000D11CE2 /* SchedulePickupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFB919E2354000D11CE2 /* SchedulePickupViewController.xib */; };
+		0A14FFBE19E2355F00D11CE2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFBC19E2355F00D11CE2 /* MapViewController.swift */; };
+		0A14FFBF19E2355F00D11CE2 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFBD19E2355F00D11CE2 /* MapViewController.xib */; };
+		F0A127534C434217A3BD30C5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C88CD10F2CA444FF9DAA3D07 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +43,29 @@
 		0A0B08C719E2283F0059A82C /* GoodCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A0B08CB19E2283F0059A82C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A0B08CC19E2283F0059A82C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0A0B08CE19E2283F0059A82C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0A0B08D119E2283F0059A82C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0A0B08D319E2283F0059A82C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0A0B08D619E2283F0059A82C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0A0B08DC19E2283F0059A82C /* GoodCityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoodCityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A0B08E119E2283F0059A82C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A0B08E219E2283F0059A82C /* GoodCityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodCityTests.swift; sourceTree = "<group>"; };
+		0A0B08EC19E2289B0059A82C /* GoodCity-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GoodCity-Bridging-Header.h"; sourceTree = "<group>"; };
+		0A0B08F619E22AC30059A82C /* Int+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		0A0B08F819E22AD00059A82C /* NSDate+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extensions.swift"; sourceTree = "<group>"; };
+		0A14FFA619E230E800D11CE2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0A14FFA719E230E800D11CE2 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		0A14FFAA19E2314200D11CE2 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
+		0A14FFAC19E234BC00D11CE2 /* ItemCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewController.swift; sourceTree = "<group>"; };
+		0A14FFAD19E234BC00D11CE2 /* ItemCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCollectionViewController.xib; sourceTree = "<group>"; };
+		0A14FFB019E234DB00D11CE2 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		0A14FFB119E234DB00D11CE2 /* CameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
+		0A14FFB419E2352400D11CE2 /* EditItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
+		0A14FFB519E2352400D11CE2 /* EditItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditItemViewController.xib; sourceTree = "<group>"; };
+		0A14FFB819E2354000D11CE2 /* SchedulePickupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulePickupViewController.swift; sourceTree = "<group>"; };
+		0A14FFB919E2354000D11CE2 /* SchedulePickupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchedulePickupViewController.xib; sourceTree = "<group>"; };
+		0A14FFBC19E2355F00D11CE2 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0A14FFBD19E2355F00D11CE2 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		B38FC27CF0C34676835B8F15 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		C88CD10F2CA444FF9DAA3D07 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0A127534C434217A3BD30C5 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +93,8 @@
 				0A0B08C919E2283F0059A82C /* GoodCity */,
 				0A0B08DF19E2283F0059A82C /* GoodCityTests */,
 				0A0B08C819E2283F0059A82C /* Products */,
+				B38FC27CF0C34676835B8F15 /* Pods.xcconfig */,
+				9949D72350174EE69E60CF63 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,9 +110,13 @@
 		0A0B08C919E2283F0059A82C /* GoodCity */ = {
 			isa = PBXGroup;
 			children = (
-				0A0B08CC19E2283F0059A82C /* AppDelegate.swift */,
-				0A0B08CE19E2283F0059A82C /* ViewController.swift */,
-				0A0B08D019E2283F0059A82C /* Main.storyboard */,
+				0A0B08F419E22A0F0059A82C /* Core */,
+				0A0B08F319E229C10059A82C /* Controllers */,
+				0A0B08F519E22A3A0059A82C /* Extensions */,
+				0A0B08F119E229B60059A82C /* Models */,
+				0A0B08F019E229AF0059A82C /* Networking */,
+				0A0B08F219E229BC0059A82C /* Views */,
+				0A0B08EC19E2289B0059A82C /* GoodCity-Bridging-Header.h */,
 				0A0B08D319E2283F0059A82C /* Images.xcassets */,
 				0A0B08D519E2283F0059A82C /* LaunchScreen.xib */,
 				0A0B08CA19E2283F0059A82C /* Supporting Files */,
@@ -112,6 +149,72 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0A0B08F019E229AF0059A82C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				0A14FFAA19E2314200D11CE2 /* ParseClient.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		0A0B08F119E229B60059A82C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		0A0B08F219E229BC0059A82C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		0A0B08F319E229C10059A82C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0A14FFB019E234DB00D11CE2 /* CameraViewController.swift */,
+				0A14FFB119E234DB00D11CE2 /* CameraViewController.xib */,
+				0A14FFB419E2352400D11CE2 /* EditItemViewController.swift */,
+				0A14FFB519E2352400D11CE2 /* EditItemViewController.xib */,
+				0A14FFAC19E234BC00D11CE2 /* ItemCollectionViewController.swift */,
+				0A14FFAD19E234BC00D11CE2 /* ItemCollectionViewController.xib */,
+				0A14FFA619E230E800D11CE2 /* LoginViewController.swift */,
+				0A14FFA719E230E800D11CE2 /* LoginViewController.xib */,
+				0A14FFBC19E2355F00D11CE2 /* MapViewController.swift */,
+				0A14FFBD19E2355F00D11CE2 /* MapViewController.xib */,
+				0A14FFB819E2354000D11CE2 /* SchedulePickupViewController.swift */,
+				0A14FFB919E2354000D11CE2 /* SchedulePickupViewController.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		0A0B08F419E22A0F0059A82C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0A0B08CC19E2283F0059A82C /* AppDelegate.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		0A0B08F519E22A3A0059A82C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0A0B08F619E22AC30059A82C /* Int+Extensions.swift */,
+				0A0B08F819E22AD00059A82C /* NSDate+Extensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		9949D72350174EE69E60CF63 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C88CD10F2CA444FF9DAA3D07 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,9 +222,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0A0B08E619E2283F0059A82C /* Build configuration list for PBXNativeTarget "GoodCity" */;
 			buildPhases = (
+				EB31BEB2338643B59F6AFB3E /* Check Pods Manifest.lock */,
 				0A0B08C319E2283F0059A82C /* Sources */,
 				0A0B08C419E2283F0059A82C /* Frameworks */,
 				0A0B08C519E2283F0059A82C /* Resources */,
+				4F960382CA1D48CA92B3D912 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -192,9 +297,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A0B08D219E2283F0059A82C /* Main.storyboard in Resources */,
 				0A0B08D719E2283F0059A82C /* LaunchScreen.xib in Resources */,
 				0A0B08D419E2283F0059A82C /* Images.xcassets in Resources */,
+				0A14FFBB19E2354000D11CE2 /* SchedulePickupViewController.xib in Resources */,
+				0A14FFBF19E2355F00D11CE2 /* MapViewController.xib in Resources */,
+				0A14FFAF19E234BC00D11CE2 /* ItemCollectionViewController.xib in Resources */,
+				0A14FFB719E2352400D11CE2 /* EditItemViewController.xib in Resources */,
+				0A14FFA919E230E800D11CE2 /* LoginViewController.xib in Resources */,
+				0A14FFB319E234DB00D11CE2 /* CameraViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,13 +317,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4F960382CA1D48CA92B3D912 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB31BEB2338643B59F6AFB3E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0A0B08C319E2283F0059A82C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A0B08CF19E2283F0059A82C /* ViewController.swift in Sources */,
+				0A14FFA819E230E800D11CE2 /* LoginViewController.swift in Sources */,
+				0A14FFAB19E2314200D11CE2 /* ParseClient.swift in Sources */,
+				0A0B08F919E22AD00059A82C /* NSDate+Extensions.swift in Sources */,
+				0A14FFBE19E2355F00D11CE2 /* MapViewController.swift in Sources */,
+				0A14FFB619E2352400D11CE2 /* EditItemViewController.swift in Sources */,
+				0A0B08F719E22AC30059A82C /* Int+Extensions.swift in Sources */,
+				0A14FFB219E234DB00D11CE2 /* CameraViewController.swift in Sources */,
 				0A0B08CD19E2283F0059A82C /* AppDelegate.swift in Sources */,
+				0A14FFAE19E234BC00D11CE2 /* ItemCollectionViewController.swift in Sources */,
+				0A14FFBA19E2354000D11CE2 /* SchedulePickupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,14 +387,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0A0B08D019E2283F0059A82C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0A0B08D119E2283F0059A82C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0A0B08D519E2283F0059A82C /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -334,21 +477,28 @@
 		};
 		0A0B08E719E2283F0059A82C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B38FC27CF0C34676835B8F15 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = GoodCity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GoodCity/GoodCity-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		0A0B08E819E2283F0059A82C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B38FC27CF0C34676835B8F15 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = GoodCity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GoodCity/GoodCity-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -405,6 +555,7 @@
 				0A0B08E819E2283F0059A82C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0A0B08E919E2283F0059A82C /* Build configuration list for PBXNativeTarget "GoodCityTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +564,7 @@
 				0A0B08EB19E2283F0059A82C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
