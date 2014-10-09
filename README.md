@@ -11,7 +11,7 @@ Donor Side:
   * [ ] Fill in a description
   * [ ] Select the item condition
   * [ ] Submit item for review
-* Ability to quickly swipe between the donation, pending items, and approved items views
+* [ ] Ability to quickly swipe between the donation, pending items, and approved items views
 
 * [ ] View all the pending items
   * [ ] Tap on a pending item to edit its details
@@ -26,7 +26,7 @@ Donor Side:
 
 * [ ] Track pick up view - see where the volunteer is 
 
-Notifications
+Notifications:
 * [ ] Get notified about approved items
 * [ ] Get norified when the volunteer is on the way to pick up donation items
 
