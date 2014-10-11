@@ -61,12 +61,11 @@ class ContainerViewController: UIViewController {
 
         // 3. History View Controller
         let historyViewController = HistoryViewController(nibName: "HistoryViewController", bundle: nil)
-        let navController3 = UINavigationController(rootViewController: historyViewController)
-        viewControllers.append(navController3)
-        navController3.view.frame = CGRectMake(0, 0, containerScrollView.frame.width, containerScrollView.frame.height)
-        navController3.view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
-        containerScrollView.addSubview(navController3.view)
-
+        let navController2 = UINavigationController(rootViewController: historyViewController)
+        viewControllers.append(navController2)
+        navController2.view.frame = CGRectMake(0, 0, containerScrollView.frame.width, containerScrollView.frame.height)
+        navController2.view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+        containerScrollView.addSubview(navController2.view)
     }
 
     func setupViewOffsets(activeViewIndex: CGFloat = CGFloat(0)) {
