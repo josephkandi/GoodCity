@@ -27,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        self.launchInitialViewController()
         self.setupParse()
+        self.launchInitialViewController()
         return true
     }
     

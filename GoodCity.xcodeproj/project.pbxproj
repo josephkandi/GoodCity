@@ -27,6 +27,7 @@
 		3A687C7419E9104F005351B0 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A687C7219E9104F005351B0 /* CartItemCell.swift */; };
 		3A687C7519E9104F005351B0 /* CartItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A687C7319E9104F005351B0 /* CartItemCell.xib */; };
 		3A687C7719E9176A005351B0 /* CartCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A687C7619E9176A005351B0 /* CartCollectionLayout.swift */; };
+		0AD128B519E92215002E47E5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD128B419E92215002E47E5 /* User.swift */; };
 		3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */; };
 		3AE42EE619E8F98500D7A6F5 /* ContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AE42EE419E8F98500D7A6F5 /* ContainerViewController.xib */; };
 		3AE42EE919E8FB8300D7A6F5 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE42EE719E8FB8300D7A6F5 /* CartViewController.swift */; };
@@ -72,6 +73,7 @@
 		3A687C7219E9104F005351B0 /* CartItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
 		3A687C7319E9104F005351B0 /* CartItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartItemCell.xib; sourceTree = "<group>"; };
 		3A687C7619E9176A005351B0 /* CartCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCollectionLayout.swift; sourceTree = "<group>"; };
+		0AD128B419E92215002E47E5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		3AE42EE419E8F98500D7A6F5 /* ContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerViewController.xib; sourceTree = "<group>"; };
 		3AE42EE719E8FB8300D7A6F5 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 		0A0B08F119E229B60059A82C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0AD128B419E92215002E47E5 /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AD128B519E92215002E47E5 /* User.swift in Sources */,
 				0A14FFA819E230E800D11CE2 /* LoginViewController.swift in Sources */,
 				0A14FFAB19E2314200D11CE2 /* ParseClient.swift in Sources */,
 				0A0B08F919E22AD00059A82C /* NSDate+Extensions.swift in Sources */,

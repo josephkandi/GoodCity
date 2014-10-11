@@ -22,6 +22,13 @@ class LoginViewController: UIViewController {
         // self.view.addSubview(loginView)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        // Is user cached and linked to Facebook
+        if PFUser.currentUser() != nil && PFFacebookUtils.isLinkedWithUser(PFUser.currentUser()) {
+            self.goToHomeView()
+        }
+    }
+    
     // Login button tapped
     @IBAction func loginButtonTapped(sender: UIButton) {
         self.loginOrSignUpUser()
@@ -35,6 +42,7 @@ class LoginViewController: UIViewController {
     
     // Existing user
     private func handleLoginSuccess() {
+        User.refreshUserData()
         self.goToHomeView()
     }
     
@@ -46,7 +54,7 @@ class LoginViewController: UIViewController {
     }
     
     private func loginOrSignUpUser() {
-        let permissionsArray = ["email"] // Can also request "user_location"
+        let permissionsArray = [] // Can also request "user_location"
         
         PFFacebookUtils.logInWithPermissions(permissionsArray, block:
             { (user, error) -> Void in
@@ -56,7 +64,10 @@ class LoginViewController: UIViewController {
                     if error == nil {
                         println("User cancelled FB login")
                         errorMessage = "Facebook login canceled"
-                    } else{
+                    } else {
+                        // Handle invalidated session
+                        //error.userInfo.objectForKey("error").objectForKey("type").isEqualToString("OAuthException") {
+                        
                         println("FB login error: \(error)")
                         errorMessage = "An error occurred: \(error.localizedDescription)"
                     }
