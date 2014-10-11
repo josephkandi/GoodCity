@@ -4,8 +4,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraViewController" customModule="GoodCity" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContainerViewController" customModule="GoodCity" customModuleProvider="target">
             <connections>
+                <outlet property="containerScrollView" destination="jGF-ui-hp4" id="hDQ-tf-Mh9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,17 +15,16 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera View" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeW-Ab-Gns">
-                    <rect key="frame" x="249" y="289" width="102" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jGF-ui-hp4">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="yeW-Ab-Gns" secondAttribute="centerY" id="Mhz-b5-dvR"/>
-                <constraint firstAttribute="centerX" secondItem="yeW-Ab-Gns" secondAttribute="centerX" id="Zag-Lf-KNH"/>
+                <constraint firstItem="jGF-ui-hp4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="EsK-7r-hYU"/>
+                <constraint firstAttribute="trailing" secondItem="jGF-ui-hp4" secondAttribute="trailing" id="IV7-Ui-bOy"/>
+                <constraint firstAttribute="bottom" secondItem="jGF-ui-hp4" secondAttribute="bottom" id="T74-Jk-kIz"/>
+                <constraint firstItem="jGF-ui-hp4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="f65-4y-qC8"/>
             </constraints>
         </view>
     </objects>
