@@ -25,7 +25,6 @@
 		0A14FFBE19E2355F00D11CE2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFBC19E2355F00D11CE2 /* MapViewController.swift */; };
 		0A14FFBF19E2355F00D11CE2 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFBD19E2355F00D11CE2 /* MapViewController.xib */; };
 		3A687C7419E9104F005351B0 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A687C7219E9104F005351B0 /* CartItemCell.swift */; };
-		3A687C7519E9104F005351B0 /* CartItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A687C7319E9104F005351B0 /* CartItemCell.xib */; };
 		3A687C7719E9176A005351B0 /* CartCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A687C7619E9176A005351B0 /* CartCollectionLayout.swift */; };
 		0AD128B519E92215002E47E5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD128B419E92215002E47E5 /* User.swift */; };
 		3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */; };
@@ -71,7 +70,6 @@
 		0A14FFBC19E2355F00D11CE2 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0A14FFBD19E2355F00D11CE2 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		3A687C7219E9104F005351B0 /* CartItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
-		3A687C7319E9104F005351B0 /* CartItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartItemCell.xib; sourceTree = "<group>"; };
 		3A687C7619E9176A005351B0 /* CartCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCollectionLayout.swift; sourceTree = "<group>"; };
 		0AD128B419E92215002E47E5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -197,7 +195,6 @@
 				3AE42EE719E8FB8300D7A6F5 /* CartViewController.swift */,
 				3AE42EE819E8FB8300D7A6F5 /* CartViewController.xib */,
 				3A687C7219E9104F005351B0 /* CartItemCell.swift */,
-				3A687C7319E9104F005351B0 /* CartItemCell.xib */,
 				0A14FFB419E2352400D11CE2 /* EditItemViewController.swift */,
 				0A14FFB519E2352400D11CE2 /* EditItemViewController.xib */,
 				0A14FFA619E230E800D11CE2 /* LoginViewController.swift */,
@@ -335,7 +332,6 @@
 				3AE42EEA19E8FB8300D7A6F5 /* CartViewController.xib in Resources */,
 				0A0B08D419E2283F0059A82C /* Images.xcassets in Resources */,
 				3AE42EEE19E8FBA400D7A6F5 /* HistoryViewController.xib in Resources */,
-				3A687C7519E9104F005351B0 /* CartItemCell.xib in Resources */,
 				0A14FFBB19E2354000D11CE2 /* SchedulePickupViewController.xib in Resources */,
 				0A14FFBF19E2355F00D11CE2 /* MapViewController.xib in Resources */,
 				0A14FFB719E2352400D11CE2 /* EditItemViewController.xib in Resources */,

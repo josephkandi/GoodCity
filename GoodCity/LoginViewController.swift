@@ -83,4 +83,10 @@ class LoginViewController: UIViewController {
         })
         // TODO: Show activityIndicator.startAnimating() - Show loading indicator until login is finished
     }
+    
+    
+    @IBAction func onTapSkip(sender: AnyObject) {
+        goToHomeView()
+    }
+    
 }
