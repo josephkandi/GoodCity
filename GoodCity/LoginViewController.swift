@@ -16,4 +16,13 @@ class LoginViewController: UIViewController {
         //testObject["foo"] = "bar"
         //testObject.saveInBackground()
     }
+    
+    @IBAction func onLogin(sender: AnyObject) {
+        
+        let containerViewController = ContainerViewController(nibName: "ContainerViewController", bundle: nil)
+        self.presentViewController(containerViewController, animated: true, completion: { () -> Void in
+            NSLog("Successfully pushed the container view")
+        })
+    }
+    
 }

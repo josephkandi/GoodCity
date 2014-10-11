@@ -16,8 +16,6 @@
 		0A14FFA819E230E800D11CE2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFA619E230E800D11CE2 /* LoginViewController.swift */; };
 		0A14FFA919E230E800D11CE2 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFA719E230E800D11CE2 /* LoginViewController.xib */; };
 		0A14FFAB19E2314200D11CE2 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFAA19E2314200D11CE2 /* ParseClient.swift */; };
-		0A14FFAE19E234BC00D11CE2 /* ItemCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFAC19E234BC00D11CE2 /* ItemCollectionViewController.swift */; };
-		0A14FFAF19E234BC00D11CE2 /* ItemCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFAD19E234BC00D11CE2 /* ItemCollectionViewController.xib */; };
 		0A14FFB219E234DB00D11CE2 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFB019E234DB00D11CE2 /* CameraViewController.swift */; };
 		0A14FFB319E234DB00D11CE2 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFB119E234DB00D11CE2 /* CameraViewController.xib */; };
 		0A14FFB619E2352400D11CE2 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFB419E2352400D11CE2 /* EditItemViewController.swift */; };
@@ -26,6 +24,12 @@
 		0A14FFBB19E2354000D11CE2 /* SchedulePickupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFB919E2354000D11CE2 /* SchedulePickupViewController.xib */; };
 		0A14FFBE19E2355F00D11CE2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFBC19E2355F00D11CE2 /* MapViewController.swift */; };
 		0A14FFBF19E2355F00D11CE2 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFBD19E2355F00D11CE2 /* MapViewController.xib */; };
+		3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */; };
+		3AE42EE619E8F98500D7A6F5 /* ContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AE42EE419E8F98500D7A6F5 /* ContainerViewController.xib */; };
+		3AE42EE919E8FB8300D7A6F5 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE42EE719E8FB8300D7A6F5 /* CartViewController.swift */; };
+		3AE42EEA19E8FB8300D7A6F5 /* CartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AE42EE819E8FB8300D7A6F5 /* CartViewController.xib */; };
+		3AE42EED19E8FBA400D7A6F5 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE42EEB19E8FBA400D7A6F5 /* HistoryViewController.swift */; };
+		3AE42EEE19E8FBA400D7A6F5 /* HistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AE42EEC19E8FBA400D7A6F5 /* HistoryViewController.xib */; };
 		F0A127534C434217A3BD30C5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C88CD10F2CA444FF9DAA3D07 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -54,8 +58,6 @@
 		0A14FFA619E230E800D11CE2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0A14FFA719E230E800D11CE2 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		0A14FFAA19E2314200D11CE2 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
-		0A14FFAC19E234BC00D11CE2 /* ItemCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewController.swift; sourceTree = "<group>"; };
-		0A14FFAD19E234BC00D11CE2 /* ItemCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCollectionViewController.xib; sourceTree = "<group>"; };
 		0A14FFB019E234DB00D11CE2 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		0A14FFB119E234DB00D11CE2 /* CameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
 		0A14FFB419E2352400D11CE2 /* EditItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,12 @@
 		0A14FFB919E2354000D11CE2 /* SchedulePickupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchedulePickupViewController.xib; sourceTree = "<group>"; };
 		0A14FFBC19E2355F00D11CE2 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0A14FFBD19E2355F00D11CE2 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		3AE42EE419E8F98500D7A6F5 /* ContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerViewController.xib; sourceTree = "<group>"; };
+		3AE42EE719E8FB8300D7A6F5 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		3AE42EE819E8FB8300D7A6F5 /* CartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartViewController.xib; sourceTree = "<group>"; };
+		3AE42EEB19E8FBA400D7A6F5 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		3AE42EEC19E8FBA400D7A6F5 /* HistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryViewController.xib; sourceTree = "<group>"; };
 		B38FC27CF0C34676835B8F15 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		C88CD10F2CA444FF9DAA3D07 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -176,16 +184,20 @@
 			children = (
 				0A14FFB019E234DB00D11CE2 /* CameraViewController.swift */,
 				0A14FFB119E234DB00D11CE2 /* CameraViewController.xib */,
+				3AE42EE719E8FB8300D7A6F5 /* CartViewController.swift */,
+				3AE42EE819E8FB8300D7A6F5 /* CartViewController.xib */,
 				0A14FFB419E2352400D11CE2 /* EditItemViewController.swift */,
 				0A14FFB519E2352400D11CE2 /* EditItemViewController.xib */,
-				0A14FFAC19E234BC00D11CE2 /* ItemCollectionViewController.swift */,
-				0A14FFAD19E234BC00D11CE2 /* ItemCollectionViewController.xib */,
 				0A14FFA619E230E800D11CE2 /* LoginViewController.swift */,
 				0A14FFA719E230E800D11CE2 /* LoginViewController.xib */,
 				0A14FFBC19E2355F00D11CE2 /* MapViewController.swift */,
 				0A14FFBD19E2355F00D11CE2 /* MapViewController.xib */,
 				0A14FFB819E2354000D11CE2 /* SchedulePickupViewController.swift */,
 				0A14FFB919E2354000D11CE2 /* SchedulePickupViewController.xib */,
+				3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */,
+				3AE42EE419E8F98500D7A6F5 /* ContainerViewController.xib */,
+				3AE42EEB19E8FBA400D7A6F5 /* HistoryViewController.swift */,
+				3AE42EEC19E8FBA400D7A6F5 /* HistoryViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -298,13 +310,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A0B08D719E2283F0059A82C /* LaunchScreen.xib in Resources */,
+				3AE42EEA19E8FB8300D7A6F5 /* CartViewController.xib in Resources */,
 				0A0B08D419E2283F0059A82C /* Images.xcassets in Resources */,
+				3AE42EEE19E8FBA400D7A6F5 /* HistoryViewController.xib in Resources */,
 				0A14FFBB19E2354000D11CE2 /* SchedulePickupViewController.xib in Resources */,
 				0A14FFBF19E2355F00D11CE2 /* MapViewController.xib in Resources */,
-				0A14FFAF19E234BC00D11CE2 /* ItemCollectionViewController.xib in Resources */,
 				0A14FFB719E2352400D11CE2 /* EditItemViewController.xib in Resources */,
 				0A14FFA919E230E800D11CE2 /* LoginViewController.xib in Resources */,
 				0A14FFB319E234DB00D11CE2 /* CameraViewController.xib in Resources */,
+				3AE42EE619E8F98500D7A6F5 /* ContainerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,12 +372,14 @@
 				0A14FFA819E230E800D11CE2 /* LoginViewController.swift in Sources */,
 				0A14FFAB19E2314200D11CE2 /* ParseClient.swift in Sources */,
 				0A0B08F919E22AD00059A82C /* NSDate+Extensions.swift in Sources */,
+				3AE42EED19E8FBA400D7A6F5 /* HistoryViewController.swift in Sources */,
+				3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */,
 				0A14FFBE19E2355F00D11CE2 /* MapViewController.swift in Sources */,
 				0A14FFB619E2352400D11CE2 /* EditItemViewController.swift in Sources */,
 				0A0B08F719E22AC30059A82C /* Int+Extensions.swift in Sources */,
+				3AE42EE919E8FB8300D7A6F5 /* CartViewController.swift in Sources */,
 				0A14FFB219E234DB00D11CE2 /* CameraViewController.swift in Sources */,
 				0A0B08CD19E2283F0059A82C /* AppDelegate.swift in Sources */,
-				0A14FFAE19E234BC00D11CE2 /* ItemCollectionViewController.swift in Sources */,
 				0A14FFBA19E2354000D11CE2 /* SchedulePickupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

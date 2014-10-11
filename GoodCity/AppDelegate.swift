@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func launchInitialViewController() {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let loginViewController = LoginViewController(nibName: "LoginViewController", bundle: nil)
-        let navigationController = UINavigationController(rootViewController: loginViewController)
-        self.window?.rootViewController = navigationController
+        //let navigationController = UINavigationController(rootViewController: loginViewController)
+        self.window?.rootViewController = loginViewController
         self.window?.makeKeyAndVisible()
     }
     
