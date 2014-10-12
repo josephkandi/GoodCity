@@ -13,12 +13,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    func launchInitialViewController() {
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+    func displayLoginScreen() {
         let loginViewController = LoginViewController(nibName: "LoginViewController", bundle: nil)
-        //let navigationController = UINavigationController(rootViewController: loginViewController)
         self.window?.rootViewController = loginViewController
-        self.window?.makeKeyAndVisible()
+    }
+
+    private func displayHomeScreen() {
+        let containerViewController = ContainerViewController(nibName: "ContainerViewController", bundle: nil)
+        self.window?.rootViewController = containerViewController
+    }
+
+    // Handles logout notifications
+    func userDidLogout() {
+        self.displayLoginScreen()
     }
     
     func setupParse() {
@@ -28,7 +35,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.setupParse()
-        self.launchInitialViewController()
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+
+        // Listen for log out notifications
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
+        if GoodCityUser.currentUser != nil {
+            // User is already logged in
+            println("User is already logged in.  Going straight to home screen")
+            self.displayHomeScreen()
+        } else {
+            println("No user found.  Going to login screen")
+            self.displayLoginScreen()
+        }
+
+        self.window?.makeKeyAndVisible()
         return true
     }
     
