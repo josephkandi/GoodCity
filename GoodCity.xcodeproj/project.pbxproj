@@ -34,6 +34,10 @@
 		3A1506A219EBAC910020DF10 /* DropoffAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1506A119EBAC910020DF10 /* DropoffAnnotation.swift */; };
 		3A1506A419EBB1940020DF10 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1506A319EBB1940020DF10 /* CoreLocation.framework */; };
 		0AC31AFC19E9EDA300BB815F /* DropoffLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC31AFB19E9EDA300BB815F /* DropoffLocation.swift */; };
+		0AC31AFE19EA2F6800BB815F /* PickupScheduleSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC31AFD19EA2F6800BB815F /* PickupScheduleSlot.swift */; };
+		0AC31B0019EA33CB00BB815F /* DonationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC31AFF19EA33CB00BB815F /* DonationItem.swift */; };
+		0AC31B0219EA3F1F00BB815F /* ItemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC31B0119EA3F1F00BB815F /* ItemState.swift */; };
+		0AC31B0419EA40E700BB815F /* ItemCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC31B0319EA40E700BB815F /* ItemCondition.swift */; };
 		0AD128B519E92215002E47E5 /* GoodCityUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD128B419E92215002E47E5 /* GoodCityUser.swift */; };
 		3A687C7419E9104F005351B0 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A687C7219E9104F005351B0 /* CartItemCell.swift */; };
 		3A687C7719E9176A005351B0 /* CartCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A687C7619E9176A005351B0 /* CartCollectionLayout.swift */; };
@@ -89,6 +93,10 @@
 		3A1506A119EBAC910020DF10 /* DropoffAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropoffAnnotation.swift; sourceTree = "<group>"; };
 		3A1506A319EBB1940020DF10 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0AC31AFB19E9EDA300BB815F /* DropoffLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropoffLocation.swift; sourceTree = "<group>"; };
+		0AC31AFD19EA2F6800BB815F /* PickupScheduleSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickupScheduleSlot.swift; sourceTree = "<group>"; };
+		0AC31AFF19EA33CB00BB815F /* DonationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationItem.swift; sourceTree = "<group>"; };
+		0AC31B0119EA3F1F00BB815F /* ItemState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemState.swift; sourceTree = "<group>"; };
+		0AC31B0319EA40E700BB815F /* ItemCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCondition.swift; sourceTree = "<group>"; };
 		0AD128B419E92215002E47E5 /* GoodCityUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodCityUser.swift; sourceTree = "<group>"; };
 		3A687C7219E9104F005351B0 /* CartItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
 		3A687C7619E9176A005351B0 /* CartCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCollectionLayout.swift; sourceTree = "<group>"; };
@@ -197,8 +205,12 @@
 		0A0B08F119E229B60059A82C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0AD128B419E92215002E47E5 /* GoodCityUser.swift */,
+				0AC31AFF19EA33CB00BB815F /* DonationItem.swift */,
 				0AC31AFB19E9EDA300BB815F /* DropoffLocation.swift */,
+				0AD128B419E92215002E47E5 /* GoodCityUser.swift */,
+				0AC31AFD19EA2F6800BB815F /* PickupScheduleSlot.swift */,
+				0AC31B0119EA3F1F00BB815F /* ItemState.swift */,
+				0AC31B0319EA40E700BB815F /* ItemCondition.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -431,6 +443,7 @@
 				3A687C7419E9104F005351B0 /* CartItemCell.swift in Sources */,
 				3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */,
 				0A14FFBE19E2355F00D11CE2 /* MapViewController.swift in Sources */,
+				0AC31B0419EA40E700BB815F /* ItemCondition.swift in Sources */,
 				3A687C7719E9176A005351B0 /* CartCollectionLayout.swift in Sources */,
 				0AC31AFC19E9EDA300BB815F /* DropoffLocation.swift in Sources */,
 				0A14FFB619E2352400D11CE2 /* EditItemViewController.swift in Sources */,
@@ -440,9 +453,12 @@
 				3A15069019EB71AA0020DF10 /* SectionHeaderView.swift in Sources */,
 				3A15069619EB86B00020DF10 /* Constants.swift in Sources */,
 				3AE42EE919E8FB8300D7A6F5 /* CartViewController.swift in Sources */,
+				0AC31AFE19EA2F6800BB815F /* PickupScheduleSlot.swift in Sources */,
 				0A14FFB219E234DB00D11CE2 /* CameraViewController.swift in Sources */,
 				0A0B08CD19E2283F0059A82C /* AppDelegate.swift in Sources */,
+				0AC31B0019EA33CB00BB815F /* DonationItem.swift in Sources */,
 				0A14FFBA19E2354000D11CE2 /* SchedulePickupViewController.swift in Sources */,
+				0AC31B0219EA3F1F00BB815F /* ItemState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
                 ParseClient.sharedInstance.refreshUserInfoFromFacebookWithCompletion({ (dictionary, error) -> () in
                     if let dict = dictionary {
                         println("Got a successful response from Facebook...going to home screen")
-                        GoodCityUser.currentUser?.updateUserFacebookInfo(dict)
+                        GoodCityUser.currentUser?.updateFacebookInfo(dict)
                         self.goToHomeScreen()
                     } else {
                         println("Facebook user info dict is nil")

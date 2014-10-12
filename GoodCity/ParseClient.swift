@@ -77,4 +77,23 @@ class ParseClient: NSObject {
             }
         }
     }
+
+    func getAvailablePickupScheduleSlots() {
+        var query = PickupScheduleSlot.query()
+        query.whereKey("taken", notEqualTo: true)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                // The find succeeded.
+                NSLog("Successfully retrieved \(objects.count) pickup slots.")
+                println(objects)
+            } else {
+                NSLog("Error: %@ %@", error, error.userInfo!)
+            }
+        }
+    }
+
+    func getUserItemHistory(user: GoodCityUser) {
+
+    }
 }

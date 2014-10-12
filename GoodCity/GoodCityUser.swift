@@ -15,7 +15,10 @@ class GoodCityUser: PFUser, PFSubclassing {
     @NSManaged var firstName: String
     @NSManaged var lastName: String
     @NSManaged var facebookId: String
-    
+    @NSManaged var isVolunteer: Bool
+    @NSManaged var phoneNumber: String
+    @NSManaged var address: String
+
     var profilePhotoUrlString: String {
         get {
             return "https://graph.facebook.com/\(self.facebookId)/picture?type=large&return_ssl_resources=1"
@@ -38,8 +41,23 @@ class GoodCityUser: PFUser, PFSubclassing {
         return _currentUser
         }
     }
-    
-    func updateUserFacebookInfo(dictionary: NSDictionary) {
+
+    func promoteToVolunteer() {
+        self.isVolunteer = true
+        self.save()
+    }
+
+    func updateAddress(address: String) {
+        self.address = address
+        self.save()
+    }
+
+    func updatePhoneNumber(phoneNumber: String) {
+        self.phoneNumber = phoneNumber
+        self.save()
+    }
+
+    func updateFacebookInfo(dictionary: NSDictionary) {
         self.firstName = dictionary["first_name"] as String
         self.lastName = dictionary["last_name"] as String
         self.email = dictionary["email"] as String
@@ -57,5 +75,4 @@ class GoodCityUser: PFUser, PFSubclassing {
         PFFacebookUtils.unlinkUser(GoodCityUser.currentUser)
         self.logout()
     }
-
 }
