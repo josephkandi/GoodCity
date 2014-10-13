@@ -12,18 +12,19 @@ class ItemsGroupCell: UITableViewCell {
 
     @IBOutlet weak var donationDateLabel: UILabel!
     @IBOutlet weak var thumbnailsContainer: UIView!
-    
     @IBOutlet weak var thumbnail1: UIImageView!
     @IBOutlet weak var thumbnail2: UIImageView!
     @IBOutlet weak var thumbnail3: UIImageView!
     @IBOutlet weak var thumbnail4: UIImageView!
     @IBOutlet weak var thumbnail5: UIImageView!
-    
-    @IBOutlet weak var pickupButton: UIButton!
-    @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var buttonContainer: UIView!
+    
+    // Constraints
+    @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var thumbnailHeightConstraint: NSLayoutConstraint!
+    
+    // Delegate
+    var actionDelegate: ItemsActionDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,7 +54,14 @@ class ItemsGroupCell: UITableViewCell {
         donationDateLabel.sizeToFit()
         
         buttonWidthConstraint.constant = (buttonContainer.frame.width - SPACING) / 2
-        
     }
     
+    @IBAction func tapPickupButton(sender: AnyObject) {
+    }
+    
+    @IBAction func tapDropoffButton(sender: AnyObject) {
+        if actionDelegate != nil {
+            actionDelegate!.viewDropoffLocations()
+        }
+    }
 }

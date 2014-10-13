@@ -16,7 +16,6 @@ let ITEM_SPACING = CGFloat(10)
 class CartViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var cartCollectionView: UICollectionView!
-    
     @IBOutlet weak var collectionHeader: UIView!
     
     override func viewDidLoad() {
@@ -59,6 +58,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     private func getCellSize() -> CGSize {
         
+        // HACK: using screen size to figure out the appropriate cell size
         let screenSize = UIScreen.mainScreen().bounds
         let width = (screenSize.width - SIDE_MARGIN * 2 - ITEM_SPACING) / 2
         

@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="GoodCity" customModuleProvider="target">
             <connections>
+                <outlet property="mapView" destination="K13-9J-fh0" id="Xdi-o3-0np"/>
+                <outlet property="navigationBar" destination="4lB-i0-96o" id="7vO-oz-OMN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +15,36 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="K13-9J-fh0">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </mapView>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4lB-i0-96o">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="G1m-92-O4y"/>
+                    </constraints>
+                    <items>
+                        <navigationItem title="Dropoff Locations" id="BTR-Nj-9ge">
+                            <barButtonItem key="rightBarButtonItem" systemItem="done" id="WcO-E6-9w5">
+                                <connections>
+                                    <action selector="onDismiss:" destination="-1" id="1yu-Vh-klH"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="K13-9J-fh0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6dE-J4-4jl"/>
+                <constraint firstAttribute="trailing" secondItem="K13-9J-fh0" secondAttribute="trailing" id="6eK-LN-M56"/>
+                <constraint firstAttribute="bottom" secondItem="K13-9J-fh0" secondAttribute="bottom" id="JrB-Vq-l4C"/>
+                <constraint firstItem="4lB-i0-96o" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Xdd-XF-9tg"/>
+                <constraint firstItem="4lB-i0-96o" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YRg-we-lUX"/>
+                <constraint firstItem="K13-9J-fh0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="iOF-K8-UK1"/>
+                <constraint firstAttribute="trailing" secondItem="4lB-i0-96o" secondAttribute="trailing" id="qE4-3Y-1xY"/>
+            </constraints>
         </view>
     </objects>
 </document>

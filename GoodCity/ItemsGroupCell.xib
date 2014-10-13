@@ -29,6 +29,9 @@
                                 <state key="normal" title="Drop Off">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="tapDropoffButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="77V-5M-Ri9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBF-Xt-e0T" customClass="RoundedButton" customModule="GoodCity" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="120" height="36"/>
@@ -39,6 +42,9 @@
                                 <state key="normal" title="Schedule Pickup">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="tapPickupButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7lb-uw-Ech"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -122,7 +128,6 @@
                 <outlet property="buttonContainer" destination="WPR-0q-2lT" id="qyb-s3-zOs"/>
                 <outlet property="buttonWidthConstraint" destination="YQ8-Ta-KQx" id="Blm-dj-dhb"/>
                 <outlet property="donationDateLabel" destination="lKI-Pq-Nla" id="YGU-ak-rlI"/>
-                <outlet property="pickupButton" destination="YBF-Xt-e0T" id="CBc-eb-IrJ"/>
                 <outlet property="thumbnail1" destination="5Hj-47-k6B" id="gWc-fj-dUO"/>
                 <outlet property="thumbnail2" destination="aga-qI-Tsn" id="yR0-hd-sKa"/>
                 <outlet property="thumbnail3" destination="uuW-ox-U9q" id="53j-ru-OUR"/>

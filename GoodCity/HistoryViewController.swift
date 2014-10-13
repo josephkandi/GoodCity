@@ -8,7 +8,11 @@
 
 import UIKit
 
-class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+protocol ItemsActionDelegate {
+    func viewDropoffLocations()
+}
+
+class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ItemsActionDelegate {
     
     @IBOutlet weak var historyTableView: UITableView!
 
@@ -35,6 +39,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = historyTableView.dequeueReusableCellWithIdentifier("itemsGroupCell") as ItemsGroupCell
+        cell.actionDelegate = self
         
         return cell
     }
@@ -50,6 +55,16 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 36
+    }
+    
+    // Custom protocol methods
+    func viewDropoffLocations() {
+        let dropoffViewController = MapViewController(nibName: "MapViewController", bundle: nil)
+        dropoffViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+        
+        self.navigationController?.presentViewController(dropoffViewController, animated: true, completion: { () -> Void in
+            println("launched the dropoff view controller")
+        })
     }
     
     // Helper functions
