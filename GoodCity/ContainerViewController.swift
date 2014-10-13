@@ -75,7 +75,7 @@ class ContainerViewController: UIViewController {
             controller.view.frame.origin.x = offset * CGFloat(screenSize.width)
             offset += 1
         }
-        containerScrollView.contentSize = CGSize(width: screenSize.width * 3, height: containerScrollView.frame.height)
+        containerScrollView.contentSize = CGSize(width: screenSize.width * 3, height: screenSize.height)
         
         // Scroll to the current offset for the active view
         containerScrollView.contentOffset = CGPoint(x: activeViewIndex * screenSize.width, y: 0)
