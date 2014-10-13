@@ -34,11 +34,10 @@ class ContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupViewControllers()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewDidLayoutSubviews() {
         setupViewOffsets(activeViewIndex: 1)
     }
     
@@ -69,15 +68,15 @@ class ContainerViewController: UIViewController {
     }
 
     func setupViewOffsets(activeViewIndex: CGFloat = CGFloat(0)) {
-        let screenSize = UIScreen.mainScreen().bounds
+        let containerSize = containerScrollView.bounds
         var offset = CGFloat(0)
         for controller in viewControllers {
-            controller.view.frame.origin.x = offset * CGFloat(screenSize.width)
+            controller.view.frame.origin.x = offset * CGFloat(containerSize.width)
             offset += 1
         }
-        containerScrollView.contentSize = CGSize(width: screenSize.width * 3, height: screenSize.height)
+        containerScrollView.contentSize = CGSize(width: containerSize.width * 3, height: containerSize.height)
         
         // Scroll to the current offset for the active view
-        containerScrollView.contentOffset = CGPoint(x: activeViewIndex * screenSize.width, y: 0)
+        containerScrollView.contentOffset = CGPoint(x: activeViewIndex * containerSize.width, y: 0)
     }
 }
