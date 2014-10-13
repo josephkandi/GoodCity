@@ -8,8 +8,6 @@
 
 import UIKit
 
-let SPACING = CGFloat(5)
-
 class ItemsGroupCell: UITableViewCell {
 
     @IBOutlet weak var donationDateLabel: UILabel!
@@ -21,6 +19,10 @@ class ItemsGroupCell: UITableViewCell {
     @IBOutlet weak var thumbnail4: UIImageView!
     @IBOutlet weak var thumbnail5: UIImageView!
     
+    @IBOutlet weak var pickupButton: UIButton!
+    @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var buttonContainer: UIView!
     @IBOutlet weak var thumbnailHeightConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
@@ -48,7 +50,10 @@ class ItemsGroupCell: UITableViewCell {
         
         donationDateLabel.numberOfLines = 0
         donationDateLabel.text = "Donated on: Oct 8, 2014"
-        donationDateLabel.sizeToFit()        
+        donationDateLabel.sizeToFit()
+        
+        buttonWidthConstraint.constant = (buttonContainer.frame.width - SPACING) / 2
+        
     }
     
 }

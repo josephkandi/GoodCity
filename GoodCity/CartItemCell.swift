@@ -8,7 +8,6 @@
 
 import UIKit
 
-let FONT = UIFont(name: "Avenir Next", size: 14.0)
 let TEXT_MARGIN = CGFloat(8)
 
 class CartItemCell: UICollectionViewCell {
@@ -32,7 +31,7 @@ class CartItemCell: UICollectionViewCell {
         let textFrame = CGRect(x: TEXT_MARGIN, y: itemImage.frame.size.height, width: frame.size.width - 2*TEXT_MARGIN, height: frame.size.height - itemImage.frame.height)
         descriptionLabel = UILabel(frame: textFrame)
         descriptionLabel.textAlignment = .Left
-        descriptionLabel.font = FONT
+        descriptionLabel.font = FONT_14
         contentView.addSubview(descriptionLabel)
     }
 

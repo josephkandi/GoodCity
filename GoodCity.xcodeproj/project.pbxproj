@@ -29,6 +29,8 @@
 		3A15068E19EB60BA0020DF10 /* ItemsGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A15068C19EB60BA0020DF10 /* ItemsGroupCell.xib */; };
 		3A15069019EB71AA0020DF10 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15068F19EB71AA0020DF10 /* SectionHeaderView.swift */; };
 		3A15069219EB81220020DF10 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15069119EB81220020DF10 /* UIImageView+Extensions.swift */; };
+		3A15069419EB85D80020DF10 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15069319EB85D80020DF10 /* RoundedButton.swift */; };
+		3A15069619EB86B00020DF10 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15069519EB86B00020DF10 /* Constants.swift */; };
 		3A687C7419E9104F005351B0 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A687C7219E9104F005351B0 /* CartItemCell.swift */; };
 		3A687C7719E9176A005351B0 /* CartCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A687C7619E9176A005351B0 /* CartCollectionLayout.swift */; };
 		3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */; };
@@ -78,6 +80,8 @@
 		3A15068C19EB60BA0020DF10 /* ItemsGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemsGroupCell.xib; sourceTree = "<group>"; };
 		3A15068F19EB71AA0020DF10 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		3A15069119EB81220020DF10 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		3A15069319EB85D80020DF10 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		3A15069519EB86B00020DF10 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3A687C7219E9104F005351B0 /* CartItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
 		3A687C7619E9176A005351B0 /* CartCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCollectionLayout.swift; sourceTree = "<group>"; };
 		3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 		0A0B08F219E229BC0059A82C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3A15069519EB86B00020DF10 /* Constants.swift */,
+				3A15069319EB85D80020DF10 /* RoundedButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -404,6 +410,7 @@
 				3A15068D19EB60BA0020DF10 /* ItemsGroupCell.swift in Sources */,
 				0AD128B519E92215002E47E5 /* User.swift in Sources */,
 				0A14FFA819E230E800D11CE2 /* LoginViewController.swift in Sources */,
+				3A15069419EB85D80020DF10 /* RoundedButton.swift in Sources */,
 				0A14FFAB19E2314200D11CE2 /* ParseClient.swift in Sources */,
 				0A0B08F919E22AD00059A82C /* NSDate+Extensions.swift in Sources */,
 				3AE42EED19E8FBA400D7A6F5 /* HistoryViewController.swift in Sources */,
@@ -415,6 +422,7 @@
 				0A0B08F719E22AC30059A82C /* Int+Extensions.swift in Sources */,
 				3A15069219EB81220020DF10 /* UIImageView+Extensions.swift in Sources */,
 				3A15069019EB71AA0020DF10 /* SectionHeaderView.swift in Sources */,
+				3A15069619EB86B00020DF10 /* Constants.swift in Sources */,
 				3AE42EE919E8FB8300D7A6F5 /* CartViewController.swift in Sources */,
 				0A14FFB219E234DB00D11CE2 /* CameraViewController.swift in Sources */,
 				0A0B08CD19E2283F0059A82C /* AppDelegate.swift in Sources */,
