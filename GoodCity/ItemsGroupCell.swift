@@ -15,10 +15,22 @@ class ItemsGroupCell: UITableViewCell {
     @IBOutlet weak var donationDateLabel: UILabel!
     @IBOutlet weak var thumbnailsContainer: UIView!
     
+    @IBOutlet weak var thumbnail1: UIImageView!
+    @IBOutlet weak var thumbnail2: UIImageView!
+    @IBOutlet weak var thumbnail3: UIImageView!
+    @IBOutlet weak var thumbnail4: UIImageView!
+    @IBOutlet weak var thumbnail5: UIImageView!
+    
     @IBOutlet weak var thumbnailHeightConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        thumbnail1.setRoundedCorners(true)
+        thumbnail2.setRoundedCorners(true)
+        thumbnail3.setRoundedCorners(true)
+        thumbnail4.setRoundedCorners(true)
+        thumbnail5.setRoundedCorners(true)
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -35,7 +47,7 @@ class ItemsGroupCell: UITableViewCell {
         thumbnailHeightConstraint.constant = thumbnailWidth
         
         donationDateLabel.numberOfLines = 0
-        donationDateLabel.text = "Donation on: Oct 8, 2014"
+        donationDateLabel.text = "Donated on: Oct 8, 2014"
         donationDateLabel.sizeToFit()        
     }
     
