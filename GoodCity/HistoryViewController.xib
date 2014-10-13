@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HistoryViewController" customModule="GoodCity" customModuleProvider="target">
             <connections>
+                <outlet property="historyTableView" destination="pWQ-sd-8RX" id="Tvc-fO-YnD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,17 +15,15 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History View" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRn-vo-kqG">
-                    <rect key="frame" x="252" y="290" width="96" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pWQ-sd-8RX">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </tableView>
             </subviews>
-            <color key="backgroundColor" red="0.80000001192092896" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="TRn-vo-kqG" secondAttribute="centerY" id="4qx-N9-LkH"/>
-                <constraint firstAttribute="centerX" secondItem="TRn-vo-kqG" secondAttribute="centerX" id="bqS-Eu-CVA"/>
+                <constraint firstItem="pWQ-sd-8RX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Jsa-MV-zW6"/>
+                <constraint firstItem="pWQ-sd-8RX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WUF-xL-kdj"/>
+                <constraint firstAttribute="trailing" secondItem="pWQ-sd-8RX" secondAttribute="trailing" id="oqP-ID-bnr"/>
+                <constraint firstAttribute="bottom" secondItem="pWQ-sd-8RX" secondAttribute="bottom" id="sET-Vc-cdM"/>
             </constraints>
         </view>
     </objects>

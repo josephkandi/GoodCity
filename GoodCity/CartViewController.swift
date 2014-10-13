@@ -17,8 +17,12 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     @IBOutlet weak var cartCollectionView: UICollectionView!
     
+    @IBOutlet weak var collectionHeader: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionHeader.backgroundColor = UIColor(white: 1.0, alpha: 0.9)
         
         cartCollectionView.dataSource = self
         cartCollectionView.delegate = self
@@ -29,11 +33,8 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
 
         cartCollectionView.registerClass(CartItemCell.self, forCellWithReuseIdentifier: "cartItemCell")
         cartCollectionView.reloadData()
-        
     }
     
-    
-
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -48,7 +49,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         return cell
     }
-    
+
     // Helper functions
     private func registerCollectionViewCellNib(nibName: String, reuseIdentifier: String) {
         let nib = UINib(nibName: nibName, bundle: nil)
@@ -63,5 +64,4 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         return CGSizeMake(width, width/3*4)
     }
-    
 }
