@@ -53,7 +53,7 @@ class ContainerViewController: UIViewController {
         containerScrollView.addSubview(navController.view)
         
         // 2. Camera View Controller
-        let cameraViewController = CameraViewController(nibName: "CameraViewController", bundle: nil)
+        let cameraViewController = AVCamViewController(nibName: "AVCamViewController", bundle: nil)
         viewControllers.append(cameraViewController)
         cameraViewController.view.frame = CGRectMake(0, 0, containerScrollView.frame.width, containerScrollView.frame.height)
         cameraViewController.view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;

@@ -5,3 +5,4 @@
 #import "PFObject+Subclass.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "AVCamViewController.h"
