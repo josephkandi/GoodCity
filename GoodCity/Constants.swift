@@ -17,3 +17,6 @@ let FONT_14 = UIFont(name: "Avenir Next", size: 14.0)
 let FONT_MEDIUM_12 = UIFont(name: "AvenirNext-Medium", size: 12.0)
 let FONT_MEDIUM_14 = UIFont(name: "AvenirNext-Medium", size: 14.0)
 let FONT_BOLD_14 = UIFont(name: "AvenirNext-Bold", size: 14.0)
+
+// Colors
+let FB_BLUE = UIColor(red: 0.278, green: 0.3843, blue: 0.6078, alpha: 1.0)

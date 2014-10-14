@@ -10,12 +10,16 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var FBLoginButton: RoundedButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Old code if we want to use Facebook graphic
         // let loginView = FBLoginView()
         // loginView.center = self.view.center
         // self.view.addSubview(loginView)
+
+        FBLoginButton.setButtonColor(FB_BLUE)
+    
     }
     
     private func loginWithParse() {
