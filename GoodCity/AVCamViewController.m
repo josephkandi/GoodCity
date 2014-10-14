@@ -62,12 +62,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 @property (nonatomic, weak) IBOutlet AVCamPreviewView *previewView;
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 
-@property (nonatomic, weak) IBOutlet UIButton *recordButton;
-@property (nonatomic, weak) IBOutlet UIButton *cameraButton;
 @property (nonatomic, weak) IBOutlet UIButton *snapButton;
 
-- (IBAction)toggleMovieRecording:(id)sender;
-- (IBAction)changeCamera:(id)sender;
 - (IBAction)snapStillImage:(id)sender;
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer;
 
@@ -194,7 +190,6 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 			dispatch_async([strongSelf sessionQueue], ^{
 				// Manually restarting the session since it must have been stopped due to an error.
 				[[strongSelf session] startRunning];
-				[[strongSelf recordButton] setTitle:NSLocalizedString(@"Record", @"Recording button record title") forState:UIControlStateNormal];
 			});
 		}]];
 		[[self session] startRunning];
@@ -247,25 +242,6 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 			[self runStillImageCaptureAnimation];
 		}
 	}
-	else if (context == RecordingContext)
-	{
-		BOOL isRecording = [change[NSKeyValueChangeNewKey] boolValue];
-		
-		dispatch_async(dispatch_get_main_queue(), ^{
-			if (isRecording)
-			{
-				[[self cameraButton] setEnabled:NO];
-				[[self recordButton] setTitle:NSLocalizedString(@"Stop", @"Recording button stop title") forState:UIControlStateNormal];
-				[[self recordButton] setEnabled:YES];
-			}
-			else
-			{
-				[[self cameraButton] setEnabled:YES];
-				[[self recordButton] setTitle:NSLocalizedString(@"Record", @"Recording button record title") forState:UIControlStateNormal];
-				[[self recordButton] setEnabled:YES];
-			}
-		});
-	}
 	else if (context == SessionRunningAndDeviceAuthorizedContext)
 	{
 		BOOL isRunning = [change[NSKeyValueChangeNewKey] boolValue];
@@ -273,14 +249,10 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 		dispatch_async(dispatch_get_main_queue(), ^{
 			if (isRunning)
 			{
-				[[self cameraButton] setEnabled:YES];
-				[[self recordButton] setEnabled:YES];
 				[[self snapButton] setEnabled:YES];
 			}
 			else
 			{
-				[[self cameraButton] setEnabled:NO];
-				[[self recordButton] setEnabled:NO];
 				[[self snapButton] setEnabled:NO];
 			}
 		});
@@ -292,93 +264,6 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 }
 
 #pragma mark Actions
-
-- (IBAction)toggleMovieRecording:(id)sender
-{
-	[[self recordButton] setEnabled:NO];
-	
-	dispatch_async([self sessionQueue], ^{
-		if (![[self movieFileOutput] isRecording])
-		{
-			[self setLockInterfaceRotation:YES];
-			
-			if ([[UIDevice currentDevice] isMultitaskingSupported])
-			{
-				// Setup background task. This is needed because the captureOutput:didFinishRecordingToOutputFileAtURL: callback is not received until AVCam returns to the foreground unless you request background execution time. This also ensures that there will be time to write the file to the assets library when AVCam is backgrounded. To conclude this background execution, -endBackgroundTask is called in -recorder:recordingDidFinishToOutputFileURL:error: after the recorded file has been saved.
-				[self setBackgroundRecordingID:[[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil]];
-			}
-			
-			// Update the orientation on the movie file output video connection before starting recording.
-			[[[self movieFileOutput] connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] videoOrientation]];
-			
-			// Turning OFF flash for video recording
-			[AVCamViewController setFlashMode:AVCaptureFlashModeOff forDevice:[[self videoDeviceInput] device]];
-			
-			// Start recording to a temporary file.
-			NSString *outputFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[@"movie" stringByAppendingPathExtension:@"mov"]];
-			[[self movieFileOutput] startRecordingToOutputFileURL:[NSURL fileURLWithPath:outputFilePath] recordingDelegate:self];
-		}
-		else
-		{
-			[[self movieFileOutput] stopRecording];
-		}
-	});
-}
-
-- (IBAction)changeCamera:(id)sender
-{
-	[[self cameraButton] setEnabled:NO];
-	[[self recordButton] setEnabled:NO];
-	[[self snapButton] setEnabled:NO];
-	
-	dispatch_async([self sessionQueue], ^{
-		AVCaptureDevice *currentVideoDevice = [[self videoDeviceInput] device];
-		AVCaptureDevicePosition preferredPosition = AVCaptureDevicePositionUnspecified;
-		AVCaptureDevicePosition currentPosition = [currentVideoDevice position];
-		
-		switch (currentPosition)
-		{
-			case AVCaptureDevicePositionUnspecified:
-				preferredPosition = AVCaptureDevicePositionBack;
-				break;
-			case AVCaptureDevicePositionBack:
-				preferredPosition = AVCaptureDevicePositionFront;
-				break;
-			case AVCaptureDevicePositionFront:
-				preferredPosition = AVCaptureDevicePositionBack;
-				break;
-		}
-		
-		AVCaptureDevice *videoDevice = [AVCamViewController deviceWithMediaType:AVMediaTypeVideo preferringPosition:preferredPosition];
-		AVCaptureDeviceInput *videoDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:nil];
-		
-		[[self session] beginConfiguration];
-		
-		[[self session] removeInput:[self videoDeviceInput]];
-		if ([[self session] canAddInput:videoDeviceInput])
-		{
-			[[NSNotificationCenter defaultCenter] removeObserver:self name:AVCaptureDeviceSubjectAreaDidChangeNotification object:currentVideoDevice];
-			
-			[AVCamViewController setFlashMode:AVCaptureFlashModeAuto forDevice:videoDevice];
-			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(subjectAreaDidChange:) name:AVCaptureDeviceSubjectAreaDidChangeNotification object:videoDevice];
-			
-			[[self session] addInput:videoDeviceInput];
-			[self setVideoDeviceInput:videoDeviceInput];
-		}
-		else
-		{
-			[[self session] addInput:[self videoDeviceInput]];
-		}
-		
-		[[self session] commitConfiguration];
-		
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[[self cameraButton] setEnabled:YES];
-			[[self recordButton] setEnabled:YES];
-			[[self snapButton] setEnabled:YES];
-		});
-	});
-}
 
 - (IBAction)snapStillImage:(id)sender
 {
