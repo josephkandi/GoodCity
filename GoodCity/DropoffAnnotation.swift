@@ -21,22 +21,20 @@ class DropoffAnnotation: NSObject, MKAnnotation {
     }
     
     var annotationView: MKAnnotationView {
-        
         let annotationView = MKAnnotationView(annotation: self, reuseIdentifier: "dropoffAnnotation")
+        annotationView.enabled = true
+        annotationView.canShowCallout = true
+        annotationView.image = UIImage(named: "marker")
             
-            annotationView.enabled = true
-            annotationView.canShowCallout = true
-            annotationView.image = UIImage(named: "marker")
+        let label = UILabel(frame: CGRectMake(0,0,30,22))
+        label.text = markerText
+        label.textAlignment = NSTextAlignment.Center
+        label.baselineAdjustment = UIBaselineAdjustment.AlignCenters
+        label.font = FONT_MEDIUM_14
+        label.textColor = UIColor.whiteColor()
+        annotationView.addSubview(label)
             
-            let label = UILabel(frame: CGRectMake(0,0,30,22))
-            label.text = markerText
-            label.textAlignment = NSTextAlignment.Center
-            label.baselineAdjustment = UIBaselineAdjustment.AlignCenters
-            label.font = FONT_MEDIUM_14
-            label.textColor = UIColor.whiteColor()
-            annotationView.addSubview(label)
-            
-            return annotationView
+        return annotationView
     }
     
     func setCoordinate(newCoordinate: CLLocationCoordinate2D) {

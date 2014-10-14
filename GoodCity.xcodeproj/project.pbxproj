@@ -42,6 +42,7 @@
 		3A1506A419EBB1940020DF10 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1506A319EBB1940020DF10 /* CoreLocation.framework */; };
 		3A687C7419E9104F005351B0 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A687C7219E9104F005351B0 /* CartItemCell.swift */; };
 		3A687C7719E9176A005351B0 /* CartCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A687C7619E9176A005351B0 /* CartCollectionLayout.swift */; };
+		3ABF2C9219ECF508005EF442 /* ActionButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */; };
 		3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */; };
 		3AE42EE619E8F98500D7A6F5 /* ContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AE42EE419E8F98500D7A6F5 /* ContainerViewController.xib */; };
 		3AE42EE919E8FB8300D7A6F5 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE42EE719E8FB8300D7A6F5 /* CartViewController.swift */; };
@@ -104,6 +105,7 @@
 		3A1506A319EBB1940020DF10 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3A687C7219E9104F005351B0 /* CartItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
 		3A687C7619E9176A005351B0 /* CartCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCollectionLayout.swift; sourceTree = "<group>"; };
+		3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButtonsView.swift; sourceTree = "<group>"; };
 		3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		3AE42EE419E8F98500D7A6F5 /* ContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerViewController.xib; sourceTree = "<group>"; };
 		3AE42EE719E8FB8300D7A6F5 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				3A15069519EB86B00020DF10 /* Constants.swift */,
 				3A15069319EB85D80020DF10 /* RoundedButton.swift */,
 				3A1506A119EBAC910020DF10 /* DropoffAnnotation.swift */,
+				3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				3A687C7719E9176A005351B0 /* CartCollectionLayout.swift in Sources */,
 				0AC31AFC19E9EDA300BB815F /* DropoffLocation.swift in Sources */,
 				0A14FFB619E2352400D11CE2 /* EditItemViewController.swift in Sources */,
+				3ABF2C9219ECF508005EF442 /* ActionButtonsView.swift in Sources */,
 				3A1506A219EBAC910020DF10 /* DropoffAnnotation.swift in Sources */,
 				0A0B08F719E22AC30059A82C /* Int+Extensions.swift in Sources */,
 				3A15069219EB81220020DF10 /* UIImageView+Extensions.swift in Sources */,

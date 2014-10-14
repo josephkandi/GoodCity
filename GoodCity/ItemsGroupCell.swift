@@ -12,19 +12,24 @@ class ItemsGroupCell: UITableViewCell {
 
     @IBOutlet weak var donationDateLabel: UILabel!
     @IBOutlet weak var thumbnailsContainer: UIView!
+    @IBOutlet weak var buttonContainer: UIView!
     @IBOutlet weak var thumbnail1: UIImageView!
     @IBOutlet weak var thumbnail2: UIImageView!
     @IBOutlet weak var thumbnail3: UIImageView!
     @IBOutlet weak var thumbnail4: UIImageView!
     @IBOutlet weak var thumbnail5: UIImageView!
-    @IBOutlet weak var buttonContainer: UIView!
+    
+    var buttonsView: ActionButtonsView!
     
     // Constraints
-    @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var thumbnailHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonsHeightConstraint: NSLayoutConstraint!
     
     // Delegate
-    var actionDelegate: ItemsActionDelegate?
+    private var actionDelegate: ItemsActionDelegate?
+    
+    // Items State
+    private var itemsState: ItemState?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,6 +39,9 @@ class ItemsGroupCell: UITableViewCell {
         thumbnail3.setRoundedCorners(true)
         thumbnail4.setRoundedCorners(true)
         thumbnail5.setRoundedCorners(true)
+        
+        buttonsView = ActionButtonsView(frame: buttonContainer.bounds)
+        buttonContainer.addSubview(buttonsView)
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -53,7 +61,9 @@ class ItemsGroupCell: UITableViewCell {
         donationDateLabel.text = "Donated on: Oct 8, 2014"
         donationDateLabel.sizeToFit()
         
-        buttonWidthConstraint.constant = (buttonContainer.frame.width - SPACING) / 2
+        buttonsView.frame = buttonContainer.bounds
+        buttonsView.layoutSubviews()
+        buttonsHeightConstraint.constant = buttonsView.frame.height
     }
     
     @IBAction func tapPickupButton(sender: AnyObject) {
@@ -63,5 +73,14 @@ class ItemsGroupCell: UITableViewCell {
         if actionDelegate != nil {
             actionDelegate!.viewDropoffLocations()
         }
+    }
+    
+    func setItemsState(state: ItemState) {
+        self.itemsState = state
+        buttonsView.setItemsState(state)
+    }
+    func setDelegate(delegate: ItemsActionDelegate) {
+        self.actionDelegate = delegate
+        buttonsView.setDelegate(delegate)
     }
 }
