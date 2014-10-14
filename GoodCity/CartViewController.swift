@@ -8,9 +8,9 @@
 
 import UIKit
 
-let TOP_MARGIN = CGFloat(20)
+let TOP_MARGIN = CGFloat(12)
 let BOTTOM_MARGIN = CGFloat(20)
-let SIDE_MARGIN = CGFloat(12)
+let SIDE_MARGIN = CGFloat(15)
 let ITEM_SPACING = CGFloat(10)
 
 class CartViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -21,7 +21,9 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionHeader.backgroundColor = UIColor(white: 1.0, alpha: 0.9)
+        self.navigationController?.navigationBar.barTintColor = NAV_BAR_COLOR
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        collectionHeader.backgroundColor = HEADER_COLOR
         
         cartCollectionView.dataSource = self
         cartCollectionView.delegate = self

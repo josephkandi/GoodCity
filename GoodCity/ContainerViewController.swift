@@ -80,4 +80,7 @@ class ContainerViewController: UIViewController {
         // Scroll to the current offset for the active view
         containerScrollView.contentOffset = CGPoint(x: activeViewIndex * containerSize.width, y: 0)
     }
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 }

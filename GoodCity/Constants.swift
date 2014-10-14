@@ -20,3 +20,6 @@ let FONT_BOLD_14 = UIFont(name: "AvenirNext-Bold", size: 14.0)
 
 // Colors
 let FB_BLUE = UIColor(red: 0.278, green: 0.3843, blue: 0.6078, alpha: 1.0)
+let DARK_GRAY = UIColor(white: 0.25, alpha: 1.0)
+let NAV_BAR_COLOR = DARK_GRAY
+let HEADER_COLOR = UIColor(white: 0.25, alpha: 0.9)
