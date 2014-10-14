@@ -32,9 +32,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId(PARSE_APPLICATION_ID, clientKey: PARSE_CLIENT_KEY)
         PFFacebookUtils.initializeFacebook()
     }
-    
+
+    func registerForPushNotifications(application: UIApplication) {
+        if application.respondsToSelector("registerUserNotificationSettings:") {
+            println("Registering for push notifications the iOS8 way")
+            let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+            application.registerUserNotificationSettings(settings)
+            application.registerForRemoteNotifications()
+        } else { // Before iOS 8
+            println("Registering for push notifications the pre-iOS8 way")
+            application.registerForRemoteNotificationTypes(UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound)
+        }
+    }
+
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.setupParse()
+        self.registerForPushNotifications(application)
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
         // Listen for log out notifications
@@ -63,6 +77,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(application: UIApplication) {
         PFFacebookUtils.session().close()
+    }
+
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let currentIntallation = PFInstallation.currentInstallation()
+        currentIntallation.setDeviceTokenFromData(deviceToken)
+        currentIntallation.saveInBackground()
+    }
+
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        PFPush.handlePush(userInfo)
     }
 
     func applicationWillResignActive(application: UIApplication) {
