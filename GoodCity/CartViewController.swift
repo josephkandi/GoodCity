@@ -25,13 +25,15 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         cartCollectionView.dataSource = self
         cartCollectionView.delegate = self
-        
-        let layout = cartCollectionView.collectionViewLayout as UICollectionViewFlowLayout
-        layout.itemSize = getCellSize()
-        layout.sectionInset = UIEdgeInsets(top: TOP_MARGIN, left: SIDE_MARGIN, bottom: BOTTOM_MARGIN, right: SIDE_MARGIN)
-
+ 
         cartCollectionView.registerClass(CartItemCell.self, forCellWithReuseIdentifier: "cartItemCell")
         cartCollectionView.reloadData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        let layout = cartCollectionView.collectionViewLayout as UICollectionViewFlowLayout
+        layout.sectionInset = UIEdgeInsets(top: TOP_MARGIN, left: SIDE_MARGIN, bottom: BOTTOM_MARGIN, right: SIDE_MARGIN)
+        layout.itemSize = getCellSize()
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -48,20 +50,10 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         return cell
     }
-
-    // Helper functions
-    private func registerCollectionViewCellNib(nibName: String, reuseIdentifier: String) {
-        let nib = UINib(nibName: nibName, bundle: nil)
-        //self.cartCollectionView.registerClass(cellClass, forCellWithReuseIdentifier: reuseIdentifier)
-        self.cartCollectionView.registerNib(nib, forCellWithReuseIdentifier: reuseIdentifier)
-    }
     
     private func getCellSize() -> CGSize {
-        
-        // HACK: using screen size to figure out the appropriate cell size
-        let screenSize = UIScreen.mainScreen().bounds
-        let width = (screenSize.width - SIDE_MARGIN * 2 - ITEM_SPACING) / 2
-        
+        let containerSize = cartCollectionView.bounds
+        let width = (containerSize.width - SIDE_MARGIN * 2 - ITEM_SPACING) / 2
         return CGSizeMake(width, width/3*4)
     }
 }
