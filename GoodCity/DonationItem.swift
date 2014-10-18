@@ -29,28 +29,55 @@ import Foundation
     }
 
     func description() -> String {
-        return ""
+        return itemDescription
     }
 
-    class func submitNewItem(description: NSString, photo: UIImage, condition: NSString) {
+    class func newItem(description: NSString, photo: UIImage, condition: NSString) -> DonationItem {
         var donationItem = DonationItem.object()
         donationItem.state = ItemState.Pending.toRaw()
         donationItem.condition = condition
         donationItem.itemDescription = description
         donationItem.user = GoodCityUser.currentUser()
 
-        // Upload image
         let data = UIImageJPEGRepresentation(photo, CGFloat(0.05));
         let imageFile = PFFile(data: data)
         donationItem.photo = imageFile
 
-        donationItem.saveInBackgroundWithBlock { (Bool succeeded, error: NSError!) -> Void in
+        return donationItem
+    }
+
+    func submitToParse() {
+        self.saveInBackgroundWithBlock { (Bool succeeded, error: NSError!) -> Void in
             if succeeded {
                 NSLog("Successfully saved a new donation item to Parse")
             } else {
                 NSLog("Failed trying to save a new donation item to Parse: ")
                 NSLog(error.description)
             }
+        }
+    }
+
+    func updateState(newState: ItemState) {
+        self.state = newState.toRaw()
+        // Might want to add a completion handler here
+        self.saveInBackground()
+    }
+
+    // Deletion can happen with deleteInBackground()
+
+    // States is optional
+    class func getAllItemsWithStates(completion: ParseResponse, states: [ItemState]? = nil) {
+        var query = DonationItem.query()
+
+        if states != nil {
+            let stateStrings = states?.map { $0.toRaw() }
+            println("stateStrings: \(stateStrings)")
+            query.whereKey("state", containedIn: stateStrings)
+        }
+        query.whereKey("user", equalTo: GoodCityUser.currentUser)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            completion(objects: objects, error: error)
         }
     }
 }

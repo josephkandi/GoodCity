@@ -300,7 +300,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
                 [self.photoView addSubview:self.editItemView];
 
                 [[self session] stopRunning];
-                //[DonationItem submitNewItem:@"My old shoes" photo:image condition:@"Used"];
+                DonationItem *item = [DonationItem newItem:@"My new shoes" photo:image condition:@"Used"];
+                [item submitToParse];
 
                 [self launchEditFlow];
                 //[[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];

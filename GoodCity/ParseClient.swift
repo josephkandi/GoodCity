@@ -13,6 +13,8 @@ let PARSE_CLIENT_KEY = "mza3JWqSDyWpDZyNeTdGzEYw0A0W8jlZMuvvTM2w"
 
 private let parseClientSharedInstance = ParseClient()
 
+typealias ParseResponse = (objects: [AnyObject], error: NSError?) -> ()
+
 class ParseClient: NSObject {
     typealias loginResponse = ((user: GoodCityUser?, error: NSError?) -> ())
 

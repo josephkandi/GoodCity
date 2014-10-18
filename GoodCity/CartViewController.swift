@@ -29,8 +29,18 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
  
         cartCollectionView.registerClass(CartItemCell.self, forCellWithReuseIdentifier: "cartItemCell")
         cartCollectionView.reloadData()
+        DonationItem.getAllItemsWithStates({
+            (objects, error) -> () in
+                println("Completed")
+                if error == nil {
+                    println(objects)
+                } else {
+                    println(error)
+                }
+            }
+        , states: [ItemState.Pending])
     }
-    
+
     override func viewDidLayoutSubviews() {
         let layout = cartCollectionView.collectionViewLayout as UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsets(top: TOP_MARGIN, left: SIDE_MARGIN, bottom: BOTTOM_MARGIN, right: SIDE_MARGIN)
