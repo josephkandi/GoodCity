@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DonationItem : PFObject, PFSubclassing {
+@objc class DonationItem : PFObject, PFSubclassing {
     // TODO: See if there is a way to use an enum with NSManaged since its not visible
     // to Objective C
     @NSManaged var user: GoodCityUser
@@ -32,16 +32,25 @@ class DonationItem : PFObject, PFSubclassing {
         return ""
     }
 
-    class func createItem(state: ItemState, condition: ItemCondition, itemDescription: String, user: GoodCityUser = GoodCityUser.currentUser!) {
+    class func submitNewItem(description: NSString, photo: UIImage, condition: NSString) {
         var donationItem = DonationItem.object()
-        donationItem.state = state.toRaw()
-        donationItem.condition = condition.toRaw()
-        donationItem.itemDescription = itemDescription
-        donationItem.user = user
-        donationItem.save()
-    }
+        donationItem.state = ItemState.Pending.toRaw()
+        donationItem.condition = condition
+        donationItem.itemDescription = description
+        donationItem.user = GoodCityUser.currentUser()
 
-    class func submitItems(items: [DonationItem]) {
+        // Upload image
+        let data = UIImageJPEGRepresentation(photo, CGFloat(0.05));
+        let imageFile = PFFile(data: data)
+        donationItem.photo = imageFile
 
+        donationItem.saveInBackgroundWithBlock { (Bool succeeded, error: NSError!) -> Void in
+            if succeeded {
+                NSLog("Successfully saved a new donation item to Parse")
+            } else {
+                NSLog("Failed trying to save a new donation item to Parse: ")
+                NSLog(error.description)
+            }
+        }
     }
 }

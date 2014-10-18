@@ -51,6 +51,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 
 #import "AVCamPreviewView.h"
+#import "GoodCity-Swift.h"
 
 static void * CapturingStillImageContext = &CapturingStillImageContext;
 static void * RecordingContext = &RecordingContext;
@@ -283,6 +284,9 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 				UIImage *image = [[UIImage alloc] initWithData:imageData];
                 self.photoView.image = image;
                 self.photoView.hidden = NO;
+                [[self session] stopRunning];
+                [DonationItem submitNewItem:@"My old shoes" photo:image condition:@"Used"];
+
                 //[[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
 			}
 		}];
@@ -298,6 +302,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 - (IBAction)photoViewTapped:(UITapGestureRecognizer *)sender {
     // Insert code here to do pretty things
     // For now just go back to the camera
+    [[self session] startRunning];
     self.photoView.hidden = YES;
 }
 
