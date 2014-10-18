@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ContainerViewController: UIViewController {
+class ContainerViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var containerScrollView: UIScrollView!
+    var statusBarHidden = true
     
     var viewControllers = [UIViewController]()
     var activeViewController: UIViewController? {
@@ -34,9 +35,12 @@ class ContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = tintColor
         ParseClient.sharedInstance.getAvailablePickupScheduleSlots()
         setupViewControllers()
+        containerScrollView.delegate = self
     }
+    
     
     override func viewDidLayoutSubviews() {
         setupViewOffsets(activeViewIndex: 1)
@@ -48,7 +52,7 @@ class ContainerViewController: UIViewController {
         let cartViewController = CartViewController(nibName: "CartViewController", bundle: nil)
         let navController = UINavigationController(rootViewController: cartViewController)
         viewControllers.append(navController)
-        navController.view.frame = CGRectMake(0, 0, containerScrollView.frame.width, containerScrollView.frame.height)
+        navController.view.frame = CGRectMake(0, 20, containerScrollView.frame.width, containerScrollView.frame.height)
         navController.view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
         containerScrollView.addSubview(navController.view)
         
@@ -63,7 +67,7 @@ class ContainerViewController: UIViewController {
         let historyViewController = HistoryViewController(nibName: "HistoryViewController", bundle: nil)
         let navController2 = UINavigationController(rootViewController: historyViewController)
         viewControllers.append(navController2)
-        navController2.view.frame = CGRectMake(0, 0, containerScrollView.frame.width, containerScrollView.frame.height)
+        navController2.view.frame = CGRectMake(0, 20, containerScrollView.frame.width, containerScrollView.frame.height)
         navController2.view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
         containerScrollView.addSubview(navController2.view)
     }
@@ -83,4 +87,29 @@ class ContainerViewController: UIViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let pageWidth = containerScrollView.frame.width
+        let xOffset = containerScrollView.contentOffset.x
+        var bar: Bool
+        
+        if (xOffset == 0 || xOffset >= pageWidth*2) {
+            bar = false
+        }
+        else {
+            bar = true
+        }
+        if (bar != statusBarHidden) {
+            statusBarHidden = bar
+            let duration = statusBarHidden ? NSTimeInterval(0) :  NSTimeInterval(0.3)
+            UIView.animateWithDuration(duration, animations: { () -> Void in
+                self.setNeedsStatusBarAppearanceUpdate()
+            })
+        }
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return statusBarHidden
+    }
+    
 }
