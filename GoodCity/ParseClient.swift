@@ -62,22 +62,6 @@ class ParseClient: NSObject {
         }
     }
 
-    func getDropoffLocations() {
-        var query = DropoffLocation.query()
-
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                // The find succeeded.
-                NSLog("Successfully retrieved \(objects.count) dropoff locations.")
-                println(objects)
-            } else {
-                // Log details of the failure
-                NSLog("Error: %@ %@", error, error.userInfo!)
-            }
-        }
-    }
-
     func getAvailablePickupScheduleSlots() {
         var query = PickupScheduleSlot.query()
         query.whereKey("taken", notEqualTo: true)

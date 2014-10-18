@@ -25,9 +25,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         mapView.delegate = self
         startStandardUpdates()
         
-        // Adding a pin to the map
-        let pin = DropoffAnnotation(markerText: "1", title: "Hello", coordinate: CLLocationCoordinate2D(latitude: 37.7730939, longitude: -122.3960759))
-        mapView.addAnnotation(pin)
     }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
@@ -45,7 +42,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         return nil
     }
-    
+
+    func addDropoffLocationsToMap(locations: [DropoffLocation]) {
+        var annotations = [DropoffAnnotation]()
+        var index = 0
+        for location in locations {
+            let coordinate = CLLocationCoordinate2DMake(location.location.latitude, location.location.longitude)
+            let dropoffAnnotation = DropoffAnnotation(markerText: String(index), title: location.name, coordinate: coordinate)
+            annotations.append(dropoffAnnotation)
+            index++
+        }
+        mapView.showAnnotations(annotations, animated: true)
+    }
+
     // MARK: Location Manager related methods
     func startStandardUpdates() {
         // Create the location manager if this object doesn't already exist
@@ -73,25 +82,52 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         if (abs(howRecent) < 15.0) {
             NSLog("latitude \(location.coordinate.latitude), longitude \(location.coordinate.longitude)\n")
+            let userLocation = PFGeoPoint(location: location)
+            self.mapView.setCenterCoordinate(location.coordinate, animated: true)
+            self.getNearbyDropOffLocationsFromParse(userLocation)
         }
-        
+
+        /*
         if (showUserLocation == false) {
             let center = location.coordinate
             let span = MKCoordinateSpanMake(0.05, 0.05)
             mapView.setRegion(MKCoordinateRegion(center: center, span: span), animated: false)
             showUserLocation = true
         }
+*/
         
     }
- 
-   /* func centerMap() {
+
+    func getNearbyDropOffLocationsFromParse(userCurrentLocation: PFGeoPoint, radiusInMiles: Int = 25) {
+        var query = DropoffLocation.query()
+        query.whereKey("location", nearGeoPoint: userCurrentLocation, withinMiles: Double(radiusInMiles))
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                // The find succeeded.
+                NSLog("Successfully retrieved \(objects.count) dropoff locations.")
+                println(objects)
+                self.addDropoffLocationsToMap(objects as [DropoffLocation])
+            } else {
+                // Log details of the failure
+                NSLog("Error: %@ %@", error, error.userInfo!)
+            }
+        }
+
+
+    }
+
+    func centerMap(center: CLLocationCoordinate2D) {
+
+        /*
         let span = MKCoordinateSpan(latitudeDelta: upper!.latitude-lower!.latitude+0.05, longitudeDelta: upper!.longitude-lower!.longitude+0.05)
         let center = CLLocationCoordinate2D(latitude: (upper!.latitude+lower!.latitude)/2, longitude: (upper!.longitude+lower!.longitude)/2)
         let region = MKCoordinateRegion(center: center, span: span)
-        mapView.region = mapView.regionThatFits(region)
+*/
+        //mapView.region = mapView.regionThatFits(region)
 
     }
-*/
+
     
     @IBAction func onDismiss(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
