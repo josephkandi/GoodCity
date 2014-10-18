@@ -13,7 +13,9 @@ class EditItemView: UIView, UITextViewDelegate {
     @IBOutlet weak var descriptionText: UITextView!
     
     @IBOutlet weak var submitButton: RoundedButton!
-    
+
+    var delegate: DismissEditItemDelegate?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         println("hello from init frame")
@@ -39,8 +41,9 @@ class EditItemView: UIView, UITextViewDelegate {
     
     @IBAction func onTapClose(sender: UITapGestureRecognizer) {
         println("tapped on close")
+        delegate?.dismissEditItem()
     }
-    
+
     override func layoutSubviews() {
         // Set up the text compose field
         descriptionText.delegate = self

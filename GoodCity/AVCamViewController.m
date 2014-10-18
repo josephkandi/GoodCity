@@ -96,6 +96,14 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 	return [NSSet setWithObjects:@"session.running", @"deviceAuthorized", nil];
 }
 
+- (void)dismissEditItem {
+    NSLog(@"Got dismissal request");
+    [self.editItemView removeFromSuperview];
+    [self.photoView removeFromSuperview];
+    [[self session] startRunning];
+
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
@@ -286,6 +294,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
                 self.photoView.hidden = NO;
                 self.editItemView = [[[NSBundle mainBundle] loadNibNamed:@"EditItemView" owner:self options:nil] objectAtIndex:0];
                 self.editItemView.frame = self.photoView.bounds;
+                self.editItemView.delegate = self;
                 
                 //EditItemView *editItemView = [[EditItemView alloc] initWithFrame:self.photoView.bounds];
                 [self.photoView addSubview:self.editItemView];

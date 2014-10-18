@@ -47,6 +47,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AVCamViewController : UIViewController
+@protocol DismissEditItemDelegate
+
+- (void)dismissEditItem;
+
+@end
+
+@interface AVCamViewController : UIViewController <DismissEditItemDelegate>
+
+
 
 @end
