@@ -284,8 +284,11 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 				UIImage *image = [[UIImage alloc] initWithData:imageData];
                 self.photoView.image = image;
                 self.photoView.hidden = NO;
+                EditItemView *editItemView = [[EditItemView alloc] initWithFrame:self.photoView.bounds];
+                [self.photoView addSubview:editItemView];
+
                 [[self session] stopRunning];
-                [DonationItem submitNewItem:@"My old shoes" photo:image condition:@"Used"];
+                //[DonationItem submitNewItem:@"My old shoes" photo:image condition:@"Used"];
 
                 [self launchEditFlow];
                 //[[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
@@ -415,6 +418,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 
 - (void)launchEditFlow
 {
+
+    /*
     EditItemViewController *editItemViewController = [[EditItemViewController alloc] initWithNibName:@"EditItemViewController" bundle:nil];
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
     editItemViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -423,7 +428,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     [self presentViewController:editItemViewController animated:YES completion:^{
         NSLog(@"pushed the edit view controller");
     }];
-    
+    */
 }
 
 - (void)checkDeviceAuthorizationStatus
