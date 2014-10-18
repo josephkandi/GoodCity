@@ -43,6 +43,7 @@
 		3A1506A419EBB1940020DF10 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1506A319EBB1940020DF10 /* CoreLocation.framework */; };
 		3A687C7419E9104F005351B0 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A687C7219E9104F005351B0 /* CartItemCell.swift */; };
 		3A687C7719E9176A005351B0 /* CartCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A687C7619E9176A005351B0 /* CartCollectionLayout.swift */; };
+		3A82271B19F2485900007C6C /* EditItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A82271A19F2485900007C6C /* EditItemView.xib */; };
 		3A9D64FA19F21320008A64F2 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9D64F919F21320008A64F2 /* UIViewController+Extensions.swift */; };
 		3ABF2C9219ECF508005EF442 /* ActionButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */; };
 		3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */; };
@@ -108,6 +109,7 @@
 		3A1506A319EBB1940020DF10 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3A687C7219E9104F005351B0 /* CartItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
 		3A687C7619E9176A005351B0 /* CartCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCollectionLayout.swift; sourceTree = "<group>"; };
+		3A82271A19F2485900007C6C /* EditItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditItemView.xib; sourceTree = "<group>"; };
 		3A9D64F919F21320008A64F2 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButtonsView.swift; sourceTree = "<group>"; };
 		3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				3A1506A119EBAC910020DF10 /* DropoffAnnotation.swift */,
 				3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */,
 				0AFB6E2219F2432200E89AFC /* EditItemView.swift */,
+				3A82271A19F2485900007C6C /* EditItemView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A0B08D719E2283F0059A82C /* LaunchScreen.xib in Resources */,
+				3A82271B19F2485900007C6C /* EditItemView.xib in Resources */,
 				3AE42EEA19E8FB8300D7A6F5 /* CartViewController.xib in Resources */,
 				0A0B08D419E2283F0059A82C /* Images.xcassets in Resources */,
 				3AE42EEE19E8FBA400D7A6F5 /* HistoryViewController.xib in Resources */,

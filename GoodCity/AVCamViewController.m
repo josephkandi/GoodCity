@@ -62,8 +62,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 // For use in the storyboards.
 @property (nonatomic, weak) IBOutlet AVCamPreviewView *previewView;
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
-
 @property (nonatomic, weak) IBOutlet UIButton *snapButton;
+@property (weak, nonatomic) EditItemView *editItemView;
 
 - (IBAction)snapStillImage:(id)sender;
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer;
@@ -284,8 +284,11 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 				UIImage *image = [[UIImage alloc] initWithData:imageData];
                 self.photoView.image = image;
                 self.photoView.hidden = NO;
-                EditItemView *editItemView = [[EditItemView alloc] initWithFrame:self.photoView.bounds];
-                [self.photoView addSubview:editItemView];
+                self.editItemView = [[[NSBundle mainBundle] loadNibNamed:@"EditItemView" owner:self options:nil] objectAtIndex:0];
+                self.editItemView.frame = self.photoView.bounds;
+                
+                //EditItemView *editItemView = [[EditItemView alloc] initWithFrame:self.photoView.bounds];
+                [self.photoView addSubview:self.editItemView];
 
                 [[self session] stopRunning];
                 //[DonationItem submitNewItem:@"My old shoes" photo:image condition:@"Used"];
@@ -306,7 +309,13 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 - (IBAction)photoViewTapped:(UITapGestureRecognizer *)sender {
     // Insert code here to do pretty things
     // For now just go back to the camera
+    [self startCamera];
+}
+
+- (void)startCamera
+{
     [[self session] startRunning];
+    [self.editItemView removeFromSuperview];
     self.photoView.hidden = YES;
 }
 

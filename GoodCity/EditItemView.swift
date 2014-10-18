@@ -8,8 +8,12 @@
 
 import UIKit
 
-class EditItemView: UIView {
+class EditItemView: UIView, UITextViewDelegate {
 
+    @IBOutlet weak var descriptionText: UITextView!
+    
+    @IBOutlet weak var submitButton: RoundedButton!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         println("hello from init frame")
@@ -22,16 +26,34 @@ class EditItemView: UIView {
     }
 
     required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        //fatalError("init(coder:) has not been implemented")
+        
     }
 
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect)
-    {
-        // Drawing code
+    @IBAction func onTap(sender: UITapGestureRecognizer) {
+        descriptionText.resignFirstResponder()
+
     }
-    */
+    
+    
+    @IBAction func onTapClose(sender: UITapGestureRecognizer) {
+        println("tapped on close")
+    }
+    
+    override func layoutSubviews() {
+        // Set up the text compose field
+        descriptionText.delegate = self
+        descriptionText.textColor = UIColor.lightTextColor()
+
+        submitButton.setButtonColor(tintColor)
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        descriptionText.becomeFirstResponder()
+        descriptionText.textColor = UIColor.whiteColor()
+        descriptionText.text = ""
+    }
+
 
 }

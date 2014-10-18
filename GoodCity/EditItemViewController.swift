@@ -9,7 +9,8 @@ import Foundation
 
 @objc class EditItemViewController: UIViewController {
 
-    @IBOutlet weak var imageBackground: UIImageView!
+    
+    @IBOutlet weak var dismissButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,10 +18,12 @@ import Foundation
         println("view did load")
     }
     
-    func setImageBackground(image: UIImageView) {
-        imageBackground.image = UIImage(CGImage: image.image?.CGImage)
+    @IBAction func onTapDismiss(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            println("dismissed")
+        })
+        
     }
-    
     //override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
     //    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil?)
     //}

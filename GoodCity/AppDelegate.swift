@@ -53,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.setupParse()
         self.registerForPushNotifications(application)
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window?.tintColor = tintColor
 
         // Listen for log out notifications
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)

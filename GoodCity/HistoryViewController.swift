@@ -28,6 +28,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         
         registerTableViewCellNib("ItemsGroupCell", reuseIdentifier: "itemsGroupCell")
         historyTableView.registerClass(SectionHeaderView.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
+        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
