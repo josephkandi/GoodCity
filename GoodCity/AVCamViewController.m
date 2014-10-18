@@ -287,6 +287,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
                 [[self session] stopRunning];
                 [DonationItem submitNewItem:@"My old shoes" photo:image condition:@"Used"];
 
+                [self launchEditFlow];
                 //[[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
 			}
 		}];
@@ -410,6 +411,19 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 			[[[self previewView] layer] setOpacity:1.0];
 		}];
 	});
+}
+
+- (void)launchEditFlow
+{
+    EditItemViewController *editItemViewController = [[EditItemViewController alloc] initWithNibName:@"EditItemViewController" bundle:nil];
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    editItemViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    //editItemViewController.imageBackground.image = [[UIImage alloc] initWithImage:self.photoView.image];
+    
+    [self presentViewController:editItemViewController animated:YES completion:^{
+        NSLog(@"pushed the edit view controller");
+    }];
+    
 }
 
 - (void)checkDeviceAuthorizationStatus

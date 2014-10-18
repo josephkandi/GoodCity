@@ -19,6 +19,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.styleNavBar()
+        
         historyTableView.dataSource = self
         historyTableView.delegate = self
         historyTableView.rowHeight = UITableViewAutomaticDimension

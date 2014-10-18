@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -21,16 +20,51 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DeA-bG-p2p" customClass="AVCamPreviewView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TP0-S8-Y6B">
-                            <rect key="frame" x="264" y="542" width="72" height="36"/>
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera_gradient" translatesAutoresizingMaskIntoConstraints="NO" id="tkX-FI-7qJ">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="72" id="KfR-vH-WiG"/>
+                                <constraint firstAttribute="height" constant="200" id="frd-OW-upD"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            <state key="normal" title="Snap">
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7oM-E2-aJp" userLabel="cart">
+                            <rect key="frame" x="40" y="535" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="GIa-CM-Rj2"/>
+                                <constraint firstAttribute="height" constant="30" id="IKn-JZ-CYZ"/>
+                            </constraints>
+                            <state key="normal" image="camera_cart">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oj-BE-81o">
+                            <rect key="frame" x="50" y="540" width="10" height="21"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEK-RB-fEu" userLabel="history">
+                            <rect key="frame" x="530" y="535" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="ac2-PZ-GBz"/>
+                                <constraint firstAttribute="height" constant="30" id="dEf-eO-c6I"/>
+                            </constraints>
+                            <state key="normal" image="camer_history">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a photo of what you want to donate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCF-wS-uiG">
+                            <rect key="frame" x="169" y="50" width="262" height="20"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                            <color key="textColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TP0-S8-Y6B" userLabel="capture">
+                            <rect key="frame" x="270" y="520" width="60" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="1iJ-ce-K8c"/>
+                                <constraint firstAttribute="width" constant="60" id="KfR-vH-WiG"/>
+                            </constraints>
+                            <state key="normal" image="camera_capture"/>
                             <connections>
                                 <action selector="snapStillImage:" destination="-1" eventType="touchUpInside" id="NcL-k1-ciU"/>
                             </connections>
@@ -39,9 +73,25 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="TP0-S8-Y6B" secondAttribute="bottom" constant="22" id="03m-Br-n6T"/>
+                        <constraint firstAttribute="bottom" secondItem="TP0-S8-Y6B" secondAttribute="bottom" constant="20" id="03m-Br-n6T"/>
+                        <constraint firstItem="tkX-FI-7qJ" firstAttribute="top" secondItem="bCF-wS-uiG" secondAttribute="bottom" id="2iC-xB-RPa"/>
+                        <constraint firstAttribute="trailing" secondItem="eEK-RB-fEu" secondAttribute="trailing" constant="40" id="5kB-MH-Xgo"/>
+                        <constraint firstItem="7oM-E2-aJp" firstAttribute="leading" secondItem="DeA-bG-p2p" secondAttribute="leading" constant="40" id="A5A-1W-UCV"/>
+                        <constraint firstItem="tkX-FI-7qJ" firstAttribute="leading" secondItem="DeA-bG-p2p" secondAttribute="leading" id="DI0-06-kJK"/>
+                        <constraint firstItem="7oM-E2-aJp" firstAttribute="centerY" secondItem="9oj-BE-81o" secondAttribute="centerY" constant="-0.5" id="FVh-Zd-jdx"/>
+                        <constraint firstItem="tkX-FI-7qJ" firstAttribute="top" secondItem="DeA-bG-p2p" secondAttribute="top" id="TmT-pS-HlW"/>
+                        <constraint firstAttribute="centerX" secondItem="bCF-wS-uiG" secondAttribute="centerX" id="gYG-jk-6yy"/>
                         <constraint firstItem="TP0-S8-Y6B" firstAttribute="centerX" secondItem="DeA-bG-p2p" secondAttribute="centerX" id="ifV-Kx-Jt5"/>
+                        <constraint firstItem="TP0-S8-Y6B" firstAttribute="centerY" secondItem="7oM-E2-aJp" secondAttribute="centerY" id="nL3-RP-Psq"/>
+                        <constraint firstItem="TP0-S8-Y6B" firstAttribute="centerY" secondItem="eEK-RB-fEu" secondAttribute="centerY" id="v19-YI-CPq"/>
+                        <constraint firstAttribute="trailing" secondItem="tkX-FI-7qJ" secondAttribute="trailing" id="vp1-n7-msm"/>
+                        <constraint firstItem="7oM-E2-aJp" firstAttribute="centerX" secondItem="9oj-BE-81o" secondAttribute="centerX" id="wwg-yr-1zi"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="2iC-xB-RPa"/>
+                        </mask>
+                    </variation>
                     <connections>
                         <outletCollection property="gestureRecognizers" destination="G0M-Ef-4sF" appends="YES" id="bTN-sE-ZgM"/>
                     </connections>
@@ -56,6 +106,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="4Fq-YA-GVl" firstAttribute="top" secondItem="bCF-wS-uiG" secondAttribute="bottom" constant="-70" id="0au-Zo-rHv"/>
                 <constraint firstItem="DeA-bG-p2p" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AF4-IN-slc"/>
                 <constraint firstAttribute="bottom" secondItem="DeA-bG-p2p" secondAttribute="bottom" id="BGY-cc-BYH"/>
                 <constraint firstAttribute="bottom" secondItem="4Fq-YA-GVl" secondAttribute="bottom" id="COe-7c-ZCl"/>
@@ -77,4 +128,10 @@
             </connections>
         </tapGestureRecognizer>
     </objects>
+    <resources>
+        <image name="camer_history" width="30" height="30"/>
+        <image name="camera_capture" width="90" height="90"/>
+        <image name="camera_cart" width="90" height="90"/>
+        <image name="camera_gradient" width="320" height="200"/>
+    </resources>
 </document>
