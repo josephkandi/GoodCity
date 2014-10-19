@@ -82,6 +82,7 @@ class ActionButtonsView: UIView {
     }
     
     func onTapSchedulePickup() {
+        self.delegate?.schedulePickup()
         
     }
     func onTapScheduleEdit() {

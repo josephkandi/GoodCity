@@ -10,26 +10,24 @@ import UIKit
 
 class SchedulePickupViewController: UIViewController {
 
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var datePickerButton: RoundedButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        closeButton.setImage(UIImage(named: "edit_close").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: .Normal)
+        closeButton.tintColor = tintColor
+        
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func onTapClose(sender: AnyObject) {
     }
-    */
+
+
+    @IBAction func onTapDatePicker(sender: AnyObject) {
+    }
 
 }

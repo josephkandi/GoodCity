@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SchedulePickupViewController" customModule="GoodCity" customModuleProvider="target">
             <connections>
+                <outlet property="closeButton" destination="EPQ-G3-gZc" id="La4-Oo-5hh"/>
+                <outlet property="datePickerButton" destination="ecZ-kE-r5L" id="bJU-kq-Fxd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +15,58 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPQ-G3-gZc" userLabel="Close Button">
+                    <rect key="frame" x="18" y="32" width="18" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="08q-KT-iSl"/>
+                        <constraint firstAttribute="width" constant="18" id="UzL-tP-ISo"/>
+                    </constraints>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onTapClose:" destination="-1" eventType="touchUpInside" id="cwv-2S-y9r"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Pickup" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFW-pK-VEH">
+                    <rect key="frame" x="236" y="29" width="129" height="24"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LkQ-b8-mtB">
+                    <rect key="frame" x="16" y="78" width="31" height="17"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecZ-kE-r5L" customClass="RoundedButton" customModule="GoodCity" customModuleProvider="target">
+                    <rect key="frame" x="226" y="103" width="148" height="30"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                    <state key="normal" title="Thu, October 2, 2014"/>
+                    <connections>
+                        <action selector="onTapDatePicker:" destination="-1" eventType="touchUpInside" id="rbC-8Z-Hii"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="ecZ-kE-r5L" secondAttribute="centerX" id="7Ye-Cw-LeT"/>
+                <constraint firstItem="LkQ-b8-mtB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="78" id="A89-OP-lu2"/>
+                <constraint firstAttribute="centerX" secondItem="PFW-pK-VEH" secondAttribute="centerX" id="IKG-gB-G0D"/>
+                <constraint firstItem="PFW-pK-VEH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="Tz6-6x-30v"/>
+                <constraint firstItem="EPQ-G3-gZc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="32" id="XvH-tD-M6c"/>
+                <constraint firstItem="LkQ-b8-mtB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="e6e-YJ-5vH"/>
+                <constraint firstItem="EPQ-G3-gZc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="18" id="gsI-Jv-hZZ"/>
+                <constraint firstItem="ecZ-kE-r5L" firstAttribute="top" secondItem="LkQ-b8-mtB" secondAttribute="bottom" constant="8" id="hD9-uS-PNI"/>
+                <constraint firstItem="PFW-pK-VEH" firstAttribute="centerY" secondItem="EPQ-G3-gZc" secondAttribute="centerY" id="mRd-4v-wHe"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Tz6-6x-30v"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>

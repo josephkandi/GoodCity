@@ -21,16 +21,16 @@ enum ItemState: String {
         switch self {
         case .Pending:
             return 0
-        case .Approved:
+        case .PickedUp:
             return 1
-        case .MoreInfoNeeded:
-            return 2
         case .NotNeeded:
+            return 2
+        case .MoreInfoNeeded:
+            return 3
+        case .Approved:
             return 4
         case .Scheduled:
             return 5
-        case .PickedUp:
-            return 6
         default:
             println("Uknown sort value in ItemState")
             return 7

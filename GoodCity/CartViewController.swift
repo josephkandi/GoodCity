@@ -34,29 +34,8 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         let cellNib = UINib(nibName: "CartItemCell", bundle: nil)
         cartCollectionView.registerNib(cellNib, forCellWithReuseIdentifier: "cartItemCell")
         
-        //cartCollectionView.registerClass(CartItemCell.self, forCellWithReuseIdentifier: "cartItemCell")
         getPendingItems()
         cartCollectionView.reloadData()
-        DonationItem.getAllItemsWithStates({
-            (objects, error) -> () in
-                println("Completed")
-                if error == nil {
-                    println(objects)
-                    let result = DonationItemsAggregator(donationItems: objects as [DonationItem])
-                    for section in result.sortedSections {
-                        println(section.name)
-                        for donationGroup in section.sortedDonationGroups {
-                            println("  " + donationGroup.name)
-                            for donationItem in donationGroup.sortedDonationItems {
-                                println("    " + donationItem.itemDescription)
-                            }
-                        }
-                    }
-                } else {
-                    println(error)
-                }
-            }
-        )
     }
 
     override func viewDidLayoutSubviews() {

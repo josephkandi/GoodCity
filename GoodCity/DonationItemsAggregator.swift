@@ -50,12 +50,12 @@ class DonationItemsAggregator {
             self.name = donationItem.state
 
             let donationGroup = DonationGroup(donationItem: donationItem)
-            let key = donationItem.createdAt.description
+            let key = donationItem.createdAt.dateStringWithTimeTruncated()
             self.donationGroupsByDate[key] = donationGroup
         }
 
         func addNewDonationItem(donationItem: DonationItem) {
-            let key = donationItem.createdAt.description
+            let key = donationItem.createdAt.dateStringWithTimeTruncated()
 
             if let donationGroup = donationGroupsByDate[key] {
                 donationGroup.addNewDonationItem(donationItem)
@@ -70,6 +70,10 @@ class DonationItemsAggregator {
             for donationGroup in sortedDonationGroups {
                 donationGroup.sort()
             }
+        }
+        
+        func numberOfItems() -> Int {
+            return sortedDonationGroups.count
         }
     }
 
