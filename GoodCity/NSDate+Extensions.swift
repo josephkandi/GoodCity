@@ -56,4 +56,10 @@ extension NSDate {
         
         return formatter.stringFromDate(self)
     }
+
+    func dateStringWithTimeTruncated() -> String {
+        let format = NSDateFormatter()
+        format.dateFormat = "MM-dd-YYYY"
+        return format.stringFromDate(self)
+    }
 }

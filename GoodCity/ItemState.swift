@@ -16,4 +16,24 @@ enum ItemState: String {
     NotNeeded = "Not needed",
     Scheduled = "Scheduled",
     PickedUp = "Picked up"
+
+    func getSortValue() -> Int {
+        switch self {
+        case .Pending:
+            return 0
+        case .Approved:
+            return 1
+        case .MoreInfoNeeded:
+            return 2
+        case .NotNeeded:
+            return 4
+        case .Scheduled:
+            return 5
+        case .PickedUp:
+            return 6
+        default:
+            println("Uknown sort value in ItemState")
+            return 7
+        }
+    }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A02838B19F342B70070E374 /* DonationItemsAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A02838A19F342B70070E374 /* DonationItemsAggregator.swift */; };
 		0A0B08CD19E2283F0059A82C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B08CC19E2283F0059A82C /* AppDelegate.swift */; };
 		0A0B08D419E2283F0059A82C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A0B08D319E2283F0059A82C /* Images.xcassets */; };
 		0A0B08D719E2283F0059A82C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A0B08D519E2283F0059A82C /* LaunchScreen.xib */; };
@@ -65,6 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A02838A19F342B70070E374 /* DonationItemsAggregator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationItemsAggregator.swift; sourceTree = "<group>"; };
 		0A0B08C719E2283F0059A82C /* GoodCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A0B08CB19E2283F0059A82C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A0B08CC19E2283F0059A82C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				0AC31AFD19EA2F6800BB815F /* PickupScheduleSlot.swift */,
 				0AC31B0119EA3F1F00BB815F /* ItemState.swift */,
 				0AC31B0319EA40E700BB815F /* ItemCondition.swift */,
+				0A02838A19F342B70070E374 /* DonationItemsAggregator.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				0A14FFBE19E2355F00D11CE2 /* MapViewController.swift in Sources */,
 				0AC31B0419EA40E700BB815F /* ItemCondition.swift in Sources */,
 				3A687C7719E9176A005351B0 /* CartCollectionLayout.swift in Sources */,
+				0A02838B19F342B70070E374 /* DonationItemsAggregator.swift in Sources */,
 				0AC31AFC19E9EDA300BB815F /* DropoffLocation.swift in Sources */,
 				3ABF2C9219ECF508005EF442 /* ActionButtonsView.swift in Sources */,
 				3A1506A219EBAC910020DF10 /* DropoffAnnotation.swift in Sources */,
