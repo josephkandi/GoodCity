@@ -36,7 +36,6 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         //cartCollectionView.registerClass(CartItemCell.self, forCellWithReuseIdentifier: "cartItemCell")
         getPendingItems()
-        cartCollectionView.registerClass(CartItemCell.self, forCellWithReuseIdentifier: "cartItemCell")
         cartCollectionView.reloadData()
         DonationItem.getAllItemsWithStates({
             (objects, error) -> () in
