@@ -58,7 +58,9 @@ class ParseClient: NSObject {
     }
     
     func refreshUserInfoFromFacebookWithCompletion(completion: (dictionary:NSDictionary?, error: NSError?) -> ()) {
+
         let facebookRequest = FBRequest.requestForMe()
+        facebookRequest.graphPath = "me?fields=email,cover,first_name,last_name"
         facebookRequest.startWithCompletionHandler { (connection, result, error) -> Void in
             completion(dictionary: result as? NSDictionary, error: error)
         }

@@ -39,4 +39,14 @@ class PickupScheduleSlot : PFObject, PFSubclassing {
         self.save()
         return true
     }
+
+    // States is optional
+    class func getAllSlotsForDay(completion: ParseResponse, day: NSDate) {
+        var query = PickupScheduleSlot.query()
+        query.whereKey("taken", equalTo: false)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            completion(objects: objects, error: error)
+        }
+    }
 }

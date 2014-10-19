@@ -18,6 +18,7 @@ class GoodCityUser: PFUser, PFSubclassing {
     @NSManaged var isVolunteer: Bool
     @NSManaged var phoneNumber: String
     @NSManaged var address: String
+    @NSManaged var coverPhotoUrl: String
 
     var profilePhotoUrlString: String {
         get {
@@ -62,6 +63,13 @@ class GoodCityUser: PFUser, PFSubclassing {
         self.lastName = dictionary["last_name"] as String
         self.email = dictionary["email"] as String
         self.facebookId = dictionary["id"] as String
+
+        if let coverDictionary = dictionary["cover"] as? NSDictionary {
+            if let url = coverDictionary["source"] as? NSString {
+                self.coverPhotoUrl = url
+            }
+        }
+
         self.save()
     }
     
