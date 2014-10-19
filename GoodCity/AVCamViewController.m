@@ -99,9 +99,14 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 - (void)dismissEditItem {
     NSLog(@"Got dismissal request");
     [self.editItemView removeFromSuperview];
-    [self.photoView removeFromSuperview];
+    self.photoView.hidden = YES;
     [[self session] startRunning];
+}
 
+- (void)submitItem {
+    NSLog(@"Got submit item request");
+    //[DonationItem submitNewItem:@"My old shoes" photo:image condition:@"Used"];
+    [self dismissEditItem];
 }
 
 - (void)viewDidLoad
@@ -292,18 +297,12 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 				UIImage *image = [[UIImage alloc] initWithData:imageData];
                 self.photoView.image = image;
                 self.photoView.hidden = NO;
-                self.editItemView = [[[NSBundle mainBundle] loadNibNamed:@"EditItemView" owner:self options:nil] objectAtIndex:0];
-                self.editItemView.frame = self.photoView.bounds;
-                self.editItemView.delegate = self;
+                [self launchEditFlow];
                 
-                //EditItemView *editItemView = [[EditItemView alloc] initWithFrame:self.photoView.bounds];
-                [self.photoView addSubview:self.editItemView];
-
                 [[self session] stopRunning];
                 DonationItem *item = [DonationItem newItem:@"My new shoes" photo:image condition:@"Used"];
                 [item submitToParse];
 
-                [self launchEditFlow];
                 //[[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
 			}
 		}];
@@ -437,17 +436,11 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 
 - (void)launchEditFlow
 {
-
-    /*
-    EditItemViewController *editItemViewController = [[EditItemViewController alloc] initWithNibName:@"EditItemViewController" bundle:nil];
-    self.modalPresentationStyle = UIModalPresentationCurrentContext;
-    editItemViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    //editItemViewController.imageBackground.image = [[UIImage alloc] initWithImage:self.photoView.image];
-    
-    [self presentViewController:editItemViewController animated:YES completion:^{
-        NSLog(@"pushed the edit view controller");
-    }];
-    */
+    self.editItemView = [[[NSBundle mainBundle] loadNibNamed:@"EditItemView" owner:self options:nil] objectAtIndex:0];
+    self.editItemView.frame = self.photoView.bounds;
+    self.editItemView.delegate = self;
+    self.editItemView.photo = self.photoView.image;
+    [self.view insertSubview:self.editItemView aboveSubview:self.photoView];
 }
 
 - (void)checkDeviceAuthorizationStatus

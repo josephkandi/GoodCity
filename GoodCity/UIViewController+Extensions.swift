@@ -12,11 +12,18 @@ extension UIViewController {
     
     // Returns a date formatted for display showing time elapsed since now
     func styleNavBar() {
-        let titleSytle: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: FONT_BOLD_18]
-        self.navigationController?.navigationBar.titleTextAttributes = titleSytle
         self.navigationItem.title = "GoodCity.HK"
-        self.navigationController?.navigationBar.barTintColor = NAV_BAR_COLOR
-        self.navigationController?.navigationBar.translucent = false
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        if let navController = self.navigationController {
+            self.styleNavBar(navController.navigationBar)
+        }
+    }
+    
+    func styleNavBar(navBar: UINavigationBar) {
+        let titleSytle: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: FONT_BOLD_18]
+        navBar.titleTextAttributes = titleSytle
+        navBar.barTintColor = NAV_BAR_COLOR
+        navBar.translucent = false
+        navBar.tintColor = UIColor.whiteColor()
     }
 }

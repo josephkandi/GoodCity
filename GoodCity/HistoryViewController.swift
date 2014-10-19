@@ -88,10 +88,10 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     // HACK: Hardcoding the row height based on the different sections right now. Need to update with real model
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if (indexPath.section == 0 || indexPath.section == 1) {
-            return 186
+            return 186 + 66 + 5
         }
         else {
-            return 145
+            return 145 + 66 + 5
         }
     }
     

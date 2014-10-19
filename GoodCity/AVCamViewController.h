@@ -50,6 +50,7 @@
 @protocol DismissEditItemDelegate
 
 - (void)dismissEditItem;
+- (void)submitItem;
 
 @end
 

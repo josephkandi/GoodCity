@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -31,52 +28,8 @@
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qWu-h5-GhH" userLabel="thumbnails container">
                         <rect key="frame" x="15" y="69" width="350" height="60"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Hj-47-k6B">
-                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="5Hj-47-k6B" secondAttribute="height" multiplier="1:1" id="fe5-ZK-i58"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aga-qI-Tsn">
-                                <rect key="frame" x="65" y="0.0" width="60" height="60"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uuW-ox-U9q">
-                                <rect key="frame" x="130" y="0.0" width="60" height="60"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pgP-ie-mnA">
-                                <rect key="frame" x="195" y="0.0" width="60" height="60"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dqg-yb-l5Q">
-                                <rect key="frame" x="260" y="0.0" width="60" height="60"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5Hj-47-k6B" firstAttribute="leading" secondItem="qWu-h5-GhH" secondAttribute="leading" id="0Fm-t0-Omm"/>
-                            <constraint firstAttribute="bottom" secondItem="5Hj-47-k6B" secondAttribute="bottom" id="4vp-2r-QhI"/>
-                            <constraint firstItem="dqg-yb-l5Q" firstAttribute="width" secondItem="5Hj-47-k6B" secondAttribute="width" id="52E-eD-z0G"/>
-                            <constraint firstItem="uuW-ox-U9q" firstAttribute="top" secondItem="5Hj-47-k6B" secondAttribute="top" id="BTq-bD-er9"/>
-                            <constraint firstItem="pgP-ie-mnA" firstAttribute="top" secondItem="5Hj-47-k6B" secondAttribute="top" id="CNp-bc-rrc"/>
-                            <constraint firstItem="uuW-ox-U9q" firstAttribute="height" secondItem="5Hj-47-k6B" secondAttribute="height" id="D7w-o6-8yY"/>
-                            <constraint firstItem="aga-qI-Tsn" firstAttribute="height" secondItem="5Hj-47-k6B" secondAttribute="height" id="EzF-Ab-JEg"/>
-                            <constraint firstItem="dqg-yb-l5Q" firstAttribute="height" secondItem="5Hj-47-k6B" secondAttribute="height" id="GNH-gG-j3g"/>
-                            <constraint firstItem="pgP-ie-mnA" firstAttribute="width" secondItem="5Hj-47-k6B" secondAttribute="width" id="HUl-e7-duZ"/>
-                            <constraint firstItem="aga-qI-Tsn" firstAttribute="width" secondItem="5Hj-47-k6B" secondAttribute="width" id="Nuw-Ow-SKS"/>
-                            <constraint firstItem="aga-qI-Tsn" firstAttribute="leading" secondItem="5Hj-47-k6B" secondAttribute="trailing" constant="5" id="PFV-2Q-e6W"/>
-                            <constraint firstItem="aga-qI-Tsn" firstAttribute="top" secondItem="5Hj-47-k6B" secondAttribute="top" id="TcW-po-JYn"/>
-                            <constraint firstItem="dqg-yb-l5Q" firstAttribute="top" secondItem="5Hj-47-k6B" secondAttribute="top" id="Xbx-R9-RYG"/>
-                            <constraint firstItem="pgP-ie-mnA" firstAttribute="height" secondItem="5Hj-47-k6B" secondAttribute="height" id="fPC-FI-g5b"/>
-                            <constraint firstItem="dqg-yb-l5Q" firstAttribute="leading" secondItem="pgP-ie-mnA" secondAttribute="trailing" constant="5" id="gzn-xg-9Yn"/>
-                            <constraint firstItem="pgP-ie-mnA" firstAttribute="leading" secondItem="uuW-ox-U9q" secondAttribute="trailing" constant="5" id="jCl-8J-Spr"/>
-                            <constraint firstItem="5Hj-47-k6B" firstAttribute="top" secondItem="qWu-h5-GhH" secondAttribute="top" id="o2A-n5-gZW"/>
-                            <constraint firstItem="uuW-ox-U9q" firstAttribute="width" secondItem="5Hj-47-k6B" secondAttribute="width" id="xoW-WH-S9w"/>
-                            <constraint firstItem="uuW-ox-U9q" firstAttribute="leading" secondItem="aga-qI-Tsn" secondAttribute="trailing" constant="5" id="xy2-zf-7ZW"/>
                             <constraint firstAttribute="height" constant="60" id="yaM-7N-Bry"/>
                         </constraints>
                     </view>
@@ -86,33 +39,18 @@
                     <constraint firstItem="WPR-0q-2lT" firstAttribute="leading" secondItem="qWu-h5-GhH" secondAttribute="leading" id="Abe-fT-yFl"/>
                     <constraint firstItem="qWu-h5-GhH" firstAttribute="top" secondItem="lKI-Pq-Nla" secondAttribute="bottom" constant="10" id="JXh-FS-Cg6"/>
                     <constraint firstItem="WPR-0q-2lT" firstAttribute="top" secondItem="qWu-h5-GhH" secondAttribute="bottom" constant="15" id="NOI-AN-rhj"/>
-                    <constraint firstItem="WPR-0q-2lT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="W8X-nG-16s"/>
                     <constraint firstAttribute="trailing" secondItem="lKI-Pq-Nla" secondAttribute="trailing" constant="15" id="gfi-2s-jd0"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="WPR-0q-2lT" secondAttribute="trailing" constant="12" id="iCW-cW-k7J"/>
                     <constraint firstItem="lKI-Pq-Nla" firstAttribute="leading" secondItem="qWu-h5-GhH" secondAttribute="leading" id="jrd-pR-znP"/>
                     <constraint firstItem="WPR-0q-2lT" firstAttribute="trailing" secondItem="qWu-h5-GhH" secondAttribute="trailing" id="srK-lw-u9T"/>
-                    <constraint firstItem="WPR-0q-2lT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="vb0-h1-7bS"/>
                     <constraint firstItem="lKI-Pq-Nla" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="wJD-fh-ES3"/>
                     <constraint firstAttribute="bottom" secondItem="WPR-0q-2lT" secondAttribute="bottom" constant="30" id="ya4-qX-ayB"/>
                     <constraint firstItem="lKI-Pq-Nla" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="ywi-Wz-IFK"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="W8X-nG-16s"/>
-                        <exclude reference="iCW-cW-k7J"/>
-                        <exclude reference="vb0-h1-7bS"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="buttonContainer" destination="WPR-0q-2lT" id="qyb-s3-zOs"/>
                 <outlet property="buttonsHeightConstraint" destination="abz-X2-UKE" id="xga-V0-aXn"/>
                 <outlet property="donationDateLabel" destination="lKI-Pq-Nla" id="YGU-ak-rlI"/>
-                <outlet property="thumbnail1" destination="5Hj-47-k6B" id="gWc-fj-dUO"/>
-                <outlet property="thumbnail2" destination="aga-qI-Tsn" id="yR0-hd-sKa"/>
-                <outlet property="thumbnail3" destination="uuW-ox-U9q" id="53j-ru-OUR"/>
-                <outlet property="thumbnail4" destination="pgP-ie-mnA" id="vWw-D1-fP5"/>
-                <outlet property="thumbnail5" destination="dqg-yb-l5Q" id="P2P-Ih-MBL"/>
                 <outlet property="thumbnailHeightConstraint" destination="yaM-7N-Bry" id="Rla-P7-4s8"/>
                 <outlet property="thumbnailsContainer" destination="qWu-h5-GhH" id="xwp-z8-njy"/>
             </connections>

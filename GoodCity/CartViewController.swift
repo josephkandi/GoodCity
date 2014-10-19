@@ -18,6 +18,9 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var cartCollectionView: UICollectionView!
     @IBOutlet weak var collectionHeader: UIView!
     
+    // Array of pending donation items
+    var pendingItems = NSMutableArray()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,17 +31,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         cartCollectionView.delegate = self
  
         cartCollectionView.registerClass(CartItemCell.self, forCellWithReuseIdentifier: "cartItemCell")
-        cartCollectionView.reloadData()
-        DonationItem.getAllItemsWithStates({
-            (objects, error) -> () in
-                println("Completed")
-                if error == nil {
-                    println(objects)
-                } else {
-                    println(error)
-                }
-            }
-        , states: [ItemState.Pending])
+        getPendingItems()
     }
 
     override func viewDidLayoutSubviews() {
@@ -47,24 +40,42 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         layout.itemSize = getCellSize()
     }
     
+    // There's always only 1 section in this collection view for pending items
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        println(pendingItems.count)
+        return pendingItems.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell = cartCollectionView.dequeueReusableCellWithReuseIdentifier("cartItemCell", forIndexPath: indexPath) as CartItemCell
-        cell.descriptionLabel.text = "Item " + String(indexPath.row+1)
-        
+        cell.donationItem = pendingItems[indexPath.row] as? DonationItem
+
         return cell
     }
     
     private func getCellSize() -> CGSize {
         let containerSize = cartCollectionView.bounds
         let width = (containerSize.width - SIDE_MARGIN * 2 - ITEM_SPACING) / 2
-        return CGSizeMake(width, width/3*4)
+        return CGSizeMake(width, width/3*4.5)
     }
+    
+    private func getPendingItems() {
+        DonationItem.getAllItemsWithStates({
+            (objects, error) -> () in
+            println("Completed")
+            if let donationItems = objects as? [DonationItem] {
+                println(donationItems)
+                self.pendingItems.addObjectsFromArray(donationItems)
+                self.cartCollectionView.reloadData()
+            }
+            else {
+                println(error)
+            }
+        }, states: [ItemState.Pending])
+    }
+    
 }

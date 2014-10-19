@@ -52,7 +52,7 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
         let cartViewController = CartViewController(nibName: "CartViewController", bundle: nil)
         let navController = UINavigationController(rootViewController: cartViewController)
         viewControllers.append(navController)
-        navController.view.frame = CGRectMake(0, 20, containerScrollView.frame.width, containerScrollView.frame.height)
+        navController.view.frame = CGRectMake(0, 20, containerScrollView.frame.width, containerScrollView.frame.height-20)
         navController.view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
         containerScrollView.addSubview(navController.view)
         
@@ -67,7 +67,7 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
         let historyViewController = HistoryViewController(nibName: "HistoryViewController", bundle: nil)
         let navController2 = UINavigationController(rootViewController: historyViewController)
         viewControllers.append(navController2)
-        navController2.view.frame = CGRectMake(0, 20, containerScrollView.frame.width, containerScrollView.frame.height)
+        navController2.view.frame = CGRectMake(0, 20, containerScrollView.frame.width, containerScrollView.frame.height-20)
         navController2.view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
         containerScrollView.addSubview(navController2.view)
     }

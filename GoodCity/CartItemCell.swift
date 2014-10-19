@@ -12,9 +12,27 @@ let TEXT_MARGIN = CGFloat(8)
 
 class CartItemCell: UICollectionViewCell {
 
-    let itemImage: UIImageView!
-    let descriptionLabel: UILabel!
-    let conditionLabel: UILabel!
+    private let itemImage: UIImageView!
+    private let descriptionLabel: UILabel!
+    private let conditionLabel: UILabel!
+
+    var donationItem: DonationItem? {
+        didSet(oldItemOrNil) {
+            if donationItem == oldItemOrNil {
+                return
+            }
+            else if let newItem = donationItem {
+                self.descriptionLabel.text = newItem.itemDescription
+                self.conditionLabel.text = newItem.condition
+                newItem.photo.getDataInBackgroundWithBlock({ (photoData, error) -> Void in
+                    if error == nil {
+                        let image = UIImage(data: photoData)
+                        self.itemImage.image = image
+                    }
+                })
+            }
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,15 +42,21 @@ class CartItemCell: UICollectionViewCell {
         contentView.backgroundColor = UIColor.whiteColor()
         
         itemImage = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.width))
-        itemImage.contentMode = UIViewContentMode.ScaleAspectFit
-        itemImage.image = UIImage(named: "kitty")
+        itemImage.contentMode = UIViewContentMode.ScaleAspectFill
+        itemImage.clipsToBounds = true
         contentView.addSubview(itemImage)
         
-        let textFrame = CGRect(x: TEXT_MARGIN, y: itemImage.frame.size.height, width: frame.size.width - 2*TEXT_MARGIN, height: frame.size.height - itemImage.frame.height)
+        let textFrame = CGRect(x: TEXT_MARGIN, y: itemImage.frame.size.height, width: frame.size.width - 2*TEXT_MARGIN, height: frame.size.height - itemImage.frame.height - 25)
         descriptionLabel = UILabel(frame: textFrame)
         descriptionLabel.textAlignment = .Left
         descriptionLabel.font = FONT_14
         contentView.addSubview(descriptionLabel)
+        
+        let conditionFrame = CGRect(x: TEXT_MARGIN, y: textFrame.origin.y + textFrame.height, width: frame.size.width - 2*TEXT_MARGIN, height: 25)
+        conditionLabel = UILabel(frame: conditionFrame)
+        conditionLabel.textAlignment = .Left
+        conditionLabel.font = FONT_MEDIUM_12
+        contentView.addSubview(conditionLabel)
     }
 
     required init(coder aDecoder: NSCoder) {

@@ -11,10 +11,10 @@ import UIKit
 class EditItemView: UIView, UITextViewDelegate {
 
     @IBOutlet weak var descriptionText: UITextView!
-    
     @IBOutlet weak var submitButton: RoundedButton!
 
     var delegate: DismissEditItemDelegate?
+    var photo: UIImage?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,21 +29,25 @@ class EditItemView: UIView, UITextViewDelegate {
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        //fatalError("init(coder:) has not been implemented")
-        
     }
 
     @IBAction func onTap(sender: UITapGestureRecognizer) {
         descriptionText.resignFirstResponder()
-
     }
     
-    
     @IBAction func onTapClose(sender: UITapGestureRecognizer) {
-        println("tapped on close")
         delegate?.dismissEditItem()
     }
 
+    @IBAction func onTapSubmit(sender: AnyObject) {
+        
+        //let newItem = DonationItem.c\
+        //[DonationItem submitNewItem:@"My old shoes" photo:image condition:@"Used"];
+
+        
+        delegate?.submitItem()
+    }
+    
     override func layoutSubviews() {
         // Set up the text compose field
         descriptionText.delegate = self
@@ -57,6 +61,5 @@ class EditItemView: UIView, UITextViewDelegate {
         descriptionText.textColor = UIColor.whiteColor()
         descriptionText.text = ""
     }
-
 
 }
