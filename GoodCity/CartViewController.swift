@@ -31,7 +31,10 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         cartCollectionView.dataSource = self
         cartCollectionView.delegate = self
  
-        cartCollectionView.registerClass(CartItemCell.self, forCellWithReuseIdentifier: "cartItemCell")
+        let cellNib = UINib(nibName: "CartItemCell", bundle: nil)
+        cartCollectionView.registerNib(cellNib, forCellWithReuseIdentifier: "cartItemCell")
+        
+        //cartCollectionView.registerClass(CartItemCell.self, forCellWithReuseIdentifier: "cartItemCell")
         getPendingItems()
     }
 
