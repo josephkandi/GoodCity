@@ -17,8 +17,6 @@
 		0A14FFA919E230E800D11CE2 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFA719E230E800D11CE2 /* LoginViewController.xib */; };
 		0A14FFAB19E2314200D11CE2 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFAA19E2314200D11CE2 /* ParseClient.swift */; };
 		0A14FFB319E234DB00D11CE2 /* AVCamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFB119E234DB00D11CE2 /* AVCamViewController.xib */; };
-		0A14FFB619E2352400D11CE2 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFB419E2352400D11CE2 /* EditItemViewController.swift */; };
-		0A14FFB719E2352400D11CE2 /* EditItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFB519E2352400D11CE2 /* EditItemViewController.xib */; };
 		0A14FFBA19E2354000D11CE2 /* SchedulePickupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFB819E2354000D11CE2 /* SchedulePickupViewController.swift */; };
 		0A14FFBB19E2354000D11CE2 /* SchedulePickupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFB919E2354000D11CE2 /* SchedulePickupViewController.xib */; };
 		0A14FFBE19E2355F00D11CE2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFBC19E2355F00D11CE2 /* MapViewController.swift */; };
@@ -81,8 +79,6 @@
 		0A14FFA719E230E800D11CE2 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		0A14FFAA19E2314200D11CE2 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		0A14FFB119E234DB00D11CE2 /* AVCamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AVCamViewController.xib; sourceTree = "<group>"; };
-		0A14FFB419E2352400D11CE2 /* EditItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
-		0A14FFB519E2352400D11CE2 /* EditItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditItemViewController.xib; sourceTree = "<group>"; };
 		0A14FFB819E2354000D11CE2 /* SchedulePickupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulePickupViewController.swift; sourceTree = "<group>"; };
 		0A14FFB919E2354000D11CE2 /* SchedulePickupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchedulePickupViewController.xib; sourceTree = "<group>"; };
 		0A14FFBC19E2355F00D11CE2 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -254,8 +250,6 @@
 				3A687C7219E9104F005351B0 /* CartItemCell.swift */,
 				3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */,
 				3AE42EE419E8F98500D7A6F5 /* ContainerViewController.xib */,
-				0A14FFB419E2352400D11CE2 /* EditItemViewController.swift */,
-				0A14FFB519E2352400D11CE2 /* EditItemViewController.xib */,
 				0A14FFA619E230E800D11CE2 /* LoginViewController.swift */,
 				0A14FFA719E230E800D11CE2 /* LoginViewController.xib */,
 				0A14FFBC19E2355F00D11CE2 /* MapViewController.swift */,
@@ -400,7 +394,6 @@
 				3AE42EEE19E8FBA400D7A6F5 /* HistoryViewController.xib in Resources */,
 				0A14FFBB19E2354000D11CE2 /* SchedulePickupViewController.xib in Resources */,
 				0A14FFBF19E2355F00D11CE2 /* MapViewController.xib in Resources */,
-				0A14FFB719E2352400D11CE2 /* EditItemViewController.xib in Resources */,
 				0A14FFA919E230E800D11CE2 /* LoginViewController.xib in Resources */,
 				0A14FFB319E234DB00D11CE2 /* AVCamViewController.xib in Resources */,
 				3A15068E19EB60BA0020DF10 /* ItemsGroupCell.xib in Resources */,
@@ -468,7 +461,6 @@
 				0AC31B0419EA40E700BB815F /* ItemCondition.swift in Sources */,
 				3A687C7719E9176A005351B0 /* CartCollectionLayout.swift in Sources */,
 				0AC31AFC19E9EDA300BB815F /* DropoffLocation.swift in Sources */,
-				0A14FFB619E2352400D11CE2 /* EditItemViewController.swift in Sources */,
 				3ABF2C9219ECF508005EF442 /* ActionButtonsView.swift in Sources */,
 				3A1506A219EBAC910020DF10 /* DropoffAnnotation.swift in Sources */,
 				0A0B08F719E22AC30059A82C /* Int+Extensions.swift in Sources */,
