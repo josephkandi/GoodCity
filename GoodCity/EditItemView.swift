@@ -12,6 +12,7 @@ class EditItemView: UIView, UITextViewDelegate {
 
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var submitButton: RoundedButton!
+    @IBOutlet weak var conditionChooser: UISegmentedControl!
 
     var delegate: DismissEditItemDelegate?
     var photo: UIImage?
@@ -41,11 +42,9 @@ class EditItemView: UIView, UITextViewDelegate {
 
     @IBAction func onTapSubmit(sender: AnyObject) {
         
-        //let newItem = DonationItem.c\
-        //[DonationItem submitNewItem:@"My old shoes" photo:image condition:@"Used"];
-
+        let newItem = DonationItem.newItem(descriptionText.text, photo: photo!, condition: conditionChooser.titleForSegmentAtIndex(conditionChooser.selectedSegmentIndex)!)
         
-        delegate?.submitItem()
+        delegate?.submitItem(newItem)
     }
     
     override func layoutSubviews() {

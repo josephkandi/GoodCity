@@ -46,16 +46,19 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "CartViewDelegate.h"
+
+@class DonationItem;
 
 @protocol DismissEditItemDelegate
 
 - (void)dismissEditItem;
-- (void)submitItem;
+- (void)submitItem:(DonationItem*)newItem;
 
 @end
 
 @interface AVCamViewController : UIViewController <DismissEditItemDelegate>
 
-
+@property (nonatomic, weak) id <CartViewDelegate> cartViewDelegate;
 
 @end

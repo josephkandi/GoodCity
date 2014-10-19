@@ -103,9 +103,12 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     [[self session] startRunning];
 }
 
-- (void)submitItem {
+- (void)submitItem:(DonationItem*)newItem {
     NSLog(@"Got submit item request");
-    //[DonationItem submitNewItem:@"My old shoes" photo:image condition:@"Used"];
+    
+    [self.cartViewDelegate addNewItem:newItem];
+    
+    [newItem submitToParse];
     [self dismissEditItem];
 }
 
@@ -300,8 +303,6 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
                 [self launchEditFlow];
                 
                 [[self session] stopRunning];
-                DonationItem *item = [DonationItem newItem:@"My new shoes" photo:image condition:@"Used"];
-                [item submitToParse];
 
                 //[[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
 			}

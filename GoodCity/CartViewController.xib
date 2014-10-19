@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="cartCollectionView" destination="iLg-Ey-5SU" id="JyJ-IC-iWh"/>
                 <outlet property="collectionHeader" destination="ZxM-IA-LjT" id="yZx-xZ-KCL"/>
+                <outlet property="collectionHeaderLabel" destination="QUj-8o-Vi4" id="Lh4-Xu-nqG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

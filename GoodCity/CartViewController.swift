@@ -13,10 +13,11 @@ let BOTTOM_MARGIN = CGFloat(20)
 let SIDE_MARGIN = CGFloat(12)
 let ITEM_SPACING = CGFloat(10)
 
-class CartViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
+class CartViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CartViewDelegate {
+    
     @IBOutlet weak var cartCollectionView: UICollectionView!
     @IBOutlet weak var collectionHeader: UIView!
+    @IBOutlet weak var collectionHeaderLabel: UILabel!
     
     // Array of pending donation items
     var pendingItems = NSMutableArray()
@@ -70,6 +71,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
             if let donationItems = objects as? [DonationItem] {
                 println(donationItems)
                 self.pendingItems.addObjectsFromArray(donationItems)
+                self.collectionHeaderLabel.text = "PENDING REVIEW (" + String(self.pendingItems.count) + ")"
                 self.cartCollectionView.reloadData()
             }
             else {
@@ -78,4 +80,9 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         }, states: [ItemState.Pending])
     }
     
+    //Delegate functions
+    func addNewItem(newItem: DonationItem) {
+        pendingItems.insertObject(newItem, atIndex: 0)
+        cartCollectionView.reloadData()
+    }
 }

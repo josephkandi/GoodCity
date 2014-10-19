@@ -100,6 +100,7 @@
                 <constraint firstAttribute="trailing" secondItem="RWV-Wd-g07" secondAttribute="trailing" constant="20" id="sMf-k3-vQE"/>
             </constraints>
             <connections>
+                <outlet property="conditionChooser" destination="fte-bL-UZD" id="ZFy-Zb-0wd"/>
                 <outlet property="descriptionText" destination="RWV-Wd-g07" id="5hd-MI-62L"/>
                 <outlet property="submitButton" destination="Vrh-Vi-LoQ" id="rTJ-Gz-AMg"/>
                 <outletCollection property="gestureRecognizers" destination="nMp-Mp-H9E" appends="YES" id="JUO-8u-XG6"/>
