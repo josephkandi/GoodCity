@@ -133,4 +133,5 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate {
             slotPickerView.updateAvailableSlots(slotsForDay)
         }
     }
+
 }

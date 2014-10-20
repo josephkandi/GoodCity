@@ -14,7 +14,7 @@ let BUTTONS_PER_ROW : CGFloat = 2
 class SlotPickerView: UIView {
     
     var buttonsArray: [SelectableButton]!
-    var selectedSlotIndex: Int!
+    private var selectedSlotIndex: Int!
     
     // Keep track of a list of available slots by their indices
     var availableSlots: [Int]!
@@ -39,6 +39,7 @@ class SlotPickerView: UIView {
             let slotButton = SelectableButton()
             slotButton.slotHour = slot
             slotButton.slotDisabled = true
+            slotButton.addTarget(self, action: "selectSlot:", forControlEvents: UIControlEvents.TouchUpInside)
             buttonsArray.append(slotButton)
             self.addSubview(slotButton)
         }
@@ -70,7 +71,7 @@ class SlotPickerView: UIView {
     }
     func updateAvailableSlots(slots : [Int]) {
         for slot in slots {
-            let index = slot - 9
+            let index = getIndexFromHour(slot)
             if (index >= 0 && index < buttonsArray.count) {
                 buttonsArray[index].slotDisabled = false
             }
@@ -80,5 +81,23 @@ class SlotPickerView: UIView {
         for button in buttonsArray {
             button.slotDisabled = true
         }
+    }
+    func selectSlot(button: SelectableButton) {
+        let index = getIndexFromHour(button.slotHour)
+        if (index >= 0 && index < buttonsArray.count) {
+            // if the selected slot is not disabled, then we want to unselect all other slots, and select this one. 
+            // Otherwise, do nothing
+            if buttonsArray[index].slotDisabled == false {
+                for button in buttonsArray {
+                    if !button.slotDisabled {
+                        button.slotSelected = false
+                    }
+                }
+                buttonsArray[index].slotSelected = true
+            }
+        }
+    }
+    private func getIndexFromHour(hour: Int) -> Int {
+        return hour - 9
     }
 }
