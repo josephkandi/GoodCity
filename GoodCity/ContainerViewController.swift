@@ -36,7 +36,6 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = tintColor
-        ParseClient.sharedInstance.getAvailablePickupScheduleSlots()
         setupViewControllers()
         containerScrollView.delegate = self
     }

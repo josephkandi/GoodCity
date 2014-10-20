@@ -57,9 +57,23 @@ extension NSDate {
         return formatter.stringFromDate(self)
     }
 
+    func dateWithTimeTruncated() -> NSDate {
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components(.YearCalendarUnit | .MonthCalendarUnit | .DayCalendarUnit, fromDate: self)
+        components.timeZone = NSTimeZone(name: "PST")
+        return calendar.dateFromComponents(components)!
+    }
+
     func dateStringWithTimeTruncated() -> String {
         let format = NSDateFormatter()
         format.dateFormat = "MM-dd-YYYY"
+        format.timeZone = NSTimeZone(name: "PST")
         return format.stringFromDate(self)
+    }
+
+    func hour() -> Int {
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components(.HourCalendarUnit, fromDate: self)
+        return components.hour
     }
 }

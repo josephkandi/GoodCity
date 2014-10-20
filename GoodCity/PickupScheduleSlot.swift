@@ -10,8 +10,7 @@ import Foundation
 
 class PickupScheduleSlot : PFObject, PFSubclassing {
     @NSManaged var startDateTime: NSDate
-    @NSManaged var durationInMinutes: Int
-    @NSManaged var taken: Bool
+    @NSManaged var claimedCount: Int
     @NSManaged var takenByUser: GoodCityUser
     @NSManaged var items: [DonationItem]
 
@@ -28,25 +27,45 @@ class PickupScheduleSlot : PFObject, PFSubclassing {
         return self.startDateTime.description
     }
 
+    /*
     func grabTimeSlot(user: GoodCityUser, items: [DonationItem]) -> Bool {
         if self.taken {
             println("Trying to schedule a slot that is already taken")
             return false
         }
-        self.taken = true
+
+        //        self.taken = true
         self.takenByUser = user
         self.items = items
         self.save()
         return true
     }
+    */
 
-    // States is optional
-    class func getAllSlotsForDay(completion: ParseResponse, day: NSDate) {
+    class func getAllAvailableSlots(completion: ParseResponse) {
         var query = PickupScheduleSlot.query()
-        query.whereKey("taken", equalTo: false)
+        query.whereKey("claimedCount", lessThan: 1)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             completion(objects: objects, error: error)
         }
+    }
+
+    // Return sorted list of available days given list of pickup schedule slots
+    class func getDaysWithAtLeastOneAvailableSlot(slots: [PickupScheduleSlot]) -> [NSDate] {
+        // Build set of available days
+        let days = NSSet(array: slots.map { $0.startDateTime.dateWithTimeTruncated() })
+        let daysList = days.allObjects as [NSDate]
+        return sorted(daysList, { $0.compare($1) == NSComparisonResult.OrderedAscending })
+    }
+
+    // Return sorted available slots for a particular date
+    class func getAvailableSlotsForDay(day: NSDate, slots: [PickupScheduleSlot]) -> [Int] {
+        let desiredDate = day.dateWithTimeTruncated()
+        let resultSlots = slots.filter { $0.startDateTime.dateWithTimeTruncated() == desiredDate }
+        var result = resultSlots.map({ $0.startDateTime.hour() })
+        result.sort { $0 < $1 }
+
+        return result
     }
 }
