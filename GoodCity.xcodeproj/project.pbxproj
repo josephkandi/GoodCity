@@ -42,6 +42,7 @@
 		3A1506A419EBB1940020DF10 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1506A319EBB1940020DF10 /* CoreLocation.framework */; };
 		3A687C7419E9104F005351B0 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A687C7219E9104F005351B0 /* CartItemCell.swift */; };
 		3A76A00E19F4D05F0036A0EC /* DatePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A76A00D19F4D05F0036A0EC /* DatePickerButton.swift */; };
+		3A76A01019F4ECB90036A0EC /* SelectableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A76A00F19F4ECB90036A0EC /* SelectableButton.swift */; };
 		3A82271B19F2485900007C6C /* EditItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A82271A19F2485900007C6C /* EditItemView.xib */; };
 		3A8D35FF19F3683400CE3B73 /* CartItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8D35FE19F3683400CE3B73 /* CartItemCell.xib */; };
 		3A8D360119F371F900CE3B73 /* ExpandableDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D360019F371F900CE3B73 /* ExpandableDatePickerView.swift */; };
@@ -109,6 +110,7 @@
 		3A1506A319EBB1940020DF10 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3A687C7219E9104F005351B0 /* CartItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
 		3A76A00D19F4D05F0036A0EC /* DatePickerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerButton.swift; sourceTree = "<group>"; };
+		3A76A00F19F4ECB90036A0EC /* SelectableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableButton.swift; sourceTree = "<group>"; };
 		3A82271A19F2485900007C6C /* EditItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditItemView.xib; sourceTree = "<group>"; };
 		3A8D35F519F3587700CE3B73 /* CartViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartViewDelegate.h; sourceTree = "<group>"; };
 		3A8D35FE19F3683400CE3B73 /* CartItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartItemCell.xib; sourceTree = "<group>"; };
@@ -239,8 +241,9 @@
 				3A8D35FE19F3683400CE3B73 /* CartItemCell.xib */,
 				3A15068B19EB60BA0020DF10 /* ItemsGroupCell.swift */,
 				3A15068C19EB60BA0020DF10 /* ItemsGroupCell.xib */,
-				3A76A00D19F4D05F0036A0EC /* DatePickerButton.swift */,
 				3A15069319EB85D80020DF10 /* RoundedButton.swift */,
+				3A76A00D19F4D05F0036A0EC /* DatePickerButton.swift */,
+				3A76A00F19F4ECB90036A0EC /* SelectableButton.swift */,
 				3A1506A119EBAC910020DF10 /* DropoffAnnotation.swift */,
 				3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */,
 				0AFB6E2219F2432200E89AFC /* EditItemView.swift */,
@@ -461,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A15068D19EB60BA0020DF10 /* ItemsGroupCell.swift in Sources */,
+				3A76A01019F4ECB90036A0EC /* SelectableButton.swift in Sources */,
 				0AD128B519E92215002E47E5 /* GoodCityUser.swift in Sources */,
 				0A14FFA819E230E800D11CE2 /* LoginViewController.swift in Sources */,
 				3A15069419EB85D80020DF10 /* RoundedButton.swift in Sources */,

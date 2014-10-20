@@ -1,28 +1,49 @@
 //
-//  DatePickerButton.swift
+//  SelectableButton.swift
 //  GoodCity
 //
-//  Created by Yili Aiwazian on 10/12/14.
+//  Created by Yili Aiwazian on 10/20/14.
 //  Copyright (c) 2014 codepath. All rights reserved.
 //
 
 import UIKit
 
-let BUTTON_INSET = CGFloat(12)
-let ICON_SIZE = CGFloat(15)
+class SelectableButton: UIButton {
 
-class DatePickerButton: UIButton {
-    
     private var dropdownIcon : UIImageView!
-    var datePicked : NSDate! {
+    var slotHour : Int! {
         didSet(oldDateOrNil) {
-            if let newDate = datePicked {
-                let dateString = getFriendlyDateFormatter().stringFromDate(newDate)
+            if let newSlot = slotHour {
+                let dateString = getSlotTitle(newSlot)
                 self.setAttributedTitle(formatTitle(dateString), forState: .Normal)
             }
         }
     }
-
+    var slotSelected : Bool! {
+        didSet (oldValue) {
+            if let newValue = slotSelected {
+                if newValue {
+                    setButtonColor(tintColor!)
+                }
+                else {
+                    setButtonColor(UIColor.whiteColor())
+                }
+            }
+        }
+    }
+    var slotDisabled : Bool! {
+        didSet (oldValue) {
+            if let newValue = slotDisabled {
+                if newValue {
+                    setButtonColor(UIColor(white: 0.8, alpha: 1))
+                }
+                else {
+                    slotSelected = false
+                }
+            }
+        }
+    }
+    
     override init() {
         super.init()
         setup()
@@ -40,36 +61,44 @@ class DatePickerButton: UIButton {
         self.layer.cornerRadius = ROUNDED_CORNER
         self.layer.masksToBounds = true
         
-        self.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
-        self.contentEdgeInsets = UIEdgeInsetsMake(0, BUTTON_INSET, 0, 0)
-        
-        // setup the dropdown icon
-        dropdownIcon = UIImageView(image: UIImage(named: "schedule_dropdown").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate))
-        dropdownIcon.tintColor = UIColor.lightGrayColor()
-        dropdownIcon.contentMode = UIViewContentMode.ScaleAspectFill
-        self.addSubview(dropdownIcon)
-        
         self.titleLabel!.text = ""
         self.setAttributedTitle(formatTitle(self.titleLabel!.text!), forState: .Normal)
+        self.slotDisabled = true
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        let bounds = self.bounds
-        dropdownIcon.frame = CGRectMake(bounds.width-BUTTON_INSET-ICON_SIZE, (bounds.height-ICON_SIZE)/2, ICON_SIZE, ICON_SIZE)
-    }
-        
+    
     func setButtonTitle(text: String) {
         self.setAttributedTitle(formatTitle(text), forState: .Normal)
     }
     func setButtonColor(color: UIColor) {
         self.layer.backgroundColor = color.CGColor
     }
-    
     func formatTitle(text: String) -> NSMutableAttributedString {
         let attributedTitle = NSMutableAttributedString(string: text)
         let range = NSMakeRange(0, attributedTitle.length)
         attributedTitle.addAttribute(NSFontAttributeName, value: FONT_15, range: range)
         attributedTitle.addAttribute(NSForegroundColorAttributeName, value: UIColor.darkTextColor(), range: range)
         return attributedTitle
+    }
+
+    func getSlotTitle(hour: Int) -> String {        
+        return get12hour(hour) + " - " + get12hour(hour+1)
+    }
+    
+    private func get12hour(hour: Int) -> String {
+        var string = ""
+        
+        if hour <= 12 {
+            string += String(hour)
+        }
+        else {
+            string += String(hour-12)
+        }
+        if hour < 12 {
+            string += "am"
+        }
+        else {
+            string += "pm"
+        }
+        return string
     }
 }
