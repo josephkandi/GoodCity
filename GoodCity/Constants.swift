@@ -32,6 +32,17 @@ let NAV_BAR_COLOR = BLUE_TEAL
 let HEADER_COLOR = UIColor(white: 0.25, alpha: 0.9)
 let tintColor = BLUE_TEAL
 
+// Date Formatter
+private var friendlyDateFormatter: NSDateFormatter?
+
+func getFriendlyDateFormatter() -> NSDateFormatter {
+    if friendlyDateFormatter == nil {
+        friendlyDateFormatter = NSDateFormatter()
+        friendlyDateFormatter!.dateFormat = "EEE, MMMM dd, yyyy"
+    }
+    return friendlyDateFormatter!
+}
+
 // Helper function
 func UIColorFromRGB(rgbValue: UInt) -> UIColor {
     return UIColor(

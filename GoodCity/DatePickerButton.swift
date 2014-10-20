@@ -13,7 +13,15 @@ let ICON_SIZE = CGFloat(15)
 
 class DatePickerButton: UIButton {
     
-    var dropdownIcon : UIImageView!
+    private var dropdownIcon : UIImageView!
+    var datePicked : NSDate! {
+        didSet(oldDateOrNil) {
+            if let newDate = datePicked {
+                let dateString = getFriendlyDateFormatter().stringFromDate(newDate)
+                self.setAttributedTitle(formatTitle(dateString), forState: .Normal)
+            }
+        }
+    }
 
     override init() {
         super.init()
@@ -35,20 +43,21 @@ class DatePickerButton: UIButton {
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         self.contentEdgeInsets = UIEdgeInsetsMake(0, BUTTON_INSET, 0, 0)
         
+        // setup the dropdown icon
         dropdownIcon = UIImageView(image: UIImage(named: "schedule_dropdown").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate))
         dropdownIcon.tintColor = UIColor.lightGrayColor()
         dropdownIcon.contentMode = UIViewContentMode.ScaleAspectFill
         self.addSubview(dropdownIcon)
         
-        if (self.titleLabel!.text != nil) {
-            self.setAttributedTitle(formatTitle(self.titleLabel!.text!), forState: .Normal)
-        }
+        self.titleLabel!.text = ""
+        self.setAttributedTitle(formatTitle(self.titleLabel!.text!), forState: .Normal)
     }
     override func layoutSubviews() {
         super.layoutSubviews()
         let bounds = self.bounds
         dropdownIcon.frame = CGRectMake(bounds.width-BUTTON_INSET-ICON_SIZE, (bounds.height-ICON_SIZE)/2, ICON_SIZE, ICON_SIZE)
     }
+        
     func setButtonTitle(text: String) {
         self.setAttributedTitle(formatTitle(text), forState: .Normal)
     }

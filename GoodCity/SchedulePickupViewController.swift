@@ -13,12 +13,13 @@ let DATE_PICKER_HEIGHT = CGFloat(280)
 class SchedulePickupViewController: UIViewController, MDCalendarDelegate {
 
     @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var datePickerButton: RoundedButton!
+    @IBOutlet weak var datePickerButton: DatePickerButton!
     @IBOutlet weak var datePickerView: UIView!
     @IBOutlet weak var datePickerHeightConstraint: NSLayoutConstraint!
     
     var pickerOpen = false
     var calendarView: MDCalendar?
+    var days = [NSDate]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate {
         
         // start with the date picker view closed
         datePickerHeightConstraint.constant = 0
+        getScheduleSlots()
         initDatePicker()
     }
 
@@ -46,13 +48,27 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate {
             self.view.layoutIfNeeded()
         })
     }
-    
+    func getScheduleSlots() {
+        PickupScheduleSlot.getAllAvailableSlots { (objects, error) -> () in
+            if (error != nil) {
+                println("Error getting available slots from Parse")
+            } else {
+                println("All slots: \(objects)")
+                if let slots = objects as? [PickupScheduleSlot] {
+                    self.days = PickupScheduleSlot.getDaysWithAtLeastOneAvailableSlot(slots)
+                    println("Days with available slots: \(self.days)")
+                    if self.days.count > 0 {
+                        self.datePickerButton.datePicked = self.days[0]
+                        //let slotsForDay = PickupScheduleSlot.getAvailableSlotsForDay(days[2], slots: slots)
+                        //println("Slots for day \(days[2].dateStringWithTimeTruncated()): \(slotsForDay)")
+                    }
+                }
+            }
+        }
+    }
     func initDatePicker() {
-        
         let calendarView = MDCalendar()
-        
         calendarView.backgroundColor = UIColor.clearColor()
-        
         calendarView.lineSpacing = 0
         calendarView.itemSpacing = 0
         calendarView.borderColor = UIColor.clearColor()
@@ -93,11 +109,16 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate {
     }
     
     func calendarView(calendarView: MDCalendar!, didSelectDate date: NSDate!) {
-        let friendlyDate = date.descriptionWithLocale(NSLocale.currentLocale())
-        NSLog("Selected Date: \(friendlyDate)")
+        self.datePickerButton.datePicked = date
+        onTapDatePicker(self)
     }
 
     func calendarView(calendarView: MDCalendar!, shouldShowIndicatorForDate date: NSDate!) -> Bool {
-        return date.day() % 4 == 1
+        for day in days {
+            if date.dateWithTimeTruncated() == day.dateWithTimeTruncated() {
+                return true
+            }
+        }
+        return false
     }
 }

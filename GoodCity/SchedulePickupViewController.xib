@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SchedulePickupViewController" customModule="GoodCity" customModuleProvider="target">
             <connections>
                 <outlet property="closeButton" destination="EPQ-G3-gZc" id="La4-Oo-5hh"/>
-                <outlet property="datePickerButton" destination="ecZ-kE-r5L" id="bJU-kq-Fxd"/>
+                <outlet property="datePickerButton" destination="ecZ-kE-r5L" id="yYX-Ky-4V0"/>
                 <outlet property="datePickerHeightConstraint" destination="INh-6w-9kg" id="aOz-7E-eub"/>
                 <outlet property="datePickerView" destination="FtS-Ah-8Rj" id="HlN-W6-D1e"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
