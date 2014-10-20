@@ -18,6 +18,9 @@ class SlotPickerView: UIView {
     
     // Keep track of a list of available slots by their indices
     var availableSlots: [Int]!
+    
+    // Delegate
+    var delegate: SlotPickerDelegate?
 
     override init() {
         super.init()
@@ -94,6 +97,7 @@ class SlotPickerView: UIView {
                     }
                 }
                 buttonsArray[index].slotSelected = true
+                self.delegate?.selectSlot(buttonsArray[index].slotHour)
             }
         }
     }

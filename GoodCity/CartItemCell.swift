@@ -40,5 +40,4 @@ class CartItemCell: UICollectionViewCell {
         self.layer.masksToBounds = true
         self.backgroundColor = UIColor.whiteColor()
     }
-
 }

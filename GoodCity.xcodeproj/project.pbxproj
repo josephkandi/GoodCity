@@ -239,13 +239,8 @@
 			isa = PBXGroup;
 			children = (
 				3A15069519EB86B00020DF10 /* Constants.swift */,
-				3A687C7219E9104F005351B0 /* CartItemCell.swift */,
-				3A8D35FE19F3683400CE3B73 /* CartItemCell.xib */,
-				3A15068B19EB60BA0020DF10 /* ItemsGroupCell.swift */,
-				3A15068C19EB60BA0020DF10 /* ItemsGroupCell.xib */,
-				3A15069319EB85D80020DF10 /* RoundedButton.swift */,
-				3A76A00D19F4D05F0036A0EC /* DatePickerButton.swift */,
-				3A76A00F19F4ECB90036A0EC /* SelectableButton.swift */,
+				3A81925519F5A5E8001F2EB5 /* Cells */,
+				3A81925419F5A5D9001F2EB5 /* Buttons */,
 				3A1506A119EBAC910020DF10 /* DropoffAnnotation.swift */,
 				3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */,
 				0AFB6E2219F2432200E89AFC /* EditItemView.swift */,
@@ -308,6 +303,27 @@
 				AE0B27FD39151ABE14D2A503 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		3A81925419F5A5D9001F2EB5 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				3A15069319EB85D80020DF10 /* RoundedButton.swift */,
+				3A76A00D19F4D05F0036A0EC /* DatePickerButton.swift */,
+				3A76A00F19F4ECB90036A0EC /* SelectableButton.swift */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
+		3A81925519F5A5E8001F2EB5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3A687C7219E9104F005351B0 /* CartItemCell.swift */,
+				3A8D35FE19F3683400CE3B73 /* CartItemCell.xib */,
+				3A15068B19EB60BA0020DF10 /* ItemsGroupCell.swift */,
+				3A15068C19EB60BA0020DF10 /* ItemsGroupCell.xib */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		9949D72350174EE69E60CF63 /* Frameworks */ = {

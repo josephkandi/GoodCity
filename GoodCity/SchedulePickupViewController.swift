@@ -10,7 +10,11 @@ import UIKit
 
 let DATE_PICKER_HEIGHT = CGFloat(280)
 
-class SchedulePickupViewController: UIViewController, MDCalendarDelegate {
+protocol SlotPickerDelegate {
+    func selectSlot(hour: Int)
+}
+
+class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPickerDelegate {
 
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var datePickerButton: DatePickerButton!
@@ -27,9 +31,10 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate {
         super.viewDidLoad()
 
         self.view.backgroundColor = LIGHT_GRAY_BG
-        
         closeButton.setImage(UIImage(named: "edit_close").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: .Normal)
         closeButton.tintColor = tintColor
+        
+        slotPickerView.delegate = self
         
         // start with the date picker view closed
         datePickerHeightConstraint.constant = 0
@@ -134,4 +139,8 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate {
         }
     }
 
+    // Pick Slot Delegate methods
+    func selectSlot(hour: Int) {
+        println("Selecting slot for: \(datePickerButton.datePicked) at \(hour) hour")
+    }
 }
