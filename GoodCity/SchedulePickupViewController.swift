@@ -11,7 +11,7 @@ import UIKit
 let DATE_PICKER_HEIGHT = CGFloat(280)
 
 protocol SlotPickerDelegate {
-    func selectSlot(hour: Int)
+    func selectSlot(date: NSDate, hour: Int)
 }
 
 class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPickerDelegate {
@@ -35,6 +35,7 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
         closeButton.tintColor = tintColor
         
         slotPickerView.delegate = self
+        slotPickerView.date = datePickerButton.datePicked
         
         // start with the date picker view closed
         datePickerHeightConstraint.constant = 0
@@ -134,13 +135,14 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
         if (slots != nil) {
             let slotsForDay = PickupScheduleSlot.getAvailableSlotsForDay(date, slots: slots!)
             println("Slots for day \(date): \(slotsForDay)")
+            slotPickerView.date = date
             slotPickerView.resetSlots()
             slotPickerView.updateAvailableSlots(slotsForDay)
         }
     }
 
     // Pick Slot Delegate methods
-    func selectSlot(hour: Int) {
-        println("Selecting slot for: \(datePickerButton.datePicked) at \(hour) hour")
+    func selectSlot(date: NSDate, hour: Int) {
+        println("Selecting slot for: \(date) at \(hour) hour")
     }
 }

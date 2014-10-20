@@ -15,6 +15,7 @@ class SlotPickerView: UIView {
     
     var buttonsArray: [SelectableButton]!
     private var selectedSlotIndex: Int!
+    var date: NSDate!
     
     // Keep track of a list of available slots by their indices
     var availableSlots: [Int]!
@@ -97,7 +98,7 @@ class SlotPickerView: UIView {
                     }
                 }
                 buttonsArray[index].slotSelected = true
-                self.delegate?.selectSlot(buttonsArray[index].slotHour)
+                self.delegate?.selectSlot(date, hour: buttonsArray[index].slotHour)
             }
         }
     }
