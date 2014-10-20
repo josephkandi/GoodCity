@@ -19,7 +19,7 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate {
     
     var pickerOpen = false
     var calendarView: MDCalendar?
-    var days = [NSDate]()
+    var days = NSSet()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +58,14 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate {
                     self.days = PickupScheduleSlot.getDaysWithAtLeastOneAvailableSlot(slots)
                     println("Days with available slots: \(self.days)")
                     if self.days.count > 0 {
-                        self.datePickerButton.datePicked = self.days[0]
+                        var minDate = NSDate.distantFuture() as NSDate
+                        for day in self.days {
+                            if day.compare(minDate) == NSComparisonResult.OrderedAscending {
+                                minDate = day as NSDate
+                            }
+                        }
+
+                        self.datePickerButton.datePicked = minDate
                         //let slotsForDay = PickupScheduleSlot.getAvailableSlotsForDay(days[2], slots: slots)
                         //println("Slots for day \(days[2].dateStringWithTimeTruncated()): \(slotsForDay)")
                     }
@@ -114,11 +121,6 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate {
     }
 
     func calendarView(calendarView: MDCalendar!, shouldShowIndicatorForDate date: NSDate!) -> Bool {
-        for day in days {
-            if date.dateWithTimeTruncated() == day.dateWithTimeTruncated() {
-                return true
-            }
-        }
-        return false
+        return self.days.containsObject(date.dateWithTimeTruncated())
     }
 }

@@ -38,30 +38,6 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         getPendingItems()
         cartCollectionView.reloadData()
     }
-    
-    func getScheduleSlots() {
-        PickupScheduleSlot.getAllAvailableSlots { (objects, error) -> () in
-            if (error != nil) {
-                println("Error getting available slots from Parse")
-            } else {
-                println("All slots: \(objects)")
-                if let slots = objects as? [PickupScheduleSlot] {
-                    if slots.count > 0 {
-                        let slotToGrab = slots[0]
-                        slotToGrab.grabSlot()
-                    }
-
-                    let days = PickupScheduleSlot.getDaysWithAtLeastOneAvailableSlot(slots)
-                    println("Days with available slots: \(days)")
-                    if days.count > 0 {
-                        let slotsForDay = PickupScheduleSlot.getAvailableSlotsForDay(days[2], slots: slots)
-                        println("Slots for day \(days[2].dateStringWithTimeTruncated()): \(slotsForDay)")
-                    }
-                }
-            }
-        }
-
-    }
 
     override func viewDidLayoutSubviews() {
         let layout = cartCollectionView.collectionViewLayout as UICollectionViewFlowLayout

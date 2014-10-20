@@ -38,21 +38,21 @@ class PickupScheduleSlot : PFObject, PFSubclassing {
         }
     }
 
-    class func getAllAvailableSlots(completion: ParseResponse) {
+    class func getAllAvailableSlots(completion: ParseResponse, minDelayFromNowInHours: Int = 1) {
+        let secondsFromNow = NSTimeInterval(minDelayFromNowInHours * 3600)
+        var startDate = NSDate(timeIntervalSinceNow: secondsFromNow)
         var query = PickupScheduleSlot.query()
         query.whereKey("claimedCount", lessThan: 1)
+        query.whereKey("startDateTime", greaterThan: startDate)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             completion(objects: objects, error: error)
         }
     }
 
-    // Return sorted list of available days given list of pickup schedule slots
-    class func getDaysWithAtLeastOneAvailableSlot(slots: [PickupScheduleSlot]) -> [NSDate] {
+    class func getDaysWithAtLeastOneAvailableSlot(slots: [PickupScheduleSlot]) -> NSSet {
         // Build set of available days
-        let days = NSSet(array: slots.map { $0.startDateTime.dateWithTimeTruncated() })
-        let daysList = days.allObjects as [NSDate]
-        return sorted(daysList, { $0.compare($1) == NSComparisonResult.OrderedAscending })
+        return NSSet(array: slots.map { $0.startDateTime.dateWithTimeTruncated() })
     }
 
     // Return sorted available slots for a particular date
