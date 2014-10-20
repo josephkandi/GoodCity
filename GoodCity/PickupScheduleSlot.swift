@@ -27,8 +27,10 @@ class PickupScheduleSlot : PFObject, PFSubclassing {
         return self.startDateTime.description
     }
 
-    func grabSlot(items: [DonationItem]? = nil) {
-        PFCloud.callFunctionInBackground("grabPickupScheduleSlot", withParameters: ["objectId": self.objectId]) {
+    func grabSlot(items: [DonationItem]) {
+        PFCloud.callFunctionInBackground("grabPickupScheduleSlot",
+            withParameters: ["objectId": self.objectId,
+                             "donationItems": items]) {
             (result, error) -> Void in
             if error == nil {
                 println("Result from Parse Cloud Code: \(result)")
