@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SchedulePickupViewController: UIViewController {
+class SchedulePickupViewController: UIViewController, MDCalendarDelegate {
 
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var datePickerButton: RoundedButton!
@@ -46,6 +46,4 @@ class SchedulePickupViewController: UIViewController {
         })
     }
 
-    
-    
 }

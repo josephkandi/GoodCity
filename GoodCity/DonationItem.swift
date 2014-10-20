@@ -60,7 +60,7 @@ import Foundation
     func updateState(newState: ItemState) {
         self.state = newState.toRaw()
         // Might want to add a completion handler here
-        self.saveInBackground()
+        self.saveInBackgroundWithTarget(nil, selector: nil)
     }
 
     // Deletion can happen with deleteInBackground()
