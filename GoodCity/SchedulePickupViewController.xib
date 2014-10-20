@@ -10,20 +10,13 @@
                 <outlet property="datePickerButton" destination="ecZ-kE-r5L" id="yYX-Ky-4V0"/>
                 <outlet property="datePickerHeightConstraint" destination="INh-6w-9kg" id="aOz-7E-eub"/>
                 <outlet property="datePickerView" destination="FtS-Ah-8Rj" id="HlN-W6-D1e"/>
-                <outlet property="slotButton0" destination="DHC-yC-M21" id="sgj-cB-DCN"/>
-                <outlet property="slotButton1" destination="ZsV-au-KMz" id="0Jz-9P-GKW"/>
-                <outlet property="slotButton2" destination="rKh-bB-P8L" id="TB1-Vu-K5H"/>
-                <outlet property="slotButton3" destination="Siy-Le-8FW" id="Kgt-Rf-Vlv"/>
-                <outlet property="slotButton4" destination="Fxg-OU-8Nd" id="HGo-c7-Xbb"/>
-                <outlet property="slotButton5" destination="yzC-Nc-mVs" id="0CZ-V0-riF"/>
-                <outlet property="slotButton6" destination="zlB-e1-3Uu" id="WZ1-lZ-tfi"/>
-                <outlet property="slotButton7" destination="oYV-Kc-miC" id="DKO-iD-q9e"/>
+                <outlet property="slotPickerView" destination="Moh-MX-uRp" id="bmO-wB-LER"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="608" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPQ-G3-gZc" userLabel="Close Button">
@@ -40,7 +33,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Pickup" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFW-pK-VEH">
-                    <rect key="frame" x="240" y="29" width="129" height="24"/>
+                    <rect key="frame" x="236" y="29" width="129" height="24"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -52,7 +45,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecZ-kE-r5L" customClass="DatePickerButton" customModule="GoodCity" customModuleProvider="target">
-                    <rect key="frame" x="16" y="103" width="576" height="40"/>
+                    <rect key="frame" x="16" y="103" width="568" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="SmV-1d-Ibk"/>
                     </constraints>
@@ -62,127 +55,19 @@
                         <action selector="onTapDatePicker:" destination="-1" eventType="touchUpInside" id="rbC-8Z-Hii"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Moh-MX-uRp" userLabel="slotsContainer">
-                    <rect key="frame" x="16" y="183" width="576" height="307"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHC-yC-M21" customClass="SelectableButton" customModule="GoodCity" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="283" height="40"/>
-                            <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="4cL-kG-Xni"/>
-                            </constraints>
-                            <state key="normal" title="9am - 10am">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZsV-au-KMz" customClass="SelectableButton" customModule="GoodCity" customModuleProvider="target">
-                            <rect key="frame" x="293" y="0.0" width="283" height="40"/>
-                            <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="6eO-gB-tmN"/>
-                            </constraints>
-                            <state key="normal" title="10am - 11am">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKh-bB-P8L" customClass="SelectableButton" customModule="GoodCity" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="50" width="283" height="40"/>
-                            <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="gwr-rf-8H5"/>
-                            </constraints>
-                            <state key="normal" title="11am - 12pm">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Siy-Le-8FW" customClass="SelectableButton" customModule="GoodCity" customModuleProvider="target">
-                            <rect key="frame" x="293" y="50" width="283" height="40"/>
-                            <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="Zmz-qF-aTz"/>
-                            </constraints>
-                            <state key="normal" title="12pm - 1pm">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fxg-OU-8Nd" customClass="SelectableButton" customModule="GoodCity" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="100" width="283" height="40"/>
-                            <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="ttO-MS-vqq"/>
-                            </constraints>
-                            <state key="normal" title="1pm - 2pm">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzC-Nc-mVs" customClass="SelectableButton" customModule="GoodCity" customModuleProvider="target">
-                            <rect key="frame" x="293" y="100" width="283" height="40"/>
-                            <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="XXY-mE-u6y"/>
-                            </constraints>
-                            <state key="normal" title="2pm - 3pm">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlB-e1-3Uu" customClass="SelectableButton" customModule="GoodCity" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="150" width="283" height="40"/>
-                            <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="5Dl-fN-BLK"/>
-                            </constraints>
-                            <state key="normal" title="3pm - 4pm">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYV-Kc-miC" customClass="SelectableButton" customModule="GoodCity" customModuleProvider="target">
-                            <rect key="frame" x="293" y="150" width="283" height="40"/>
-                            <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="Bnm-Oa-3PG"/>
-                            </constraints>
-                            <state key="normal" title="4pm - 5pm">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
-                    </subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Moh-MX-uRp" userLabel="slotsContainer" customClass="SlotPickerView" customModule="GoodCity" customModuleProvider="target">
+                    <rect key="frame" x="16" y="183" width="568" height="307"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="rKh-bB-P8L" firstAttribute="top" secondItem="DHC-yC-M21" secondAttribute="bottom" constant="10" id="6nZ-uA-ypf"/>
-                        <constraint firstItem="DHC-yC-M21" firstAttribute="centerX" secondItem="rKh-bB-P8L" secondAttribute="centerX" id="6yH-aO-mM8"/>
-                        <constraint firstItem="DHC-yC-M21" firstAttribute="top" secondItem="Moh-MX-uRp" secondAttribute="top" id="7Qb-Af-hCp"/>
-                        <constraint firstItem="DHC-yC-M21" firstAttribute="width" secondItem="Fxg-OU-8Nd" secondAttribute="width" id="BIp-Hj-rbS"/>
-                        <constraint firstItem="DHC-yC-M21" firstAttribute="width" secondItem="Siy-Le-8FW" secondAttribute="width" id="EHZ-Af-7rS"/>
-                        <constraint firstItem="DHC-yC-M21" firstAttribute="width" secondItem="zlB-e1-3Uu" secondAttribute="width" id="EUT-Ry-s0j"/>
-                        <constraint firstItem="oYV-Kc-miC" firstAttribute="centerX" secondItem="yzC-Nc-mVs" secondAttribute="centerX" id="IfV-V4-JCS"/>
-                        <constraint firstItem="rKh-bB-P8L" firstAttribute="centerX" secondItem="Fxg-OU-8Nd" secondAttribute="centerX" id="IiM-nI-sFt"/>
-                        <constraint firstItem="ZsV-au-KMz" firstAttribute="leading" secondItem="DHC-yC-M21" secondAttribute="trailing" constant="10" id="NIX-fs-bAk"/>
-                        <constraint firstItem="DHC-yC-M21" firstAttribute="width" secondItem="yzC-Nc-mVs" secondAttribute="width" id="VuR-qp-AX0"/>
-                        <constraint firstItem="yzC-Nc-mVs" firstAttribute="centerX" secondItem="Siy-Le-8FW" secondAttribute="centerX" id="WZT-xH-u2V"/>
-                        <constraint firstItem="rKh-bB-P8L" firstAttribute="centerY" secondItem="Siy-Le-8FW" secondAttribute="centerY" id="a23-bK-bti"/>
-                        <constraint firstItem="DHC-yC-M21" firstAttribute="leading" secondItem="Moh-MX-uRp" secondAttribute="leading" id="atm-xG-Tal"/>
-                        <constraint firstAttribute="trailing" secondItem="ZsV-au-KMz" secondAttribute="trailing" id="dVv-ZH-F5Y"/>
-                        <constraint firstItem="DHC-yC-M21" firstAttribute="width" secondItem="ZsV-au-KMz" secondAttribute="width" id="eqt-JH-mNd"/>
-                        <constraint firstItem="yzC-Nc-mVs" firstAttribute="centerY" secondItem="Fxg-OU-8Nd" secondAttribute="centerY" id="gYe-0q-a8B"/>
-                        <constraint firstItem="oYV-Kc-miC" firstAttribute="width" secondItem="DHC-yC-M21" secondAttribute="width" id="gmh-Dq-yeo"/>
-                        <constraint firstItem="ZsV-au-KMz" firstAttribute="centerX" secondItem="Siy-Le-8FW" secondAttribute="centerX" id="jfQ-lz-PX5"/>
-                        <constraint firstItem="zlB-e1-3Uu" firstAttribute="top" secondItem="Fxg-OU-8Nd" secondAttribute="bottom" constant="10" id="jte-ss-tlj"/>
-                        <constraint firstItem="zlB-e1-3Uu" firstAttribute="centerX" secondItem="Fxg-OU-8Nd" secondAttribute="centerX" id="qWp-OG-YoO"/>
-                        <constraint firstItem="DHC-yC-M21" firstAttribute="centerY" secondItem="ZsV-au-KMz" secondAttribute="centerY" id="r2p-gD-h6f"/>
-                        <constraint firstItem="Fxg-OU-8Nd" firstAttribute="top" secondItem="rKh-bB-P8L" secondAttribute="bottom" constant="10" id="rYR-cD-bMv"/>
-                        <constraint firstItem="oYV-Kc-miC" firstAttribute="centerY" secondItem="zlB-e1-3Uu" secondAttribute="centerY" id="ttW-9u-0Y3"/>
-                        <constraint firstItem="DHC-yC-M21" firstAttribute="width" secondItem="rKh-bB-P8L" secondAttribute="width" id="xhc-3c-mZh"/>
-                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FtS-Ah-8Rj" userLabel="popup view">
-                    <rect key="frame" x="16" y="143" width="576" height="300"/>
+                    <rect key="frame" x="16" y="143" width="568" height="300"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="300" id="INh-6w-9kg"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQI-tL-CfS" customClass="RoundedButton" customModule="GoodCity" customModuleProvider="target">
-                    <rect key="frame" x="16" y="510" width="576" height="40"/>
+                    <rect key="frame" x="16" y="510" width="568" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="xko-X7-RSj"/>
                     </constraints>
