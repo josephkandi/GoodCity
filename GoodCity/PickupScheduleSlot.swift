@@ -27,20 +27,16 @@ class PickupScheduleSlot : PFObject, PFSubclassing {
         return self.startDateTime.description
     }
 
-    /*
-    func grabTimeSlot(user: GoodCityUser, items: [DonationItem]) -> Bool {
-        if self.taken {
-            println("Trying to schedule a slot that is already taken")
-            return false
+    func grabSlot(items: [DonationItem]? = nil) {
+        PFCloud.callFunctionInBackground("grabPickupScheduleSlot", withParameters: ["objectId": self.objectId]) {
+            (result, error) -> Void in
+            if error == nil {
+                println("Result from Parse Cloud Code: \(result)")
+            } else {
+                println("Error from Parse Cloud Code: \(error)")
+            }
         }
-
-        //        self.taken = true
-        self.takenByUser = user
-        self.items = items
-        self.save()
-        return true
     }
-    */
 
     class func getAllAvailableSlots(completion: ParseResponse) {
         var query = PickupScheduleSlot.query()
