@@ -43,8 +43,11 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecZ-kE-r5L" customClass="RoundedButton" customModule="GoodCity" customModuleProvider="target">
-                    <rect key="frame" x="16" y="103" width="568" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecZ-kE-r5L" customClass="DatePickerButton" customModule="GoodCity" customModuleProvider="target">
+                    <rect key="frame" x="16" y="103" width="568" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="SmV-1d-Ibk"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                     <state key="normal" title="Thu, October 2, 2014"/>
                     <connections>
@@ -52,7 +55,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FtS-Ah-8Rj" userLabel="popup view">
-                    <rect key="frame" x="16" y="133" width="568" height="300"/>
+                    <rect key="frame" x="16" y="143" width="568" height="300"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="300" id="INh-6w-9kg"/>
