@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "GoodCity": {
+            "applicationId": "I3aRv2pcl7byfah51bfTSupsZtjQ81F8Jp2jmEyE", 
+            "masterKey": "ehgppegcuA8sZJfgbKaLXUXgmo4A5VruwXQjMhdF"
+        }, 
+        "_default": {
+            "link": "GoodCity"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.0"
+    }
+}
