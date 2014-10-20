@@ -60,15 +60,21 @@
 #define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK 19
 #define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK 0
 
+// MDCalendar
+#define COCOAPODS_POD_AVAILABLE_MDCalendar
+#define COCOAPODS_VERSION_MAJOR_MDCalendar 1
+#define COCOAPODS_VERSION_MINOR_MDCalendar 0
+#define COCOAPODS_VERSION_PATCH_MDCalendar 0
+
 // Parse
 #define COCOAPODS_POD_AVAILABLE_Parse
 #define COCOAPODS_VERSION_MAJOR_Parse 1
 #define COCOAPODS_VERSION_MINOR_Parse 4
-#define COCOAPODS_VERSION_PATCH_Parse 1
+#define COCOAPODS_VERSION_PATCH_Parse 2
 
 // ParseFacebookUtils
 #define COCOAPODS_POD_AVAILABLE_ParseFacebookUtils
 #define COCOAPODS_VERSION_MAJOR_ParseFacebookUtils 1
 #define COCOAPODS_VERSION_MINOR_ParseFacebookUtils 4
-#define COCOAPODS_VERSION_PATCH_ParseFacebookUtils 1
+#define COCOAPODS_VERSION_PATCH_ParseFacebookUtils 2
 

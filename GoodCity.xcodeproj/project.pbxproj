@@ -41,7 +41,6 @@
 		3A1506A219EBAC910020DF10 /* DropoffAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1506A119EBAC910020DF10 /* DropoffAnnotation.swift */; };
 		3A1506A419EBB1940020DF10 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1506A319EBB1940020DF10 /* CoreLocation.framework */; };
 		3A687C7419E9104F005351B0 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A687C7219E9104F005351B0 /* CartItemCell.swift */; };
-		3A687C7719E9176A005351B0 /* CartCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A687C7619E9176A005351B0 /* CartCollectionLayout.swift */; };
 		3A82271B19F2485900007C6C /* EditItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A82271A19F2485900007C6C /* EditItemView.xib */; };
 		3A8D35FF19F3683400CE3B73 /* CartItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8D35FE19F3683400CE3B73 /* CartItemCell.xib */; };
 		3A8D360119F371F900CE3B73 /* ExpandableDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D360019F371F900CE3B73 /* ExpandableDatePickerView.swift */; };
@@ -108,7 +107,6 @@
 		3A1506A119EBAC910020DF10 /* DropoffAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropoffAnnotation.swift; sourceTree = "<group>"; };
 		3A1506A319EBB1940020DF10 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3A687C7219E9104F005351B0 /* CartItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
-		3A687C7619E9176A005351B0 /* CartCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCollectionLayout.swift; sourceTree = "<group>"; };
 		3A82271A19F2485900007C6C /* EditItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditItemView.xib; sourceTree = "<group>"; };
 		3A8D35F519F3587700CE3B73 /* CartViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartViewDelegate.h; sourceTree = "<group>"; };
 		3A8D35FE19F3683400CE3B73 /* CartItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartItemCell.xib; sourceTree = "<group>"; };
@@ -235,12 +233,17 @@
 			isa = PBXGroup;
 			children = (
 				3A15069519EB86B00020DF10 /* Constants.swift */,
+				3A687C7219E9104F005351B0 /* CartItemCell.swift */,
+				3A8D35FE19F3683400CE3B73 /* CartItemCell.xib */,
+				3A15068B19EB60BA0020DF10 /* ItemsGroupCell.swift */,
+				3A15068C19EB60BA0020DF10 /* ItemsGroupCell.xib */,
 				3A15069319EB85D80020DF10 /* RoundedButton.swift */,
 				3A1506A119EBAC910020DF10 /* DropoffAnnotation.swift */,
 				3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */,
 				0AFB6E2219F2432200E89AFC /* EditItemView.swift */,
 				3A82271A19F2485900007C6C /* EditItemView.xib */,
 				3A8D360019F371F900CE3B73 /* ExpandableDatePickerView.swift */,
+				3A15068F19EB71AA0020DF10 /* SectionHeaderView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -253,11 +256,8 @@
 				0A674E0C19ED0434001A5664 /* AVCamPreviewView.h */,
 				0A674E0D19ED0434001A5664 /* AVCamPreviewView.m */,
 				0A14FFB119E234DB00D11CE2 /* AVCamViewController.xib */,
-				3A687C7619E9176A005351B0 /* CartCollectionLayout.swift */,
 				3AE42EE719E8FB8300D7A6F5 /* CartViewController.swift */,
 				3AE42EE819E8FB8300D7A6F5 /* CartViewController.xib */,
-				3A687C7219E9104F005351B0 /* CartItemCell.swift */,
-				3A8D35FE19F3683400CE3B73 /* CartItemCell.xib */,
 				3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */,
 				3AE42EE419E8F98500D7A6F5 /* ContainerViewController.xib */,
 				0A14FFA619E230E800D11CE2 /* LoginViewController.swift */,
@@ -268,9 +268,6 @@
 				0A14FFB919E2354000D11CE2 /* SchedulePickupViewController.xib */,
 				3AE42EEB19E8FBA400D7A6F5 /* HistoryViewController.swift */,
 				3AE42EEC19E8FBA400D7A6F5 /* HistoryViewController.xib */,
-				3A15068B19EB60BA0020DF10 /* ItemsGroupCell.swift */,
-				3A15068C19EB60BA0020DF10 /* ItemsGroupCell.xib */,
-				3A15068F19EB71AA0020DF10 /* SectionHeaderView.swift */,
 				3A8D35F519F3587700CE3B73 /* CartViewDelegate.h */,
 			);
 			name = Controllers;
@@ -471,7 +468,6 @@
 				3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */,
 				0A14FFBE19E2355F00D11CE2 /* MapViewController.swift in Sources */,
 				0AC31B0419EA40E700BB815F /* ItemCondition.swift in Sources */,
-				3A687C7719E9176A005351B0 /* CartCollectionLayout.swift in Sources */,
 				0A02838B19F342B70070E374 /* DonationItemsAggregator.swift in Sources */,
 				0AC31AFC19E9EDA300BB815F /* DropoffLocation.swift in Sources */,
 				3ABF2C9219ECF508005EF442 /* ActionButtonsView.swift in Sources */,

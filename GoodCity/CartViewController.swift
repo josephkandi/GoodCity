@@ -27,6 +27,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         self.styleNavBar()
         collectionHeader.backgroundColor = NAV_BAR_COLOR
+        self.view.backgroundColor = LIGHT_GRAY_BG
         
         cartCollectionView.dataSource = self
         cartCollectionView.delegate = self
