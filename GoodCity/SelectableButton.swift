@@ -23,10 +23,10 @@ class SelectableButton: UIButton {
         didSet (oldValue) {
             if let newValue = slotSelected {
                 if newValue {
-                    setButtonColor(tintColor!)
+                    formatSelectedButton()
                 }
                 else {
-                    setButtonColor(UIColor.whiteColor())
+                    formatAvailableButton()
                 }
             }
         }
@@ -35,7 +35,7 @@ class SelectableButton: UIButton {
         didSet (oldValue) {
             if let newValue = slotDisabled {
                 if newValue {
-                    setButtonColor(UIColor(white: 0.8, alpha: 1))
+                    formatDisabledButton()
                 }
                 else {
                     slotSelected = false
@@ -62,7 +62,7 @@ class SelectableButton: UIButton {
         self.layer.masksToBounds = true
         
         self.titleLabel!.text = ""
-        self.setAttributedTitle(formatTitle(self.titleLabel!.text!), forState: .Normal)
+        //self.setAttributedTitle(formatTitle(self.titleLabel!.text!), forState: .Normal)
         self.slotDisabled = true
     }
     
@@ -72,18 +72,36 @@ class SelectableButton: UIButton {
     func setButtonColor(color: UIColor) {
         self.layer.backgroundColor = color.CGColor
     }
-    func formatTitle(text: String) -> NSMutableAttributedString {
+    func formatTitle(text: String, color: UIColor) -> NSMutableAttributedString {
         let attributedTitle = NSMutableAttributedString(string: text)
         let range = NSMakeRange(0, attributedTitle.length)
         attributedTitle.addAttribute(NSFontAttributeName, value: FONT_15, range: range)
-        attributedTitle.addAttribute(NSForegroundColorAttributeName, value: UIColor.darkTextColor(), range: range)
+        attributedTitle.addAttribute(NSForegroundColorAttributeName, value: color, range: range)
         return attributedTitle
     }
-
+    func formatTitle(text: String) -> NSMutableAttributedString {
+        return formatTitle(text, color: UIColor.darkTextColor())
+    }
+    
     func getSlotTitle(hour: Int) -> String {        
         return get12hour(hour) + " - " + get12hour(hour+1)
     }
     
+    private func formatDisabledButton() {
+        let text = self.titleLabel?.text
+        self.setAttributedTitle(formatTitle(text!, color: UIColor(white: 0.8, alpha: 1)), forState: .Normal)
+        setButtonColor(UIColor(white: 0.9, alpha: 1))
+    }
+    private func formatSelectedButton() {
+        let text = self.titleLabel?.text
+        self.setAttributedTitle(formatTitle(text!,color:  UIColor.whiteColor()), forState: .Normal)
+        setButtonColor(tintColor!)
+    }
+    private func formatAvailableButton() {
+        let text = self.titleLabel?.text
+        self.setAttributedTitle(formatTitle(text!,color:  UIColor.darkTextColor()), forState: .Normal)
+        setButtonColor(UIColor.whiteColor())
+    }
     private func get12hour(hour: Int) -> String {
         var string = ""
         
