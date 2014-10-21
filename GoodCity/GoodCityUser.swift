@@ -70,7 +70,7 @@ class GoodCityUser: PFUser, PFSubclassing {
             }
         }
 
-        self.save()
+        self.saveEventually()
     }
     
     func logout() {
