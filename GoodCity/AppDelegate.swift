@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-        application.setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
+        //application.setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
         
         self.setupParse()
         self.registerForPushNotifications(application)

@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AVCamViewController">
             <connections>
+                <outlet property="itemsInCart" destination="9oj-BE-81o" id="3P8-DO-9bh"/>
                 <outlet property="photoView" destination="4Fq-YA-GVl" id="a6J-Pz-kOz"/>
                 <outlet property="previewView" destination="DeA-bG-p2p" id="jUe-gE-XgD"/>
                 <outlet property="snapButton" destination="TP0-S8-Y6B" id="c2D-mS-mUa"/>
@@ -37,8 +38,8 @@
                             </state>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oj-BE-81o">
-                            <rect key="frame" x="50" y="540" width="10" height="21"/>
-                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
+                            <rect key="frame" x="51" y="541" width="9" height="20"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>

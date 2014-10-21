@@ -14,6 +14,7 @@
 @protocol CartViewDelegate <NSObject>
 
 - (void) addNewItem:(DonationItem *)item;
+- (NSInteger) getItemsCount;
 
 @end
 

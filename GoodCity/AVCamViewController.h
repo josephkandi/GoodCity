@@ -50,14 +50,15 @@
 
 @class DonationItem;
 
-@protocol DismissEditItemDelegate
+@protocol CameraViewDelegate
 
 - (void)dismissEditItem;
 - (void)submitItem:(DonationItem*)newItem;
+- (void)updateItemsCount:(NSString*)count;
 
 @end
 
-@interface AVCamViewController : UIViewController <DismissEditItemDelegate>
+@interface AVCamViewController : UIViewController <CameraViewDelegate>
 
 @property (nonatomic, weak) id <CartViewDelegate> cartViewDelegate;
 

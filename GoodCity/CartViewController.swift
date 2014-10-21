@@ -18,6 +18,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var cartCollectionView: UICollectionView!
     @IBOutlet weak var collectionHeader: UIView!
     @IBOutlet weak var collectionHeaderLabel: UILabel!
+    var cameraViewDelegate: CameraViewDelegate?
     
     // Array of pending donation items
     var pendingItems = NSMutableArray()
@@ -75,7 +76,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
             if let donationItems = objects as? [DonationItem] {
                 println(donationItems)
                 self.pendingItems.addObjectsFromArray(donationItems)
-                self.collectionHeaderLabel.text = "PENDING REVIEW (" + String(self.pendingItems.count) + ")"
+                self.updateCount()
                 self.cartCollectionView.reloadData()
             }
             else {
@@ -84,9 +85,17 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         }, states: [ItemState.Pending])
     }
     
+    func updateCount() {
+        self.collectionHeaderLabel.text = "PENDING REVIEW (" + String(self.pendingItems.count) + ")"
+        self.cameraViewDelegate?.updateItemsCount(String(self.pendingItems.count))
+    }
     //Delegate functions
     func addNewItem(newItem: DonationItem) {
         pendingItems.insertObject(newItem, atIndex: 0)
+        updateCount()
         cartCollectionView.reloadData()
+    }
+    func getItemsCount() -> NSInteger {
+        return self.pendingItems.count
     }
 }

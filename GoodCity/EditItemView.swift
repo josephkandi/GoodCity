@@ -14,7 +14,7 @@ class EditItemView: UIView, UITextViewDelegate {
     @IBOutlet weak var submitButton: RoundedButton!
     @IBOutlet weak var conditionChooser: UISegmentedControl!
 
-    var delegate: DismissEditItemDelegate?
+    var delegate: CameraViewDelegate?
     var photo: UIImage?
 
     override init(frame: CGRect) {

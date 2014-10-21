@@ -64,6 +64,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 @property (nonatomic, weak) IBOutlet UIButton *snapButton;
 @property (weak, nonatomic) EditItemView *editItemView;
+@property (weak, nonatomic) IBOutlet UILabel *itemsInCart;
 
 - (IBAction)snapStillImage:(id)sender;
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer;
@@ -112,9 +113,16 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     [self dismissEditItem];
 }
 
+- (void) updateItemsCount:(NSString*) count {
+    _itemsInCart.text = count;
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+    
+    _itemsInCart.text = @"";
+    //_itemsInCart.text = [NSString stringWithFormat:@"%i", [self.cartViewDelegate getItemsCount]];
 	
 	// Create the AVCaptureSession
 	AVCaptureSession *session = [[AVCaptureSession alloc] init];
