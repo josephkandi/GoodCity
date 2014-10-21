@@ -20,12 +20,23 @@ Parse.Cloud.define("grabPickupScheduleSlot", function(request, response) {
             // Check if we got the slot
             if (updatedScheduleSlot.get(_scheduleSlotKey) <= _claimedCountMax) {
               // got the slot...update all items to "scheduled"
-              var items = request.params.donationItems;
+              var items = request.params.donationItemIds;
               for (var i = 0; i < items.length; i++) {
-                items[i].set("state", "Scheduled");
-                items[i].save();
+                var itemQuery = new Parse.Query("DonationItem");
+                itemQuery.containedIn("objectId", items);
+                itemQuery.find({
+                  success: function (results) {
+                    for (var j = 0; j < results.length; j++) {
+                      results[j].set("state", "Scheduled");
+                      results[j].save();
+                    }
+                    response.success("Slot claimed and all donation items updated!");
+                  },
+                  error: function() {
+                    response.failure("Could not find donationItem with specified Id");
+                  }
+                });
               }
-              response.success("Slot claimed!");
             } else {
               response.failure("Slot claimed by someone else at the last second");
             }

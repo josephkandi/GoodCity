@@ -145,5 +145,8 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     // Pick Slot Delegate methods
     func selectSlot(slot: PickupScheduleSlot) {
         println("Selecting slot: \(slot.startDateTime)")
+        if let donationItems = self.itemsGroup?.sortedDonationItems {
+            slot.grabSlot(donationItems)
+        }
     }
 }
