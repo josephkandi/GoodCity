@@ -62,4 +62,7 @@
 
 @property (nonatomic, weak) id <CartViewDelegate> cartViewDelegate;
 
+- (void)pauseCamera;
+- (void)resumeCamera;
+
 @end
