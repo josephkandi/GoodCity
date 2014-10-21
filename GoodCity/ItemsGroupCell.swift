@@ -8,7 +8,7 @@
 
 import UIKit
 
-let ITEMS_PER_ROW : CGFloat = 5
+let ITEMS_PER_ROW : CGFloat = 4
 
 class ItemsGroupCell: UITableViewCell {
 
