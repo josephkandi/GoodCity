@@ -75,7 +75,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         return header
 
     }
-    
+
     // HACK: Hardcoding the row height based on the different sections right now. Need to update with real model
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
@@ -86,18 +86,14 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         let sortedSection = itemGroups!.sortedSections[indexPath.section]
         let state = ItemState.fromRaw(sortedSection.name)!
         let numberOfItems = sortedSection.sortedDonationGroups[indexPath.row].sortedDonationItems.count
-        let additionalRows = Int(CGFloat(numberOfItems) / ITEMS_PER_ROW)
     
-        var height = 145
-        
+        var height: CGFloat = 78
         if (state == ItemState.Approved || state == ItemState.Scheduled) {
             height += 41
         }
-        if additionalRows != 0 {
-            height += additionalRows * 66 + (additionalRows - 1)*5
-        }
+        height += ItemsGroupCell.getThumbnailsHeight(tableView.frame.width, count: numberOfItems)
         
-        return CGFloat(height)
+        return height
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

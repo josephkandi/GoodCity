@@ -82,7 +82,6 @@ class ItemsGroupCell: UITableViewCell {
         buttonsView.setDelegate(delegate)
     }
     func setItemsGroup(group: DonationItemsAggregator.DonationGroup) {
-        
         // reset
         cleanupThumbs()
     
@@ -110,5 +109,12 @@ class ItemsGroupCell: UITableViewCell {
         for thumb in thumbnailsContainer.subviews {
             thumb.removeFromSuperview()
         }
+    }
+    
+    class func getThumbnailsHeight(width: CGFloat, count: Int) -> CGFloat {
+        let rows = Int(CGFloat(count) / ITEMS_PER_ROW) + 1
+        let thumbnailWidth = (width - SPACING * (ITEMS_PER_ROW-1)) / ITEMS_PER_ROW
+        let height = thumbnailWidth * CGFloat(rows) + SPACING * CGFloat(rows-1)
+        return height
     }
 }
