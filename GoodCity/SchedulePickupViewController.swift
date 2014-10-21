@@ -11,7 +11,7 @@ import UIKit
 let DATE_PICKER_HEIGHT = CGFloat(280)
 
 protocol SlotPickerDelegate {
-    func selectSlot(date: NSDate, hour: Int)
+    func selectSlot(slot: PickupScheduleSlot)
 }
 
 class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPickerDelegate {
@@ -143,8 +143,7 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     }
 
     // Pick Slot Delegate methods
-    func selectSlot(date: NSDate, hour: Int) {
-        println("Selecting slot for: \(date) at \(hour) hour")
-        println("For items group: \(itemsGroup)")
+    func selectSlot(slot: PickupScheduleSlot) {
+        println("Selecting slot: \(slot.startDateTime)")
     }
 }

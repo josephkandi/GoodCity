@@ -58,12 +58,13 @@ class PickupScheduleSlot : PFObject, PFSubclassing {
     }
 
     // Return sorted available slots for a particular date
-    class func getAvailableSlotsForDay(day: NSDate, slots: [PickupScheduleSlot]) -> [Int] {
+    class func getAvailableSlotsForDay(day: NSDate, slots: [PickupScheduleSlot]) -> [Int: PickupScheduleSlot] {
         let desiredDate = day.dateWithTimeTruncated()
         let resultSlots = slots.filter { $0.startDateTime.dateWithTimeTruncated() == desiredDate }
-        var result = resultSlots.map({ $0.startDateTime.hour() })
-        result.sort { $0 < $1 }
-
+        var result = [Int: PickupScheduleSlot]()
+        for slot in resultSlots {
+            result[slot.startDateTime.hour()] = slot
+        }
         return result
     }
 }

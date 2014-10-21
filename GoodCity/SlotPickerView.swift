@@ -15,6 +15,7 @@ class SlotPickerView: UIView {
     
     var buttonsArray: [SelectableButton]!
     private var selectedSlotIndex: Int!
+    private var hourSlotDictionary = [Int: PickupScheduleSlot]()
     var date: NSDate!
     
     // Keep track of a list of available slots by their indices
@@ -73,9 +74,12 @@ class SlotPickerView: UIView {
             yOffset += BUTTON_HEIGHT + SPACING*2
         }
     }
-    func updateAvailableSlots(slots : [Int]) {
-        for slot in slots {
+    func updateAvailableSlots(slots : [Int: PickupScheduleSlot]) {
+        self.hourSlotDictionary = slots
+        for slot in slots.keys {
             let index = getIndexFromHour(slot)
+            println("Slot: \(slot), index: \(index)")
+
             if (index >= 0 && index < buttonsArray.count) {
                 buttonsArray[index].slotDisabled = false
             }
@@ -98,11 +102,17 @@ class SlotPickerView: UIView {
                     }
                 }
                 buttonsArray[index].slotSelected = true
-                self.delegate?.selectSlot(date, hour: buttonsArray[index].slotHour)
+                println("Index: \(index)")
+                let slot = self.hourSlotDictionary[getHourFromIndex(index)]
+                println("Selected slot: \(slot)")
+                self.delegate?.selectSlot(slot!)
             }
         }
     }
     private func getIndexFromHour(hour: Int) -> Int {
         return hour - 9
+    }
+    private func getHourFromIndex(index: Int) -> Int {
+        return index + 9
     }
 }
