@@ -35,11 +35,9 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = tintColor
         setupViewControllers()
         containerScrollView.delegate = self
     }
-    
     
     override func viewDidLayoutSubviews() {
         setupViewOffsets(activeViewIndex: 1)
@@ -71,6 +69,11 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
         navController2.view.frame = CGRectMake(0, 20, containerScrollView.frame.width, containerScrollView.frame.height-20)
         navController2.view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
         containerScrollView.addSubview(navController2.view)
+        
+        // header status bar hack
+        let headerView = UIView(frame: CGRectMake(0, 0, containerScrollView.frame.width, 20))
+        headerView.backgroundColor = tintColor
+        self.view.insertSubview(headerView, belowSubview: containerScrollView)
     }
 
     func setupViewOffsets(activeViewIndex: CGFloat = CGFloat(0)) {

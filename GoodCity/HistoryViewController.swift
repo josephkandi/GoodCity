@@ -128,7 +128,6 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         self.historyTableView.registerNib(nib, forCellReuseIdentifier: reuseIdentifier)
     }
     
-    
     private func setupTableView() {
         historyTableView.dataSource = self
         historyTableView.delegate = self

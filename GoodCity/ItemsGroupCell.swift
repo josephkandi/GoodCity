@@ -28,7 +28,7 @@ class ItemsGroupCell: UITableViewCell {
     
     // Items State
     private var itemsState: ItemState?
-    private var itemsGroup: DonationItemsAggregator.DonationGroup?
+    var itemsGroup: DonationItemsAggregator.DonationGroup?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -83,7 +83,9 @@ class ItemsGroupCell: UITableViewCell {
     }
     func setItemsGroup(group: DonationItemsAggregator.DonationGroup) {
         
-        thumbnailsArray = [UIImageView]()
+        // reset
+        cleanupThumbs()
+    
         self.itemsGroup = group
         buttonsView.setItemsGroup(group)
         
@@ -100,6 +102,13 @@ class ItemsGroupCell: UITableViewCell {
             thumb.backgroundColor = UIColor.darkGrayColor()
             thumbnailsArray.append(thumb)
             thumbnailsContainer.addSubview(thumb)
+        }
+    }
+    
+    func cleanupThumbs() {
+        thumbnailsArray = [UIImageView]()
+        for thumb in thumbnailsContainer.subviews {
+            thumb.removeFromSuperview()
         }
     }
 }
