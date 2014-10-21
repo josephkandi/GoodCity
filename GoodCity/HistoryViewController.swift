@@ -10,7 +10,7 @@ import UIKit
 
 protocol ItemsActionDelegate {
     func viewDropoffLocations()
-    func schedulePickup()
+    func schedulePickup(donationGroup: DonationItemsAggregator.DonationGroup)
 }
 
 class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ItemsActionDelegate {
@@ -114,11 +114,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         })
     }
     
-    func schedulePickup() {
+    func schedulePickup(donationGroup: DonationItemsAggregator.DonationGroup) {
         let scheduleViewController = SchedulePickupViewController(nibName: "SchedulePickupViewController", bundle: nil)
+        scheduleViewController.itemsGroup = donationGroup
         self.navigationController?.presentViewController(scheduleViewController, animated: true, completion: { () -> Void in
             println("launched the schedule view controller")
-
         })
     }
     

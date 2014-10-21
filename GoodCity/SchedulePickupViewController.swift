@@ -26,6 +26,7 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     var calendarView: MDCalendar?
     var days = NSSet()
     var slots: [PickupScheduleSlot]?
+    var itemsGroup: DonationItemsAggregator.DonationGroup?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -144,5 +145,6 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     // Pick Slot Delegate methods
     func selectSlot(date: NSDate, hour: Int) {
         println("Selecting slot for: \(date) at \(hour) hour")
+        println("For items group: \(itemsGroup)")
     }
 }

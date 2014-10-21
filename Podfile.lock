@@ -45,4 +45,4 @@ SPEC CHECKSUMS:
   Parse: fc9ceb6edbc6bb6a1a1f3c33f0db3293a6894f94
   ParseFacebookUtils: 15b04623e6bf4bbea5d60460caff98943ad7351e
 
-COCOAPODS: 0.34.2
+COCOAPODS: 0.34.4

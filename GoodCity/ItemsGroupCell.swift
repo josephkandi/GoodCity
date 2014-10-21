@@ -85,6 +85,7 @@ class ItemsGroupCell: UITableViewCell {
         
         thumbnailsArray = [UIImageView]()
         self.itemsGroup = group
+        buttonsView.setItemsGroup(group)
         
         for item in self.itemsGroup!.sortedDonationItems {
             let thumb = UIImageView()

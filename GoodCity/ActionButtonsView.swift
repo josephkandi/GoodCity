@@ -14,6 +14,7 @@ class ActionButtonsView: UIView {
     private var delegate: ItemsActionDelegate?
     private var button1: RoundedButton!
     private var button2: RoundedButton!
+    private var itemsGroup: DonationItemsAggregator.DonationGroup?
     
     convenience init(frame: CGRect, itemsState: ItemState, delegate: ItemsActionDelegate) {
         self.init(frame: frame)
@@ -80,10 +81,11 @@ class ActionButtonsView: UIView {
     func setDelegate(delegate: ItemsActionDelegate) {
         self.delegate = delegate
     }
-    
+    func setItemsGroup(itemsGroup: DonationItemsAggregator.DonationGroup) {
+        self.itemsGroup = itemsGroup
+    }
     func onTapSchedulePickup() {
-        self.delegate?.schedulePickup()
-        
+        self.delegate?.schedulePickup(itemsGroup!)
     }
     func onTapScheduleEdit() {
         

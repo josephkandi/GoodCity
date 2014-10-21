@@ -86,7 +86,8 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func updateCount() {
-        self.collectionHeaderLabel.text = "PENDING REVIEW (" + String(self.pendingItems.count) + ")"
+        let count = self.pendingItems.count > 0 ? String(self.pendingItems.count) : ""
+        self.collectionHeaderLabel.text = "PENDING REVIEW (" + count + ")"
         self.cameraViewDelegate?.updateItemsCount(String(self.pendingItems.count))
     }
     //Delegate functions
