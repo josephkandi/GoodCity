@@ -75,7 +75,7 @@ class SelectableButton: UIButton {
     func formatTitle(text: String, color: UIColor) -> NSMutableAttributedString {
         let attributedTitle = NSMutableAttributedString(string: text)
         let range = NSMakeRange(0, attributedTitle.length)
-        attributedTitle.addAttribute(NSFontAttributeName, value: FONT_15, range: range)
+        attributedTitle.addAttribute(NSFontAttributeName, value: FONT_15!, range: range)
         attributedTitle.addAttribute(NSForegroundColorAttributeName, value: color, range: range)
         return attributedTitle
     }

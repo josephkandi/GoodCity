@@ -29,8 +29,8 @@ class DonationItemsAggregator {
         // Sort results
         sortedSections = sectionsByState.values.array
         sortedSections.sort { (item1, item2) -> Bool in
-            let itemState1 = ItemState.fromRaw(item1.name)
-            let itemState2 = ItemState.fromRaw(item2.name)
+            let itemState1 = ItemState(rawValue: item1.name)
+            let itemState2 = ItemState(rawValue: item2.name)
 
             return itemState1!.getSortValue() > itemState2!.getSortValue()
         }

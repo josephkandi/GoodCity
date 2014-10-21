@@ -20,7 +20,7 @@ extension UIViewController {
     }
     
     func styleNavBar(navBar: UINavigationBar) {
-        let titleSytle: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: FONT_BOLD_18]
+        let titleSytle = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: FONT_BOLD_18!]
         navBar.titleTextAttributes = titleSytle
         navBar.barTintColor = NAV_BAR_COLOR
         navBar.translucent = false

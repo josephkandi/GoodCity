@@ -59,7 +59,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         let cell = historyTableView.dequeueReusableCellWithIdentifier("itemsGroupCell") as ItemsGroupCell
         cell.setDelegate(self)
         cell.setItemsGroup(item)
-        cell.setItemsState(ItemState.fromRaw(sortedSection.name)!)
+        cell.setItemsState(ItemState(rawValue: sortedSection.name)!)
         return cell
     }
     
@@ -84,7 +84,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         let sortedSection = itemGroups!.sortedSections[indexPath.section]
-        let state = ItemState.fromRaw(sortedSection.name)!
+        let state = ItemState(rawValue: sortedSection.name)!
         let numberOfItems = sortedSection.sortedDonationGroups[indexPath.row].sortedDonationItems.count
     
         var height: CGFloat = 78

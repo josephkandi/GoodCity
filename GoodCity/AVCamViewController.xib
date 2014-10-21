@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AVCamViewController">
@@ -28,26 +28,26 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7oM-E2-aJp" userLabel="cart">
-                            <rect key="frame" x="40" y="535" width="30" height="30"/>
+                            <rect key="frame" x="44" y="485" width="39" height="39"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="GIa-CM-Rj2"/>
-                                <constraint firstAttribute="height" constant="30" id="IKn-JZ-CYZ"/>
+                                <constraint firstAttribute="width" constant="39" id="GIa-CM-Rj2"/>
+                                <constraint firstAttribute="height" constant="39" id="IKn-JZ-CYZ"/>
                             </constraints>
                             <state key="normal" image="camera_cart">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oj-BE-81o">
-                            <rect key="frame" x="51" y="541" width="9" height="20"/>
+                            <rect key="frame" x="59" y="495" width="9" height="20"/>
                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEK-RB-fEu" userLabel="history">
-                            <rect key="frame" x="530" y="535" width="30" height="30"/>
+                            <rect key="frame" x="517" y="485" width="39" height="39"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="ac2-PZ-GBz"/>
-                                <constraint firstAttribute="height" constant="30" id="dEf-eO-c6I"/>
+                                <constraint firstAttribute="width" constant="39" id="ac2-PZ-GBz"/>
+                                <constraint firstAttribute="height" constant="39" id="dEf-eO-c6I"/>
                             </constraints>
                             <state key="normal" image="camer_history">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -60,10 +60,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TP0-S8-Y6B" userLabel="capture">
-                            <rect key="frame" x="270" y="520" width="60" height="60"/>
+                            <rect key="frame" x="264" y="468" width="72" height="72"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="60" id="1iJ-ce-K8c"/>
-                                <constraint firstAttribute="width" constant="60" id="KfR-vH-WiG"/>
+                                <constraint firstAttribute="height" constant="72" id="1iJ-ce-K8c"/>
+                                <constraint firstAttribute="width" constant="72" id="KfR-vH-WiG"/>
                             </constraints>
                             <state key="normal" image="camera_capture"/>
                             <connections>
@@ -74,13 +74,13 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="TP0-S8-Y6B" secondAttribute="bottom" constant="20" id="03m-Br-n6T"/>
+                        <constraint firstAttribute="bottom" secondItem="TP0-S8-Y6B" secondAttribute="bottom" constant="60" id="03m-Br-n6T"/>
                         <constraint firstItem="tkX-FI-7qJ" firstAttribute="top" secondItem="bCF-wS-uiG" secondAttribute="bottom" id="2iC-xB-RPa"/>
                         <constraint firstItem="bCF-wS-uiG" firstAttribute="top" secondItem="DeA-bG-p2p" secondAttribute="top" constant="50" id="4oa-y7-sUU"/>
-                        <constraint firstAttribute="trailing" secondItem="eEK-RB-fEu" secondAttribute="trailing" constant="40" id="5kB-MH-Xgo"/>
-                        <constraint firstItem="7oM-E2-aJp" firstAttribute="leading" secondItem="DeA-bG-p2p" secondAttribute="leading" constant="40" id="A5A-1W-UCV"/>
+                        <constraint firstAttribute="trailing" secondItem="eEK-RB-fEu" secondAttribute="trailing" constant="44" id="5kB-MH-Xgo"/>
+                        <constraint firstItem="7oM-E2-aJp" firstAttribute="leading" secondItem="DeA-bG-p2p" secondAttribute="leading" constant="44" id="A5A-1W-UCV"/>
                         <constraint firstItem="tkX-FI-7qJ" firstAttribute="leading" secondItem="DeA-bG-p2p" secondAttribute="leading" id="DI0-06-kJK"/>
-                        <constraint firstItem="7oM-E2-aJp" firstAttribute="centerY" secondItem="9oj-BE-81o" secondAttribute="centerY" constant="-0.5" id="FVh-Zd-jdx"/>
+                        <constraint firstItem="7oM-E2-aJp" firstAttribute="centerY" secondItem="9oj-BE-81o" secondAttribute="centerY" id="FVh-Zd-jdx"/>
                         <constraint firstItem="tkX-FI-7qJ" firstAttribute="top" secondItem="DeA-bG-p2p" secondAttribute="top" id="TmT-pS-HlW"/>
                         <constraint firstAttribute="centerX" secondItem="bCF-wS-uiG" secondAttribute="centerX" id="gYG-jk-6yy"/>
                         <constraint firstItem="TP0-S8-Y6B" firstAttribute="centerX" secondItem="DeA-bG-p2p" secondAttribute="centerX" id="ifV-Kx-Jt5"/>
@@ -136,9 +136,9 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="camer_history" width="30" height="30"/>
-        <image name="camera_capture" width="90" height="90"/>
-        <image name="camera_cart" width="90" height="90"/>
+        <image name="camer_history" width="38" height="38"/>
+        <image name="camera_capture" width="73" height="73"/>
+        <image name="camera_cart" width="38" height="38"/>
         <image name="camera_gradient" width="320" height="200"/>
     </resources>
 </document>

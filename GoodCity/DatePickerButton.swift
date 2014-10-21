@@ -44,7 +44,7 @@ class DatePickerButton: UIButton {
         self.contentEdgeInsets = UIEdgeInsetsMake(0, BUTTON_INSET, 0, 0)
         
         // setup the dropdown icon
-        dropdownIcon = UIImageView(image: UIImage(named: "schedule_dropdown").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate))
+        dropdownIcon = UIImageView(image: UIImage(named: "schedule_dropdown")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate))
         dropdownIcon.tintColor = UIColor.lightGrayColor()
         dropdownIcon.contentMode = UIViewContentMode.ScaleAspectFill
         self.addSubview(dropdownIcon)
@@ -68,7 +68,7 @@ class DatePickerButton: UIButton {
     func formatTitle(text: String) -> NSMutableAttributedString {
         let attributedTitle = NSMutableAttributedString(string: text)
         let range = NSMakeRange(0, attributedTitle.length)
-        attributedTitle.addAttribute(NSFontAttributeName, value: FONT_15, range: range)
+        attributedTitle.addAttribute(NSFontAttributeName, value: FONT_15!, range: range)
         attributedTitle.addAttribute(NSForegroundColorAttributeName, value: UIColor.darkTextColor(), range: range)
         return attributedTitle
     }

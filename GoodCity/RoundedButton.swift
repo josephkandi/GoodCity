@@ -30,7 +30,7 @@ class RoundedButton: UIButton {
         if (self.titleLabel!.text != nil) {
             let attributedTitle = NSMutableAttributedString(string: self.titleLabel!.text!)
             let range = NSMakeRange(0, attributedTitle.length)
-            attributedTitle.addAttribute(NSFontAttributeName, value: FONT_MEDIUM_14, range: range)
+            attributedTitle.addAttribute(NSFontAttributeName, value: FONT_MEDIUM_14!, range: range)
             attributedTitle.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor(), range: range)
             self.setAttributedTitle(attributedTitle, forState: .Normal)
         }
@@ -38,7 +38,7 @@ class RoundedButton: UIButton {
     func setButtonTitle(text: String) {
         let attributedTitle = NSMutableAttributedString(string: text)
         let range = NSMakeRange(0, attributedTitle.length)
-        attributedTitle.addAttribute(NSFontAttributeName, value: FONT_MEDIUM_14, range: range)
+        attributedTitle.addAttribute(NSFontAttributeName, value: FONT_MEDIUM_14!, range: range)
         attributedTitle.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor(), range: range)
         self.setAttributedTitle(attributedTitle, forState: .Normal)
     }

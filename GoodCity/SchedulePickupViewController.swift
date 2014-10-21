@@ -32,7 +32,7 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
         super.viewDidLoad()
 
         self.view.backgroundColor = LIGHT_GRAY_BG
-        closeButton.setImage(UIImage(named: "edit_close").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: .Normal)
+        closeButton.setImage(UIImage(named: "edit_close")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: .Normal)
         closeButton.tintColor = tintColor
         
         slotPickerView.delegate = self
@@ -98,7 +98,7 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
         calendarView.highlightColor = tintColor
         calendarView.indicatorColor = tintColor
         
-        let startDate = NSDate.date()
+        let startDate = NSDate()
         let endDate = startDate.dateByAddingMonths(12*25)
         
         calendarView.startDate = startDate

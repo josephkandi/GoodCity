@@ -33,8 +33,8 @@ import Foundation
     }
 
     class func newItem(description: NSString, photo: UIImage, condition: NSString) -> DonationItem {
-        var donationItem = DonationItem.object()
-        donationItem.state = ItemState.Pending.toRaw()
+        var donationItem = DonationItem()
+        donationItem.state = ItemState.Pending.rawValue
         donationItem.condition = condition
         donationItem.itemDescription = description
         donationItem.user = GoodCityUser.currentUser()
@@ -58,7 +58,7 @@ import Foundation
     }
 
     func updateState(newState: ItemState) {
-        self.state = newState.toRaw()
+        self.state = newState.rawValue
         // Might want to add a completion handler here
         self.saveInBackgroundWithTarget(nil, selector: nil)
     }
@@ -70,7 +70,7 @@ import Foundation
         var query = DonationItem.query()
 
         if states != nil {
-            let stateStrings = states?.map { $0.toRaw() }
+            let stateStrings = states?.map { $0.rawValue }
             println("stateStrings: \(stateStrings)")
             query.whereKey("state", containedIn: stateStrings)
         }

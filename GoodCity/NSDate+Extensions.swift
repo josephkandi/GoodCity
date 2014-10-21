@@ -39,7 +39,7 @@ extension NSDate {
         // More than 7 days ago
         let calendar = NSCalendar.currentCalendar()
         
-        let now = NSDate.date()
+        let now = NSDate()
         let componentFlags = NSCalendarUnit.YearCalendarUnit
         
         let nowComponents = calendar.components(componentFlags, fromDate: now)
