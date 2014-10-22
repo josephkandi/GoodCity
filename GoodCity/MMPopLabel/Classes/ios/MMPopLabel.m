@@ -212,7 +212,7 @@ typedef enum : NSUInteger {
     NSLog(@"capture button center point %f %f", view.center.x, view.center.y);
 
     NSInteger duration = 1.0f;
-    NSInteger delay = 1.0f;
+    NSInteger delay = 0.0f;
     
     self.alpha = 0.0f;
     self.hidden = NO;
