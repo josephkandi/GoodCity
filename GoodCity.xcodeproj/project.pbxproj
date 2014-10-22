@@ -40,13 +40,14 @@
 		3A1506A019EBABCA0020DF10 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A15069F19EBABCA0020DF10 /* MapKit.framework */; };
 		3A1506A219EBAC910020DF10 /* DropoffAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1506A119EBAC910020DF10 /* DropoffAnnotation.swift */; };
 		3A1506A419EBB1940020DF10 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1506A319EBB1940020DF10 /* CoreLocation.framework */; };
+		3A661F6619F769B800DEB7C1 /* MMPopLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A661F6119F769B800DEB7C1 /* MMPopLabel.m */; };
+		3A661F6719F769B800DEB7C1 /* MMLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A661F6219F769B800DEB7C1 /* MMLabel.m */; };
 		3A687C7419E9104F005351B0 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A687C7219E9104F005351B0 /* CartItemCell.swift */; };
 		3A76A00E19F4D05F0036A0EC /* DatePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A76A00D19F4D05F0036A0EC /* DatePickerButton.swift */; };
 		3A76A01019F4ECB90036A0EC /* SelectableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A76A00F19F4ECB90036A0EC /* SelectableButton.swift */; };
 		3A81925319F59AB5001F2EB5 /* SlotPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A81925219F59AB5001F2EB5 /* SlotPickerView.swift */; };
 		3A82271B19F2485900007C6C /* EditItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A82271A19F2485900007C6C /* EditItemView.xib */; };
 		3A8D35FF19F3683400CE3B73 /* CartItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8D35FE19F3683400CE3B73 /* CartItemCell.xib */; };
-		3A8D360119F371F900CE3B73 /* ExpandableDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D360019F371F900CE3B73 /* ExpandableDatePickerView.swift */; };
 		3A9D64FA19F21320008A64F2 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9D64F919F21320008A64F2 /* UIViewController+Extensions.swift */; };
 		3ABF2C9219ECF508005EF442 /* ActionButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */; };
 		3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */; };
@@ -109,6 +110,11 @@
 		3A15069F19EBABCA0020DF10 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3A1506A119EBAC910020DF10 /* DropoffAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropoffAnnotation.swift; sourceTree = "<group>"; };
 		3A1506A319EBB1940020DF10 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3A661F6119F769B800DEB7C1 /* MMPopLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPopLabel.m; path = MMPopLabel/Classes/ios/MMPopLabel.m; sourceTree = "<group>"; };
+		3A661F6219F769B800DEB7C1 /* MMLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMLabel.m; path = MMPopLabel/Classes/ios/MMLabel.m; sourceTree = "<group>"; };
+		3A661F6319F769B800DEB7C1 /* MMLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMLabel.h; path = MMPopLabel/Classes/ios/MMLabel.h; sourceTree = "<group>"; };
+		3A661F6419F769B800DEB7C1 /* MMPopLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPopLabel.h; path = MMPopLabel/Classes/ios/MMPopLabel.h; sourceTree = "<group>"; };
+		3A661F6519F769B800DEB7C1 /* MMPopLabelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPopLabelDelegate.h; path = MMPopLabel/Classes/ios/MMPopLabelDelegate.h; sourceTree = "<group>"; };
 		3A687C7219E9104F005351B0 /* CartItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
 		3A76A00D19F4D05F0036A0EC /* DatePickerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerButton.swift; sourceTree = "<group>"; };
 		3A76A00F19F4ECB90036A0EC /* SelectableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableButton.swift; sourceTree = "<group>"; };
@@ -116,7 +122,6 @@
 		3A82271A19F2485900007C6C /* EditItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditItemView.xib; sourceTree = "<group>"; };
 		3A8D35F519F3587700CE3B73 /* CartViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartViewDelegate.h; sourceTree = "<group>"; };
 		3A8D35FE19F3683400CE3B73 /* CartItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartItemCell.xib; sourceTree = "<group>"; };
-		3A8D360019F371F900CE3B73 /* ExpandableDatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandableDatePickerView.swift; sourceTree = "<group>"; };
 		3A9D64F919F21320008A64F2 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButtonsView.swift; sourceTree = "<group>"; };
 		3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +185,7 @@
 				0A0B08F119E229B60059A82C /* Models */,
 				0A0B08F019E229AF0059A82C /* Networking */,
 				0A0B08F219E229BC0059A82C /* Views */,
+				3A661F6019F768F900DEB7C1 /* Library */,
 				0A0B08EC19E2289B0059A82C /* GoodCity-Bridging-Header.h */,
 				0A0B08D319E2283F0059A82C /* Images.xcassets */,
 				0A0B08D519E2283F0059A82C /* LaunchScreen.xib */,
@@ -245,7 +251,6 @@
 				3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */,
 				0AFB6E2219F2432200E89AFC /* EditItemView.swift */,
 				3A82271A19F2485900007C6C /* EditItemView.xib */,
-				3A8D360019F371F900CE3B73 /* ExpandableDatePickerView.swift */,
 				3A15068F19EB71AA0020DF10 /* SectionHeaderView.swift */,
 				3A81925219F59AB5001F2EB5 /* SlotPickerView.swift */,
 			);
@@ -303,6 +308,18 @@
 				AE0B27FD39151ABE14D2A503 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		3A661F6019F768F900DEB7C1 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				3A661F6119F769B800DEB7C1 /* MMPopLabel.m */,
+				3A661F6219F769B800DEB7C1 /* MMLabel.m */,
+				3A661F6319F769B800DEB7C1 /* MMLabel.h */,
+				3A661F6419F769B800DEB7C1 /* MMPopLabel.h */,
+				3A661F6519F769B800DEB7C1 /* MMPopLabelDelegate.h */,
+			);
+			name = Library;
 			sourceTree = "<group>";
 		};
 		3A81925419F5A5D9001F2EB5 /* Buttons */ = {
@@ -507,13 +524,14 @@
 				0A674E0F19ED0434001A5664 /* AVCamPreviewView.m in Sources */,
 				3A15069619EB86B00020DF10 /* Constants.swift in Sources */,
 				3AE42EE919E8FB8300D7A6F5 /* CartViewController.swift in Sources */,
+				3A661F6619F769B800DEB7C1 /* MMPopLabel.m in Sources */,
 				0AC31AFE19EA2F6800BB815F /* PickupScheduleSlot.swift in Sources */,
 				0A0B08CD19E2283F0059A82C /* AppDelegate.swift in Sources */,
-				3A8D360119F371F900CE3B73 /* ExpandableDatePickerView.swift in Sources */,
 				0A674E0E19ED0434001A5664 /* AVCamViewController.m in Sources */,
 				0AC31B0019EA33CB00BB815F /* DonationItem.swift in Sources */,
 				0A14FFBA19E2354000D11CE2 /* SchedulePickupViewController.swift in Sources */,
 				0AC31B0219EA3F1F00BB815F /* ItemState.swift in Sources */,
+				3A661F6719F769B800DEB7C1 /* MMLabel.m in Sources */,
 				3A9D64FA19F21320008A64F2 /* UIViewController+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

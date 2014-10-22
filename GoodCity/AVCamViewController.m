@@ -52,12 +52,15 @@
 
 #import "AVCamPreviewView.h"
 #import "GoodCity-Swift.h"
+#import "MMPopLabelDelegate.h"
+#import "MMPopLabel.h"
+
 
 static void * CapturingStillImageContext = &CapturingStillImageContext;
 static void * RecordingContext = &RecordingContext;
 static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDeviceAuthorizedContext;
 
-@interface AVCamViewController () <AVCaptureFileOutputRecordingDelegate>
+@interface AVCamViewController () <AVCaptureFileOutputRecordingDelegate, MMPopLabelDelegate>
 
 // For use in the storyboards.
 @property (nonatomic, weak) IBOutlet AVCamPreviewView *previewView;
@@ -65,6 +68,10 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 @property (nonatomic, weak) IBOutlet UIButton *snapButton;
 @property (weak, nonatomic) EditItemView *editItemView;
 @property (weak, nonatomic) IBOutlet UILabel *itemsInCart;
+
+// Popup tooltip label
+@property (nonatomic, retain) MMPopLabel *tooltipLabel;
+
 
 - (IBAction)snapStillImage:(id)sender;
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer;
@@ -137,12 +144,46 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     }
 }
 
+- (void)showCameraTooltip {
+    
+    [[MMPopLabel appearance] setLabelColor: [UIColor whiteColor]];
+    [[MMPopLabel appearance] setLabelTextColor:[UIColor blackColor]];
+    [[MMPopLabel appearance] setLabelTextHighlightColor:[UIColor greenColor]];
+    [[MMPopLabel appearance] setLabelFont:[UIFont fontWithName:@"Avenir Next" size:14.0f]];
+    [[MMPopLabel appearance] setButtonFont:[UIFont fontWithName:@"AvenirNext-Medium" size:14.0f]];
+    
+    _tooltipLabel = [MMPopLabel popLabelWithText:
+              @"Take a photo of what you \nwant to donate"];
+    
+    _tooltipLabel.delegate = self;
+    
+    /*UIButton *skipButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    [skipButton setTitle:NSLocalizedString(@"Skip Tutorial", @"Skip Tutorial Button") forState:UIControlStateNormal];
+    [_tooltipLabel addButton:skipButton];
+    
+    UIButton *okButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    [okButton setTitle:NSLocalizedString(@"OK, Got It!", @"Dismiss Button") forState:UIControlStateNormal];
+    [_tooltipLabel addButton:okButton];*/
+    
+    [self.view addSubview:_tooltipLabel];
+
+}
+
+- (void)dismissedPopLabel:(MMPopLabel *)popLabel
+{
+   // NSLog(@"disappeared");
+}
+
+- (void)didPressButtonForPopLabel:(MMPopLabel *)popLabel atIndex:(NSInteger)index
+{
+    //NSLog(@"pressed %i", index);
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     _itemsInCart.text = @"";
-    //_itemsInCart.text = [NSString stringWithFormat:@"%i", [self.cartViewDelegate getItemsCount]];
 
     // Create the AVCaptureSession
     AVCaptureSession *session = [[AVCaptureSession alloc] init];
@@ -154,6 +195,9 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     // Check for device authorization
     [self checkDeviceAuthorizationStatus];
 
+    // Pop up camera tooltip
+    [self showCameraTooltip];
+    
     // In general it is not safe to mutate an AVCaptureSession or any of its inputs, outputs, or connections from multiple threads at the same time.
     // Why not do all of this on the main queue?
     // -[AVCaptureSession startRunning] is a blocking call which can take a long time. We dispatch session setup to the sessionQueue so that the main queue isn't blocked (which keeps the UI responsive).
@@ -239,6 +283,13 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
         }]];
         [[self session] startRunning];
     });
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [_tooltipLabel popAtView:_snapButton];
+
+    NSLog(@"view did appear %f %f", _snapButton.center.x, _snapButton.center.y);
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated

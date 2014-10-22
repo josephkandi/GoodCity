@@ -21,12 +21,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DeA-bG-p2p" customClass="AVCamPreviewView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera_gradient" translatesAutoresizingMaskIntoConstraints="NO" id="tkX-FI-7qJ">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="200" id="frd-OW-upD"/>
-                            </constraints>
-                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7oM-E2-aJp" userLabel="cart">
                             <rect key="frame" x="44" y="485" width="39" height="39"/>
                             <constraints>
@@ -53,12 +47,6 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a photo of what you want to donate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCF-wS-uiG">
-                            <rect key="frame" x="169" y="50" width="262" height="20"/>
-                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
-                            <color key="textColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TP0-S8-Y6B" userLabel="capture">
                             <rect key="frame" x="264" y="468" width="72" height="72"/>
                             <constraints>
@@ -75,25 +63,14 @@
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="TP0-S8-Y6B" secondAttribute="bottom" constant="60" id="03m-Br-n6T"/>
-                        <constraint firstItem="tkX-FI-7qJ" firstAttribute="top" secondItem="bCF-wS-uiG" secondAttribute="bottom" id="2iC-xB-RPa"/>
-                        <constraint firstItem="bCF-wS-uiG" firstAttribute="top" secondItem="DeA-bG-p2p" secondAttribute="top" constant="50" id="4oa-y7-sUU"/>
                         <constraint firstAttribute="trailing" secondItem="eEK-RB-fEu" secondAttribute="trailing" constant="44" id="5kB-MH-Xgo"/>
                         <constraint firstItem="7oM-E2-aJp" firstAttribute="leading" secondItem="DeA-bG-p2p" secondAttribute="leading" constant="44" id="A5A-1W-UCV"/>
-                        <constraint firstItem="tkX-FI-7qJ" firstAttribute="leading" secondItem="DeA-bG-p2p" secondAttribute="leading" id="DI0-06-kJK"/>
                         <constraint firstItem="7oM-E2-aJp" firstAttribute="centerY" secondItem="9oj-BE-81o" secondAttribute="centerY" id="FVh-Zd-jdx"/>
-                        <constraint firstItem="tkX-FI-7qJ" firstAttribute="top" secondItem="DeA-bG-p2p" secondAttribute="top" id="TmT-pS-HlW"/>
-                        <constraint firstAttribute="centerX" secondItem="bCF-wS-uiG" secondAttribute="centerX" id="gYG-jk-6yy"/>
                         <constraint firstItem="TP0-S8-Y6B" firstAttribute="centerX" secondItem="DeA-bG-p2p" secondAttribute="centerX" id="ifV-Kx-Jt5"/>
                         <constraint firstItem="TP0-S8-Y6B" firstAttribute="centerY" secondItem="7oM-E2-aJp" secondAttribute="centerY" id="nL3-RP-Psq"/>
                         <constraint firstItem="TP0-S8-Y6B" firstAttribute="centerY" secondItem="eEK-RB-fEu" secondAttribute="centerY" id="v19-YI-CPq"/>
-                        <constraint firstAttribute="trailing" secondItem="tkX-FI-7qJ" secondAttribute="trailing" id="vp1-n7-msm"/>
                         <constraint firstItem="7oM-E2-aJp" firstAttribute="centerX" secondItem="9oj-BE-81o" secondAttribute="centerX" id="wwg-yr-1zi"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="2iC-xB-RPa"/>
-                        </mask>
-                    </variation>
                     <connections>
                         <outletCollection property="gestureRecognizers" destination="G0M-Ef-4sF" appends="YES" id="bTN-sE-ZgM"/>
                     </connections>
@@ -108,7 +85,6 @@
             </subviews>
             <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="4Fq-YA-GVl" firstAttribute="top" secondItem="bCF-wS-uiG" secondAttribute="bottom" constant="-70" id="0au-Zo-rHv"/>
                 <constraint firstItem="DeA-bG-p2p" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AF4-IN-slc"/>
                 <constraint firstAttribute="bottom" secondItem="DeA-bG-p2p" secondAttribute="bottom" id="BGY-cc-BYH"/>
                 <constraint firstAttribute="bottom" secondItem="4Fq-YA-GVl" secondAttribute="bottom" id="COe-7c-ZCl"/>
@@ -118,11 +94,6 @@
                 <constraint firstItem="4Fq-YA-GVl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Vmj-Rf-rkR"/>
                 <constraint firstAttribute="trailing" secondItem="4Fq-YA-GVl" secondAttribute="trailing" id="qf4-4n-b2G"/>
             </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="0au-Zo-rHv"/>
-                </mask>
-            </variation>
         </view>
         <tapGestureRecognizer id="G0M-Ef-4sF" userLabel="Preview Tap Gesture Recognizer">
             <connections>
@@ -139,6 +110,5 @@
         <image name="camer_history" width="38" height="38"/>
         <image name="camera_capture" width="73" height="73"/>
         <image name="camera_cart" width="38" height="38"/>
-        <image name="camera_gradient" width="320" height="200"/>
     </resources>
 </document>
