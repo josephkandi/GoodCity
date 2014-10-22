@@ -36,10 +36,10 @@ class EditItemView: UIView, UITextViewDelegate {
         descriptionText.resignFirstResponder()
     }
     
-    @IBAction func onTapClose(sender: UITapGestureRecognizer) {
+    @IBAction func onTapClose(sender: AnyObject) {
         delegate?.dismissEditItem()
     }
-
+    
     @IBAction func onTapSubmit(sender: AnyObject) {
         
         let newItem = DonationItem.newItem(descriptionText.text, photo: photo!, condition: conditionChooser.titleForSegmentAtIndex(conditionChooser.selectedSegmentIndex)!)
