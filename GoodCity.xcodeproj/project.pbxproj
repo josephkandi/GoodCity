@@ -48,6 +48,8 @@
 		3A81925319F59AB5001F2EB5 /* SlotPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A81925219F59AB5001F2EB5 /* SlotPickerView.swift */; };
 		3A82271B19F2485900007C6C /* EditItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A82271A19F2485900007C6C /* EditItemView.xib */; };
 		3A8D35FF19F3683400CE3B73 /* CartItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8D35FE19F3683400CE3B73 /* CartItemCell.xib */; };
+		3A93C0E719F77FB400EAF2D7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A93C0E619F77FB400EAF2D7 /* QuartzCore.framework */; };
+		3A93C0E919F7842E00EAF2D7 /* YASegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A93C0E819F7842E00EAF2D7 /* YASegmentedControl.swift */; };
 		3A9D64FA19F21320008A64F2 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9D64F919F21320008A64F2 /* UIViewController+Extensions.swift */; };
 		3ABF2C9219ECF508005EF442 /* ActionButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */; };
 		3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */; };
@@ -122,6 +124,8 @@
 		3A82271A19F2485900007C6C /* EditItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditItemView.xib; sourceTree = "<group>"; };
 		3A8D35F519F3587700CE3B73 /* CartViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartViewDelegate.h; sourceTree = "<group>"; };
 		3A8D35FE19F3683400CE3B73 /* CartItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartItemCell.xib; sourceTree = "<group>"; };
+		3A93C0E619F77FB400EAF2D7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3A93C0E819F7842E00EAF2D7 /* YASegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YASegmentedControl.swift; sourceTree = "<group>"; };
 		3A9D64F919F21320008A64F2 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButtonsView.swift; sourceTree = "<group>"; };
 		3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A93C0E719F77FB400EAF2D7 /* QuartzCore.framework in Frameworks */,
 				3A1506A419EBB1940020DF10 /* CoreLocation.framework in Frameworks */,
 				3A1506A019EBABCA0020DF10 /* MapKit.framework in Frameworks */,
 				F0A127534C434217A3BD30C5 /* libPods.a in Frameworks */,
@@ -253,6 +258,7 @@
 				3A82271A19F2485900007C6C /* EditItemView.xib */,
 				3A15068F19EB71AA0020DF10 /* SectionHeaderView.swift */,
 				3A81925219F59AB5001F2EB5 /* SlotPickerView.swift */,
+				3A93C0E819F7842E00EAF2D7 /* YASegmentedControl.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -346,6 +352,7 @@
 		9949D72350174EE69E60CF63 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A93C0E619F77FB400EAF2D7 /* QuartzCore.framework */,
 				3A1506A319EBB1940020DF10 /* CoreLocation.framework */,
 				3A15069F19EBABCA0020DF10 /* MapKit.framework */,
 				C88CD10F2CA444FF9DAA3D07 /* libPods.a */,
@@ -516,6 +523,7 @@
 				0AC31AFC19E9EDA300BB815F /* DropoffLocation.swift in Sources */,
 				3ABF2C9219ECF508005EF442 /* ActionButtonsView.swift in Sources */,
 				3A1506A219EBAC910020DF10 /* DropoffAnnotation.swift in Sources */,
+				3A93C0E919F7842E00EAF2D7 /* YASegmentedControl.swift in Sources */,
 				0A0B08F719E22AC30059A82C /* Int+Extensions.swift in Sources */,
 				0AFB6E2319F2432200E89AFC /* EditItemView.swift in Sources */,
 				3A76A00E19F4D05F0036A0EC /* DatePickerButton.swift in Sources */,

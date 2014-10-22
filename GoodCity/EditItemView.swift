@@ -11,27 +11,34 @@ import UIKit
 class EditItemView: UIView, UITextViewDelegate {
 
     @IBOutlet weak var descriptionText: UITextView!
-    @IBOutlet weak var submitButton: RoundedButton!
-    @IBOutlet weak var conditionChooser: UISegmentedControl!
+    @IBOutlet weak var line: UIView!
 
+    @IBOutlet weak var conditionChooser: YASegmentedControl!
+    
     var delegate: CameraViewDelegate?
     var photo: UIImage?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        println("hello from init frame")
-        let textViewFrame = CGRectMake(100, 100, 100, 100)
-        let textView = UITextView(frame: textViewFrame)
-
-        textView.backgroundColor = UIColor.clearColor()
-        textView.text = "HELLO there"
-        addSubview(textView)
     }
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
+    override func awakeFromNib() {
+        // Set up the text compose field
+        descriptionText.delegate = self
+
+        line.backgroundColor = UIColor(white: 0.1, alpha: 0.7)
+        descriptionText.textColor = offWhiteColor
+        descriptionText.alpha = 0.5
+        descriptionText.font = FONT_MEDIUM_14
+        descriptionText.textAlignment = .Center
+        descriptionText.text = "What is it? How many items are there?\nHow big is it?"
+    }
+    
+    
     @IBAction func onTap(sender: UITapGestureRecognizer) {
         descriptionText.resignFirstResponder()
     }
@@ -42,17 +49,12 @@ class EditItemView: UIView, UITextViewDelegate {
     
     @IBAction func onTapSubmit(sender: AnyObject) {
         
-        let newItem = DonationItem.newItem(descriptionText.text, photo: photo!, condition: conditionChooser.titleForSegmentAtIndex(conditionChooser.selectedSegmentIndex)!)
+        let newItem = DonationItem.newItem(descriptionText.text, photo: photo!, condition: conditionChooser.titleForSegmentAtIndex(conditionChooser.selectedSegmentIndex))
         
         delegate?.submitItem(newItem)
     }
     
     override func layoutSubviews() {
-        // Set up the text compose field
-        descriptionText.delegate = self
-        descriptionText.textColor = UIColor.lightTextColor()
-
-        submitButton.setButtonColor(tintColor)
     }
     
     func textViewDidBeginEditing(textView: UITextView) {

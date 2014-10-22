@@ -16,6 +16,7 @@ let SECTION_HEADER_HEIGHT = CGFloat(36)
 
 let FONT_14 = UIFont(name: "Avenir Next", size: 14.0)
 let FONT_15 = UIFont(name: "Avenir Next", size: 15.0)
+let FONT_18 = UIFont(name: "Avenir Next", size: 18.0)
 let FONT_MEDIUM_12 = UIFont(name: "AvenirNext-Medium", size: 12.0)
 let FONT_MEDIUM_14 = UIFont(name: "AvenirNext-Medium", size: 14.0)
 let FONT_MEDIUM_20 = UIFont(name: "AvenirNext-Medium", size: 20.0)
@@ -31,6 +32,8 @@ let BLUE_TEAL = UIColorFromRGB(0x03b7e7)
 let NAV_BAR_COLOR = BLUE_TEAL
 let HEADER_COLOR = UIColor(white: 0.25, alpha: 0.9)
 let tintColor = BLUE_TEAL
+let offWhiteColor = UIColorFromRGB(0xf5f5f5)
+
 
 // Date Formatter
 private var friendlyDateFormatter: NSDateFormatter?
