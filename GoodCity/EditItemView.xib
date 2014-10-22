@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -7,60 +7,41 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="EditItemView" customModule="GoodCity" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QaY-8u-9uI">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="200" id="5J5-ms-jBy"/>
-                    </constraints>
-                </imageView>
-                <visualEffectView opaque="NO" alpha="0.70000000000000018" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HHT-PI-6Qc">
-                    <rect key="frame" x="0.0" y="410" width="600" height="190"/>
+                <visualEffectView opaque="NO" alpha="0.70000000000000018" contentMode="scaleToFill" id="HHT-PI-6Qc">
+                    <rect key="frame" x="0.0" y="410" width="320" height="190"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7pZ-nT-Bb6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="190"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="190"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What is it? How many items? What's the size?" id="RWV-Wd-g07">
+                                <rect key="frame" x="30" y="0.0" width="260" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                            </textView>
+                            <view contentMode="scaleToFill" id="Elp-QL-9vi" userLabel="line">
+                                <rect key="frame" x="30" y="59" width="260" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="DdD-Yf-uBX" customClass="YASegmentedControl" customModule="GoodCity" customModuleProvider="target">
+                                <rect key="frame" x="20" y="76" width="280" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                     </view>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="200" id="n1r-5P-PVu"/>
-                    </constraints>
                     <blurEffect style="dark"/>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="n1r-5P-PVu"/>
-                        </mask>
-                    </variation>
                 </visualEffectView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GQW-1p-c3f" userLabel="white gradient">
-                    <rect key="frame" x="0.0" y="360" width="600" height="240"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="240" id="wuL-Iw-ZnO"/>
-                    </constraints>
-                </imageView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What is it? How many items? What's the size?" translatesAutoresizingMaskIntoConstraints="NO" id="RWV-Wd-g07">
-                    <rect key="frame" x="30" y="440" width="540" height="60"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="60" id="jYw-Vk-dTq"/>
-                    </constraints>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
-                </textView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Elp-QL-9vi" userLabel="line">
-                    <rect key="frame" x="30" y="498" width="540" height="2"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="2" id="iNr-sc-TW3"/>
-                    </constraints>
-                </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8R-bB-q8B" userLabel="close_button">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="c8R-bB-q8B" userLabel="close_button">
                     <rect key="frame" x="20" y="20" width="50" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="50" id="Au0-Hg-oiM"/>
-                        <constraint firstAttribute="height" constant="50" id="UiZ-pk-x2T"/>
-                    </constraints>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="edit_close">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -68,71 +49,29 @@
                         <action selector="onTapClose:" destination="iN0-l3-epB" eventType="touchUpInside" id="AnL-xc-B0T"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0KV-Ke-Bem" userLabel="submit_button">
-                    <rect key="frame" x="530" y="20" width="50" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="AAw-tn-vMa"/>
-                        <constraint firstAttribute="width" constant="50" id="joe-Ec-d4L"/>
-                    </constraints>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0KV-Ke-Bem" userLabel="submit_button">
+                    <rect key="frame" x="250" y="20" width="50" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="edit_submit">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="onTapSubmit:" destination="iN0-l3-epB" eventType="touchUpInside" id="Kdl-Js-PCh"/>
+                    </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DdD-Yf-uBX" customClass="YASegmentedControl" customModule="GoodCity" customModuleProvider="target">
-                    <rect key="frame" x="20" y="520" width="560" height="50"/>
-                    <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="mcE-QH-owa"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <gestureRecognizers/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="DdD-Yf-uBX" secondAttribute="trailing" constant="20" id="8Z0-hr-ZqR"/>
-                <constraint firstItem="0KV-Ke-Bem" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="8bu-3G-u0B"/>
-                <constraint firstAttribute="trailing" secondItem="Elp-QL-9vi" secondAttribute="trailing" constant="20" symbolic="YES" id="9tM-Go-b9m"/>
-                <constraint firstItem="Elp-QL-9vi" firstAttribute="top" secondItem="RWV-Wd-g07" secondAttribute="bottom" constant="-2" id="BNM-Kc-AYk"/>
-                <constraint firstAttribute="trailing" secondItem="HHT-PI-6Qc" secondAttribute="trailing" id="G6T-0H-YOw"/>
-                <constraint firstItem="GQW-1p-c3f" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="GSg-9d-ZKs"/>
-                <constraint firstAttribute="trailing" secondItem="QaY-8u-9uI" secondAttribute="trailing" id="GUc-K4-YrY"/>
-                <constraint firstItem="DdD-Yf-uBX" firstAttribute="top" secondItem="GQW-1p-c3f" secondAttribute="bottom" id="HTO-x8-Pvg"/>
-                <constraint firstItem="HHT-PI-6Qc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="HjN-Ap-EcO"/>
-                <constraint firstItem="QaY-8u-9uI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ifo-Mg-vUU"/>
-                <constraint firstItem="Elp-QL-9vi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Ila-IU-pP0"/>
-                <constraint firstItem="DdD-Yf-uBX" firstAttribute="top" secondItem="RWV-Wd-g07" secondAttribute="bottom" constant="20" id="OqG-Sg-LQ1"/>
-                <constraint firstItem="RWV-Wd-g07" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="RWK-6W-68o"/>
-                <constraint firstItem="RWV-Wd-g07" firstAttribute="top" secondItem="QaY-8u-9uI" secondAttribute="bottom" constant="50" id="Tp4-gO-vbN"/>
-                <constraint firstAttribute="bottom" secondItem="GQW-1p-c3f" secondAttribute="bottom" id="V3d-Du-LF4"/>
-                <constraint firstItem="DdD-Yf-uBX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="ZW7-z9-w61"/>
-                <constraint firstAttribute="trailing" secondItem="GQW-1p-c3f" secondAttribute="trailing" id="cGZ-aP-FAD"/>
-                <constraint firstItem="c8R-bB-q8B" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="cct-qe-DzU"/>
-                <constraint firstItem="c8R-bB-q8B" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="hcK-yH-2su"/>
-                <constraint firstItem="Elp-QL-9vi" firstAttribute="width" secondItem="RWV-Wd-g07" secondAttribute="width" id="kJU-m0-dWW"/>
-                <constraint firstAttribute="bottom" secondItem="DdD-Yf-uBX" secondAttribute="bottom" constant="30" id="n4m-2C-vBz"/>
-                <constraint firstAttribute="trailing" secondItem="0KV-Ke-Bem" secondAttribute="trailing" constant="20" id="n5l-Zy-vmP"/>
-                <constraint firstItem="QaY-8u-9uI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="noe-Xh-CFC"/>
-                <constraint firstItem="Elp-QL-9vi" firstAttribute="centerX" secondItem="RWV-Wd-g07" secondAttribute="centerX" id="p9N-Vp-krE"/>
-                <constraint firstAttribute="trailing" secondItem="RWV-Wd-g07" secondAttribute="trailing" constant="30" id="sMf-k3-vQE"/>
-                <constraint firstItem="RWV-Wd-g07" firstAttribute="top" secondItem="HHT-PI-6Qc" secondAttribute="bottom" id="w4u-a5-Kc7"/>
-                <constraint firstAttribute="bottom" secondItem="HHT-PI-6Qc" secondAttribute="bottom" id="y9g-Ed-CtS"/>
-                <constraint firstItem="RWV-Wd-g07" firstAttribute="top" secondItem="HHT-PI-6Qc" secondAttribute="top" constant="30" id="z8H-4O-grc"/>
-            </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="Tp4-gO-vbN"/>
-                    <exclude reference="w4u-a5-Kc7"/>
-                    <exclude reference="9tM-Go-b9m"/>
-                    <exclude reference="Ila-IU-pP0"/>
-                    <exclude reference="HTO-x8-Pvg"/>
-                </mask>
-            </variation>
             <connections>
+                <outlet property="blurView" destination="HHT-PI-6Qc" id="8vk-PI-17G"/>
+                <outlet property="closeButton" destination="c8R-bB-q8B" id="hPI-ZK-gXy"/>
                 <outlet property="conditionChooser" destination="DdD-Yf-uBX" id="Z7g-lz-BE5"/>
                 <outlet property="descriptionText" destination="RWV-Wd-g07" id="5hd-MI-62L"/>
                 <outlet property="line" destination="Elp-QL-9vi" id="GR2-Y0-LDj"/>
+                <outlet property="submitButton" destination="0KV-Ke-Bem" id="NOb-6G-zVu"/>
                 <outletCollection property="gestureRecognizers" destination="nMp-Mp-H9E" appends="YES" id="JUO-8u-XG6"/>
             </connections>
+            <point key="canvasLocation" x="376" y="300"/>
         </view>
         <tapGestureRecognizer id="nMp-Mp-H9E" userLabel="tap anywhere in view">
             <connections>
@@ -144,4 +83,9 @@
         <image name="edit_close" width="50" height="50"/>
         <image name="edit_submit" width="50" height="50"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>
