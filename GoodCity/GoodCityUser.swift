@@ -61,7 +61,7 @@ class GoodCityUser: PFUser, PFSubclassing {
     func updateFacebookInfo(dictionary: NSDictionary) {
         self.firstName = dictionary["first_name"] as String
         self.lastName = dictionary["last_name"] as String
-        self.email = dictionary["email"] as String
+        //self.email = dictionary["email"] as String
         self.facebookId = dictionary["id"] as String
 
         if let coverDictionary = dictionary["cover"] as? NSDictionary {
