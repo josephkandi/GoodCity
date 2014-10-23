@@ -89,6 +89,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+
+        // Clear badge on launch
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
         //application.setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
         
         self.setupParse()
