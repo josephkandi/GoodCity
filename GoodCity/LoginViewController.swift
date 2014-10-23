@@ -21,7 +21,16 @@ class LoginViewController: UIViewController {
         FBLoginButton.setButtonColor(FB_BLUE)
     
     }
-    
+
+    private func updateCurrentInstallationUserInfo() {
+        let currentIntallation = PFInstallation.currentInstallation()
+        if GoodCityUser.currentUser() != nil {
+            println("User is not null...updating installation")
+            currentIntallation["owner"] = GoodCityUser.currentUser()
+            currentIntallation.saveInBackgroundWithTarget(nil, selector: nil)
+      }
+    }
+
     private func loginWithParse() {
         ParseClient.sharedInstance.loginOrSignupWithCompletion { (user, error) -> () in
             if error == nil {
@@ -29,6 +38,7 @@ class LoginViewController: UIViewController {
                     if let dict = dictionary {
                         println("Got a successful response from Facebook...going to home screen")
                         GoodCityUser.currentUser?.updateFacebookInfo(dict)
+                        self.updateCurrentInstallationUserInfo()
                         self.goToHomeScreen()
                     } else {
                         println("Facebook user info dict is nil")

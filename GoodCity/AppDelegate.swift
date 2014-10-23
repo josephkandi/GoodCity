@@ -10,16 +10,20 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+
+    let PICKUP_ACTION_IDENTIFIER = "PICKUP_IDENTIFIER"
+    let DROPOFF_ACTION_IDENTIFIER = "DROPOFF_IDENTIFIER"
+
     var window: UIWindow?
-    
+    var containerViewController: ContainerViewController?
+
     func displayLoginScreen() {
         let loginViewController = LoginViewController(nibName: "LoginViewController", bundle: nil)
         self.window?.rootViewController = loginViewController
     }
 
     private func displayHomeScreen() {
-        let containerViewController = ContainerViewController(nibName: "ContainerViewController", bundle: nil)
+        self.containerViewController = ContainerViewController(nibName: "ContainerViewController", bundle: nil)
         self.window?.rootViewController = containerViewController
     }
 
@@ -34,16 +38,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func registerForPushNotifications(application: UIApplication) {
+
+        let dropoffAction = UIMutableUserNotificationAction()
+        dropoffAction.identifier = DROPOFF_ACTION_IDENTIFIER
+        dropoffAction.title = "Find nearest dropoff"
+        dropoffAction.activationMode = UIUserNotificationActivationMode.Foreground
+        dropoffAction.destructive = false
+
+        let pickupAction = UIMutableUserNotificationAction()
+        pickupAction.identifier = PICKUP_ACTION_IDENTIFIER
+        pickupAction.title = "Schedule pickup"
+        pickupAction.activationMode = UIUserNotificationActivationMode.Foreground
+        pickupAction.destructive = false
+
+        let notificationCategory = UIMutableUserNotificationCategory()
+        notificationCategory.identifier = "DONATION_APPROVED_CATEGORY"
+        notificationCategory.setActions([dropoffAction, pickupAction], forContext: .Default)
+
+        let categories = NSSet(object: notificationCategory)
+
         if application.respondsToSelector("registerUserNotificationSettings:") {
             println("Registering for push notifications the iOS8 way")
             let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
-            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: categories)
             application.registerUserNotificationSettings(settings)
             application.registerForRemoteNotifications()
         } else { // Before iOS 8
             println("Registering for push notifications the pre-iOS8 way")
             application.registerForRemoteNotificationTypes(UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound)
         }
+    }
+
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
+        println("Got a notification action!!!")
+        if identifier == PICKUP_ACTION_IDENTIFIER {
+            println("Pick up action recognized")
+            // Time to take user to hisory view
+            self.containerViewController?.launchScheduleView()
+        } else if identifier == DROPOFF_ACTION_IDENTIFIER {
+            println("Drop off action recognized")
+            // Time to take user to map view
+            self.containerViewController?.launchMapView()
+        } else {
+            println("ERROR: Unrecognized identifier sent to handleActionWithIdentifier")
+        }
+
+        completionHandler()
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -85,6 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        println("APNs registration successful")
         let currentIntallation = PFInstallation.currentInstallation()
         currentIntallation.setDeviceTokenFromData(deviceToken)
         currentIntallation.saveInBackgroundWithTarget(nil, selector: nil)

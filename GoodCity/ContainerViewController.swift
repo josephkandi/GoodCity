@@ -12,7 +12,8 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var containerScrollView: UIScrollView!
     var statusBarHidden = true
-    
+    var historyViewController: UIViewController?
+
     var viewControllers = [UIViewController]()
     var activeViewController: UIViewController? {
         didSet(oldViewControllerOrNil) {
@@ -63,8 +64,8 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
         containerScrollView.addSubview(cameraViewController.view)
 
         // 3. History View Controller
-        let historyViewController = HistoryViewController(nibName: "HistoryViewController", bundle: nil)
-        let navController2 = UINavigationController(rootViewController: historyViewController)
+        self.historyViewController = HistoryViewController(nibName: "HistoryViewController", bundle: nil)
+        let navController2 = UINavigationController(rootViewController: historyViewController!)
         viewControllers.append(navController2)
         navController2.view.frame = CGRectMake(0, 20, containerScrollView.frame.width, containerScrollView.frame.height-20)
         navController2.view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
@@ -88,10 +89,24 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
         // Scroll to the current offset for the active view
         containerScrollView.contentOffset = CGPoint(x: activeViewIndex * containerSize.width, y: 0)
     }
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
-    
+
+    func launchScheduleView() {
+        //TODO: Move to schedule view (either history view or actual calendar page)
+    }
+
+    func launchMapView() {
+        let dropoffViewController = MapViewController(nibName: "MapViewController", bundle: nil)
+        //dropoffViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+
+        self.historyViewController?.navigationController?.presentViewController(dropoffViewController, animated: true, completion: { () -> Void in
+            println("launched the dropoff view controller")
+        })
+    }
+
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let pageWidth = containerScrollView.frame.width
         let xOffset = containerScrollView.contentOffset.x

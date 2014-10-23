@@ -2,6 +2,47 @@
 var _scheduleSlotKey = "claimedCount";
 var _claimedCountMax = 2; // Max amount of people that can grab a slot
 
+
+Parse.Cloud.afterSave("ReviewComplete", function(request) {
+  var userQuery = new Parse.Query("User");
+  var promises = [];
+  userQuery.find().then(function(users) {
+    var promise = Parse.Promise.as();
+    for (var i = 0; i < users.length; i++) {
+      var notifQuery = new Parse.Query("DonationItem");
+      notifQuery.equalTo("state", "Approved");
+      notifQuery.equalTo("user", users[i]);
+
+      var pushQuery = new Parse.Query(Parse.Installation);
+      pushQuery.equalTo("deviceType", "ios");
+      pushQuery.equalTo("owner", users[i]);
+      promises.push(maybeNotifyUser(notifQuery, pushQuery));
+    }
+    return Parse.Promise.when(promises);
+  }).then(function() {
+    console.log("All push notifications sent!");
+  });
+});
+
+function maybeNotifyUser(notifQuery, pushQuery) {
+  notifQuery.count().then(function(countOfApprovedItems) {
+        if (countOfApprovedItems > 0) {
+          console.log("count of approved items: " + countOfApprovedItems);
+          Parse.Push.send({
+            where: pushQuery, // Set our Installation query
+            data: {
+              alert: "Your donation is approved!",
+              badge: countOfApprovedItems,
+              category: "DONATION_APPROVED_CATEGORY"
+            }
+          }).then(function() {
+            console.log("Sent a single push notif");
+          });
+        }
+  });
+}
+
+
 Parse.Cloud.define("grabPickupScheduleSlot", function(request, response) {
   var query = new Parse.Query("PickupScheduleSlot");
   query.equalTo("objectId", request.params.objectId);
