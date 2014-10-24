@@ -36,7 +36,7 @@ class DatePickerButton: UIButton {
         setup()
     }
     func setup() {
-        self.layer.backgroundColor = UIColor.whiteColor().CGColor
+        self.layer.backgroundColor = LIGHT_GRAY_BG.CGColor
         self.layer.cornerRadius = ROUNDED_CORNER
         self.layer.masksToBounds = true
         
