@@ -10,23 +10,23 @@ import UIKit
 
 private let marginTopBottom: CGFloat = 30
 private let marginLeftRight: CGFloat = 20
-private let gapMargin: CGFloat = 20
+private let gapMargin: CGFloat = 24
 
 class EditItemView: UIView, UITextViewDelegate {
 
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
+
+    @IBOutlet weak var fieldsContainerView: UIView!
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var line: UIView!
     @IBOutlet weak var conditionChooser: YASegmentedControl!
-    
-    @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var closeButton: UIButton!
-    var delegate: CameraViewDelegate?
-    var photo: UIImage?
 
-    var itemDescription = ""
-    
     @IBOutlet weak var blurView: UIVisualEffectView!
 
+    var delegate: CameraViewDelegate?
+    var photo: UIImage?
+    var itemDescription = ""
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,11 +42,12 @@ class EditItemView: UIView, UITextViewDelegate {
         descriptionText.textAlignment = .Center
         formatTextView(false)
 
-        line.backgroundColor = UIColor(white: 0.1, alpha: 0.7)
+        line.backgroundColor = UIColor(white: 0.1, alpha: 0.6)
+        fieldsContainerView.backgroundColor = UIColor.clearColor()
     }
     
     @IBAction func onTap(sender: UITapGestureRecognizer) {
-        descriptionText.resignFirstResponder()
+        dismissKeyboard()
     }
     
     @IBAction func onTapClose(sender: AnyObject) {
@@ -63,48 +64,49 @@ class EditItemView: UIView, UITextViewDelegate {
     override func layoutSubviews() {
         
         if descriptionText.isFirstResponder() {
-            blurView.frame = CGRectMake(0, 0, self.frame.width, self.frame.height-200)
-            descriptionText.frame = CGRectMake(marginLeftRight, blurView.frame.height/2-descriptionText.frame.height, blurView.frame.width - 2 * marginLeftRight, descriptionText.frame.height)
+            blurView.frame = CGRectMake(0, 0, self.frame.width, self.frame.height)
+            fieldsContainerView.frame = blurView.frame
+            descriptionText.frame = CGRectMake(marginLeftRight, 100, self.frame.width - 2 * marginLeftRight, 300)
+            
+            // Hiding everything except for the text field and the blurview
             line.alpha = 0
             conditionChooser.alpha = 0
             closeButton.alpha = 0
             submitButton.alpha = 0
-            blurView.alpha = 1
         }
         else {
             var yOffset = marginTopBottom
+            descriptionText.frame = CGRectMake(marginLeftRight, yOffset, blurView.frame.width-marginLeftRight*2, descriptionText.frame.height)
             descriptionText.sizeToFit()
             descriptionText.frame = CGRectMake(marginLeftRight, yOffset, blurView.frame.width-marginLeftRight*2, descriptionText.frame.height)
             
-            yOffset += descriptionText.frame.height + 5
-            line.frame = CGRectMake(marginLeftRight,yOffset, blurView.frame.width-marginLeftRight*2, 2)
+            yOffset += descriptionText.frame.height 
+            line.frame = CGRectMake(marginLeftRight*1.5,yOffset, blurView.frame.width-marginLeftRight*3, 2)
             
             yOffset += gapMargin + line.frame.height
             conditionChooser.frame = CGRectMake(marginLeftRight,yOffset, blurView.frame.width-marginLeftRight*2, 50)
             
             yOffset += conditionChooser.frame.height + marginTopBottom
             blurView.frame = CGRectMake(0, self.frame.height - yOffset, self.frame.width, yOffset)
+            fieldsContainerView.frame = blurView.frame
             
-            blurView.alpha = 0.7
+            // Showing everything again
             closeButton.alpha = 1
             submitButton.alpha = 1
             line.alpha = 1
             conditionChooser.alpha = 1
         }
-        
-
     }
     
     private func formatTextView(active: Bool) {
+        descriptionText.textColor = UIColor.darkTextColor()
         descriptionText.sizeToFit()
         if !active {
-            descriptionText.textColor = offWhiteColor
             descriptionText.alpha = 0.5
             descriptionText.font = FONT_MEDIUM_14
         }
         else {
             descriptionText.font = FONT_MEDIUM_20
-            descriptionText.textColor = UIColor.whiteColor()
         }
         
         if itemDescription == "" && !active {
@@ -117,9 +119,7 @@ class EditItemView: UIView, UITextViewDelegate {
     func dismissKeyboard() {
         itemDescription = descriptionText.text
         formatTextView(false)
-
         descriptionText.resignFirstResponder()
-
         layoutSubviews()
     }
 
