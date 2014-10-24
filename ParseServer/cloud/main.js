@@ -43,6 +43,38 @@ function maybeNotifyUser(notifQuery, pushQuery) {
 }
 
 
+Parse.Cloud.define("totalDonations", function(request, response) {
+  var userQuery = new Parse.Query(Parse.User);
+  userQuery.equalTo("objectId", request.params.userId);
+  userQuery.first({
+    success: function(result) {
+      var query = new Parse.Query("DonationItem");
+      query.include("user");
+      query.equalTo("user", result);
+      query.containedIn("state", ["Pickedup", "Approved", "Scheduled"]);
+      query.find({
+        success: function (results) {
+          var sum = 0;
+          for (var i = 0; i < results.length; i++) {
+            var value = results[i].get("value");
+            if (value != null) {
+              sum += value;
+            }
+          }
+          response.success(sum);
+        },
+        error: function () {
+          response.failure("DonationItem query failed");
+        }
+      });
+    },
+    error: function() {
+      response.failure("Unable to find user");
+    }
+  });  
+});
+
+
 Parse.Cloud.define("grabPickupScheduleSlot", function(request, response) {
   var query = new Parse.Query("PickupScheduleSlot");
   query.equalTo("objectId", request.params.objectId);

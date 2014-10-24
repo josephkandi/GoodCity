@@ -22,6 +22,10 @@
 		0A14FFBB19E2354000D11CE2 /* SchedulePickupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFB919E2354000D11CE2 /* SchedulePickupViewController.xib */; };
 		0A14FFBE19E2355F00D11CE2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14FFBC19E2355F00D11CE2 /* MapViewController.swift */; };
 		0A14FFBF19E2355F00D11CE2 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A14FFBD19E2355F00D11CE2 /* MapViewController.xib */; };
+		0A2015C219FA140400A7CB57 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2015C119FA140400A7CB57 /* NotificationCenter.framework */; };
+		0A2015C719FA140400A7CB57 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2015C619FA140400A7CB57 /* TodayViewController.swift */; };
+		0A2015C919FA140400A7CB57 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A2015C819FA140400A7CB57 /* MainInterface.storyboard */; };
+		0A2015CC19FA140400A7CB57 /* GoodCityWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0A2015C019FA140400A7CB57 /* GoodCityWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0A674E0E19ED0434001A5664 /* AVCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A674E0B19ED0434001A5664 /* AVCamViewController.m */; };
 		0A674E0F19ED0434001A5664 /* AVCamPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A674E0D19ED0434001A5664 /* AVCamPreviewView.m */; };
 		0AC31AFC19E9EDA300BB815F /* DropoffLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC31AFB19E9EDA300BB815F /* DropoffLocation.swift */; };
@@ -69,7 +73,28 @@
 			remoteGlobalIDString = 0A0B08C619E2283F0059A82C;
 			remoteInfo = GoodCity;
 		};
+		0A2015CA19FA140400A7CB57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A0B08BF19E2283F0059A82C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A2015BF19FA140400A7CB57;
+			remoteInfo = GoodCityWidget;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0A2015D019FA140400A7CB57 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0A2015CC19FA140400A7CB57 /* GoodCityWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0A02838A19F342B70070E374 /* DonationItemsAggregator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationItemsAggregator.swift; sourceTree = "<group>"; };
@@ -92,6 +117,13 @@
 		0A14FFB919E2354000D11CE2 /* SchedulePickupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchedulePickupViewController.xib; sourceTree = "<group>"; };
 		0A14FFBC19E2355F00D11CE2 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0A14FFBD19E2355F00D11CE2 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		0A2015C019FA140400A7CB57 /* GoodCityWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GoodCityWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A2015C119FA140400A7CB57 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		0A2015C519FA140400A7CB57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A2015C619FA140400A7CB57 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		0A2015C819FA140400A7CB57 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		0A2015D119FA27BC00A7CB57 /* GoodCity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GoodCity.entitlements; sourceTree = "<group>"; };
+		0A2015D219FA27EB00A7CB57 /* GoodCityWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GoodCityWidget.entitlements; sourceTree = "<group>"; };
 		0A674E0A19ED0434001A5664 /* AVCamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamViewController.h; sourceTree = "<group>"; };
 		0A674E0B19ED0434001A5664 /* AVCamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamViewController.m; sourceTree = "<group>"; };
 		0A674E0C19ED0434001A5664 /* AVCamPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamPreviewView.h; sourceTree = "<group>"; };
@@ -158,6 +190,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0A2015BD19FA140400A7CB57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A2015C219FA140400A7CB57 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -166,6 +206,7 @@
 			children = (
 				0A0B08C919E2283F0059A82C /* GoodCity */,
 				0A0B08DF19E2283F0059A82C /* GoodCityTests */,
+				0A2015C319FA140400A7CB57 /* GoodCityWidget */,
 				0A0B08C819E2283F0059A82C /* Products */,
 				9949D72350174EE69E60CF63 /* Frameworks */,
 				394B7266BE82DCA2C64EA8D9 /* Pods */,
@@ -177,6 +218,7 @@
 			children = (
 				0A0B08C719E2283F0059A82C /* GoodCity.app */,
 				0A0B08DC19E2283F0059A82C /* GoodCityTests.xctest */,
+				0A2015C019FA140400A7CB57 /* GoodCityWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,6 +226,7 @@
 		0A0B08C919E2283F0059A82C /* GoodCity */ = {
 			isa = PBXGroup;
 			children = (
+				0A2015D119FA27BC00A7CB57 /* GoodCity.entitlements */,
 				0A0B08F419E22A0F0059A82C /* Core */,
 				0A0B08F319E229C10059A82C /* Controllers */,
 				0A0B08F519E22A3A0059A82C /* Extensions */,
@@ -307,6 +350,25 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		0A2015C319FA140400A7CB57 /* GoodCityWidget */ = {
+			isa = PBXGroup;
+			children = (
+				0A2015D219FA27EB00A7CB57 /* GoodCityWidget.entitlements */,
+				0A2015C619FA140400A7CB57 /* TodayViewController.swift */,
+				0A2015C819FA140400A7CB57 /* MainInterface.storyboard */,
+				0A2015C419FA140400A7CB57 /* Supporting Files */,
+			);
+			path = GoodCityWidget;
+			sourceTree = "<group>";
+		};
+		0A2015C419FA140400A7CB57 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0A2015C519FA140400A7CB57 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		394B7266BE82DCA2C64EA8D9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +418,7 @@
 				3A1506A319EBB1940020DF10 /* CoreLocation.framework */,
 				3A15069F19EBABCA0020DF10 /* MapKit.framework */,
 				C88CD10F2CA444FF9DAA3D07 /* libPods.a */,
+				0A2015C119FA140400A7CB57 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -372,10 +435,12 @@
 				0A0B08C419E2283F0059A82C /* Frameworks */,
 				0A0B08C519E2283F0059A82C /* Resources */,
 				4F960382CA1D48CA92B3D912 /* Copy Pods Resources */,
+				0A2015D019FA140400A7CB57 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0A2015CB19FA140400A7CB57 /* PBXTargetDependency */,
 			);
 			name = GoodCity;
 			productName = GoodCity;
@@ -400,6 +465,23 @@
 			productReference = 0A0B08DC19E2283F0059A82C /* GoodCityTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		0A2015BF19FA140400A7CB57 /* GoodCityWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A2015CF19FA140400A7CB57 /* Build configuration list for PBXNativeTarget "GoodCityWidget" */;
+			buildPhases = (
+				0A2015BC19FA140400A7CB57 /* Sources */,
+				0A2015BD19FA140400A7CB57 /* Frameworks */,
+				0A2015BE19FA140400A7CB57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GoodCityWidget;
+			productName = GoodCityWidget;
+			productReference = 0A2015C019FA140400A7CB57 /* GoodCityWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -412,11 +494,25 @@
 					0A0B08C619E2283F0059A82C = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = TA5M78D3VY;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					0A0B08DB19E2283F0059A82C = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = TA5M78D3VY;
 						TestTargetID = 0A0B08C619E2283F0059A82C;
+					};
+					0A2015BF19FA140400A7CB57 = {
+						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = TA5M78D3VY;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -435,6 +531,7 @@
 			targets = (
 				0A0B08C619E2283F0059A82C /* GoodCity */,
 				0A0B08DB19E2283F0059A82C /* GoodCityTests */,
+				0A2015BF19FA140400A7CB57 /* GoodCityWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -463,6 +560,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A2015BE19FA140400A7CB57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A2015C919FA140400A7CB57 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,6 +657,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0A2015BC19FA140400A7CB57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A2015C719FA140400A7CB57 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -559,6 +672,11 @@
 			isa = PBXTargetDependency;
 			target = 0A0B08C619E2283F0059A82C /* GoodCity */;
 			targetProxy = 0A0B08DD19E2283F0059A82C /* PBXContainerItemProxy */;
+		};
+		0A2015CB19FA140400A7CB57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0A2015BF19FA140400A7CB57 /* GoodCityWidget */;
+			targetProxy = 0A2015CA19FA140400A7CB57 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -659,8 +777,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = GoodCity/GoodCity.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = GoodCity/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -678,8 +798,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = GoodCity/GoodCity.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = GoodCity/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -730,6 +852,40 @@
 			};
 			name = Release;
 		};
+		0A2015CD19FA140400A7CB57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GoodCityWidget/GoodCityWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GoodCityWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		0A2015CE19FA140400A7CB57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GoodCityWidget/GoodCityWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = GoodCityWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -759,6 +915,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		0A2015CF19FA140400A7CB57 /* Build configuration list for PBXNativeTarget "GoodCityWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A2015CD19FA140400A7CB57 /* Debug */,
+				0A2015CE19FA140400A7CB57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
