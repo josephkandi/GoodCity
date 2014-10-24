@@ -16,6 +16,7 @@ protocol SlotPickerDelegate {
 
 class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPickerDelegate {
 
+    @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var datePickerButton: DatePickerButton!
     @IBOutlet weak var datePickerView: UIView!
@@ -27,11 +28,12 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     var days = NSSet()
     var slots: [PickupScheduleSlot]?
     var itemsGroup: DonationItemsAggregator.DonationGroup?
+    var bgImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.backgroundColor = LIGHT_GRAY_BG
+        bgImageView.image = bgImage
+        
         closeButton.setImage(UIImage(named: "edit_close")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: .Normal)
         closeButton.tintColor = tintColor
         

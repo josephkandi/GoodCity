@@ -113,12 +113,27 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     func schedulePickup(donationGroup: DonationItemsAggregator.DonationGroup) {
         let scheduleViewController = SchedulePickupViewController(nibName: "SchedulePickupViewController", bundle: nil)
         scheduleViewController.itemsGroup = donationGroup
-        self.navigationController?.presentViewController(scheduleViewController, animated: true, completion: { () -> Void in
+        scheduleViewController.bgImage = takeSnapshot()
+        self.navigationController?.presentViewController(scheduleViewController, animated: false, completion: { () -> Void in
             println("launched the schedule view controller")
         })
     }
     
     // Helper functions
+    
+    func takeSnapshot() -> UIImage{
+        
+        NSLog("begin snapshot")
+        let layer = UIApplication.sharedApplication().keyWindow?.layer
+        UIGraphicsBeginImageContextWithOptions(layer!.frame.size, true, 0)
+        let context = UIGraphicsGetCurrentContext()
+        layer!.renderInContext(context)
+        let snapShotImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        NSLog("end snapshot")
+        return snapShotImage
+    }
+    
     func registerTableViewCellNib(nibName: String, reuseIdentifier: String) {
         let nib = UINib(nibName: nibName, bundle: nil)
         self.historyTableView.registerNib(nib, forCellReuseIdentifier: reuseIdentifier)

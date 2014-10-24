@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SchedulePickupViewController" customModule="GoodCity" customModuleProvider="target">
             <connections>
+                <outlet property="bgImageView" destination="FUA-sF-ZdW" id="bPy-DN-yh2"/>
                 <outlet property="closeButton" destination="EPQ-G3-gZc" id="La4-Oo-5hh"/>
                 <outlet property="datePickerButton" destination="ecZ-kE-r5L" id="yYX-Ky-4V0"/>
                 <outlet property="datePickerHeightConstraint" destination="INh-6w-9kg" id="aOz-7E-eub"/>
@@ -19,6 +20,31 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FUA-sF-ZdW" userLabel="bgImage View">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5cY-k9-jrb">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7HH-Kh-oUF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vdi-uo-Mm4">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="I3a-hv-B8k">
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <vibrancyEffect>
+                                    <blurEffect style="light"/>
+                                </vibrancyEffect>
+                            </visualEffectView>
+                        </subviews>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I1y-Zm-uLC" userLabel="container">
+                    <rect key="frame" x="150" y="150" width="300" height="300"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPQ-G3-gZc" userLabel="Close Button">
                     <rect key="frame" x="18" y="32" width="18" height="18"/>
                     <constraints>
@@ -78,13 +104,16 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="FUA-sF-ZdW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="15t-8D-7Ke"/>
                 <constraint firstAttribute="bottom" secondItem="NQI-tL-CfS" secondAttribute="bottom" constant="50" id="1CW-DK-tzb"/>
                 <constraint firstAttribute="centerX" secondItem="ecZ-kE-r5L" secondAttribute="centerX" id="7Ye-Cw-LeT"/>
+                <constraint firstItem="5cY-k9-jrb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8QS-hC-gwW"/>
                 <constraint firstItem="LkQ-b8-mtB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="78" id="A89-OP-lu2"/>
                 <constraint firstItem="FtS-Ah-8Rj" firstAttribute="top" secondItem="ecZ-kE-r5L" secondAttribute="bottom" id="AKX-Cp-qSm"/>
                 <constraint firstItem="ecZ-kE-r5L" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="AwU-hs-k0G"/>
+                <constraint firstItem="FUA-sF-ZdW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Emo-Fi-I2J"/>
                 <constraint firstAttribute="centerX" secondItem="PFW-pK-VEH" secondAttribute="centerX" id="IKG-gB-G0D"/>
                 <constraint firstItem="ecZ-kE-r5L" firstAttribute="trailing" secondItem="FtS-Ah-8Rj" secondAttribute="trailing" id="IZu-zK-Daa"/>
                 <constraint firstAttribute="trailing" secondItem="ecZ-kE-r5L" secondAttribute="trailing" constant="16" id="KPT-8D-dfL"/>
@@ -92,16 +121,21 @@
                 <constraint firstItem="PFW-pK-VEH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="Tz6-6x-30v"/>
                 <constraint firstItem="ecZ-kE-r5L" firstAttribute="leading" secondItem="Moh-MX-uRp" secondAttribute="leading" id="WZ7-lZ-ch0"/>
                 <constraint firstItem="EPQ-G3-gZc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="32" id="XvH-tD-M6c"/>
+                <constraint firstAttribute="bottom" secondItem="5cY-k9-jrb" secondAttribute="bottom" id="Xzc-fH-02G"/>
                 <constraint firstAttribute="centerX" secondItem="NQI-tL-CfS" secondAttribute="centerX" id="YfB-qt-sx9"/>
+                <constraint firstAttribute="trailing" secondItem="5cY-k9-jrb" secondAttribute="trailing" id="ZDE-Vs-p89"/>
                 <constraint firstItem="ecZ-kE-r5L" firstAttribute="leading" secondItem="FtS-Ah-8Rj" secondAttribute="leading" id="ZSo-Fr-5et"/>
                 <constraint firstItem="ecZ-kE-r5L" firstAttribute="trailing" secondItem="Moh-MX-uRp" secondAttribute="trailing" id="cMX-dU-U1l"/>
                 <constraint firstItem="LkQ-b8-mtB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="e6e-YJ-5vH"/>
                 <constraint firstItem="EPQ-G3-gZc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="18" id="gsI-Jv-hZZ"/>
+                <constraint firstAttribute="bottom" secondItem="FUA-sF-ZdW" secondAttribute="bottom" id="hBc-yS-b2w"/>
                 <constraint firstItem="ecZ-kE-r5L" firstAttribute="top" secondItem="LkQ-b8-mtB" secondAttribute="bottom" constant="8" id="hD9-uS-PNI"/>
                 <constraint firstItem="Moh-MX-uRp" firstAttribute="top" secondItem="ecZ-kE-r5L" secondAttribute="bottom" constant="40" id="hyg-du-SDC"/>
                 <constraint firstItem="NQI-tL-CfS" firstAttribute="top" secondItem="Moh-MX-uRp" secondAttribute="bottom" constant="20" id="k6a-bO-Hc1"/>
                 <constraint firstItem="PFW-pK-VEH" firstAttribute="centerY" secondItem="EPQ-G3-gZc" secondAttribute="centerY" id="mRd-4v-wHe"/>
+                <constraint firstItem="5cY-k9-jrb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xL7-Uz-UKg"/>
                 <constraint firstItem="NQI-tL-CfS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="xzg-aH-M9A"/>
+                <constraint firstAttribute="trailing" secondItem="FUA-sF-ZdW" secondAttribute="trailing" id="zS7-cJ-tMO"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
