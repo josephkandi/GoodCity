@@ -13,7 +13,7 @@ protocol ItemsActionDelegate {
     func schedulePickup(donationGroup: DonationItemsAggregator.DonationGroup)
 }
 
-class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ItemsActionDelegate {
+class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ItemsActionDelegate, UIViewControllerTransitioningDelegate {
     
     @IBOutlet weak var historyTableView: UITableView!
 
@@ -130,6 +130,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         println("launched profile view")
         let profileViewController = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
         profileViewController.bgImage = takeSnapshot()
+        
+        // Custom view controller animation
+        //profileViewController.transitioningDelegate = self;
+        //profileViewController.modalPresentationStyle = UIModalPresentationStyle.Custom
+        
         self.navigationController?.presentViewController(profileViewController, animated: false, completion: { () -> Void in
             println("launched the profile view controller")
         })
@@ -192,4 +197,15 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         )
     }
     
+    // View Controller animation delegate methods
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let scaleModalAnimator = ScaleModalAnimator()
+        return scaleModalAnimator
+    }
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let scaleModalAnimator = ScaleModalAnimator()
+        scaleModalAnimator.presenting = true
+        return scaleModalAnimator
+    }
 }

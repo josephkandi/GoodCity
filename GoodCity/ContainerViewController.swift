@@ -16,35 +16,34 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
             if activeViewController == oldViewControllerOrNil? {
                 return
             }
+            if let oldVC = oldViewControllerOrNil {
+                oldVC.willMoveToParentViewController(nil)
+                oldVC.removeFromParentViewController()
+            }
             if let newVC = activeViewController {
                 self.addChildViewController(newVC)
-                newVC.view.autoresizingMask = .FlexibleWidth | .FlexibleHeight
-                
-                // Assuming that the active view controller is always in the middle of 3 view controllers
-                newVC.view.frame = containerScrollView.frame
-                newVC.view.frame.origin.x += containerScrollView.frame.width
-
-                containerScrollView.addSubview(newVC.view)
                 newVC.didMoveToParentViewController(self)
             }
         }
     }
+    private var currentViewControllerIndex : Int!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewControllers()
         containerScrollView.delegate = self
+        currentViewControllerIndex = CAMERA_VIEW_CONTROLLER_INDEX
+        
         self.refreshDataFromServer()
     }
 
-
-
     func refreshDataFromServer() {
         self.refreshFacebookInfo()
+
         // We have a user now...so update the total donation value in the background
         ParseClient.sharedInstance.updateTotalDonationsValueInUserDefaults()
     }
-
 
     func refreshFacebookInfo() {
         ParseClient.sharedInstance.refreshUserInfoFromFacebookWithCompletion({ (dictionary, error) -> () in
@@ -58,7 +57,7 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
 
     }
     override func viewDidLayoutSubviews() {
-        setupViewOffsets(1)
+        setupViewOffsets(currentViewControllerIndex)
     }
 
     func setupViewControllers() {
@@ -107,6 +106,8 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
 
     func scrollToViewController(index: Int) {
         containerScrollView.contentOffset = CGPoint(x: CGFloat(index) * containerScrollView.bounds.width, y: 0)
+        activeViewController = viewControllers[index]
+        currentViewControllerIndex = index
     }
 
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -143,6 +144,14 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
                 self.setNeedsStatusBarAppearanceUpdate()
             })
         }
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        let pageWidth = containerScrollView.frame.width
+        let xOffset = containerScrollView.contentOffset.x
+        let index : Int = Int(xOffset / pageWidth)
+        activeViewController = viewControllers[index]
+        currentViewControllerIndex = index
     }
     
     override func prefersStatusBarHidden() -> Bool {

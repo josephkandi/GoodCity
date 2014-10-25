@@ -53,4 +53,8 @@ class ProfileViewController: UIViewController {
     @IBAction func onTapLogOut(sender: AnyObject) {
         GoodCityUser.currentUser().logout()
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 }
