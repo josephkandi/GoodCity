@@ -68,6 +68,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 @property (nonatomic, weak) IBOutlet UIButton *snapButton;
 @property (weak, nonatomic) EditItemView *editItemView;
 @property (weak, nonatomic) IBOutlet UILabel *itemsInCart;
+@property (weak, nonatomic) IBOutlet UIButton *itemsInCartButton;
 
 // Popup tooltip label
 @property (nonatomic, retain) MMPopLabel *tooltipLabel;
@@ -120,8 +121,17 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     [self dismissEditItem];
 }
 
-- (void) updateItemsCount:(NSString*) count {
+- (void)updateItemsCount:(NSString*) count animated: (BOOL)animated {
     _itemsInCart.text = count;
+    if (animated) {
+        CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+        anim.duration = .14;
+        anim.toValue = [NSNumber numberWithFloat:1.5];
+        anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+        anim.autoreverses = YES;
+        anim.repeatCount = 0;
+        [self.itemsInCartButton.imageView.layer addAnimation:anim forKey:@"pulsate"];
+    }
 }
 - (void)pauseCamera {
     NSLog(@"Request to pause camera");

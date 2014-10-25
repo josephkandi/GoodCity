@@ -54,7 +54,7 @@
 
 - (void)dismissEditItem;
 - (void)submitItem:(DonationItem*)newItem;
-- (void)updateItemsCount:(NSString*)count;
+- (void)updateItemsCount:(NSString*)count animated:(BOOL)animated;
 
 @end
 
