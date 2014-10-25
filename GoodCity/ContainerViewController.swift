@@ -34,10 +34,29 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         setupViewControllers()
         containerScrollView.delegate = self
+        self.refreshDataFromServer()
+    }
+
+
+
+    func refreshDataFromServer() {
+        self.refreshFacebookInfo()
         // We have a user now...so update the total donation value in the background
         ParseClient.sharedInstance.updateTotalDonationsValueInUserDefaults()
     }
 
+
+    func refreshFacebookInfo() {
+        ParseClient.sharedInstance.refreshUserInfoFromFacebookWithCompletion({ (dictionary, error) -> () in
+            if let dict = dictionary {
+                println("Got a successful response from Facebook...refreshing facebook info")
+                GoodCityUser.currentUser?.updateFacebookInfo(dict)
+            } else {
+                println("Facebook user info dict is nil")
+            }
+        })
+
+    }
     override func viewDidLayoutSubviews() {
         setupViewOffsets(1)
     }

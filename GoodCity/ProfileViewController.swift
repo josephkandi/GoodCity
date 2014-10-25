@@ -29,8 +29,8 @@ class ProfileViewController: UIViewController {
         profileImage.layer.masksToBounds = true
                 
         if let currentUser = GoodCityUser.currentUser {
-            //profileImage.fadeInImageFromURL(NSURL(string: currentUser.profilePhotoUrlString)!)
-            //usernameLabel.text = currentUser.firstName + " " + currentUser.lastName
+            profileImage.fadeInImageFromURL(NSURL(string: currentUser.profilePhotoUrlString)!)
+            usernameLabel.text = currentUser.firstName + " " + currentUser.lastName
         }
     }
     
