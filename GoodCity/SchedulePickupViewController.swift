@@ -228,6 +228,6 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     }
     
     override func prefersStatusBarHidden() -> Bool {
-        return false
+        return true
     }
 }

@@ -19,18 +19,29 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
 
     var itemGroups: DonationItemsAggregator?
     var profileButton: UIBarButtonItem!
+    var activitiesChooser: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.styleNavBar()
- 
+        
+        // Style the nav bar
+        self.styleNavBar(self.navigationController!.navigationBar)
+        
+        // Set up segmented control for switching between active and completed items
+        activitiesChooser = UISegmentedControl(items: ["ACTIVE", "HISTORY"])
+        let titleSytle = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: FONT_BOLD_14!]
+        activitiesChooser.setTitleTextAttributes(titleSytle, forState: .Normal)
+        activitiesChooser.selectedSegmentIndex = 0
+        activitiesChooser.sizeToFit()
+        self.navigationItem.titleView = activitiesChooser
+        
         // Add the profile icon to the right nav bar
         let profileIcon = UIImage(named: "profile")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        
         profileButton = UIBarButtonItem(image: profileIcon, style: UIBarButtonItemStyle.Plain, target: self, action: "launchProfile")
         profileButton.tintColor = UIColor.whiteColor()
         self.navigationItem.setRightBarButtonItem(profileButton, animated: true)
         
+        // Set up the table views
         setupTableView()
         getItemGroups()
     }

@@ -11,13 +11,13 @@ import Foundation
 extension UIViewController {
     
     // Returns a date formatted for display showing time elapsed since now
-    func styleNavBar() {
-        self.navigationItem.title = "GoodCity.HK"
+    /*func styleNavBar(title: String) {
+        self.navigationItem.title = title
         
         if let navController = self.navigationController {
             self.styleNavBar(navController.navigationBar)
         }
-    }
+    }*/
     
     func styleNavBar(navBar: UINavigationBar) {
         let titleSytle = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: FONT_BOLD_18!]

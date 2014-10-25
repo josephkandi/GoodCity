@@ -16,8 +16,6 @@ let ITEM_SPACING = CGFloat(10)
 class CartViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CartViewDelegate {
     
     @IBOutlet weak var cartCollectionView: UICollectionView!
-    @IBOutlet weak var collectionHeader: UIView!
-    @IBOutlet weak var collectionHeaderLabel: UILabel!
     var cameraViewDelegate: CameraViewDelegate?
     
     // Array of pending donation items
@@ -26,8 +24,10 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.styleNavBar()
-        collectionHeader.backgroundColor = NAV_BAR_COLOR
+        // Style the nav bar
+        self.navigationItem.title = "PENDING"
+        self.styleNavBar(self.navigationController!.navigationBar)
+        
         self.view.backgroundColor = LIGHT_GRAY_BG
         
         cartCollectionView.dataSource = self
@@ -86,10 +86,14 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func updateCount() {
-        let count = self.pendingItems.count > 0 ? String(self.pendingItems.count) : ""
-        self.collectionHeaderLabel.text = "PENDING REVIEW (" + count + ")"
+        var string = "PENDING"
+        let count = self.pendingItems.count > 0 ? " (\(String(self.pendingItems.count)))" : ""
+        string = string + count
+        self.navigationItem.title = string
+        
         self.cameraViewDelegate?.updateItemsCount(String(self.pendingItems.count), animated: true)
     }
+    
     //Delegate functions
     func addNewItem(newItem: DonationItem) {
         pendingItems.insertObject(newItem, atIndex: 0)

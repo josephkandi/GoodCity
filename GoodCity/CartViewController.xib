@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CartViewController" customModule="GoodCity" customModuleProvider="target">
             <connections>
                 <outlet property="cartCollectionView" destination="iLg-Ey-5SU" id="JyJ-IC-iWh"/>
-                <outlet property="collectionHeader" destination="ZxM-IA-LjT" id="yZx-xZ-KCL"/>
-                <outlet property="collectionHeaderLabel" destination="QUj-8o-Vi4" id="Lh4-Xu-nqG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="iLg-Ey-5SU">
-                    <rect key="frame" x="0.0" y="36" width="600" height="564"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="0.95000000000000007" alpha="1" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wxj-n1-0zl">
                         <size key="itemSize" width="50" height="50"/>
@@ -27,29 +25,11 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZxM-IA-LjT">
-                    <rect key="frame" x="0.0" y="-1" width="600" height="37"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PENDING REVIEW" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUj-8o-Vi4">
-                            <rect key="frame" x="8" y="8" width="213" height="21"/>
-                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="37" id="8p0-1g-QTD"/>
-                    </constraints>
-                </view>
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="iLg-Ey-5SU" secondAttribute="trailing" id="3JR-S2-1ne"/>
-                <constraint firstItem="ZxM-IA-LjT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="B76-Oa-LKv"/>
-                <constraint firstItem="iLg-Ey-5SU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="36" id="MOi-HQ-NgW"/>
+                <constraint firstItem="iLg-Ey-5SU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="MOi-HQ-NgW"/>
                 <constraint firstItem="iLg-Ey-5SU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PhI-PB-ex7"/>
-                <constraint firstAttribute="trailing" secondItem="ZxM-IA-LjT" secondAttribute="trailing" id="erO-3A-Exn"/>
-                <constraint firstItem="ZxM-IA-LjT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-1" id="poa-nl-odc"/>
                 <constraint firstAttribute="bottom" secondItem="iLg-Ey-5SU" secondAttribute="bottom" id="yPO-81-BBa"/>
             </constraints>
         </view>
