@@ -16,17 +16,25 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         super.viewDidLoad()
         println("In viewDidLoad...")
         // Fetch network info
+
         let userDefaults = NSUserDefaults(suiteName: "group.com.codepath.goodcity")
         if let value = userDefaults?.valueForKey("total_donation_value") as? Double {
             println("Value: \(value)")
             self.donationsValueLabel.text = NSString(format: "$%.2f", value)
-        }
+        }         //self.donationsValueLabel.text = NSString(format: "$%.2f", 300)
         //        userDefaults?.setDouble(result as Double, forKey: "total_donation_value")
 
     }
 
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)!) {
         println("In widgetPerformUpdateWithCompletionHandler...")
+
+        let userDefaults = NSUserDefaults(suiteName: "group.com.codepath.goodcity")
+        if let value = userDefaults?.valueForKey("total_donation_value") as? Double {
+            println("Value: \(value)")
+            self.donationsValueLabel.text = NSString(format: "$%.2f", value)
+        }         //self.donationsValueLabel.text = NSString(format: "$%.2f", 300)
+
         // Perform any setup necessary in order to update the view.
 
         // If an error is encountered, use NCUpdateResult.Failed

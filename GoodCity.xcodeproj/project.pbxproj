@@ -26,6 +26,7 @@
 		0A2015C719FA140400A7CB57 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2015C619FA140400A7CB57 /* TodayViewController.swift */; };
 		0A2015C919FA140400A7CB57 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A2015C819FA140400A7CB57 /* MainInterface.storyboard */; };
 		0A2015CC19FA140400A7CB57 /* GoodCityWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0A2015C019FA140400A7CB57 /* GoodCityWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0A508DB219FC556A00341499 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A0B08D319E2283F0059A82C /* Images.xcassets */; };
 		0A674E0E19ED0434001A5664 /* AVCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A674E0B19ED0434001A5664 /* AVCamViewController.m */; };
 		0A674E0F19ED0434001A5664 /* AVCamPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A674E0D19ED0434001A5664 /* AVCamPreviewView.m */; };
 		0AC31AFC19E9EDA300BB815F /* DropoffLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC31AFB19E9EDA300BB815F /* DropoffLocation.swift */; };
@@ -578,6 +579,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A2015C919FA140400A7CB57 /* MainInterface.storyboard in Resources */,
+				0A508DB219FC556A00341499 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,6 +780,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -867,6 +870,8 @@
 		0A2015CD19FA140400A7CB57 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = GoodCityWidget/GoodCityWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -886,6 +891,8 @@
 		0A2015CE19FA140400A7CB57 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = GoodCityWidget/GoodCityWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
