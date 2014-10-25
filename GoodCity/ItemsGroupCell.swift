@@ -8,20 +8,20 @@
 
 import UIKit
 
-let ITEMS_PER_ROW : CGFloat = 4
+let ITEMS_PER_ROW : CGFloat = 3
+private let marginTopBottom: CGFloat = 20
+private let marginLeftRight: CGFloat = 12
+private let gapMargin: CGFloat = 10
 
 class ItemsGroupCell: UITableViewCell {
-
-    @IBOutlet weak var donationDateLabel: UILabel!
+    
+    @IBOutlet weak var stateIcon: UIImageView!
+    @IBOutlet weak var donationTextLabel: UILabel!
     @IBOutlet weak var buttonContainer: UIView!
     @IBOutlet weak var thumbnailsContainer: UIView!
     
     var thumbnailsArray: [UIImageView]!
     var buttonsView: ActionButtonsView!
-    
-    // Constraints
-    @IBOutlet weak var thumbnailHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var buttonsHeightConstraint: NSLayoutConstraint!
     
     // Delegate
     private var actionDelegate: ItemsActionDelegate?
@@ -33,6 +33,8 @@ class ItemsGroupCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        stateIcon.backgroundColor = UIColor.purpleColor()
+
         buttonsView = ActionButtonsView(frame: buttonContainer.bounds)
         buttonContainer.addSubview(buttonsView)
     }
@@ -46,31 +48,54 @@ class ItemsGroupCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        donationDateLabel.numberOfLines = 0
-        donationDateLabel.text = "Donated on: Oct 8, 2014"
-        donationDateLabel.sizeToFit()
+        let bounds = self.bounds
+        var xOffset = marginLeftRight
+        var yOffset = marginTopBottom
         
+        // Set up the state icon image
+        stateIcon.frame = CGRectMake(xOffset, yOffset, 40, 40)
+        stateIcon.layer.cornerRadius = 20
+        stateIcon.layer.masksToBounds = true
+        
+        xOffset += stateIcon.frame.width + gapMargin
+        
+        // Set up the donation title text label
+        donationTextLabel.frame = CGRectMake(xOffset, yOffset, bounds.width - xOffset - marginLeftRight, 30)
+        donationTextLabel.numberOfLines = 0
+        donationTextLabel.text = "Donated on: Oct 8, 2014"
+        donationTextLabel.sizeToFit()
+        
+        yOffset += donationTextLabel.frame.height + gapMargin
+        
+        // Set up the thumbnails
+        thumbnailsContainer.frame = CGRectMake(xOffset, yOffset, bounds.width - xOffset - marginLeftRight, 60)
         let frame = thumbnailsContainer.frame
         let rows = Int(CGFloat(thumbnailsArray.count) / ITEMS_PER_ROW) + 1
         let thumbnailWidth = (frame.width - SPACING * (ITEMS_PER_ROW-1)) / ITEMS_PER_ROW
-        thumbnailHeightConstraint.constant = thumbnailWidth * CGFloat(rows) + SPACING * CGFloat(rows-1)
         
         var index = 0
-        var yOffset: CGFloat = 0
+        var y: CGFloat = 0
         for var row = 0; row < rows; row++ {
-            var xOffset: CGFloat = 0
+            var x: CGFloat = 0
             for var i = 0; i < Int(ITEMS_PER_ROW) && index < thumbnailsArray.count; i++ {
                 let thumb = thumbnailsArray[index]
-                thumb.frame = CGRectMake(xOffset, yOffset, thumbnailWidth, thumbnailWidth)
-                xOffset += thumbnailWidth + SPACING
+                thumb.frame = CGRectMake(x, y, thumbnailWidth, thumbnailWidth)
+                x += thumbnailWidth + SPACING
                 index += 1
             }
-            yOffset += thumbnailWidth + SPACING
+            y += thumbnailWidth + SPACING
         }
+        
+        let thumbnailsContainerHeight = thumbnailWidth * CGFloat(rows) + SPACING * CGFloat(rows-1)
 
+        thumbnailsContainer.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.width, thumbnailsContainerHeight)
+        yOffset += thumbnailsContainerHeight + gapMargin * 2
+        
+        // Set up the buttons (optional)
+        buttonContainer.frame = CGRectMake(marginLeftRight, yOffset, bounds.width - 2 * marginLeftRight, 35)
         buttonsView.frame = buttonContainer.bounds
         buttonsView.layoutSubviews()
-        buttonsHeightConstraint.constant = buttonsView.frame.height
+        buttonContainer.frame = CGRectMake(buttonContainer.frame.origin.x, buttonContainer.frame.origin.y, buttonContainer.frame.width, buttonsView.frame.height)
     }
     
     func setItemsState(state: ItemState) {

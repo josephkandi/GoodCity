@@ -105,9 +105,9 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         let state = ItemState(rawValue: sortedSection.name)!
         let numberOfItems = sortedSection.sortedDonationGroups[indexPath.row].sortedDonationItems.count
     
-        var height: CGFloat = 78
+        var height: CGFloat = 70
         if (state == ItemState.Approved || state == ItemState.Scheduled) {
-            height += 41
+            height += 35
         }
         height += ItemsGroupCell.getThumbnailsHeight(tableView.frame.width, count: numberOfItems)
         
