@@ -69,4 +69,18 @@ class ParseClient: NSObject {
     func getUserItemHistory(user: GoodCityUser) {
 
     }
+
+    func updateTotalDonationsValueInUserDefaults() {
+        PFCloud.callFunctionInBackground("totalDonations",
+            withParameters: ["userId": GoodCityUser.currentUser().objectId]) { (result, error) -> Void in
+                if error == nil {
+                    println("Result from Parse Cloud Code: \(result)")
+                    let userDefaults = NSUserDefaults(suiteName: "group.com.codepath.goodcity")
+                    userDefaults?.setDouble(result as Double, forKey: "total_donation_value")
+                } else {
+                    println("Error from Parse Cloud Code: \(error)")
+                }
+        }
+    }
+
 }

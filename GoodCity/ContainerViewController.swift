@@ -1,18 +1,14 @@
-//
-//  ContainerViewController.swift
-//  GoodCity
-//
-//  Created by Yili Aiwazian on 10/10/14.
-//  Copyright (c) 2014 codepath. All rights reserved.
-//
-
 import UIKit
 
 class ContainerViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var containerScrollView: UIScrollView!
-    var statusBarHidden = true
+    private var statusBarHidden = true
     var historyViewController: UIViewController?
+
+    private let CART_VIEW_CONTROLLER_INDEX = 0
+    private let CAMERA_VIEW_CONTROLLER_INDEX = 1
+    private let HISTORY_VIEW_CONTROLLER_INDEX = 2
 
     var viewControllers = [UIViewController]()
     var activeViewController: UIViewController? {
@@ -38,26 +34,14 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         setupViewControllers()
         containerScrollView.delegate = self
-        updateTotalDonationsValueInUserDefaults()
-    }
-
-    func updateTotalDonationsValueInUserDefaults() {
-        PFCloud.callFunctionInBackground("totalDonations",
-            withParameters: ["userId": GoodCityUser.currentUser().objectId]) { (result, error) -> Void in
-            if error == nil {
-                println("Result from Parse Cloud Code: \(result)")
-                let userDefaults = NSUserDefaults(suiteName: "group.com.codepath.goodcity")
-                userDefaults?.setDouble(result as Double, forKey: "total_donation_value")
-            } else {
-                println("Error from Parse Cloud Code: \(error)")
-            }
-        }
+        // We have a user now...so update the total donation value in the background
+        ParseClient.sharedInstance.updateTotalDonationsValueInUserDefaults()
     }
 
     override func viewDidLayoutSubviews() {
-        setupViewOffsets(activeViewIndex: 1)
+        setupViewOffsets(1)
     }
-    
+
     func setupViewControllers() {
         
         // 1. Cart View Controller
@@ -91,7 +75,7 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
         self.view.insertSubview(headerView, belowSubview: containerScrollView)
     }
 
-    func setupViewOffsets(activeViewIndex: CGFloat = CGFloat(0)) {
+    func setupViewOffsets(activeViewIndex: Int) {
         let containerSize = containerScrollView.bounds
         var offset = CGFloat(0)
         for controller in viewControllers {
@@ -99,26 +83,31 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
             offset += 1
         }
         containerScrollView.contentSize = CGSize(width: containerSize.width * 3, height: containerSize.height)
-        
-        // Scroll to the current offset for the active view
-        containerScrollView.contentOffset = CGPoint(x: activeViewIndex * containerSize.width, y: 0)
+        scrollToViewController(activeViewIndex)
     }
-    
+
+    func scrollToViewController(index: Int) {
+        containerScrollView.contentOffset = CGPoint(x: CGFloat(index) * containerScrollView.bounds.width, y: 0)
+    }
+
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
 
+    func launchHistoryView() {
+        self.scrollToViewController(HISTORY_VIEW_CONTROLLER_INDEX)
+    }
+
     func launchScheduleView() {
-        //TODO: Move to schedule view (either history view or actual calendar page)
+        self.scrollToViewController(HISTORY_VIEW_CONTROLLER_INDEX)
+        let scheduleViewController = SchedulePickupViewController(nibName: "SchedulePickupViewController", bundle: nil)
+        self.historyViewController?.navigationController?.presentViewController(scheduleViewController, animated: true, completion: nil)
     }
 
     func launchMapView() {
+        self.scrollToViewController(HISTORY_VIEW_CONTROLLER_INDEX)
         let dropoffViewController = MapViewController(nibName: "MapViewController", bundle: nil)
-        //dropoffViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
-
-        self.historyViewController?.navigationController?.presentViewController(dropoffViewController, animated: true, completion: { () -> Void in
-            println("launched the dropoff view controller")
-        })
+        self.historyViewController?.navigationController?.presentViewController(dropoffViewController, animated: true, completion: nil)
     }
 
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -126,12 +115,8 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
         let xOffset = containerScrollView.contentOffset.x
         var bar: Bool
         
-        if (xOffset == 0 || xOffset >= pageWidth*2) {
-            bar = false
-        }
-        else {
-            bar = true
-        }
+        bar = !(xOffset == 0 || xOffset >= pageWidth * 2)
+
         if (bar != statusBarHidden) {
             statusBarHidden = bar
             let duration = statusBarHidden ? NSTimeInterval(0) :  NSTimeInterval(0.3)
@@ -144,5 +129,4 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
     override func prefersStatusBarHidden() -> Bool {
         return statusBarHidden
     }
-    
 }

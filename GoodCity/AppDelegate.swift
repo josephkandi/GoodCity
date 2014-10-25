@@ -11,27 +11,24 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    let PICKUP_ACTION_IDENTIFIER = "PICKUP_IDENTIFIER"
-    let DROPOFF_ACTION_IDENTIFIER = "DROPOFF_IDENTIFIER"
+    private let PICKUP_ACTION_IDENTIFIER = "PICKUP_IDENTIFIER"
+    private let DROPOFF_ACTION_IDENTIFIER = "DROPOFF_IDENTIFIER"
 
     var window: UIWindow?
     var containerViewController: ContainerViewController?
 
     func displayLoginScreen() {
+        println("Displaying login screen from AppDelegate")
         let loginViewController = LoginViewController(nibName: "LoginViewController", bundle: nil)
         self.window?.rootViewController = loginViewController
     }
 
     private func displayHomeScreen() {
+        println("Displaying home screen from AppDelegate")
         self.containerViewController = ContainerViewController(nibName: "ContainerViewController", bundle: nil)
         self.window?.rootViewController = containerViewController
     }
 
-    // Handles logout notifications
-    func userDidLogout() {
-        self.displayLoginScreen()
-    }
-    
     func setupParse() {
         Parse.setApplicationId(PARSE_APPLICATION_ID, clientKey: PARSE_CLIENT_KEY)
         PFFacebookUtils.initializeFacebook()
@@ -69,40 +66,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    // Notification action handler
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
-        println("Got a notification action!!!")
+        println("Notification action received.")
         if identifier == PICKUP_ACTION_IDENTIFIER {
-            println("Pick up action recognized")
-            // Time to take user to hisory view
+            println("Pick up action recognized.")
             self.containerViewController?.launchScheduleView()
         } else if identifier == DROPOFF_ACTION_IDENTIFIER {
-            println("Drop off action recognized")
-            // Time to take user to map view
+            println("Drop off action recognized.")
             self.containerViewController?.launchMapView()
         } else {
-            println("ERROR: Unrecognized identifier sent to handleActionWithIdentifier")
+            println("Eror: Unrecognized identifier sent to handleActionWithIdentifier")
         }
-
         completionHandler()
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-
         // Clear badge on launch
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+
+        // UI setup
         //application.setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
-        
-        self.setupParse()
-        self.registerForPushNotifications(application)
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.tintColor = tintColor
 
+        self.setupParse()
+        self.registerForPushNotifications(application)
+
         // Listen for log out notifications
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
+
         if GoodCityUser.currentUser != nil {
-            // User is already logged in
             println("User is already logged in.  Going straight to home screen")
             self.displayHomeScreen()
         } else {
@@ -113,9 +108,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         return true
     }
-    
+
+    // Handles logout notifications
+    func userDidLogout() {
+        self.displayLoginScreen()
+    }
+
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
-        // Attempt to extract a token from the url
+        // SSO authorization flow.  Attempt to extract a token from the url
         return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication, withSession: PFFacebookUtils.session())
     }
     
@@ -127,29 +127,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFFacebookUtils.session().close()
     }
 
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        // Default parse handling of push notif. Will pop alertview is app is in foreground
+        PFPush.handlePush(userInfo)
+    }
+
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         println("APNs registration successful")
         let currentIntallation = PFInstallation.currentInstallation()
         currentIntallation.setDeviceTokenFromData(deviceToken)
-        currentIntallation.saveInBackgroundWithTarget(nil, selector: nil)
+        currentIntallation.saveEventually()
     }
 
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        PFPush.handlePush(userInfo)
-    }
-
-    func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    }
-    
-    func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-    
-    func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        println("Error registering for push notifications: \(error)")
     }
 }
 
