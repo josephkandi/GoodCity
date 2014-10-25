@@ -69,8 +69,7 @@ class GoodCityUser: PFUser, PFSubclassing {
                 self.coverPhotoUrl = url
             }
         }
-
-        self.saveEventually()
+        self.saveInBackgroundWithTarget(nil, selector: nil)
     }
     
     func logout() {
