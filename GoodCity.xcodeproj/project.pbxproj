@@ -35,6 +35,8 @@
 		0AC31B0419EA40E700BB815F /* ItemCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC31B0319EA40E700BB815F /* ItemCondition.swift */; };
 		0AD128B519E92215002E47E5 /* GoodCityUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD128B419E92215002E47E5 /* GoodCityUser.swift */; };
 		0AFB6E2319F2432200E89AFC /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB6E2219F2432200E89AFC /* EditItemView.swift */; };
+		3A050C8B19FB6EEC00981C7D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A050C8919FB6EEC00981C7D /* ProfileViewController.swift */; };
+		3A050C8C19FB6EEC00981C7D /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A050C8A19FB6EEC00981C7D /* ProfileViewController.xib */; };
 		3A15068D19EB60BA0020DF10 /* ItemsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15068B19EB60BA0020DF10 /* ItemsGroupCell.swift */; };
 		3A15068E19EB60BA0020DF10 /* ItemsGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A15068C19EB60BA0020DF10 /* ItemsGroupCell.xib */; };
 		3A15069019EB71AA0020DF10 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15068F19EB71AA0020DF10 /* SectionHeaderView.swift */; };
@@ -135,6 +137,8 @@
 		0AC31B0319EA40E700BB815F /* ItemCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCondition.swift; sourceTree = "<group>"; };
 		0AD128B419E92215002E47E5 /* GoodCityUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodCityUser.swift; sourceTree = "<group>"; };
 		0AFB6E2219F2432200E89AFC /* EditItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; };
+		3A050C8919FB6EEC00981C7D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		3A050C8A19FB6EEC00981C7D /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		3A15068B19EB60BA0020DF10 /* ItemsGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsGroupCell.swift; sourceTree = "<group>"; };
 		3A15068C19EB60BA0020DF10 /* ItemsGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemsGroupCell.xib; sourceTree = "<group>"; };
 		3A15068F19EB71AA0020DF10 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
@@ -327,6 +331,8 @@
 				3AE42EEB19E8FBA400D7A6F5 /* HistoryViewController.swift */,
 				3AE42EEC19E8FBA400D7A6F5 /* HistoryViewController.xib */,
 				3A8D35F519F3587700CE3B73 /* CartViewDelegate.h */,
+				3A050C8919FB6EEC00981C7D /* ProfileViewController.swift */,
+				3A050C8A19FB6EEC00981C7D /* ProfileViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -544,6 +550,7 @@
 				0A0B08D719E2283F0059A82C /* LaunchScreen.xib in Resources */,
 				3A82271B19F2485900007C6C /* EditItemView.xib in Resources */,
 				3AE42EEA19E8FB8300D7A6F5 /* CartViewController.xib in Resources */,
+				3A050C8C19FB6EEC00981C7D /* ProfileViewController.xib in Resources */,
 				0A0B08D419E2283F0059A82C /* Images.xcassets in Resources */,
 				3AE42EEE19E8FBA400D7A6F5 /* HistoryViewController.xib in Resources */,
 				0A14FFBB19E2354000D11CE2 /* SchedulePickupViewController.xib in Resources */,
@@ -617,6 +624,7 @@
 				0A14FFA819E230E800D11CE2 /* LoginViewController.swift in Sources */,
 				3A81925319F59AB5001F2EB5 /* SlotPickerView.swift in Sources */,
 				3A15069419EB85D80020DF10 /* RoundedButton.swift in Sources */,
+				3A050C8B19FB6EEC00981C7D /* ProfileViewController.swift in Sources */,
 				0A14FFAB19E2314200D11CE2 /* ParseClient.swift in Sources */,
 				0A0B08F919E22AD00059A82C /* NSDate+Extensions.swift in Sources */,
 				3AE42EED19E8FBA400D7A6F5 /* HistoryViewController.swift in Sources */,

@@ -18,12 +18,19 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var historyTableView: UITableView!
 
     var itemGroups: DonationItemsAggregator?
+    var profileButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.styleNavBar()
  
+        // Add the profile icon to the right nav bar
+        let profileIcon = UIImage(named: "profile")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        
+        profileButton = UIBarButtonItem(image: profileIcon, style: UIBarButtonItemStyle.Plain, target: self, action: "launchProfile")
+        profileButton.tintColor = UIColor.whiteColor()
+        self.navigationItem.setRightBarButtonItem(profileButton, animated: true)
+        
         setupTableView()
         getItemGroups()
     }
@@ -119,10 +126,17 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         })
     }
     
-    // Helper functions
+    func launchProfile() {
+        println("launched profile view")
+        let profileViewController = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
+        profileViewController.bgImage = takeSnapshot()
+        self.navigationController?.presentViewController(profileViewController, animated: false, completion: { () -> Void in
+            println("launched the profile view controller")
+        })
+    }
     
+    // Helper functions
     func takeSnapshot() -> UIImage{
-        
         NSLog("begin snapshot")
         let layer = UIApplication.sharedApplication().keyWindow?.layer
         UIGraphicsBeginImageContextWithOptions(layer!.frame.size, true, 0)
