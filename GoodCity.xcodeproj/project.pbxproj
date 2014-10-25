@@ -923,6 +923,7 @@
 				0A2015CE19FA140400A7CB57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

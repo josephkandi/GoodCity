@@ -22,7 +22,6 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var closeButton: UIButton!
-    //@IBOutlet weak var datePickerHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var contentContainerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -31,7 +30,6 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     @IBOutlet weak var datePickerButton: DatePickerButton!
     @IBOutlet weak var datePickerView: UIView!
     @IBOutlet weak var scheduleButton: RoundedButton!
-    
     
     var pickerOpen = false
     var calendarView: MDCalendar?
@@ -44,16 +42,16 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
         super.viewDidLoad()
         bgImageView.image = bgImage
         contentContainerView.alpha = 0
+        contentContainerView.layer.cornerRadius = ROUNDED_CORNER
+        contentContainerView.layer.masksToBounds = true
         titleLabel.textAlignment = .Center
         
-        closeButton.setImage(UIImage(named: "edit_close")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: .Normal)
-        closeButton.tintColor = tintColor
+        closeButton.setImage(UIImage(named: "modal_close")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: .Normal)
+        closeButton.tintColor = offWhiteColor
         
         slotPickerView.delegate = self
         slotPickerView.date = datePickerButton.datePicked
         
-        // start with the date picker view closed
-        //datePickerHeightConstraint.constant = 0
         getScheduleSlots()
         initDatePicker()
     }
@@ -68,9 +66,18 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
             self.contentContainerView.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.width, frame.height)
             self.contentContainerView.alpha = 1
         }) { (finished) -> Void in
-            println("animation cmopleted")
+            println("launch modal animation cmopleted")
         }
-
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        let frame = contentContainerView.frame
+        UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            self.contentContainerView.frame = CGRectMake(frame.origin.x, frame.origin.y+700, frame.width, frame.height)
+            self.contentContainerView.alpha = 0
+        }) { (finished) -> Void in
+            println("dismiss modal animation cmopleted")
+        }
     }
     
     @IBAction func onTapClose(sender: AnyObject) {
@@ -177,6 +184,8 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
         yOffset = contentContainerView.bounds.height - 40 - 30
         scheduleButton.frame = CGRectMake((contentContainerView.bounds.width-150)/2, yOffset, 150, 40)
 
+        yOffset = self.view.bounds.height - 20 - 40
+        closeButton.frame = CGRectMake((self.view.bounds.width-40)/2, yOffset, 40, 40)
         
         println("view will layout subviews slot picker view: \(self.slotPickerView.frame)")
     }
@@ -216,5 +225,9 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
         if let donationItems = self.itemsGroup?.sortedDonationItems {
             slot.grabSlot(donationItems)
         }
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
     }
 }

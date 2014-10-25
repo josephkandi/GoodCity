@@ -109,6 +109,7 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <nil key="simulatedStatusBarMetrics"/>
             <point key="canvasLocation" x="136" y="154"/>
         </view>
     </objects>
