@@ -51,6 +51,6 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func onTapLogOut(sender: AnyObject) {
-        println("TODO: Implement log out")
+        GoodCityUser.currentUser().logout()
     }
 }

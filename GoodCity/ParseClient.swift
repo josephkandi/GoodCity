@@ -26,9 +26,6 @@ class ParseClient: NSObject {
         return Static.instance
     }
     
-    func logout() {
-    }
-
     func loginOrSignupWithCompletion(completion: loginResponse) {
         let permissionsArray = [] // Can request "user_location"
 
