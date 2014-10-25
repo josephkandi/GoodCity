@@ -43,25 +43,35 @@ function maybeNotifyUser(notifQuery, pushQuery) {
 }
 
 
-Parse.Cloud.define("totalDonations", function(request, response) {
+Parse.Cloud.define("getDonationStats", function(request, response) {
+  var stats = {};
   var userQuery = new Parse.Query(Parse.User);
   userQuery.equalTo("objectId", request.params.userId);
   userQuery.first({
     success: function(result) {
+      stats["user"] = result;
+
       var query = new Parse.Query("DonationItem");
       query.include("user");
       query.equalTo("user", result);
-      query.containedIn("state", ["Pickedup", "Approved", "Scheduled"]);
+      query.containedIn("state", ["Pickedup", "Approved", "Scheduled", "Notified"]);
       query.find({
         success: function (results) {
           var sum = 0;
-          for (var i = 0; i < results.length; i++) {
+          var count = results.length;
+          if (count == null) {
+            count = 0;
+          }
+          for (var i = 0; i < count; i++) {
             var value = results[i].get("value");
             if (value != null) {
               sum += value;
             }
           }
-          response.success(sum);
+
+          stats["totalDonationsCount"] = count;
+          stats["totalDonationsValue"] = sum;
+          response.success(stats);
         },
         error: function () {
           response.failure("DonationItem query failed");

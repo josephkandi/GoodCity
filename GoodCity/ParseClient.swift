@@ -11,6 +11,10 @@ import Foundation
 let PARSE_APPLICATION_ID = "I3aRv2pcl7byfah51bfTSupsZtjQ81F8Jp2jmEyE"
 let PARSE_CLIENT_KEY = "mza3JWqSDyWpDZyNeTdGzEYw0A0W8jlZMuvvTM2w"
 
+let TOTAL_DONATION_VALUE_KEY = "total_donation_value"
+let TOTAL_DONATION_COUNT_KEY = "total_donation_count"
+let MEMBER_SINCE_KEY = "member_since"
+
 private let parseClientSharedInstance = ParseClient()
 
 typealias ParseResponse = (objects: [AnyObject], error: NSError?) -> ()
@@ -68,12 +72,21 @@ class ParseClient: NSObject {
     }
 
     func updateTotalDonationsValueInUserDefaults() {
-        PFCloud.callFunctionInBackground("totalDonations",
+        PFCloud.callFunctionInBackground("getDonationStats",
             withParameters: ["userId": GoodCityUser.currentUser().objectId]) { (result, error) -> Void in
                 if error == nil {
-                    println("Result from Parse Cloud Code: \(result)")
                     let userDefaults = NSUserDefaults(suiteName: "group.com.codepath.goodcity")
-                    userDefaults?.setDouble(result as Double, forKey: "total_donation_value")
+
+                    let totalDonationsValue = result["totalDonationsValue"] as? Double ?? 0
+                    userDefaults?.setDouble(totalDonationsValue, forKey: TOTAL_DONATION_VALUE_KEY)
+
+                    let totalDonationsCount = result["totalDonationsCount"] as? Int ?? 0
+                    userDefaults?.setInteger(totalDonationsCount, forKey: TOTAL_DONATION_COUNT_KEY)
+                    if let member = result["user"] as? PFUser {
+                        let dateString = getFriendlyDateFormatter().stringFromDate(member.createdAt)
+                        userDefaults?.setObject(dateString, forKey: MEMBER_SINCE_KEY)
+                    }
+                    userDefaults?.synchronize()
                 } else {
                     println("Error from Parse Cloud Code: \(error)")
                 }
