@@ -82,9 +82,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Clear badge on launch
-        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
-
         // UI setup
         //application.setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
@@ -120,6 +117,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
+        // Clear badge on launch
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+
         FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
     }
     
