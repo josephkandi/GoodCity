@@ -1,16 +1,6 @@
-//
-//  MapViewController.swift
-//  GoodCity
-//
-//  Created by Nick Aiwazian on 10/5/14.
-//  Copyright (c) 2014 codepath. All rights reserved.
-//
-
 import UIKit
 import MapKit
 import CoreLocation
-
-//let kCLLocationAccuracyKilometer = 0.5
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
@@ -18,8 +8,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var mapView: MKMapView!
     
     var locationManager: CLLocationManager?
-    var showUserLocation = false
-    
+    var lastUserLocation: CLLocation?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.styleNavBar(navigationBar)
@@ -27,7 +17,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         mapView.delegate = self
         startStandardUpdates()
     }
-    
+
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         if (annotation.isKindOfClass(DropoffAnnotation)) {
             let marker = annotation as DropoffAnnotation
@@ -42,18 +32,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             return markerView
         }
         return nil
-    }
-
-    func addDropoffLocationsToMap(locations: [DropoffLocation]) {
-        var annotations = [DropoffAnnotation]()
-        var index = 0
-        for location in locations {
-            let coordinate = CLLocationCoordinate2DMake(location.location.latitude, location.location.longitude)
-            let dropoffAnnotation = DropoffAnnotation(markerText: String(index), title: location.name, coordinate: coordinate)
-            annotations.append(dropoffAnnotation)
-            index++
-        }
-        mapView.showAnnotations(annotations, animated: true)
     }
 
     // MARK: Location Manager related methods
@@ -76,27 +54,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             mapView.showsUserLocation = true
         }
     }
+
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         let location = locations.last as CLLocation
         let eventDate = location.timestamp
         let howRecent = eventDate.timeIntervalSinceNow
-        
-        if (abs(howRecent) < 15.0) {
-            NSLog("latitude \(location.coordinate.latitude), longitude \(location.coordinate.longitude)\n")
-            let userLocation = PFGeoPoint(location: location)
-            self.mapView.setCenterCoordinate(location.coordinate, animated: true)
-            self.getNearbyDropOffLocationsFromParse(userLocation)
-        }
 
-        /*
-        if (showUserLocation == false) {
-            let center = location.coordinate
-            let span = MKCoordinateSpanMake(0.05, 0.05)
-            mapView.setRegion(MKCoordinateRegion(center: center, span: span), animated: false)
-            showUserLocation = true
+        // 15 minutes
+        if (abs(howRecent) < 15.0 * 60) {
+            self.lastUserLocation = location
+            let pfLocation = PFGeoPoint(location: location)
+            self.getNearbyDropOffLocationsFromParse(pfLocation)
         }
-*/
-        
     }
 
     func getNearbyDropOffLocationsFromParse(userCurrentLocation: PFGeoPoint, radiusInMiles: Int = 25) {
@@ -105,34 +74,42 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
-                // The find succeeded.
                 NSLog("Successfully retrieved \(objects.count) dropoff locations.")
-                println(objects)
                 self.addDropoffLocationsToMap(objects as [DropoffLocation])
             } else {
-                // Log details of the failure
-                NSLog("Error: %@ %@", error, error.userInfo!)
+                NSLog("Error trying to get dropoff locations: %@ %@", error, error.userInfo!)
             }
         }
-
-
     }
 
-    func centerMap(center: CLLocationCoordinate2D) {
+    func zoomMap() {
+        let userAnnotationPoint = MKMapPointForCoordinate(self.lastUserLocation!.coordinate)
+        var zoomRect = MKMapRectMake(userAnnotationPoint.x, userAnnotationPoint.y, 0.1, 0.1)
 
-        /*
-        let span = MKCoordinateSpan(latitudeDelta: upper!.latitude-lower!.latitude+0.05, longitudeDelta: upper!.longitude-lower!.longitude+0.05)
-        let center = CLLocationCoordinate2D(latitude: (upper!.latitude+lower!.latitude)/2, longitude: (upper!.longitude+lower!.longitude)/2)
-        let region = MKCoordinateRegion(center: center, span: span)
-*/
-        //mapView.region = mapView.regionThatFits(region)
-
+        for annotation in mapView.annotations {
+            let annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
+            let pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.1, 0.1)
+            zoomRect = MKMapRectUnion(zoomRect, pointRect)
+        }
+        let inset = -zoomRect.size.width * 0.15
+        mapView.setVisibleMapRect(MKMapRectInset(zoomRect, inset, inset), animated:true)
     }
 
-    
+    func addDropoffLocationsToMap(locations: [DropoffLocation]) {
+        var annotations = [DropoffAnnotation]()
+        var index = 0
+        for location in locations {
+            let coordinate = CLLocationCoordinate2DMake(location.location.latitude, location.location.longitude)
+            let dropoffAnnotation = DropoffAnnotation(markerText: String(index), title: location.name, coordinate: coordinate)
+            annotations.append(dropoffAnnotation)
+            index++
+        }
+        mapView.addAnnotations(annotations)
+        self.zoomMap()
+    }
+
+    // Dismiss
     @IBAction func onDismiss(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            println("dismissing the mapview")
-        })
+        self.dismissViewControllerAnimated(true, completion:nil)
     }
 }
