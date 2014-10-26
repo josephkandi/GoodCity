@@ -74,7 +74,7 @@ class ItemsGroupCell: UITableViewCell {
             text = "\(itemsCount) item\(s) you donated on \(date) are pending review"
         }
         else if itemsState == ItemState.PickedUp {
-            text = "\(itemsCount) item\(s) received on [fill in the date and time]"
+            text = "\(itemsCount) item\(s) received on \(pickedUpDateString)"
         }
         else if itemsState == ItemState.NotNeeded {
             text = "\(itemsCount) item\(s) donated on \(date) \(are) currently not needed"
