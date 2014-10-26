@@ -20,10 +20,10 @@
                         <action selector="onTapClose:" destination="iN0-l3-epB" eventType="touchUpInside" id="AnL-xc-B0T"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0KV-Ke-Bem" userLabel="submit_button">
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0KV-Ke-Bem" userLabel="submit_button">
                     <rect key="frame" x="250" y="20" width="50" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="edit_submit">
+                    <state key="normal" image="edit_submit_disabled">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -100,7 +100,7 @@
     </objects>
     <resources>
         <image name="edit_close" width="50" height="50"/>
-        <image name="edit_submit" width="50" height="50"/>
+        <image name="edit_submit_disabled" width="50" height="50"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

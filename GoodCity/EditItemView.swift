@@ -47,7 +47,9 @@ class EditItemView: UIView, UITextViewDelegate {
     }
     
     @IBAction func onTap(sender: UITapGestureRecognizer) {
-        dismissKeyboard()
+        if descriptionText.isFirstResponder() {
+            dismissKeyboard()
+        }
     }
     
     @IBAction func onTapClose(sender: AnyObject) {
@@ -55,9 +57,10 @@ class EditItemView: UIView, UITextViewDelegate {
     }
     
     @IBAction func onTapSubmit(sender: AnyObject) {
-        
+        if !submitButton.enabled {
+            return
+        }
         let newItem = DonationItem.newItem(descriptionText.text, photo: photo!, condition: conditionChooser.titleForSegmentAtIndex(conditionChooser.selectedSegmentIndex))
-        
         delegate?.submitItem(newItem)
     }
     
@@ -111,9 +114,13 @@ class EditItemView: UIView, UITextViewDelegate {
         
         if itemDescription == "" && !active {
             showPlaceholderText()
+            submitButton.setImage(UIImage(named: "edit_submit_disabled"), forState: .Normal)
+            submitButton.enabled = false
         }
         else {
             descriptionText.text = itemDescription
+            submitButton.setImage(UIImage(named: "edit_submit"), forState: .Normal)
+            submitButton.enabled = true
         }
     }
     func dismissKeyboard() {
