@@ -19,6 +19,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
 
     var itemGroupsArray: [DonationItemsAggregator?]!
     var profileButton: UIBarButtonItem!
+    var mapButton: UIBarButtonItem!
     var activitiesChooser: UISegmentedControl!
     
     override func viewDidLoad() {
@@ -35,6 +36,12 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         activitiesChooser.sizeToFit()
         activitiesChooser.addTarget(self, action: "switchTabs", forControlEvents: UIControlEvents.ValueChanged)
         self.navigationItem.titleView = activitiesChooser
+        
+        // Add the map icon to the left nav bar
+        let mapIcon = UIImage(named: "map")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        mapButton = UIBarButtonItem(image: mapIcon, style: UIBarButtonItemStyle.Plain, target: self, action: "viewDropoffLocations")
+        mapButton.tintColor = UIColor.whiteColor()
+        self.navigationItem.setLeftBarButtonItem(mapButton, animated: true)
         
         // Add the profile icon to the right nav bar
         let profileIcon = UIImage(named: "profile")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
