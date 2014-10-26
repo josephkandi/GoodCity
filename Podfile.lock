@@ -29,6 +29,8 @@ PODS:
   - ParseFacebookUtils (1.4.2):
     - Facebook-iOS-SDK (~> 3.19.0)
     - Parse (~> 1.4.2)
+  - SIAlertView (1.3)
+  - Toast (2.4)
 
 DEPENDENCIES:
   - AFNetworking
@@ -36,6 +38,8 @@ DEPENDENCIES:
   - MDCalendar
   - Parse
   - ParseFacebookUtils
+  - SIAlertView
+  - Toast
 
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
@@ -44,5 +48,7 @@ SPEC CHECKSUMS:
   MDCalendar: 376c638030df065503b37402b1351b4da868ed9f
   Parse: fc9ceb6edbc6bb6a1a1f3c33f0db3293a6894f94
   ParseFacebookUtils: 15b04623e6bf4bbea5d60460caff98943ad7351e
+  SIAlertView: d00609a1faa9d82f17b9f0b4eede64e84a577b10
+  Toast: 6a3c2b1d70e426b26d130971c369670eac7aa9ce
 
 COCOAPODS: 0.34.4
