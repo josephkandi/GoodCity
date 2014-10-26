@@ -21,7 +21,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     var profileButton: UIBarButtonItem!
     var mapButton: UIBarButtonItem!
     var activitiesChooser: UISegmentedControl!
-    
+    var refreshControl: UIRefreshControl!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,22 +52,29 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // Set up the table views
         setupTableView()
-        if (activitiesChooser.selectedSegmentIndex == 0) {
-            getActiveItemGroups()
-        }
-        else {
-            getHistoryItemGroups()
-        }
+        refreshTableData()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if (itemGroupsArray[activitiesChooser.selectedSegmentIndex] != nil) {
-            println("number of sections: \(itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections.count) ")
-            return itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections.count
+        if (itemGroupsArray[activitiesChooser.selectedSegmentIndex] != nil &&
+            itemGroupsArray[activitiesChooser.selectedSegmentIndex]?.sortedSections.count > 0) {
+
+                println("number of sections: \(itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections.count) ")
+                return itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections.count
+        } else {
+            // Empty view
+            let messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
+            messageLabel.text = "No items to show right now."
+            messageLabel.textColor = UIColor.darkGrayColor()
+            messageLabel.numberOfLines = 0;
+            messageLabel.textAlignment = NSTextAlignment.Center
+            messageLabel.font = UIFont(name:"Avenir", size:20)
+            messageLabel.sizeToFit()
+
+            self.historyTableView.backgroundView = messageLabel;
         }
-        else {
-            return 0
-        }
+        
+        return 0;
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -194,20 +202,34 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         historyTableView.estimatedRowHeight = 200
         registerTableViewCellNib("ItemsGroupCell", reuseIdentifier: "itemsGroupCell")
         historyTableView.registerClass(SectionHeaderView.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
+
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: "refreshTableData", forControlEvents: UIControlEvents.ValueChanged)
+        self.historyTableView.addSubview(self.refreshControl)
     }
-    
+
     private func getActiveItemGroups() {
         getItemGroups(states: [ItemState.Scheduled, ItemState.Approved, ItemState.Pending], index: 0)
     }
     private func getHistoryItemGroups() {
         getItemGroups(states: [ItemState.NotNeeded, ItemState.PickedUp], index: 1)
     }
-    
+
+    func refreshTableData() {
+        if (activitiesChooser.selectedSegmentIndex == 0) {
+            getActiveItemGroups()
+        }
+        else {
+            getHistoryItemGroups()
+        }
+    }
+
     private func getItemGroups(states: [ItemState]? = nil, index: Int) {
         DonationItem.getAllItemsWithStates({
             (objects, error) -> () in
             println("Completed")
             if error == nil {
+                self.refreshControl.endRefreshing()
                 if (objects.count == 0 ) {
                     println("There are no results")
                     self.itemGroupsArray[index] = nil
@@ -229,6 +251,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                     }
                 }
             } else {
+                self.refreshControl.endRefreshing()
                 println(error)
             }
             }, states: states
