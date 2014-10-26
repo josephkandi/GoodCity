@@ -13,11 +13,12 @@ let BOTTOM_MARGIN = CGFloat(20)
 let SIDE_MARGIN = CGFloat(12)
 let ITEM_SPACING = CGFloat(10)
 
-class CartViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CartViewDelegate {
+class CartViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CartViewDelegate,
+    GHContextOverlayViewDelegate, GHContextOverlayViewDataSource {
     
     @IBOutlet weak var cartCollectionView: UICollectionView!
     var cameraViewDelegate: CameraViewDelegate?
-    
+
     // Array of pending donation items
     var pendingItems = NSMutableArray()
     
@@ -29,7 +30,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.styleNavBar(self.navigationController!.navigationBar)
         
         self.view.backgroundColor = LIGHT_GRAY_BG
-        
+
         cartCollectionView.dataSource = self
         cartCollectionView.delegate = self
  
@@ -60,6 +61,13 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         var cell = cartCollectionView.dequeueReusableCellWithReuseIdentifier("cartItemCell", forIndexPath: indexPath) as CartItemCell
         cell.donationItem = pendingItems[indexPath.row] as? DonationItem
 
+        let overlay = GHContextMenuView()
+        overlay.delegate = self
+        overlay.dataSource = self
+
+        let longPressRecognizer = UILongPressGestureRecognizer(target: overlay, action: "longPressDetected:")
+        cell.contentView.addGestureRecognizer(longPressRecognizer)
+
         return cell
     }
     
@@ -84,7 +92,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
         }, states: [ItemState.Pending])
     }
-    
+
     func updateCount() {
         var string = "PENDING"
         let count = self.pendingItems.count > 0 ? " (\(String(self.pendingItems.count)))" : ""
@@ -102,5 +110,40 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     func getItemsCount() -> NSInteger {
         return self.pendingItems.count
+    }
+
+    // Context menu
+    func numberOfMenuItems() -> Int {
+        return 2
+    }
+
+    func imageForItemAtIndex(index: Int) -> UIImage! {
+        let images = ["history_scheduled", "history_pending"]
+        return UIImage(named: images[index])
+    }
+
+    func didSelectItemAtIndex(selectedIndex: Int, forMenuAtPoint point: CGPoint) {
+        if let indexPath = self.cartCollectionView.indexPathForItemAtPoint(point) {
+            if let cell = self.cartCollectionView.cellForItemAtIndexPath(indexPath) as? CartItemCell {
+                println("Found the cell to delete")
+
+                var message = ""
+
+                switch selectedIndex {
+                case 0:
+                    message = "scheduled"
+                case 1:
+                    message = "delete"
+                    if let donationItem = cell.donationItem {
+                        println("Found donationitem to delete....deleting")
+                        pendingItems.removeObject(donationItem)
+                        donationItem.deleteEventually()
+                        self.cartCollectionView.reloadData()
+                    }
+                default:
+                    message = "unknown"
+                }
+            }
+        }
     }
 }
