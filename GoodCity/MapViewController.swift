@@ -97,7 +97,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
     func addDropoffLocationsToMap(locations: [DropoffLocation]) {
         var annotations = [DropoffAnnotation]()
-        var index = 0
+        var index = 1
         for location in locations {
             let coordinate = CLLocationCoordinate2DMake(location.location.latitude, location.location.longitude)
             let dropoffAnnotation = DropoffAnnotation(markerText: String(index), title: location.name, coordinate: coordinate)
