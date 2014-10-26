@@ -33,7 +33,7 @@ class ItemsGroupCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        stateIcon.backgroundColor = UIColor.purpleColor()
+        //stateIcon.backgroundColor = UIColor.purpleColor()
 
         buttonsView = ActionButtonsView(frame: buttonContainer.bounds)
         buttonContainer.addSubview(buttonsView)
@@ -45,6 +45,43 @@ class ItemsGroupCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func layoutDonationTextLabel() {
+        var text = ""
+        var itemsCount = itemsGroup!.sortedDonationItems.count
+        var date = getFriendlyShortDateFormatter().stringFromDate(itemsGroup!.originalDate)
+        if itemsState == ItemState.Approved {
+            text = "\(itemsCount) items you donated on \(date) have been approved"
+        }
+        else if itemsState == ItemState.Scheduled {
+            text = "\(itemsCount) items are scheduled to be picked up on: [fill in the date and time]"
+        }
+        else if itemsState == ItemState.Pending {
+            text = "\(itemsCount) items you donated on \(date) are pending review"
+        }
+        else {
+            text = "Donated on: Oct 8, 2014"
+        }
+        donationTextLabel.numberOfLines = 0
+        donationTextLabel.text = text
+        donationTextLabel.sizeToFit()
+    }
+    
+    func setupStateIcon() {
+        if itemsState == ItemState.Approved {
+            stateIcon.image = UIImage(named: "history_approved")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            stateIcon.tintColor = greenHighlight
+        }
+        else if itemsState == ItemState.Scheduled {
+            stateIcon.image = UIImage(named: "history_scheduled")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            stateIcon.tintColor = tintColor
+        }
+        else if itemsState == ItemState.Pending {
+            stateIcon.image = UIImage(named: "history_pending")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            stateIcon.tintColor = yellowHighlight
+        }
+        stateIcon.contentMode = UIViewContentMode.ScaleAspectFill
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -53,24 +90,22 @@ class ItemsGroupCell: UITableViewCell {
         var yOffset = marginTopBottom
         
         // Set up the state icon image
-        stateIcon.frame = CGRectMake(xOffset, yOffset, 40, 40)
-        stateIcon.layer.cornerRadius = 20
+        stateIcon.frame = CGRectMake(xOffset, yOffset+4, 34, 34)
+        stateIcon.layer.cornerRadius = stateIcon.frame.height / 2
         stateIcon.layer.masksToBounds = true
-        
-        xOffset += stateIcon.frame.width + gapMargin
+        setupStateIcon()
+        xOffset += stateIcon.frame.width + gapMargin + 5
         
         // Set up the donation title text label
         donationTextLabel.frame = CGRectMake(xOffset, yOffset, bounds.width - xOffset - marginLeftRight, 30)
-        donationTextLabel.numberOfLines = 0
-        donationTextLabel.text = "Donated on: Oct 8, 2014"
-        donationTextLabel.sizeToFit()
+        layoutDonationTextLabel()
         
         yOffset += donationTextLabel.frame.height + gapMargin
         
         // Set up the thumbnails
         thumbnailsContainer.frame = CGRectMake(xOffset, yOffset, bounds.width - xOffset - marginLeftRight, 60)
         let frame = thumbnailsContainer.frame
-        let rows = Int(CGFloat(thumbnailsArray.count) / ITEMS_PER_ROW) + 1
+        let rows = Int(ceil(CGFloat(thumbnailsArray.count) / ITEMS_PER_ROW))
         let thumbnailWidth = (frame.width - SPACING * (ITEMS_PER_ROW-1)) / ITEMS_PER_ROW
         
         var index = 0
@@ -137,7 +172,7 @@ class ItemsGroupCell: UITableViewCell {
     }
     
     class func getThumbnailsHeight(width: CGFloat, count: Int) -> CGFloat {
-        let rows = Int(CGFloat(count) / ITEMS_PER_ROW) + 1
+        let rows = Int(ceil(CGFloat(count) / ITEMS_PER_ROW))
         let thumbnailWidth = (width - SPACING * (ITEMS_PER_ROW-1)) / ITEMS_PER_ROW
         let height = thumbnailWidth * CGFloat(rows) + SPACING * CGFloat(rows-1)
         return height

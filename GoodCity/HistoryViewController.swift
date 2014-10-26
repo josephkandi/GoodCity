@@ -17,7 +17,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var historyTableView: UITableView!
 
-    var itemGroups: DonationItemsAggregator?
+    var itemGroupsArray: [DonationItemsAggregator?]!
     var profileButton: UIBarButtonItem!
     var activitiesChooser: UISegmentedControl!
     
@@ -33,6 +33,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         activitiesChooser.setTitleTextAttributes(titleSytle, forState: .Normal)
         activitiesChooser.selectedSegmentIndex = 0
         activitiesChooser.sizeToFit()
+        activitiesChooser.addTarget(self, action: "switchTabs", forControlEvents: UIControlEvents.ValueChanged)
         self.navigationItem.titleView = activitiesChooser
         
         // Add the profile icon to the right nav bar
@@ -43,13 +44,18 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // Set up the table views
         setupTableView()
-        getItemGroups()
+        if (activitiesChooser.selectedSegmentIndex == 0) {
+            getActiveItemGroups()
+        }
+        else {
+            getHistoryItemGroups()
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if (itemGroups != nil) {
-            println("number of sections: \(itemGroups!.sortedSections.count) ")
-            return itemGroups!.sortedSections.count
+        if (itemGroupsArray[activitiesChooser.selectedSegmentIndex] != nil) {
+            println("number of sections: \(itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections.count) ")
+            return itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections.count
         }
         else {
             return 0
@@ -57,9 +63,9 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (itemGroups != nil) {
-            println("number of items in section\(section): \(itemGroups!.sortedSections[section].numberOfItems())")
-            return itemGroups!.sortedSections[section].numberOfItems()
+        if (itemGroupsArray[activitiesChooser.selectedSegmentIndex] != nil) {
+            println("number of items in section\(section): \(itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections[section].numberOfItems())")
+            return itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections[section].numberOfItems()
         }
         else {
             return 0
@@ -68,11 +74,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        if (itemGroups == nil) {
+        if (itemGroupsArray[activitiesChooser.selectedSegmentIndex] == nil) {
             return UITableViewCell()
         }
         
-        let sortedSection = itemGroups!.sortedSections[indexPath.section]
+        let sortedSection = itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections[indexPath.section]
         let item  = sortedSection.sortedDonationGroups[indexPath.row]
         let cell = historyTableView.dequeueReusableCellWithIdentifier("itemsGroupCell") as ItemsGroupCell
         cell.setDelegate(self)
@@ -83,11 +89,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        if (itemGroups == nil) {
+        if (itemGroupsArray[activitiesChooser.selectedSegmentIndex] == nil) {
             return nil
         }
         
-        let sortedSection = itemGroups!.sortedSections[section]
+        let sortedSection = itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections[section]
         let header = historyTableView.dequeueReusableHeaderFooterViewWithIdentifier("sectionHeader") as SectionHeaderView
         header.setSectionTitle(sortedSection.name)
         return header
@@ -97,15 +103,15 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     // HACK: Hardcoding the row height based on the different sections right now. Need to update with real model
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        if (itemGroups == nil) {
+        if (itemGroupsArray[activitiesChooser.selectedSegmentIndex] == nil) {
             return 0
         }
         
-        let sortedSection = itemGroups!.sortedSections[indexPath.section]
+        let sortedSection = itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections[indexPath.section]
         let state = ItemState(rawValue: sortedSection.name)!
         let numberOfItems = sortedSection.sortedDonationGroups[indexPath.row].sortedDonationItems.count
     
-        var height: CGFloat = 70
+        var height: CGFloat = 80
         if (state == ItemState.Approved || state == ItemState.Scheduled) {
             height += 35
         }
@@ -170,6 +176,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     private func setupTableView() {
+        
+        itemGroupsArray = [DonationItemsAggregator?]()
+        itemGroupsArray.append(nil)
+        itemGroupsArray.append(nil)
+        
         historyTableView.dataSource = self
         historyTableView.delegate = self
         historyTableView.rowHeight = UITableViewAutomaticDimension
@@ -178,21 +189,30 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         historyTableView.registerClass(SectionHeaderView.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
     }
     
-    private func getItemGroups() {
+    private func getActiveItemGroups() {
+        getItemGroups(states: [ItemState.Scheduled, ItemState.Approved, ItemState.Pending], index: 0)
+    }
+    private func getHistoryItemGroups() {
+        getItemGroups(states: [ItemState.NotNeeded, ItemState.PickedUp], index: 1)
+    }
+    
+    private func getItemGroups(states: [ItemState]? = nil, index: Int) {
         DonationItem.getAllItemsWithStates({
             (objects, error) -> () in
             println("Completed")
             if error == nil {
                 if (objects.count == 0 ) {
                     println("There are no results")
+                    self.itemGroupsArray[index] = nil
+                    self.historyTableView.reloadData()
                     return
                 }
                 println(objects)
                 let result = DonationItemsAggregator(donationItems: objects as [DonationItem])
-                self.itemGroups = result
+                self.itemGroupsArray[index] = result
                 self.historyTableView.reloadData()
                 
-                for section in self.itemGroups!.sortedSections {
+                for section in result.sortedSections {
                     println(section.name)
                     for donationGroup in section.sortedDonationGroups {
                         println("  " + donationGroup.name)
@@ -204,8 +224,18 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             } else {
                 println(error)
             }
-            }
+            }, states: states
         )
+    }
+    
+    func switchTabs() {
+        self.historyTableView.reloadData()
+        if (activitiesChooser.selectedSegmentIndex == 0) {
+            getActiveItemGroups()
+        }
+        else {
+            getHistoryItemGroups()
+        }
     }
     
     // View Controller animation delegate methods

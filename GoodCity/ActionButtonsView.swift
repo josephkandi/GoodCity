@@ -53,32 +53,32 @@ class ActionButtonsView: UIView {
     override func layoutSubviews() {
         let width = self.frame.width
         
-        // Approved => lay out 2 buttons
+        // Approved => lay out 1 button
         if itemsState == ItemState.Approved {
-            
             button2.hidden = false
             button2.setButtonTitle("Schedule Pickup")
             button2.setButtonColor(tintColor)
             button2.setButtonSytle(1)
             button2.frame = CGRectMake((width-BUTTON_SPACING)/2+BUTTON_SPACING, 0, (width-BUTTON_SPACING)/2, self.frame.height)
             button2.addTarget(self, action: "onTapSchedulePickup", forControlEvents: UIControlEvents.TouchUpInside)
-            
             line.frame = CGRectMake(0, self.frame.height / 2, width - button2.frame.width - SPACING, 0.5)
-
         }
         // Scheduled => lay out 1 button
         else if itemsState == ItemState.Scheduled {
-            button1.hidden = false
-            button2.hidden = true
-            button1.setButtonTitle("Edit Pickup Schedule")
-            button1.frame = CGRectMake(0, 0, width, self.frame.height)
-            self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.x, self.frame.width, self.frame.height)
+            button2.hidden = false
+            button2.setButtonTitle("Edit Schedule")
+            button2.setButtonColor(tintColor)
+            button2.setButtonSytle(1)
+            button2.frame = CGRectMake((width-BUTTON_SPACING)/2+BUTTON_SPACING, 0, (width-BUTTON_SPACING)/2, self.frame.height)
+            button2.addTarget(self, action: "onTapSchedulePickup", forControlEvents: UIControlEvents.TouchUpInside)
+            line.frame = CGRectMake(0, self.frame.height / 2, width - button2.frame.width - SPACING, 0.5)
         }
         // All other states => no buttons
         else {
             button1.hidden = true
             button2.hidden = true
-            self.frame = CGRectZero
+            line.frame = CGRectMake(0, 0, width, 0.5)
+            self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.x, self.frame.width, line.frame.height)
         }
     }
     
