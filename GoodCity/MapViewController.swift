@@ -43,8 +43,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         
         locationManager!.delegate = self
-        locationManager!.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        locationManager!.distanceFilter = 500 // meters
+        locationManager!.desiredAccuracy = kCLLocationAccuracyKilometer
+        locationManager!.distanceFilter = 1000 // meters
         
         // Request location permission
         locationManager!.requestWhenInUseAuthorization()
@@ -68,7 +68,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
 
-    func getNearbyDropOffLocationsFromParse(userCurrentLocation: PFGeoPoint, radiusInMiles: Int = 25) {
+    func getNearbyDropOffLocationsFromParse(userCurrentLocation: PFGeoPoint, radiusInMiles: Int = 15) {
         var query = DropoffLocation.query()
         query.whereKey("location", nearGeoPoint: userCurrentLocation, withinMiles: Double(radiusInMiles))
         query.findObjectsInBackgroundWithBlock {
