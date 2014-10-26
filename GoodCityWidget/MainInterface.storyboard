@@ -16,9 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Donations:90" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
-                                <rect key="frame" x="96" y="8" width="216" height="24"/>
-                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donation Count:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
+                                <rect key="frame" x="96" y="8" width="117" height="23"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -29,20 +29,54 @@
                                     <constraint firstAttribute="width" constant="80" id="heo-KM-CyJ"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$535" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="OVA-xs-9uk">
-                                <rect key="frame" x="96" y="36" width="216" height="24"/>
-                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$535" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="OVA-xs-9uk">
+                                <rect key="frame" x="225" y="8" width="36" height="21"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member Since:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="kTj-un-gxj">
+                                <rect key="frame" x="96" y="67" width="78" height="16"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="June 2" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="PmM-Sh-XbG">
+                                <rect key="frame" x="182" y="67" width="35" height="16"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Value:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="INS-L2-H0a">
+                                <rect key="frame" x="96" y="38" width="82" height="21"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$535" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="g5J-gT-XPg">
+                                <rect key="frame" x="225" y="38" width="36" height="21"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Lgt-Q0-13W" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="8" id="0Jf-Rf-7Y8"/>
-                            <constraint firstAttribute="trailing" secondItem="GcN-lo-r42" secondAttribute="trailing" constant="8" id="0h3-Sw-osc"/>
-                            <constraint firstItem="Lgt-Q0-13W" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="8" id="MoJ-fc-79b"/>
-                            <constraint firstItem="Lgt-Q0-13W" firstAttribute="top" secondItem="GcN-lo-r42" secondAttribute="top" id="TjH-yu-cTy"/>
-                            <constraint firstItem="GcN-lo-r42" firstAttribute="leading" secondItem="Lgt-Q0-13W" secondAttribute="trailing" constant="8" id="fkc-TP-QUi"/>
-                            <constraint firstItem="GcN-lo-r42" firstAttribute="leading" secondItem="Lgt-Q0-13W" secondAttribute="trailing" constant="8" id="o03-CW-ra2"/>
+                            <constraint firstItem="PmM-Sh-XbG" firstAttribute="leading" secondItem="kTj-un-gxj" secondAttribute="trailing" constant="8" id="2AU-dB-xeQ"/>
+                            <constraint firstItem="Lgt-Q0-13W" firstAttribute="centerY" secondItem="INS-L2-H0a" secondAttribute="centerY" id="6WW-Ww-uHF"/>
+                            <constraint firstItem="PmM-Sh-XbG" firstAttribute="top" secondItem="INS-L2-H0a" secondAttribute="bottom" constant="8" id="7m4-n2-H3t"/>
+                            <constraint firstItem="INS-L2-H0a" firstAttribute="leading" secondItem="kTj-un-gxj" secondAttribute="leading" id="9cQ-Lc-PoM"/>
+                            <constraint firstItem="Lgt-Q0-13W" firstAttribute="top" secondItem="OVA-xs-9uk" secondAttribute="top" id="T3J-dO-cmj"/>
+                            <constraint firstItem="INS-L2-H0a" firstAttribute="top" secondItem="GcN-lo-r42" secondAttribute="bottom" constant="8" id="WB7-6p-5eM"/>
+                            <constraint firstItem="Lgt-Q0-13W" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="8" id="YgH-BG-tka"/>
+                            <constraint firstItem="INS-L2-H0a" firstAttribute="leading" secondItem="GcN-lo-r42" secondAttribute="leading" id="a90-xO-nYo"/>
+                            <constraint firstItem="g5J-gT-XPg" firstAttribute="leading" secondItem="OVA-xs-9uk" secondAttribute="leading" id="dZL-15-xIo"/>
+                            <constraint firstItem="g5J-gT-XPg" firstAttribute="leading" secondItem="OVA-xs-9uk" secondAttribute="leading" id="ek4-2H-8ed"/>
+                            <constraint firstItem="Lgt-Q0-13W" firstAttribute="top" secondItem="GcN-lo-r42" secondAttribute="top" id="f1g-En-OsS"/>
+                            <constraint firstItem="INS-L2-H0a" firstAttribute="top" secondItem="g5J-gT-XPg" secondAttribute="top" id="f2u-zE-G9P"/>
+                            <constraint firstItem="PmM-Sh-XbG" firstAttribute="top" secondItem="kTj-un-gxj" secondAttribute="top" id="mPz-q8-g36"/>
+                            <constraint firstItem="Lgt-Q0-13W" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="8" id="qZC-tm-ob2"/>
+                            <constraint firstItem="OVA-xs-9uk" firstAttribute="leading" secondItem="GcN-lo-r42" secondAttribute="trailing" constant="12" id="tQO-7i-zKX"/>
+                            <constraint firstItem="GcN-lo-r42" firstAttribute="leading" secondItem="Lgt-Q0-13W" secondAttribute="trailing" constant="8" id="xug-5b-sto"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -52,7 +86,10 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
-                        <outlet property="donationsValueLabel" destination="OVA-xs-9uk" id="4id-7h-vJ9"/>
+                        <outlet property="badgeImage" destination="Lgt-Q0-13W" id="Lg0-lZ-BmH"/>
+                        <outlet property="donationCountLabel" destination="OVA-xs-9uk" id="Gfe-KK-2ee"/>
+                        <outlet property="donationValueLabel" destination="g5J-gT-XPg" id="GsG-rJ-rHC"/>
+                        <outlet property="memberSinceLabel" destination="PmM-Sh-XbG" id="MoQ-Id-H0o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
