@@ -82,6 +82,7 @@ class CartViewController: UIViewController {
         let count = self.cartItems.count > 0 ? " (\(String(self.cartItems.count)))" : ""
         string = string + count
         self.navigationItem.title = string
+        self.navigationItem.rightBarButtonItem!.enabled = self.cartItems.count > 0
         
         self.cameraViewDelegate?.updateItemsCount(String(self.cartItems.count), animated: true)
     }
