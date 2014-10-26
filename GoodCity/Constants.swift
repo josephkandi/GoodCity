@@ -35,6 +35,8 @@ let tintColor = BLUE_TEAL
 let offWhiteColor = UIColorFromRGB(0xf5f5f5)
 let yellowHighlight = UIColorFromRGB(0xfcc82f)
 let greenHighlight = UIColorFromRGB(0x67993c)
+let pinkHighlight = UIColorFromRGB(0xcb398d)
+
 
 // Date Formatter
 private var friendlyDateFormatter: NSDateFormatter?

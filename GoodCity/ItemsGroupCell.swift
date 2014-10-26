@@ -49,14 +49,30 @@ class ItemsGroupCell: UITableViewCell {
         var text = ""
         var itemsCount = itemsGroup!.sortedDonationItems.count
         var date = getFriendlyShortDateFormatter().stringFromDate(itemsGroup!.originalDate)
+        
+        var s = ""
+        var have = "has"
+        var are = "is"
+        if itemsCount > 1 {
+            s = "s"
+            have = "have"
+            are = "are"
+        }
+        
         if itemsState == ItemState.Approved {
-            text = "\(itemsCount) items you donated on \(date) have been approved"
+            text = "\(itemsCount) item\(s) you donated on \(date) \(have) been approved"
         }
         else if itemsState == ItemState.Scheduled {
-            text = "\(itemsCount) items are scheduled to be picked up on: [fill in the date and time]"
+            text = "\(itemsCount) item\(s) are scheduled to be picked up on: [fill in the date and time]"
         }
         else if itemsState == ItemState.Pending {
-            text = "\(itemsCount) items you donated on \(date) are pending review"
+            text = "\(itemsCount) item\(s) you donated on \(date) are pending review"
+        }
+        else if itemsState == ItemState.PickedUp {
+            text = "\(itemsCount) item\(s) received on [fill in the date and time]"
+        }
+        else if itemsState == ItemState.NotNeeded {
+            text = "\(itemsCount) item\(s) donated on \(date) \(are) currently not needed"
         }
         else {
             text = "Donated on: Oct 8, 2014"
@@ -78,6 +94,18 @@ class ItemsGroupCell: UITableViewCell {
         else if itemsState == ItemState.Pending {
             stateIcon.image = UIImage(named: "history_pending")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
             stateIcon.tintColor = yellowHighlight
+        }
+        else if itemsState == ItemState.PickedUp {
+            stateIcon.image = UIImage(named: "history_pickedup")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            stateIcon.tintColor = pinkHighlight
+        }
+        else if itemsState == ItemState.NotNeeded {
+            stateIcon.image = UIImage(named: "history_notneeded")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            stateIcon.tintColor = UIColor.lightGrayColor()
+        }
+        else {
+            stateIcon.image = nil
+            stateIcon.backgroundColor = UIColor.lightGrayColor()
         }
         stateIcon.contentMode = UIViewContentMode.ScaleAspectFill
     }
@@ -142,6 +170,12 @@ class ItemsGroupCell: UITableViewCell {
         buttonsView.setDelegate(delegate)
     }
     func setItemsGroup(group: DonationItemsAggregator.DonationGroup) {
+        
+        // TODO: Add the ability to compare if the new group is the same as the old group. If so, don't need to update
+        //if group == self.itemsGroup {
+        //    return
+        //}
+        
         // reset
         cleanupThumbs()
     
@@ -152,6 +186,8 @@ class ItemsGroupCell: UITableViewCell {
             let thumb = UIImageView()
             thumb.setRoundedCorners(true)
             thumb.contentMode = UIViewContentMode.ScaleAspectFill
+            
+            // PERF: Setting the item image here is causing noticeable perf delays
             item.photo.getDataInBackgroundWithBlock({ (photoData, error) -> Void in
                 if error == nil {
                     let image = UIImage(data: photoData)
