@@ -113,8 +113,8 @@ class CartViewController: UIViewController {
         alertView.show()
     }
 
-    private func deleteItem(cell: CartItemCell, indexPath: NSIndexPath) {
-        if let donationItem = cell.donationItem {
+    private func deleteItem(indexPath: NSIndexPath) {
+        if let donationItem = self.cartItems[indexPath.row] as? DonationItem {
             println("Found donationitem to delete....deleting")
             cartItems.removeObject(donationItem)
             donationItem.deleteEventually()
@@ -169,24 +169,20 @@ extension CartViewController: GHContextOverlayViewDelegate, GHContextOverlayView
 
     func didSelectItemAtIndex(selectedIndex: Int, forMenuAtPoint point: CGPoint) {
         if let indexPath = self.cartCollectionView.indexPathForItemAtPoint(point) {
-            if let cell = self.cartCollectionView.cellForItemAtIndexPath(indexPath) as? CartItemCell {
-                println("Found the cell to delete")
+            println("Found the indexPath to delete")
 
-                var message = ""
+            var message = ""
 
-                switch selectedIndex {
-                case 0:
-                    message = "scheduled"
-                    self.deleteItem(cell, indexPath: indexPath)
-                case 1:
-                    message = "delete"
-                    self.deleteItem(cell, indexPath: indexPath)
-                default:
-                    println("ERROR: Did not match item in menu")
-                    message = "unknown"
-                }
-            } else {
-                println("ERROR: Could not find cell for collection view indexPath")
+            switch selectedIndex {
+            case 0:
+                message = "scheduled"
+                self.deleteItem(indexPath)
+            case 1:
+                message = "delete"
+                self.deleteItem(indexPath)
+            default:
+                println("ERROR: Did not match item in menu")
+                message = "unknown"
             }
         } else {
             println("ERROR: Could not find collection view cell at hit point")
