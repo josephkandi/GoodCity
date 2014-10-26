@@ -90,7 +90,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
             else {
                 println(error)
             }
-        }, states: [ItemState.Pending])
+        }, states: [ItemState.Draft])
     }
 
     func updateCount() {
@@ -138,7 +138,13 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
                         println("Found donationitem to delete....deleting")
                         pendingItems.removeObject(donationItem)
                         donationItem.deleteEventually()
-                        self.cartCollectionView.reloadData()
+                        self.cartCollectionView.performBatchUpdates({ () -> Void in
+                            self.cartCollectionView.deleteItemsAtIndexPaths([indexPath])
+                        }, completion: { (success) -> Void in
+                            if success {
+                                self.updateCount()
+                            }
+                        })
                     }
                 default:
                     message = "unknown"
