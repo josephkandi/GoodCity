@@ -24,6 +24,7 @@ class CartItemCell: UICollectionViewCell {
             else if let newItem = donationItem {
                 self.itemDescription.text = newItem.itemDescription
                 self.itemCondition.text = newItem.condition
+                // Can move this over to PFImageView to improve perf
                 newItem.photo.getDataInBackgroundWithBlock({ (photoData, error) -> Void in
                     if error == nil {
                         let image = UIImage(data: photoData)
