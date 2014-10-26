@@ -39,4 +39,12 @@ enum ItemState: String {
             return 7
         }
     }
+
+    func getItemStateKey() -> String {
+        if self == NotNeeded || self == PickedUp {
+            return "Done"
+        } else {
+            return self.rawValue
+        }
+    }
 }

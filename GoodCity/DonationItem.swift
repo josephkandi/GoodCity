@@ -18,7 +18,8 @@ import Foundation
     @NSManaged var photo: PFFile
     @NSManaged var reviewedBy: GoodCityUser
     @NSManaged var pickedUpBy: GoodCityUser
-
+    @NSManaged var pickedUpScheduledAt: NSDate
+    
     // Must be called before Parse is initialized
     override class func load() {
         registerSubclass()

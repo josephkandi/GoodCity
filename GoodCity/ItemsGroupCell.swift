@@ -49,7 +49,13 @@ class ItemsGroupCell: UITableViewCell {
         var text = ""
         var itemsCount = itemsGroup!.sortedDonationItems.count
         var date = getFriendlyShortDateFormatter().stringFromDate(itemsGroup!.originalDate)
-        
+        var pickedUpDateString: String
+        if let pickupDate = itemsGroup?.pickupDate {
+            pickedUpDateString = getFriendlyShortDateFormatter().stringFromDate(pickupDate)
+        } else {
+            pickedUpDateString = ""
+        }
+
         var s = ""
         var have = "has"
         var are = "is"
@@ -63,7 +69,7 @@ class ItemsGroupCell: UITableViewCell {
             text = "\(itemsCount) item\(s) you donated on \(date) \(have) been approved"
         }
         else if itemsState == ItemState.Scheduled {
-            text = "\(itemsCount) item\(s) are scheduled to be picked up on: [fill in the date and time]"
+            text = "\(itemsCount) item\(s) are scheduled to be picked up on: \(pickedUpDateString)"
         }
         else if itemsState == ItemState.Pending {
             text = "\(itemsCount) item\(s) you donated on \(date) are pending review"

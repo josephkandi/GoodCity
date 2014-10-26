@@ -18,11 +18,11 @@ class DonationItemsAggregator {
 
         // Build up data structures
         for donationItem in donationItems {
-            let key = donationItem.state
-            if let section = sectionsByState[key] {
+            let key = ItemState(rawValue: donationItem.state)?.getItemStateKey()
+            if let section = sectionsByState[key!] {
                 section.addNewDonationItem(donationItem)
             } else {
-                sectionsByState[key] = Section(donationItem: donationItem)
+                sectionsByState[key!] = Section(donationItem: donationItem)
             }
         }
 
@@ -47,7 +47,7 @@ class DonationItemsAggregator {
         private var donationGroupsByDate = [String: DonationGroup]()
 
         init(donationItem: DonationItem) {
-            self.name = donationItem.state
+            self.name = ItemState(rawValue: donationItem.state)?.getItemStateKey() ?? ""
 
             let donationGroup = DonationGroup(donationItem: donationItem)
             let key = donationItem.createdAt.dateStringWithTimeTruncated()
@@ -81,11 +81,13 @@ class DonationItemsAggregator {
         var name: String // i.e. 09/12/2014
         var sortedDonationItems = [DonationItem]() // Sorted by createdAt
         var originalDate: NSDate
+        var pickupDate: NSDate
         private var donationItems = [DonationItem]()
 
         init(donationItem: DonationItem) {
             self.name = donationItem.createdAt.dateStringWithTimeTruncated()
             self.originalDate = donationItem.createdAt
+            self.pickupDate = donationItem.pickedUpScheduledAt
             self.donationItems.append(donationItem)
         }
 
