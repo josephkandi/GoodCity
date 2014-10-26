@@ -40,7 +40,16 @@ import Foundation
         donationItem.itemDescription = description
         donationItem.user = GoodCityUser.currentUser()
 
-        let data = UIImageJPEGRepresentation(photo, CGFloat(0.05));
+        let w = CGFloat(320)
+        let h = CGFloat(480)
+
+        UIGraphicsBeginImageContext(CGSizeMake(w, h));
+        photo.drawInRect(CGRectMake(0, 0, w, h))
+        let smallImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+
+        let data = UIImageJPEGRepresentation(smallImage, CGFloat(0.05));
+
         let imageFile = PFFile(data: data)
         donationItem.photo = imageFile
 

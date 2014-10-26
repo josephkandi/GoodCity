@@ -20,7 +20,7 @@ class ItemsGroupCell: UITableViewCell {
     @IBOutlet weak var buttonContainer: UIView!
     @IBOutlet weak var thumbnailsContainer: UIView!
     
-    var thumbnailsArray: [UIImageView]!
+    var thumbnailsArray: [PFImageView]!
     var buttonsView: ActionButtonsView!
     
     // Delegate
@@ -189,17 +189,12 @@ class ItemsGroupCell: UITableViewCell {
         buttonsView.setItemsGroup(group)
         
         for item in self.itemsGroup!.sortedDonationItems {
-            let thumb = UIImageView()
+            let thumb = PFImageView()
             thumb.setRoundedCorners(true)
             thumb.contentMode = UIViewContentMode.ScaleAspectFill
-            
-            // PERF: Setting the item image here is causing noticeable perf delays
-            item.photo.getDataInBackgroundWithBlock({ (photoData, error) -> Void in
-                if error == nil {
-                    let image = UIImage(data: photoData)
-                    thumb.image = image
-                }
-            })
+            thumb.file = item.photo
+            thumb.loadInBackground(nil)
+
             thumb.backgroundColor = UIColor.darkGrayColor()
             thumbnailsArray.append(thumb)
             thumbnailsContainer.addSubview(thumb)
@@ -207,7 +202,7 @@ class ItemsGroupCell: UITableViewCell {
     }
     
     func cleanupThumbs() {
-        thumbnailsArray = [UIImageView]()
+        thumbnailsArray = [PFImageView]()
         for thumb in thumbnailsContainer.subviews {
             thumb.removeFromSuperview()
         }
