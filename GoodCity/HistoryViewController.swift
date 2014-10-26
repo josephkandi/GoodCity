@@ -60,6 +60,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             itemGroupsArray[activitiesChooser.selectedSegmentIndex]?.sortedSections.count > 0) {
 
                 println("number of sections: \(itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections.count) ")
+                self.historyTableView.backgroundView = nil
                 return itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections.count
         } else {
             // Empty view
