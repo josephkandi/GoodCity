@@ -11,7 +11,7 @@ import Foundation
 enum ItemState: String {
     case
     Draft = "Draft",
-    Pending = "Pending",
+    Pending = "Pending Review",
     Approved = "Approved",
     MoreInfoNeeded = "More information needed",
     NotNeeded = "Not needed",
