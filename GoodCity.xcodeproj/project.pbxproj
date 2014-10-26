@@ -26,6 +26,7 @@
 		0A2015C719FA140400A7CB57 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2015C619FA140400A7CB57 /* TodayViewController.swift */; };
 		0A2015C919FA140400A7CB57 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A2015C819FA140400A7CB57 /* MainInterface.storyboard */; };
 		0A2015CC19FA140400A7CB57 /* GoodCityWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0A2015C019FA140400A7CB57 /* GoodCityWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0A25CD6519FC9AC800390674 /* GHContextMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A25CD6419FC9AC800390674 /* GHContextMenuView.m */; };
 		0A508DB219FC556A00341499 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A0B08D319E2283F0059A82C /* Images.xcassets */; };
 		0A674E0E19ED0434001A5664 /* AVCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A674E0B19ED0434001A5664 /* AVCamViewController.m */; };
 		0A674E0F19ED0434001A5664 /* AVCamPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A674E0D19ED0434001A5664 /* AVCamPreviewView.m */; };
@@ -128,6 +129,8 @@
 		0A2015C819FA140400A7CB57 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		0A2015D119FA27BC00A7CB57 /* GoodCity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GoodCity.entitlements; sourceTree = "<group>"; };
 		0A2015D219FA27EB00A7CB57 /* GoodCityWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GoodCityWidget.entitlements; sourceTree = "<group>"; };
+		0A25CD6319FC9AC800390674 /* GHContextMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHContextMenuView.h; sourceTree = "<group>"; };
+		0A25CD6419FC9AC800390674 /* GHContextMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHContextMenuView.m; sourceTree = "<group>"; };
 		0A674E0A19ED0434001A5664 /* AVCamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamViewController.h; sourceTree = "<group>"; };
 		0A674E0B19ED0434001A5664 /* AVCamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamViewController.m; sourceTree = "<group>"; };
 		0A674E0C19ED0434001A5664 /* AVCamPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamPreviewView.h; sourceTree = "<group>"; };
@@ -306,6 +309,8 @@
 				3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */,
 				0AFB6E2219F2432200E89AFC /* EditItemView.swift */,
 				3A82271A19F2485900007C6C /* EditItemView.xib */,
+				0A25CD6319FC9AC800390674 /* GHContextMenuView.h */,
+				0A25CD6419FC9AC800390674 /* GHContextMenuView.m */,
 				3A15068F19EB71AA0020DF10 /* SectionHeaderView.swift */,
 				3A81925219F59AB5001F2EB5 /* SlotPickerView.swift */,
 				3A93C0E819F7842E00EAF2D7 /* YASegmentedControl.swift */,
@@ -635,6 +640,7 @@
 				3AE42EED19E8FBA400D7A6F5 /* HistoryViewController.swift in Sources */,
 				3A687C7419E9104F005351B0 /* CartItemCell.swift in Sources */,
 				3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */,
+				0A25CD6519FC9AC800390674 /* GHContextMenuView.m in Sources */,
 				0A14FFBE19E2355F00D11CE2 /* MapViewController.swift in Sources */,
 				0AC31B0419EA40E700BB815F /* ItemCondition.swift in Sources */,
 				0A02838B19F342B70070E374 /* DonationItemsAggregator.swift in Sources */,
