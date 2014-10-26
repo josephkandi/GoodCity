@@ -109,7 +109,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     NSLog(@"Got dismissal request");
     [self.editItemView removeFromSuperview];
     self.photoView.hidden = YES;
-    [[self session] startRunning];
+    //[[self session] startRunning];
 }
 
 - (void)submitItem:(DonationItem*)newItem {
@@ -395,7 +395,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
                 self.photoView.hidden = NO;
                 [self launchEditFlow];
 
-                [[self session] stopRunning];
+                //[[self session] stopRunning];
 
                 //[[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
             }
