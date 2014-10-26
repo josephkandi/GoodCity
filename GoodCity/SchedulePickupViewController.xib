@@ -86,12 +86,12 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NQI-tL-CfS" customClass="RoundedButton" customModule="GoodCity" customModuleProvider="target">
-                            <rect key="frame" x="75" y="418" width="120" height="40"/>
+                            <rect key="frame" x="43" y="418" width="193" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                            <state key="normal" title="Schedule Pickup"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="Confirm Schedule"/>
                             <connections>
-                                <action selector="onTapDatePicker:" destination="-1" eventType="touchUpInside" id="MZv-rd-gdd"/>
+                                <action selector="confirmSchedule:" destination="-1" eventType="touchUpInside" id="bkD-Wh-G4n"/>
                             </connections>
                         </button>
                     </subviews>

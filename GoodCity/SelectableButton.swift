@@ -91,16 +91,20 @@ class SelectableButton: UIButton {
         let text = self.titleLabel?.text
         self.setAttributedTitle(formatTitle(text!, color: UIColor(white: 0.8, alpha: 1)), forState: .Normal)
         setButtonColor(UIColor(white: 0.9, alpha: 1))
+        self.layer.borderWidth = 0
     }
     private func formatSelectedButton() {
         let text = self.titleLabel?.text
         self.setAttributedTitle(formatTitle(text!,color:  UIColor.whiteColor()), forState: .Normal)
         setButtonColor(tintColor!)
+        self.layer.borderWidth = 0
     }
     private func formatAvailableButton() {
         let text = self.titleLabel?.text
         self.setAttributedTitle(formatTitle(text!,color:  UIColor.darkTextColor()), forState: .Normal)
         setButtonColor(UIColor.whiteColor())
+        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.layer.borderWidth = 1
     }
     private func get12hour(hour: Int) -> String {
         var string = ""

@@ -37,6 +37,7 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     var slots: [PickupScheduleSlot]?
     var itemsGroup: DonationItemsAggregator.DonationGroup?
     var bgImage: UIImage!
+    var selectedSlot: PickupScheduleSlot?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -182,7 +183,7 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
         slotPickerView.frame = CGRectMake(marginLeftRight, yOffset, contentContainerView.bounds.width - marginLeftRight * 2, DATE_PICKER_HEIGHT)
         
         yOffset = contentContainerView.bounds.height - 40 - 30
-        scheduleButton.frame = CGRectMake((contentContainerView.bounds.width-150)/2, yOffset, 150, 40)
+        scheduleButton.frame = CGRectMake((contentContainerView.bounds.width-180)/2, yOffset, 180, 40)
 
         yOffset = self.view.bounds.height - 20 - 40
         closeButton.frame = CGRectMake((self.view.bounds.width-40)/2, yOffset, 40, 40)
@@ -222,11 +223,20 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     // Pick Slot Delegate methods
     func selectSlot(slot: PickupScheduleSlot) {
         println("Selecting slot: \(slot.startDateTime)")
-        if let donationItems = self.itemsGroup?.sortedDonationItems {
-            slot.grabSlot(donationItems)
+        selectedSlot = slot
+        scheduleButton.setButtonColor(tintColor)
+    }
+    @IBAction func confirmSchedule(sender: AnyObject) {
+        if (selectedSlot != nil) {
+            if let donationItems = self.itemsGroup?.sortedDonationItems {
+                selectedSlot!.grabSlot(donationItems)
+            }
+            onTapClose(sender)
+        }
+        else {
+            println("must first select a slot before confirming")
         }
     }
-    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
