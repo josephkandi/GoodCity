@@ -126,12 +126,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         let state = ItemState(rawValue: sortedSection.name)!
         let numberOfItems = sortedSection.sortedDonationGroups[indexPath.row].sortedDonationItems.count
     
-        var height: CGFloat = 80
+        var height: CGFloat = 88
         if (state == ItemState.Approved || state == ItemState.Scheduled) {
-            height += 35
+            height += 55
         }
         height += ItemsGroupCell.getThumbnailsHeight(tableView.frame.width, count: numberOfItems)
-        
         return height
     }
     
@@ -198,8 +197,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         
         historyTableView.dataSource = self
         historyTableView.delegate = self
-        historyTableView.rowHeight = UITableViewAutomaticDimension
-        historyTableView.estimatedRowHeight = 200
+        //historyTableView.rowHeight = UITableViewAutomaticDimension
+        //historyTableView.estimatedRowHeight = 200
         registerTableViewCellNib("ItemsGroupCell", reuseIdentifier: "itemsGroupCell")
         historyTableView.registerClass(SectionHeaderView.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
 

@@ -12,6 +12,7 @@ let ITEMS_PER_ROW : CGFloat = 3
 private let marginTopBottom: CGFloat = 20
 private let marginLeftRight: CGFloat = 12
 private let gapMargin: CGFloat = 10
+private let iconWidth: CGFloat = 34
 
 class ItemsGroupCell: UITableViewCell {
     
@@ -33,8 +34,6 @@ class ItemsGroupCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        //stateIcon.backgroundColor = UIColor.purpleColor()
-
         buttonsView = ActionButtonsView(frame: buttonContainer.bounds)
         buttonContainer.addSubview(buttonsView)
     }
@@ -120,15 +119,16 @@ class ItemsGroupCell: UITableViewCell {
         super.layoutSubviews()
         
         let bounds = self.bounds
+        
         var xOffset = marginLeftRight
         var yOffset = marginTopBottom
         
         // Set up the state icon image
-        stateIcon.frame = CGRectMake(xOffset, yOffset+4, 34, 34)
+        stateIcon.frame = CGRectMake(xOffset, yOffset+4, iconWidth, iconWidth)
         stateIcon.layer.cornerRadius = stateIcon.frame.height / 2
         stateIcon.layer.masksToBounds = true
         setupStateIcon()
-        xOffset += stateIcon.frame.width + gapMargin + 5
+        xOffset += iconWidth + gapMargin + 5
         
         // Set up the donation title text label
         donationTextLabel.frame = CGRectMake(xOffset, yOffset, bounds.width - xOffset - marginLeftRight, 30)
@@ -164,7 +164,7 @@ class ItemsGroupCell: UITableViewCell {
         buttonContainer.frame = CGRectMake(marginLeftRight, yOffset, bounds.width - 2 * marginLeftRight, 35)
         buttonsView.frame = buttonContainer.bounds
         buttonsView.layoutSubviews()
-        buttonContainer.frame = CGRectMake(buttonContainer.frame.origin.x, buttonContainer.frame.origin.y, buttonContainer.frame.width, buttonsView.frame.height)
+        buttonContainer.frame = CGRectMake(buttonContainer.frame.origin.x, buttonContainer.frame.origin.y, buttonContainer.frame.width, buttonsView.frame.height + marginTopBottom)
     }
     
     func setItemsState(state: ItemState) {
@@ -210,7 +210,8 @@ class ItemsGroupCell: UITableViewCell {
     
     class func getThumbnailsHeight(width: CGFloat, count: Int) -> CGFloat {
         let rows = Int(ceil(CGFloat(count) / ITEMS_PER_ROW))
-        let thumbnailWidth = (width - SPACING * (ITEMS_PER_ROW-1)) / ITEMS_PER_ROW
+        let xOffset = marginLeftRight * 2 + iconWidth + gapMargin + 5
+        let thumbnailWidth = (width - xOffset - SPACING * (ITEMS_PER_ROW-1)) / ITEMS_PER_ROW
         let height = thumbnailWidth * CGFloat(rows) + SPACING * CGFloat(rows-1)
         return height
     }

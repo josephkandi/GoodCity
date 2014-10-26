@@ -60,7 +60,16 @@ class EditItemView: UIView, UITextViewDelegate {
         if !submitButton.enabled {
             return
         }
-        let newItem = DonationItem.newItem(descriptionText.text, photo: photo!, condition: conditionChooser.titleForSegmentAtIndex(conditionChooser.selectedSegmentIndex))
+        
+        var condition: String
+        switch conditionChooser.selectedSegmentIndex {
+        case 0: condition = "New"
+        case 1: condition = "Lightly Used"
+        case 2: condition = "Heavily Used"
+        default: condition = ""
+        }
+        
+        let newItem = DonationItem.newItem(descriptionText.text, photo: photo!, condition: condition)
         delegate?.submitItem(newItem)
     }
     

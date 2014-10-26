@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,20 +12,20 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="235" height="362"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bx8-2X-D3g">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bx8-2X-D3g">
                         <rect key="frame" x="0.0" y="0.0" width="235" height="235"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="bx8-2X-D3g" secondAttribute="height" multiplier="1:1" id="8Xh-NT-qGd"/>
-                        </constraints>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condition" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaw-Mt-Bbb">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condition" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eaw-Mt-Bbb">
                         <rect key="frame" x="8" y="341" width="219" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8W-9C-hf7" userLabel="Description">
-                        <rect key="frame" x="8" y="239" width="219" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m8W-9C-hf7" userLabel="Description">
+                        <rect key="frame" x="8" y="239" width="219" height="50"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -35,17 +34,6 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="m8W-9C-hf7" firstAttribute="top" secondItem="bx8-2X-D3g" secondAttribute="bottom" constant="4" id="6a3-PN-V4M"/>
-                <constraint firstItem="m8W-9C-hf7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="T9F-ge-v9E"/>
-                <constraint firstItem="eaw-Mt-Bbb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Twh-9x-oAm"/>
-                <constraint firstAttribute="bottom" secondItem="eaw-Mt-Bbb" secondAttribute="bottom" constant="4" id="eJq-MZ-jk3"/>
-                <constraint firstItem="bx8-2X-D3g" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lK7-fp-Ok0"/>
-                <constraint firstAttribute="trailing" secondItem="bx8-2X-D3g" secondAttribute="trailing" id="rQI-UA-NNs"/>
-                <constraint firstAttribute="trailing" secondItem="m8W-9C-hf7" secondAttribute="trailing" constant="8" id="syK-gG-Mge"/>
-                <constraint firstItem="bx8-2X-D3g" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xqw-IK-ac2"/>
-                <constraint firstAttribute="trailing" secondItem="eaw-Mt-Bbb" secondAttribute="trailing" constant="8" id="yqm-ky-Xtl"/>
-            </constraints>
             <size key="customSize" width="235" height="362"/>
             <connections>
                 <outlet property="itemCondition" destination="eaw-Mt-Bbb" id="3Wa-dU-Gbt"/>
@@ -55,4 +43,9 @@
             <point key="canvasLocation" x="-71.5" y="179"/>
         </collectionViewCell>
     </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

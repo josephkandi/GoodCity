@@ -18,25 +18,34 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     @IBOutlet weak var cartCollectionView: UICollectionView!
     var cameraViewDelegate: CameraViewDelegate?
+    var submitButton: UIBarButtonItem!
 
     // Array of pending donation items
-    var pendingItems = NSMutableArray()
+    var cartItems = NSMutableArray()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Style the nav bar
-        self.navigationItem.title = "PENDING"
+        self.navigationItem.title = "CART"
         self.styleNavBar(self.navigationController!.navigationBar)
         
-        self.view.backgroundColor = LIGHT_GRAY_BG
+        // Add submit button to the nav bar
+        let submitIcon = UIImage(named: "cart_submit")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        submitButton = UIBarButtonItem(image: submitIcon, style: UIBarButtonItemStyle.Plain, target: self, action: "submitCartItems")
+        submitButton.tintColor = UIColor.whiteColor()
+        self.navigationItem.setRightBarButtonItem(submitButton, animated: true)
 
+        // Set up the collection view
+        self.view.backgroundColor = LIGHT_GRAY_BG
+        cartCollectionView.backgroundColor = LIGHT_GRAY_BG
         cartCollectionView.dataSource = self
         cartCollectionView.delegate = self
  
         let cellNib = UINib(nibName: "CartItemCell", bundle: nil)
         cartCollectionView.registerNib(cellNib, forCellWithReuseIdentifier: "cartItemCell")
         
+        // Load data
         getPendingItems()
         cartCollectionView.reloadData()
     }
@@ -53,14 +62,15 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        println(pendingItems.count)
-        return pendingItems.count
+        println(cartItems.count)
+        return cartItems.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell = cartCollectionView.dequeueReusableCellWithReuseIdentifier("cartItemCell", forIndexPath: indexPath) as CartItemCell
-        cell.donationItem = pendingItems[indexPath.row] as? DonationItem
-
+        cell.donationItem = cartItems[indexPath.row] as? DonationItem
+        cell.layoutSubviews()
+        
         let overlay = GHContextMenuView()
         overlay.delegate = self
         overlay.dataSource = self
@@ -74,7 +84,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
     private func getCellSize() -> CGSize {
         let containerSize = cartCollectionView.bounds
         let width = (containerSize.width - SIDE_MARGIN * 2 - ITEM_SPACING) / 2
-        return CGSizeMake(width, width/3*4.5)
+        return CGSizeMake(width, width + 74)
     }
     
     private func getPendingItems() {
@@ -83,7 +93,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
             println("Completed")
             if let donationItems = objects as? [DonationItem] {
                 println(donationItems)
-                self.pendingItems.addObjectsFromArray(donationItems)
+                self.cartItems.addObjectsFromArray(donationItems)
                 self.updateCount()
                 self.cartCollectionView.reloadData()
             }
@@ -94,22 +104,31 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 
     func updateCount() {
-        var string = "PENDING"
-        let count = self.pendingItems.count > 0 ? " (\(String(self.pendingItems.count)))" : ""
+        var string = "CART"
+        let count = self.cartItems.count > 0 ? " (\(String(self.cartItems.count)))" : ""
         string = string + count
         self.navigationItem.title = string
         
-        self.cameraViewDelegate?.updateItemsCount(String(self.pendingItems.count), animated: true)
+        self.cameraViewDelegate?.updateItemsCount(String(self.cartItems.count), animated: true)
+    }
+    
+    func submitCartItems() {
+        for item in cartItems {
+            let donationItem = item as DonationItem
+            donationItem.updateState(ItemState.Pending)
+        }
+        cartItems.removeAllObjects()
+        cartCollectionView.reloadData()
     }
     
     //Delegate functions
     func addNewItem(newItem: DonationItem) {
-        pendingItems.insertObject(newItem, atIndex: 0)
+        cartItems.insertObject(newItem, atIndex: 0)
         updateCount()
         cartCollectionView.reloadData()
     }
     func getItemsCount() -> NSInteger {
-        return self.pendingItems.count
+        return self.cartItems.count
     }
 
     // Context menu
@@ -136,7 +155,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
                     message = "delete"
                     if let donationItem = cell.donationItem {
                         println("Found donationitem to delete....deleting")
-                        pendingItems.removeObject(donationItem)
+                        cartItems.removeObject(donationItem)
                         donationItem.deleteEventually()
                         self.cartCollectionView.performBatchUpdates({ () -> Void in
                             self.cartCollectionView.deleteItemsAtIndexPaths([indexPath])
