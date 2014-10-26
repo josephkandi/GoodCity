@@ -34,7 +34,7 @@ import Foundation
 
     class func newItem(description: NSString, photo: UIImage, condition: NSString) -> DonationItem {
         var donationItem = DonationItem()
-        donationItem.state = ItemState.Pending.rawValue
+        donationItem.state = ItemState.Draft.rawValue
         donationItem.condition = condition
         donationItem.itemDescription = description
         donationItem.user = GoodCityUser.currentUser()

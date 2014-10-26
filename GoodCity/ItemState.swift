@@ -10,6 +10,7 @@ import Foundation
 
 enum ItemState: String {
     case
+    Draft = "Draft",
     Pending = "Pending",
     Approved = "Approved",
     MoreInfoNeeded = "More information needed",
@@ -19,18 +20,20 @@ enum ItemState: String {
 
     func getSortValue() -> Int {
         switch self {
-        case .Pending:
+        case .Draft:
             return 0
-        case .PickedUp:
+        case .Pending:
             return 1
-        case .NotNeeded:
+        case .PickedUp:
             return 2
-        case .MoreInfoNeeded:
+        case .NotNeeded:
             return 3
-        case .Approved:
+        case .MoreInfoNeeded:
             return 4
-        case .Scheduled:
+        case .Approved:
             return 5
+        case .Scheduled:
+            return 6
         default:
             println("Uknown sort value in ItemState")
             return 7
