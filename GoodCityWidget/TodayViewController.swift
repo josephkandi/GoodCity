@@ -16,7 +16,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         super.viewDidLoad()
         println("In viewDidLoad...")
         // Fetch network info
-
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "launchApp")
+        self.view.addGestureRecognizer(tapGestureRecognizer)
         let userDefaults = NSUserDefaults(suiteName: "group.com.codepath.goodcity")
         if let value = userDefaults?.valueForKey("total_donation_value") as? Double {
             println("Value: \(value)")
@@ -49,6 +50,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
 
     func launchApp() {
+        println("Registered tap...launching app")
         let url = NSURL(string: "goodcity://widget")
         self.extensionContext?.openURL(url!, completionHandler: nil)
     }

@@ -111,11 +111,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.displayLoginScreen()
     }
 
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
-        // SSO authorization flow.  Attempt to extract a token from the url
-        return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication, withSession: PFFacebookUtils.session())
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        if let scheme = url.scheme {
+            if (scheme == "fb373287049514452") {
+                println("Got a facebook url openUrl request")
+                // SSO authorization flow.  Attempt to extract a token from the url
+                return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication, withSession: PFFacebookUtils.session())
+            } else if (scheme == "goodcity") {
+                println("Got a goodcity url openUrl request")
+                return true
+            }
+        }
+        println("Unrecognized url sent to openUrl")
+        return false
     }
-    
+
     func applicationDidBecomeActive(application: UIApplication) {
         // Clear badge on launch
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
