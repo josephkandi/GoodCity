@@ -112,4 +112,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBAction func onDismiss(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion:nil)
     }
+
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 }
