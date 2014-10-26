@@ -26,7 +26,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "launchContainingApp")
         self.view.addGestureRecognizer(tapGestureRecognizer)
-
+        self.preferredContentSize = CGSizeMake(0, 100);
         self.updateFromUserDefaults()
     }
 

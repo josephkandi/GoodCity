@@ -79,12 +79,14 @@ class ParseClient: NSObject {
 
                     let totalDonationsValue = result["totalDonationsValue"] as? Double ?? 0
                     userDefaults?.setDouble(totalDonationsValue, forKey: TOTAL_DONATION_VALUE_KEY)
-
+                    println("Setting total donation value to: \(totalDonationsValue)")
                     let totalDonationsCount = result["totalDonationsCount"] as? Int ?? 0
                     userDefaults?.setInteger(totalDonationsCount, forKey: TOTAL_DONATION_COUNT_KEY)
+                    println("Setting total donation count to: \(totalDonationsCount)")
                     if let member = result["user"] as? PFUser {
                         let dateString = getFriendlyDateFormatter().stringFromDate(member.createdAt)
                         userDefaults?.setObject(dateString, forKey: MEMBER_SINCE_KEY)
+                        println("Setting member since to: \(dateString)")
                     }
                     userDefaults?.synchronize()
                 } else {
