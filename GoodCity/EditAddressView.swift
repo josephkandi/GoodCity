@@ -15,13 +15,15 @@ private let gapMargin: CGFloat = 24
 private let fieldHeight: CGFloat = 40
 
 protocol EditAddressViewDelegate {
-    func onTapDone()
+    func onTapDone(address: Address)
 }
 class EditAddressView: UIView, UITextFieldDelegate {
 
     var viewTitleLabel: UILabel!
     var explanationLabel: UILabel!
     var fieldsContainerView: UIView!
+    
+    var userAddress: Address!
     var addressLine1: UITextField!
     var addressLine2: UITextField!
     var city: UITextField!
@@ -85,9 +87,14 @@ class EditAddressView: UIView, UITextFieldDelegate {
         doneButton.setButtonTitle("Next")
         doneButton.addTarget(self, action: "onTapDoneButton", forControlEvents: UIControlEvents.TouchUpInside)
         
-        city.text = "San Francisco"
-        state.text = "CA"
-        
+        userAddress = Address()
+        userAddress.line1 = ""
+        userAddress.line2 = ""
+        userAddress.city = "San Francisco"
+        userAddress.state = "CA"
+        userAddress.zip = ""
+        populateAddressFields()
+
         self.addSubview(viewTitleLabel)
         self.addSubview(explanationLabel)
         self.addSubview(fieldsContainerView)
@@ -166,8 +173,9 @@ class EditAddressView: UIView, UITextFieldDelegate {
     
     func onTapDoneButton() {
         println("tapped on done button")
+        saveAddressFields()
         if delegate != nil {
-            delegate!.onTapDone()
+            delegate!.onTapDone(userAddress)
         }
     }
     
@@ -179,5 +187,34 @@ class EditAddressView: UIView, UITextFieldDelegate {
     }
     func setDoneButtonText(text: String) {
         doneButton.setButtonTitle(text)
+    }
+    func setAddress(address: Address) {
+        self.userAddress = address
+        populateAddressFields()
+    }
+    func populateAddressFields() {
+        if userAddress.line1 != "" {
+            addressLine1.text = userAddress.line1
+        }
+        if userAddress.line2 != "" {
+            addressLine2.text = userAddress.line2
+        }
+        if userAddress.city != "" {
+            city.text = userAddress.city
+        }
+        if userAddress.state != "" {
+            state.text = userAddress.state
+        }
+        if userAddress.zip != "" {
+            zipcode.text = userAddress.zip
+        }
+    }
+    func saveAddressFields() {
+        // TODO: need to add validation logic here
+        userAddress.line1 = addressLine1.text
+        userAddress.line2 = addressLine2.text
+        userAddress.city = city.text
+        userAddress.state = state.text
+        userAddress.zip = zipcode.text
     }
 }

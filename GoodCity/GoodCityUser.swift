@@ -78,6 +78,11 @@ class GoodCityUser: PFUser, PFSubclassing {
         self.address = newAddress
         self.saveEventually()
     }
+    func updateAddress(newAddress: Address) {
+        newAddress.saveEventually()
+        self.address = newAddress
+        self.saveEventually()
+    }
 
     func logout() {
         PFUser.logOut()

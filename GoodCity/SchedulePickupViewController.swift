@@ -249,7 +249,7 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     }
     
     // Edit Address View delegate
-    func onTapDone() {
+    func onTapDone(address: Address) {
         let frame = self.editAddressView.frame
         schedulePickupView.frame = CGRectMake(frame.origin.x + self.view.frame.width, frame.origin.y, frame.width, frame.height)
         UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
@@ -262,7 +262,8 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
         }) { (finished) -> Void in
             println("animation completed")
         }
-        
-        //schedulePickupView.alpha = 1
+        if let currentUser = GoodCityUser.currentUser {
+            currentUser.updateAddress(address)
+        }
     }
 }

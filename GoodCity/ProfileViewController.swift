@@ -33,6 +33,7 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
     @IBOutlet weak var logoutButton: RoundedButton!
     
     @IBOutlet weak var editAddressview: EditAddressView!
+    var userAddress: Address?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +58,16 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
         if let currentUser = GoodCityUser.currentUser {
             profileImage.fadeInImageFromURL(NSURL(string: currentUser.profilePhotoUrlString)!, border: true)
             usernameLabel.text = currentUser.firstName + " " + currentUser.lastName
+            
+            // TODO: Access real address data from parse
+            userAddress = Address()
+            userAddress!.line1 = "300 Berry St"
+            userAddress!.line2 = "#405"
+            userAddress!.city = "San Francisco"
+            userAddress!.state = "CA"
+            userAddress!.zip = "94158"
+            setAddressLabelText(userAddress!)
+            editAddressview.setAddress(userAddress!)
         }
     }
     
@@ -127,7 +138,7 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
         }
     }
     
-    func onTapDone() {
+    func onTapDone(address: Address) {
         UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
             self.editAddressview.alpha = 0
             self.profileMainView.alpha = 1
@@ -135,5 +146,18 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
             }) { (finished) -> Void in
                 println("animation completed")
         }
+        if let currentUser = GoodCityUser.currentUser {
+            currentUser.updateAddress(address)
+            userAddress = address
+            setAddressLabelText(address)
+        }
+    }
+    func setAddressLabelText(address: Address) {
+        let line2 = address.line2 == "" ? "" : ", \(address.line2)"
+        let city = address.city == "" ? "" : ", \(address.city)"
+        let state = address.state == "" ? "" : ", \(address.state)"
+        let zip = address.zip == "" ? "" : " \(address.zip)"
+        
+        addressLabel.text = address.line1 + line2 + city + state + zip
     }
 }

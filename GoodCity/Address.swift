@@ -27,7 +27,7 @@ import Foundation
     func description() -> String {
         return self.line1
     }
-
+    
     /*
     class func getAddressForCurrentUser() {
         var query = GoodCityUser.query()
