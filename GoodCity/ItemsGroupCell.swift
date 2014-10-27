@@ -68,10 +68,10 @@ class ItemsGroupCell: UITableViewCell {
             text = "\(itemsCount) item\(s) you donated on \(date) \(have) been approved"
         }
         else if itemsState == ItemState.Scheduled {
-            text = "\(itemsCount) item\(s) are scheduled to be picked up on: \(pickedUpDateString)"
+            text = "\(itemsCount) item\(s) \(are) scheduled to be picked up on: \(pickedUpDateString)"
         }
         else if itemsState == ItemState.Pending {
-            text = "\(itemsCount) item\(s) you donated on \(date) are pending review"
+            text = "\(itemsCount) item\(s) you donated on \(date) \(are) pending review"
         }
         else if itemsState == ItemState.PickedUp {
             text = "\(itemsCount) item\(s) received on \(pickedUpDateString)"
