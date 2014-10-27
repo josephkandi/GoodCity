@@ -17,7 +17,7 @@ class GoodCityUser: PFUser, PFSubclassing {
     @NSManaged var facebookId: String
     @NSManaged var isVolunteer: Bool
     @NSManaged var phoneNumber: String
-    @NSManaged var address: String
+    @NSManaged var address: Address
     @NSManaged var coverPhotoUrl: String
 
     var profilePhotoUrlString: String {
@@ -48,11 +48,6 @@ class GoodCityUser: PFUser, PFSubclassing {
         self.save()
     }
 
-    func updateAddress(address: String) {
-        self.address = address
-        self.save()
-    }
-
     func updatePhoneNumber(phoneNumber: String) {
         self.phoneNumber = phoneNumber
         self.save()
@@ -71,7 +66,19 @@ class GoodCityUser: PFUser, PFSubclassing {
         }
         self.saveInBackgroundWithTarget(nil, selector: nil)
     }
-    
+
+    func updateAddress(line1: String, line2: String, city: String, zip: String, state: String = "CA") {
+        let newAddress = Address()
+        newAddress.line1 = line1
+        newAddress.line2 = line2
+        newAddress.city = city
+        newAddress.zip = zip
+        newAddress.state = state
+        newAddress.saveEventually()
+        self.address = newAddress
+        self.saveEventually()
+    }
+
     func logout() {
         PFUser.logOut()
         _currentUser = nil

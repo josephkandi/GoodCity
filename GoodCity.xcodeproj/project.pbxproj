@@ -26,6 +26,7 @@
 		0A2015C719FA140400A7CB57 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2015C619FA140400A7CB57 /* TodayViewController.swift */; };
 		0A2015C919FA140400A7CB57 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A2015C819FA140400A7CB57 /* MainInterface.storyboard */; };
 		0A2015CC19FA140400A7CB57 /* GoodCityWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0A2015C019FA140400A7CB57 /* GoodCityWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0A22810E19FDE93E008C51FD /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A22810D19FDE93E008C51FD /* Address.swift */; };
 		0A25CD6519FC9AC800390674 /* GHContextMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A25CD6419FC9AC800390674 /* GHContextMenuView.m */; };
 		0A508DB219FC556A00341499 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A0B08D319E2283F0059A82C /* Images.xcassets */; };
 		0A674E0E19ED0434001A5664 /* AVCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A674E0B19ED0434001A5664 /* AVCamViewController.m */; };
@@ -131,6 +132,7 @@
 		0A2015C819FA140400A7CB57 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		0A2015D119FA27BC00A7CB57 /* GoodCity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GoodCity.entitlements; sourceTree = "<group>"; };
 		0A2015D219FA27EB00A7CB57 /* GoodCityWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GoodCityWidget.entitlements; sourceTree = "<group>"; };
+		0A22810D19FDE93E008C51FD /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		0A25CD6319FC9AC800390674 /* GHContextMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHContextMenuView.h; sourceTree = "<group>"; };
 		0A25CD6419FC9AC800390674 /* GHContextMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHContextMenuView.m; sourceTree = "<group>"; };
 		0A674E0A19ED0434001A5664 /* AVCamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamViewController.h; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				0AC31B0119EA3F1F00BB815F /* ItemState.swift */,
 				0AC31B0319EA40E700BB815F /* ItemCondition.swift */,
 				0A02838A19F342B70070E374 /* DonationItemsAggregator.swift */,
+				0A22810D19FDE93E008C51FD /* Address.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -681,6 +684,7 @@
 				0AC31AFE19EA2F6800BB815F /* PickupScheduleSlot.swift in Sources */,
 				0A0B08CD19E2283F0059A82C /* AppDelegate.swift in Sources */,
 				0A674E0E19ED0434001A5664 /* AVCamViewController.m in Sources */,
+				0A22810E19FDE93E008C51FD /* Address.swift in Sources */,
 				0AC31B0019EA33CB00BB815F /* DonationItem.swift in Sources */,
 				0A14FFBA19E2354000D11CE2 /* SchedulePickupViewController.swift in Sources */,
 				0AC31B0219EA3F1F00BB815F /* ItemState.swift in Sources */,
