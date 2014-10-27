@@ -40,6 +40,8 @@
 		3A050C8B19FB6EEC00981C7D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A050C8919FB6EEC00981C7D /* ProfileViewController.swift */; };
 		3A050C8C19FB6EEC00981C7D /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A050C8A19FB6EEC00981C7D /* ProfileViewController.xib */; };
 		3A050C8E19FB8C9400981C7D /* ScaleModalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A050C8D19FB8C9400981C7D /* ScaleModalAnimator.swift */; };
+		3A0F374C19FDA3A40062E965 /* M13ProgressViewRing.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F374B19FDA3A40062E965 /* M13ProgressViewRing.m */; };
+		3A0F374F19FDA3F50062E965 /* M13ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F374E19FDA3F50062E965 /* M13ProgressView.m */; };
 		3A15068D19EB60BA0020DF10 /* ItemsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15068B19EB60BA0020DF10 /* ItemsGroupCell.swift */; };
 		3A15068E19EB60BA0020DF10 /* ItemsGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A15068C19EB60BA0020DF10 /* ItemsGroupCell.xib */; };
 		3A15069019EB71AA0020DF10 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15068F19EB71AA0020DF10 /* SectionHeaderView.swift */; };
@@ -145,6 +147,10 @@
 		3A050C8919FB6EEC00981C7D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3A050C8A19FB6EEC00981C7D /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		3A050C8D19FB8C9400981C7D /* ScaleModalAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleModalAnimator.swift; sourceTree = "<group>"; };
+		3A0F374A19FDA3A40062E965 /* M13ProgressViewRing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressViewRing.h; sourceTree = "<group>"; };
+		3A0F374B19FDA3A40062E965 /* M13ProgressViewRing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewRing.m; sourceTree = "<group>"; };
+		3A0F374D19FDA3F50062E965 /* M13ProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressView.h; sourceTree = "<group>"; };
+		3A0F374E19FDA3F50062E965 /* M13ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressView.m; sourceTree = "<group>"; };
 		3A15068B19EB60BA0020DF10 /* ItemsGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsGroupCell.swift; sourceTree = "<group>"; };
 		3A15068C19EB60BA0020DF10 /* ItemsGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemsGroupCell.xib; sourceTree = "<group>"; };
 		3A15068F19EB71AA0020DF10 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
@@ -393,9 +399,21 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3A0F374919FDA3A40062E965 /* M13ProgressSuite */ = {
+			isa = PBXGroup;
+			children = (
+				3A0F374D19FDA3F50062E965 /* M13ProgressView.h */,
+				3A0F374E19FDA3F50062E965 /* M13ProgressView.m */,
+				3A0F374A19FDA3A40062E965 /* M13ProgressViewRing.h */,
+				3A0F374B19FDA3A40062E965 /* M13ProgressViewRing.m */,
+			);
+			path = M13ProgressSuite;
+			sourceTree = "<group>";
+		};
 		3A661F6019F768F900DEB7C1 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				3A0F374919FDA3A40062E965 /* M13ProgressSuite */,
 				3A661F6119F769B800DEB7C1 /* MMPopLabel.m */,
 				3A661F6219F769B800DEB7C1 /* MMLabel.m */,
 				3A661F6319F769B800DEB7C1 /* MMLabel.h */,
@@ -640,6 +658,7 @@
 				3AE42EED19E8FBA400D7A6F5 /* HistoryViewController.swift in Sources */,
 				3A687C7419E9104F005351B0 /* CartItemCell.swift in Sources */,
 				3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */,
+				3A0F374C19FDA3A40062E965 /* M13ProgressViewRing.m in Sources */,
 				0A25CD6519FC9AC800390674 /* GHContextMenuView.m in Sources */,
 				0A14FFBE19E2355F00D11CE2 /* MapViewController.swift in Sources */,
 				0AC31B0419EA40E700BB815F /* ItemCondition.swift in Sources */,
@@ -656,6 +675,7 @@
 				3A15069019EB71AA0020DF10 /* SectionHeaderView.swift in Sources */,
 				0A674E0F19ED0434001A5664 /* AVCamPreviewView.m in Sources */,
 				3A15069619EB86B00020DF10 /* Constants.swift in Sources */,
+				3A0F374F19FDA3F50062E965 /* M13ProgressView.m in Sources */,
 				3AE42EE919E8FB8300D7A6F5 /* CartViewController.swift in Sources */,
 				3A661F6619F769B800DEB7C1 /* MMPopLabel.m in Sources */,
 				0AC31AFE19EA2F6800BB815F /* PickupScheduleSlot.swift in Sources */,

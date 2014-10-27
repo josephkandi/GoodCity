@@ -20,18 +20,27 @@ extension UIImageView {
             self.layer.masksToBounds = false
         }
     }
-    func fadeInImageFromURL(url: NSURL) {
+    func fadeInImageFromURL(url: NSURL, border: Bool) {
         let request = NSURLRequest(URL: url)
         self.setImageWithURLRequest(request, placeholderImage: nil, success: { (request, response, image) -> Void in
             if (response == nil) {
                 self.image = image
+                if border {
+                    self.layer.borderColor = UIColor.whiteColor().CGColor
+                    self.layer.borderWidth = 2
+                }
                 return
             }
             self.alpha = 0.0
             UIView.animateWithDuration(0.4, animations: { () -> Void in
                 self.image = image
                 self.alpha = 1.0
+                if border {
+                    self.layer.borderColor = UIColor.whiteColor().CGColor
+                    self.layer.borderWidth = 2                    
+                }
             })
             }, failure: nil)
     }
+
 }

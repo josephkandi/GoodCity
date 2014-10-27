@@ -65,11 +65,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         } else {
             // Empty view
             let messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
-            messageLabel.text = "No items to show right now."
-            messageLabel.textColor = UIColor.darkGrayColor()
+            messageLabel.text = "There are no items in history."
+            messageLabel.textColor = UIColor.lightGrayColor()
             messageLabel.numberOfLines = 0;
             messageLabel.textAlignment = NSTextAlignment.Center
-            messageLabel.font = UIFont(name:"Avenir", size:20)
+            messageLabel.font = FONT_18
             messageLabel.sizeToFit()
 
             self.historyTableView.backgroundView = messageLabel;
@@ -195,7 +195,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         itemGroupsArray = [DonationItemsAggregator?]()
         itemGroupsArray.append(nil)
         itemGroupsArray.append(nil)
-        
+                
         historyTableView.dataSource = self
         historyTableView.delegate = self
         //historyTableView.rowHeight = UITableViewAutomaticDimension
