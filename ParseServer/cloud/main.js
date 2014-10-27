@@ -108,11 +108,11 @@ Parse.Cloud.define("grabPickupScheduleSlot", function(request, response) {
                 var itemQuery = new Parse.Query("DonationItem");
                 itemQuery.containedIn("objectId", items);
                 itemQuery.find({
-                  success: function (results) {
+                  success: function (donationItems) {
                     for (var j = 0; j < results.length; j++) {
-                      results[j].set("state", "Scheduled");
-                      results[j].set("pickupScheduledAt", results[0].get("startDateTime"));
-                      results[j].save();
+                      donationItems[j].set("state", "Scheduled");
+                      donationItems[j].set("pickupScheduledAt", results[0].get("startDateTime"));
+                      donationItems[j].save();
                     }
                     response.success("Slot claimed and all donation items updated!");
                   },

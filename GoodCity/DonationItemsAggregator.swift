@@ -87,7 +87,7 @@ class DonationItemsAggregator {
         init(donationItem: DonationItem) {
             self.name = donationItem.createdAt.dateStringWithTimeTruncated()
             self.originalDate = donationItem.createdAt
-            self.pickupDate = donationItem.pickedUpScheduledAt
+            self.pickupDate = donationItem.pickupScheduledAt
             self.donationItems.append(donationItem)
         }
 
