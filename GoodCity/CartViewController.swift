@@ -68,7 +68,7 @@ class CartViewController: UIViewController {
             (objects, error) -> () in
             if let donationItems = objects as? [DonationItem] {
                 self.cartItems.addObjectsFromArray(donationItems)
-                self.updateCount()
+                self.updateCount(false)
                 self.cartCollectionView.reloadData()
             }
             else {
@@ -77,14 +77,14 @@ class CartViewController: UIViewController {
         }, states: [ItemState.Draft])
     }
 
-    func updateCount() {
+    func updateCount(animated: Bool) {
         var string = "CART"
         let count = self.cartItems.count > 0 ? " (\(String(self.cartItems.count)))" : ""
         string = string + count
         self.navigationItem.title = string
         self.navigationItem.rightBarButtonItem!.enabled = self.cartItems.count > 0
         
-        self.cameraViewDelegate?.updateItemsCount(String(self.cartItems.count), animated: true)
+        self.cameraViewDelegate?.updateItemsCount(String(self.cartItems.count), animated: animated)
     }
     
     func submitCartItems() {
@@ -93,7 +93,7 @@ class CartViewController: UIViewController {
             donationItem.updateState(ItemState.Pending)
         }
         cartItems.removeAllObjects()
-        self.updateCount()
+        self.updateCount(false)
         cartCollectionView.reloadData()
     }
 
@@ -122,7 +122,7 @@ class CartViewController: UIViewController {
                 self.cartCollectionView.deleteItemsAtIndexPaths([indexPath])
                 }, completion: { (success) -> Void in
                     if success {
-                        self.updateCount()
+                        self.updateCount(false)
                     }
             })
         }
@@ -193,7 +193,7 @@ extension CartViewController: GHContextOverlayViewDelegate, GHContextOverlayView
 extension CartViewController: CartViewDelegate {
     func addNewItem(newItem: DonationItem) {
         cartItems.insertObject(newItem, atIndex: 0)
-        updateCount()
+        self.updateCount(true)
         cartCollectionView.reloadData()
     }
 

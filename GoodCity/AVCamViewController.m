@@ -130,6 +130,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
         anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
         anim.autoreverses = YES;
         anim.repeatCount = 0;
+        anim.beginTime = CACurrentMediaTime() + 0.5;
         [self.itemsInCartButton.imageView.layer addAnimation:anim forKey:@"pulsate"];
     }
 }
