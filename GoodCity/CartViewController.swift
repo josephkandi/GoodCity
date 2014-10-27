@@ -54,6 +54,7 @@ class CartViewController: UIViewController {
 
     func refreshDataFromServer() {
         // Load data
+        self.emptyCart()
         getDraftItemsFromServer()
         cartCollectionView.reloadData()
     }
@@ -87,14 +88,18 @@ class CartViewController: UIViewController {
         
         self.cameraViewDelegate?.updateItemsCount(String(self.cartItems.count), animated: animated)
     }
-    
+
+    func emptyCart() {
+        cartItems.removeAllObjects()
+        self.updateCount(false)
+    }
+
     func submitCartItems() {
         for item in cartItems {
             let donationItem = item as DonationItem
             donationItem.updateState(ItemState.Pending)
         }
-        cartItems.removeAllObjects()
-        self.updateCount(false)
+        self.emptyCart()
         cartCollectionView.reloadData()
     }
 
