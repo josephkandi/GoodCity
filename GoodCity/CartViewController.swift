@@ -16,12 +16,13 @@ class CartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = LIGHT_GRAY_BG
+    }
+
+    override func viewWillAppear(animated: Bool) {
         self.configureNavigationBar()
         self.configureCollectionView()
         self.refreshDataFromServer()
-
-        self.view.backgroundColor = LIGHT_GRAY_BG
     }
 
     // Set up cell sizes

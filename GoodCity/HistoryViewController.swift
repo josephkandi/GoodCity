@@ -26,9 +26,17 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        // Set up the table views
+        setupTableView()
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
         // Style the nav bar
         self.styleNavBar(self.navigationController!.navigationBar)
-        
+
         // Set up segmented control for switching between active and completed items
         activitiesChooser = UISegmentedControl(items: ["ACTIVE", "HISTORY"])
         let titleSytle = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: FONT_BOLD_14!]
@@ -37,21 +45,18 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         activitiesChooser.sizeToFit()
         activitiesChooser.addTarget(self, action: "switchTabs", forControlEvents: UIControlEvents.ValueChanged)
         self.navigationItem.titleView = activitiesChooser
-        
+
         // Add the map icon to the left nav bar
         let mapIcon = UIImage(named: "map")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         mapButton = UIBarButtonItem(image: mapIcon, style: UIBarButtonItemStyle.Plain, target: self, action: "viewDropoffLocations")
         mapButton.tintColor = UIColor.whiteColor()
         self.navigationItem.setLeftBarButtonItem(mapButton, animated: true)
-        
+
         // Add the profile icon to the right nav bar
         let profileIcon = UIImage(named: "profile")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         profileButton = UIBarButtonItem(image: profileIcon, style: UIBarButtonItemStyle.Plain, target: self, action: "launchProfile")
         profileButton.tintColor = UIColor.whiteColor()
         self.navigationItem.setRightBarButtonItem(profileButton, animated: true)
-        
-        // Set up the table views
-        setupTableView()
         refreshTableData()
     }
     
