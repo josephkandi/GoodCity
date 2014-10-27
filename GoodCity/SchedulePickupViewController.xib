@@ -13,7 +13,9 @@
                 <outlet property="dateFieldLabel" destination="LkQ-b8-mtB" id="e0d-Nh-ikb"/>
                 <outlet property="datePickerButton" destination="ecZ-kE-r5L" id="yYX-Ky-4V0"/>
                 <outlet property="datePickerView" destination="FtS-Ah-8Rj" id="HlN-W6-D1e"/>
+                <outlet property="editAddressView" destination="Pss-Ab-7ld" id="gKL-1y-dTa"/>
                 <outlet property="scheduleButton" destination="NQI-tL-CfS" id="WhG-Y1-ue9"/>
+                <outlet property="schedulePickupView" destination="bYX-pg-eug" id="sqf-Xz-U1b"/>
                 <outlet property="slotPickerView" destination="Moh-MX-uRp" id="bmO-wB-LER"/>
                 <outlet property="titleLabel" destination="PFW-pK-VEH" id="grx-l8-7pd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -52,48 +54,60 @@
                     <rect key="frame" x="20" y="27" width="280" height="492"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Pickup" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PFW-pK-VEH" userLabel="Title label">
-                            <rect key="frame" x="75" y="51" width="129" height="24"/>
+                        <view contentMode="scaleToFill" id="bYX-pg-eug" userLabel="Schedule Pickup View">
+                            <rect key="frame" x="0.0" y="0.0" width="280" height="484"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LkQ-b8-mtB">
-                            <rect key="frame" x="20" y="87" width="31" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ecZ-kE-r5L" customClass="DatePickerButton" customModule="GoodCity" customModuleProvider="target">
-                            <rect key="frame" x="20" y="109" width="148" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                            <state key="normal" title="Thu, October 2, 2014"/>
-                            <connections>
-                                <action selector="onTapDatePicker:" destination="-1" eventType="touchUpInside" id="rbC-8Z-Hii"/>
-                            </connections>
-                        </button>
-                        <view contentMode="scaleToFill" id="Moh-MX-uRp" userLabel="slotsContainer" customClass="SlotPickerView" customModule="GoodCity" customModuleProvider="target">
-                            <rect key="frame" x="20" y="40" width="400" height="400"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Pickup Slot" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PFW-pK-VEH" userLabel="Title label">
+                                    <rect key="frame" x="75" y="20" width="152" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LkQ-b8-mtB">
+                                    <rect key="frame" x="10" y="60" width="31" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ecZ-kE-r5L" customClass="DatePickerButton" customModule="GoodCity" customModuleProvider="target">
+                                    <rect key="frame" x="10" y="80" width="148" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                    <state key="normal" title="Thu, October 2, 2014"/>
+                                    <connections>
+                                        <action selector="onTapDatePicker:" destination="-1" eventType="touchUpInside" id="rbC-8Z-Hii"/>
+                                    </connections>
+                                </button>
+                                <view contentMode="scaleToFill" id="Moh-MX-uRp" userLabel="slotsContainer" customClass="SlotPickerView" customModule="GoodCity" customModuleProvider="target">
+                                    <rect key="frame" x="-60" y="46" width="400" height="400"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" id="FtS-Ah-8Rj" userLabel="popup view">
+                                    <rect key="frame" x="20" y="147" width="240" height="198"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NQI-tL-CfS" customClass="RoundedButton" customModule="GoodCity" customModuleProvider="target">
+                                    <rect key="frame" x="43" y="400" width="193" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="Confirm Schedule"/>
+                                    <connections>
+                                        <action selector="confirmSchedule:" destination="-1" eventType="touchUpInside" id="bkD-Wh-G4n"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="Pss-Ab-7ld" customClass="EditAddressView" customModule="GoodCity" customModuleProvider="target">
+                            <rect key="frame" x="70" y="123" width="140" height="246"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
-                        <view contentMode="scaleToFill" id="FtS-Ah-8Rj" userLabel="popup view">
-                            <rect key="frame" x="20" y="153" width="240" height="198"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NQI-tL-CfS" customClass="RoundedButton" customModule="GoodCity" customModuleProvider="target">
-                            <rect key="frame" x="43" y="418" width="193" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="Confirm Schedule"/>
-                            <connections>
-                                <action selector="confirmSchedule:" destination="-1" eventType="touchUpInside" id="bkD-Wh-G4n"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>

@@ -17,13 +17,16 @@ protocol SlotPickerDelegate {
     func selectSlot(slot: PickupScheduleSlot)
 }
 
-class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPickerDelegate {
+class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPickerDelegate, EditAddressViewDelegate {
 
     @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var closeButton: UIButton!
     
     @IBOutlet weak var contentContainerView: UIView!
+    @IBOutlet weak var schedulePickupView: UIView!
+    @IBOutlet weak var editAddressView: EditAddressView!
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateFieldLabel: UILabel!
     @IBOutlet weak var slotPickerView: SlotPickerView!
@@ -52,6 +55,7 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
         
         slotPickerView.delegate = self
         slotPickerView.date = datePickerButton.datePicked
+        editAddressView.delegate = self
         
         getScheduleSlots()
         initDatePicker()
@@ -167,23 +171,26 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
         bgImageView.frame = bounds
         blurView.frame = bounds
         contentContainerView.frame = CGRectMake(marginLeftRight, marginTopBottom, bounds.width - marginLeftRight * 2, bounds.height - marginTopBottom * 3)
+        schedulePickupView.frame = contentContainerView.bounds
+        schedulePickupView.alpha = 0
+        editAddressView.frame = contentContainerView.bounds
 
         // Layout elements within the content container view
-        var yOffset = TEXT_MARGIN
-        titleLabel.frame = CGRectMake(marginLeftRight, yOffset, contentContainerView.bounds.width - marginLeftRight * 2, 40)
+        var yOffset: CGFloat = 20
+        titleLabel.frame = CGRectMake(marginLeftRight, yOffset, schedulePickupView.bounds.width - marginLeftRight * 2, 40)
         yOffset += titleLabel.frame.height + TEXT_MARGIN
-        dateFieldLabel.frame = CGRectMake(marginLeftRight, yOffset, contentContainerView.bounds.width - marginLeftRight * 2, 20)
+        dateFieldLabel.frame = CGRectMake(marginLeftRight, yOffset, schedulePickupView.bounds.width - marginLeftRight * 2, 20)
         yOffset += dateFieldLabel.frame.height
-        datePickerButton.frame = CGRectMake(marginLeftRight, yOffset, contentContainerView.bounds.width - marginLeftRight * 2, 40)
+        datePickerButton.frame = CGRectMake(marginLeftRight, yOffset, schedulePickupView.bounds.width - marginLeftRight * 2, 40)
         yOffset += datePickerButton.frame.height
         let height = pickerOpen ? DATE_PICKER_HEIGHT : 0
-        datePickerView.frame = CGRectMake(marginLeftRight, yOffset, contentContainerView.bounds.width - marginLeftRight * 2, height)
+        datePickerView.frame = CGRectMake(marginLeftRight, yOffset, schedulePickupView.bounds.width - marginLeftRight * 2, height)
         
         yOffset += 30
-        slotPickerView.frame = CGRectMake(marginLeftRight, yOffset, contentContainerView.bounds.width - marginLeftRight * 2, DATE_PICKER_HEIGHT)
+        slotPickerView.frame = CGRectMake(marginLeftRight, yOffset, schedulePickupView.bounds.width - marginLeftRight * 2, DATE_PICKER_HEIGHT)
         
-        yOffset = contentContainerView.bounds.height - 40 - 30
-        scheduleButton.frame = CGRectMake((contentContainerView.bounds.width-180)/2, yOffset, 180, 40)
+        yOffset = schedulePickupView.bounds.height - 40 - 30
+        scheduleButton.frame = CGRectMake((schedulePickupView.bounds.width-180)/2, yOffset, 180, 40)
 
         yOffset = self.view.bounds.height - 20 - 40
         closeButton.frame = CGRectMake((self.view.bounds.width-40)/2, yOffset, 40, 40)
@@ -239,5 +246,23 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     }
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    // Edit Address View delegate
+    func onTapDone() {
+        let frame = self.editAddressView.frame
+        schedulePickupView.frame = CGRectMake(frame.origin.x + self.view.frame.width, frame.origin.y, frame.width, frame.height)
+        UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            self.schedulePickupView.frame = frame
+            self.editAddressView.frame = CGRectMake(frame.origin.x - self.view.frame.width, frame.origin.y, frame.width, frame.height)
+            
+            self.editAddressView.alpha = 0
+            self.schedulePickupView.alpha = 1
+
+        }) { (finished) -> Void in
+            println("animation completed")
+        }
+        
+        //schedulePickupView.alpha = 1
     }
 }

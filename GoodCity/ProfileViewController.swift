@@ -14,15 +14,16 @@ private let gapMargin: CGFloat = 10
 private let iconWidth: CGFloat = 40
 private let profileImageSize: CGFloat = 60
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, EditAddressViewDelegate {
 
     var bgImage: UIImage!
     @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var blurView: UIVisualEffectView!
    
     @IBOutlet weak var contentContainerView: UIView!
-
+    @IBOutlet weak var profileMainView: UIView!
     @IBOutlet weak var profileInfoContainerView: UIView!
+    var tapGesture: UIGestureRecognizer!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -31,12 +32,25 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var logoutButton: RoundedButton!
     
+    @IBOutlet weak var editAddressview: EditAddressView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bgImageView.image = bgImage
         contentContainerView.alpha = 0
+        editAddressview.alpha = 0
+        editAddressview.delegate = self
+        editAddressview.layer.cornerRadius = 4
+        editAddressview.layer.masksToBounds = true
+        editAddressview.setTitleText("Edit Address")
+        editAddressview.setExplanationText("")
+        editAddressview.setDoneButtonText("Done")
+        
         profileImage.layer.cornerRadius = 30
         profileImage.layer.masksToBounds = true
+        tapGesture = UITapGestureRecognizer()
+        tapGesture.addTarget(self, action: "launchEditAddressView")
+        profileInfoContainerView.addGestureRecognizer(tapGesture)
         
         addressLabel.sizeToFit()
                 
@@ -64,6 +78,8 @@ class ProfileViewController: UIViewController {
         let bounds = self.view.bounds
         
         contentContainerView.frame = bounds
+        profileMainView.frame = contentContainerView.bounds
+        editAddressview.frame = CGRectMake(20, 50, bounds.width-40, bounds.height-120)
         closeButton.frame = CGRectMake(bounds.width-marginLeftRight-iconWidth, marginTopBottom, iconWidth, iconWidth)
         
         // Set the starting point frame for the profile info container view
@@ -99,5 +115,25 @@ class ProfileViewController: UIViewController {
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    func launchEditAddressView() {
+        UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            self.editAddressview.alpha = 1
+            self.profileMainView.alpha = 0
+            
+            }) { (finished) -> Void in
+                println("animation completed")
+        }
+    }
+    
+    func onTapDone() {
+        UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            self.editAddressview.alpha = 0
+            self.profileMainView.alpha = 1
+            
+            }) { (finished) -> Void in
+                println("animation completed")
+        }
     }
 }

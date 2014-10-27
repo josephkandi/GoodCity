@@ -43,6 +43,7 @@
 		3A050C8E19FB8C9400981C7D /* ScaleModalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A050C8D19FB8C9400981C7D /* ScaleModalAnimator.swift */; };
 		3A0F374C19FDA3A40062E965 /* M13ProgressViewRing.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F374B19FDA3A40062E965 /* M13ProgressViewRing.m */; };
 		3A0F374F19FDA3F50062E965 /* M13ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F374E19FDA3F50062E965 /* M13ProgressView.m */; };
+		3A0F375119FDE42F0062E965 /* EditAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F375019FDE42F0062E965 /* EditAddressView.swift */; };
 		3A15068D19EB60BA0020DF10 /* ItemsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15068B19EB60BA0020DF10 /* ItemsGroupCell.swift */; };
 		3A15068E19EB60BA0020DF10 /* ItemsGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A15068C19EB60BA0020DF10 /* ItemsGroupCell.xib */; };
 		3A15069019EB71AA0020DF10 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15068F19EB71AA0020DF10 /* SectionHeaderView.swift */; };
@@ -153,6 +154,7 @@
 		3A0F374B19FDA3A40062E965 /* M13ProgressViewRing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewRing.m; sourceTree = "<group>"; };
 		3A0F374D19FDA3F50062E965 /* M13ProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressView.h; sourceTree = "<group>"; };
 		3A0F374E19FDA3F50062E965 /* M13ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressView.m; sourceTree = "<group>"; };
+		3A0F375019FDE42F0062E965 /* EditAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAddressView.swift; sourceTree = "<group>"; };
 		3A15068B19EB60BA0020DF10 /* ItemsGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsGroupCell.swift; sourceTree = "<group>"; };
 		3A15068C19EB60BA0020DF10 /* ItemsGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemsGroupCell.xib; sourceTree = "<group>"; };
 		3A15068F19EB71AA0020DF10 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				3A81925219F59AB5001F2EB5 /* SlotPickerView.swift */,
 				3A93C0E819F7842E00EAF2D7 /* YASegmentedControl.swift */,
 				3A050C8D19FB8C9400981C7D /* ScaleModalAnimator.swift */,
+				3A0F375019FDE42F0062E965 /* EditAddressView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				0AC31B0019EA33CB00BB815F /* DonationItem.swift in Sources */,
 				0A14FFBA19E2354000D11CE2 /* SchedulePickupViewController.swift in Sources */,
 				0AC31B0219EA3F1F00BB815F /* ItemState.swift in Sources */,
+				3A0F375119FDE42F0062E965 /* EditAddressView.swift in Sources */,
 				3A661F6719F769B800DEB7C1 /* MMLabel.m in Sources */,
 				3A9D64FA19F21320008A64F2 /* UIViewController+Extensions.swift in Sources */,
 			);
