@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="GoodCity" customModuleProvider="target">
@@ -15,10 +15,14 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tma-1K-pmU" customClass="RoundedButton" customModule="GoodCity" customModuleProvider="target">
-                    <rect key="frame" x="18" y="457" width="564" height="40"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="jJ4-zS-3ag">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tma-1K-pmU">
+                    <rect key="frame" x="200" y="457" width="200" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="VsY-vL-gYY"/>
+                        <constraint firstAttribute="width" constant="200" id="7Be-4c-VKR"/>
+                        <constraint firstAttribute="height" constant="50" id="VsY-vL-gYY"/>
                     </constraints>
                     <state key="normal" title="Connect with Facebook">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -27,27 +31,50 @@
                         <action selector="loginButtonTapped:" destination="-1" eventType="touchUpInside" id="3Qg-mL-aZW"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J2g-Da-gBZ" customClass="RoundedButton" customModule="GoodCity" customModuleProvider="target">
-                    <rect key="frame" x="18" y="505" width="564" height="40"/>
-                    <state key="normal" title="Skip Log In">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="onTapSkip:" destination="-1" eventType="touchUpInside" id="Kh7-Sg-6Me"/>
-                    </connections>
-                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_logo" translatesAutoresizingMaskIntoConstraints="NO" id="xye-Qu-vv3">
+                    <rect key="frame" x="235" y="70" width="130" height="130"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="130" id="QZR-V2-6Cs"/>
+                        <constraint firstAttribute="height" constant="130" id="mr6-JE-A16"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GoodCity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pa6-zD-MJI">
+                    <rect key="frame" x="220" y="208" width="160" height="50"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="36"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="tma-1K-pmU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="18" id="0hh-GW-jFs"/>
                 <constraint firstAttribute="centerX" secondItem="tma-1K-pmU" secondAttribute="centerX" id="0qC-bZ-Kqg"/>
-                <constraint firstAttribute="bottom" secondItem="J2g-Da-gBZ" secondAttribute="bottom" constant="55" id="3M4-l4-iKO"/>
-                <constraint firstItem="J2g-Da-gBZ" firstAttribute="height" secondItem="tma-1K-pmU" secondAttribute="height" id="63z-aI-uzg"/>
+                <constraint firstItem="jJ4-zS-3ag" firstAttribute="top" secondItem="xye-Qu-vv3" secondAttribute="top" constant="-190" id="AOU-Af-Kj6"/>
+                <constraint firstItem="pa6-zD-MJI" firstAttribute="centerX" secondItem="xye-Qu-vv3" secondAttribute="centerX" id="JLL-bT-mfX"/>
+                <constraint firstAttribute="bottom" secondItem="jJ4-zS-3ag" secondAttribute="bottom" id="LLI-Ed-hMb"/>
+                <constraint firstAttribute="trailing" secondItem="jJ4-zS-3ag" secondAttribute="trailing" id="PyM-fd-eJI"/>
+                <constraint firstItem="jJ4-zS-3ag" firstAttribute="centerX" secondItem="xye-Qu-vv3" secondAttribute="centerX" id="R0X-cl-DxH"/>
+                <constraint firstItem="jJ4-zS-3ag" firstAttribute="centerY" secondItem="xye-Qu-vv3" secondAttribute="centerY" constant="60" id="SII-SF-f2c"/>
                 <constraint firstAttribute="trailing" secondItem="tma-1K-pmU" secondAttribute="trailing" constant="18" id="UL8-Qo-AYP"/>
-                <constraint firstItem="tma-1K-pmU" firstAttribute="centerX" secondItem="J2g-Da-gBZ" secondAttribute="centerX" id="X4V-8c-sdx"/>
-                <constraint firstItem="J2g-Da-gBZ" firstAttribute="width" secondItem="tma-1K-pmU" secondAttribute="width" id="gfF-Ar-Pr0"/>
-                <constraint firstItem="J2g-Da-gBZ" firstAttribute="top" secondItem="tma-1K-pmU" secondAttribute="bottom" constant="8" id="qgs-p7-owp"/>
+                <constraint firstItem="jJ4-zS-3ag" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Xny-s9-c0r"/>
+                <constraint firstItem="xye-Qu-vv3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="eWh-5S-b7O"/>
+                <constraint firstItem="tma-1K-pmU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="457" id="gkD-eA-xXU"/>
+                <constraint firstItem="jJ4-zS-3ag" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lR2-43-xz2"/>
+                <constraint firstItem="pa6-zD-MJI" firstAttribute="top" secondItem="xye-Qu-vv3" secondAttribute="bottom" constant="8" id="xbA-b5-Qka"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="AOU-Af-Kj6"/>
+                    <exclude reference="SII-SF-f2c"/>
+                    <exclude reference="0hh-GW-jFs"/>
+                    <exclude reference="UL8-Qo-AYP"/>
+                </mask>
+            </variation>
         </view>
     </objects>
+    <resources>
+        <image name="login_bg" width="320" height="568"/>
+        <image name="login_logo" width="100" height="100"/>
+    </resources>
 </document>

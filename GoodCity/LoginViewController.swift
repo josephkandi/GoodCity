@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var FBLoginButton: RoundedButton!
+    @IBOutlet weak var FBLoginButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Old code if we want to use Facebook graphic
@@ -18,8 +18,16 @@ class LoginViewController: UIViewController {
         // loginView.center = self.view.center
         // self.view.addSubview(loginView)
 
-        FBLoginButton.setButtonColor(FB_BLUE)
-    
+        //self.view.backgroundColor = tintColor
+        
+        FBLoginButton.backgroundColor = tintColor
+        FBLoginButton.layer.cornerRadius = 25
+        FBLoginButton.layer.masksToBounds = true
+        let attributedTitle = NSMutableAttributedString(string: "Connect with Facebook")
+        let range = NSMakeRange(0, attributedTitle.length)
+        attributedTitle.addAttribute(NSFontAttributeName, value: FONT_MEDIUM_14!, range: range)
+        attributedTitle.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor(), range: range)
+        FBLoginButton.setAttributedTitle(attributedTitle, forState: .Normal)
     }
 
     private func updateCurrentInstallationUserInfo() {
@@ -64,5 +72,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func onTapSkip(sender: AnyObject) {
         goToHomeScreen()
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 }
