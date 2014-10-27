@@ -13,6 +13,8 @@ protocol ItemsActionDelegate {
     func schedulePickup(donationGroup: DonationItemsAggregator.DonationGroup)
 }
 
+let HistoryItemsDidChangeNotifications = "historyItemsDidChangeNotification"
+
 class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewControllerTransitioningDelegate {
     
     @IBOutlet weak var historyTableView: UITableView!
@@ -57,6 +59,11 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
         profileButton.tintColor = UIColor.whiteColor()
         self.navigationItem.setRightBarButtonItem(profileButton, animated: true)
         refreshDataFromServerForAllSegments()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshDataFromServerForCurrentlySelectedSegment", name: HistoryItemsDidChangeNotifications, object: nil)
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: HistoryItemsDidChangeNotifications, object: nil)
     }
 
     // Custom protocol methods
@@ -130,6 +137,7 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
     }
 
     func refreshDataFromServerForCurrentlySelectedSegment() {
+        println("refreshing for current index")
         let index = activitiesChooser.selectedSegmentIndex
         if (index == 0) {
             getItemGroups(states: [ItemState.Scheduled, ItemState.Approved, ItemState.Pending], index: index)

@@ -88,6 +88,7 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     @IBAction func onTapClose(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
             println("dismissed schedule view")
+            NSNotificationCenter.defaultCenter().postNotificationName(HistoryItemsDidChangeNotifications, object: self)
         })
     }
     @IBAction func onTapDatePicker(sender: AnyObject) {

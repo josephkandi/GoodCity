@@ -95,12 +95,18 @@ class CartViewController: UIViewController {
     }
 
     func submitCartItems() {
-        for item in cartItems {
-            let donationItem = item as DonationItem
-            donationItem.updateState(ItemState.Pending)
+        for item in cartItems as AnyObject as [DonationItem] {
+            item.state = ItemState.Pending.rawValue
         }
-        self.emptyCart()
-        cartCollectionView.reloadData()
+        PFObject.saveAllInBackground(cartItems, block: { (success, error) -> Void in
+            if error == nil {
+                NSNotificationCenter.defaultCenter().postNotificationName(HistoryItemsDidChangeNotifications, object: nil)
+                self.emptyCart()
+                self.cartCollectionView.reloadData()
+            } else {
+                println("An error occurred trying to update the state of the cart items")
+            }
+        })
     }
 
     func showSubmitConfirmationPopup() {

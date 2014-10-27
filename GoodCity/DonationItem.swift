@@ -67,14 +67,6 @@ import Foundation
         }
     }
 
-    func updateState(newState: ItemState) {
-        self.state = newState.rawValue
-        // Might want to add a completion handler here
-        self.saveInBackgroundWithTarget(nil, selector: nil)
-    }
-
-    // Deletion can happen with deleteInBackground()
-
     // States is optional
     class func getAllItemsWithStates(completion: ParseResponse, states: [ItemState]? = nil) {
         var query = DonationItem.query()
