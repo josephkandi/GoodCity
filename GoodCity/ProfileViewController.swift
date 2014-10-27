@@ -53,6 +53,8 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
         tapGesture.addTarget(self, action: "launchEditAddressView")
         profileInfoContainerView.addGestureRecognizer(tapGesture)
         
+        logoutButton.setButtonColor(UIColor(white: 0.2, alpha: 0.6))
+        
         addressLabel.sizeToFit()
                 
         if let currentUser = GoodCityUser.currentUser {
