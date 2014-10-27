@@ -169,8 +169,12 @@ extension CartViewController: GHContextOverlayViewDelegate, GHContextOverlayView
     }
 
     func imageForItemAtIndex(index: Int) -> UIImage! {
-        let images = ["history_scheduled", "history_pending"]
-        return UIImage(named: images[index])
+        
+        let delete = UIImage(named: "cart_delete")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        let camera = UIImage(named: "cart_camera")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        
+        let images = [delete, camera]
+        return images[index]
     }
 
     func didSelectItemAtIndex(selectedIndex: Int, forMenuAtPoint point: CGPoint) {

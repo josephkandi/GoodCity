@@ -44,7 +44,7 @@
                                 <constraint firstAttribute="width" constant="39" id="ac2-PZ-GBz"/>
                                 <constraint firstAttribute="height" constant="39" id="dEf-eO-c6I"/>
                             </constraints>
-                            <state key="normal" image="camer_history">
+                            <state key="normal" image="camera_history">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
@@ -108,8 +108,8 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="camer_history" width="38" height="38"/>
         <image name="camera_capture" width="73" height="73"/>
         <image name="camera_cart" width="38" height="38"/>
+        <image name="camera_history" width="38" height="38"/>
     </resources>
 </document>
