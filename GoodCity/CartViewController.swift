@@ -220,7 +220,13 @@ extension CartViewController: UICollectionViewDataSource {
             startButton.setButtonTitle("Get Started")
             startButton.addTarget(self, action: "onTapGetStarted", forControlEvents: UIControlEvents.TouchUpInside)
         }
+        emptyView.alpha = 0
         self.cartCollectionView.backgroundView = emptyView
+        UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            emptyView.alpha = 1
+        }) { (finished) -> Void in
+            // do nothing
+        }
     }
     func removeEmptyView() {
         self.cartCollectionView.backgroundView = nil
