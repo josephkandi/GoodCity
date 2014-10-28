@@ -81,9 +81,21 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
             println("animated in")
         }
     }
-    
+
+    private func updateProgressRingValue() {
+        var count = CGFloat(0)
+        println("Initializing progress ring count to zero")
+        if let userDefaults = NSUserDefaults(suiteName: "group.com.codepath.goodcity") {
+            if let donationCount = userDefaults.valueForKey(TOTAL_DONATION_COUNT_KEY) as? Int {
+                count = CGFloat(donationCount)
+                println("Updating progress ring count to: \(count)")
+            }
+        }
+        progressRing.setProgress(count, animated: true)
+    }
+
     override func viewDidAppear(animated: Bool) {
-        progressRing.setProgress(0.56, animated: true)
+        self.updateProgressRingValue()
     }
     
     override func viewWillLayoutSubviews() {
@@ -114,7 +126,7 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
         
         progressRing.frame = CGRectMake((bounds.width - progressRingSize) / 2, yOffset, progressRingSize, progressRingSize)
     }
-    
+
     @IBAction func onTapClose(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
             println("dismissed profile view")
