@@ -153,6 +153,7 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
 
     func switchTabs() {
         // Reload data for the new tab index since the tableView is shared
+        self.refreshDataFromServerForCurrentlySelectedSegment()
         self.historyTableView.reloadData()
     }
 
