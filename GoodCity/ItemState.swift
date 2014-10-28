@@ -24,9 +24,9 @@ enum ItemState: String {
             return 0
         case .Pending:
             return 1
-        case .PickedUp:
-            return 2
         case .NotNeeded:
+            return 2
+        case .PickedUp:
             return 3
         case .MoreInfoNeeded:
             return 4
