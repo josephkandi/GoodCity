@@ -1,6 +1,10 @@
 import UIKit
 
-class ContainerViewController: UIViewController, UIScrollViewDelegate {
+protocol ChildViewControllerDelegate {
+    func scrollToCamera()
+}
+
+class ContainerViewController: UIViewController, UIScrollViewDelegate, ChildViewControllerDelegate {
 
     @IBOutlet weak var containerScrollView: UIScrollView!
     private var statusBarHidden = true
@@ -27,7 +31,6 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     private var currentViewControllerIndex : Int!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +67,7 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
         
         // 1. Cart View Controller
         let cartViewController = CartViewController(nibName: "CartViewController", bundle: nil)
+        cartViewController.delegate = self
         let navController = UINavigationController(rootViewController: cartViewController)
         viewControllers.append(navController)
         navController.view.frame = CGRectMake(0, 20, containerScrollView.frame.width, containerScrollView.frame.height-20)
@@ -104,8 +108,17 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
         scrollToViewController(activeViewIndex)
     }
 
-    func scrollToViewController(index: Int) {
-        containerScrollView.contentOffset = CGPoint(x: CGFloat(index) * containerScrollView.bounds.width, y: 0)
+    func scrollToViewController(index: Int, animated: Bool = false) {
+        if animated {
+            UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+                self.containerScrollView.contentOffset = CGPoint(x: CGFloat(index) * self.containerScrollView.bounds.width, y: 0)
+            }, completion: { (finished) -> Void in
+                // do nothing here
+            })
+        }
+        else {
+            containerScrollView.contentOffset = CGPoint(x: CGFloat(index) * containerScrollView.bounds.width, y: 0)
+        }
         activeViewController = viewControllers[index]
         currentViewControllerIndex = index
     }
@@ -156,5 +169,10 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
     
     override func prefersStatusBarHidden() -> Bool {
         return statusBarHidden
+    }
+    
+    // Delegate methods to handle child view controller callbacks
+    func scrollToCamera() {
+        scrollToViewController(CAMERA_VIEW_CONTROLLER_INDEX, animated: true)
     }
 }

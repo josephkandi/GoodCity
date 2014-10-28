@@ -11,8 +11,8 @@ class CartViewController: UIViewController {
     var cartItems = NSMutableArray()
 
     var cameraViewDelegate: CameraViewDelegate?
+    var delegate: ChildViewControllerDelegate?
     var submitButton: UIBarButtonItem!
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -184,7 +184,7 @@ extension CartViewController: UICollectionViewDataSource {
         let communityIcon = UIImage(named: "community")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         let imageView = UIImageView(image: communityIcon)
         imageView.tintColor = UIColor(white: 0.8, alpha: 1)
-        imageView.frame = CGRectMake((bounds.width-100)/2, (bounds.height-100)/2-80, 100, 100)
+        imageView.frame = CGRectMake((bounds.width-100)/2, (bounds.height-100)/2-90, 100, 100)
         emptyView.addSubview(imageView)
         
         // Add the message label
@@ -194,9 +194,25 @@ extension CartViewController: UICollectionViewDataSource {
         messageLabel.numberOfLines = 0;
         messageLabel.textAlignment = NSTextAlignment.Center
         messageLabel.font = FONT_18
+        messageLabel.sizeToFit()
+        var yOffset = imageView.frame.origin.y + imageView.frame.height + 5
+        messageLabel.frame = CGRectMake((bounds.width-messageLabel.frame.width)/2, yOffset, messageLabel.frame.width, messageLabel.frame.height)
         emptyView.addSubview(messageLabel)
         
+        // Get Started button
+        yOffset = messageLabel.frame.origin.y + messageLabel.frame.height + 25
+        let startButton = RoundedButton(frame: CGRectMake((bounds.width-150)/2, yOffset, 150, 40))
+        emptyView.addSubview(startButton)
+        startButton.setButtonColor(UIColor.lightGrayColor())
+        startButton.setButtonSytle(1)
+        startButton.setButtonTitle("Get Started")
+        startButton.addTarget(self, action: "onTapGetStarted", forControlEvents: UIControlEvents.TouchUpInside)
+        
         self.cartCollectionView.backgroundView = emptyView;
+    }
+    
+    func onTapGetStarted() {
+        self.delegate?.scrollToCamera()
     }
     
     func getEmptyString() -> String {
@@ -252,8 +268,6 @@ extension CartViewController: CartViewDelegate {
         self.cartCollectionView.performBatchUpdates({ () -> Void in
             self.cartCollectionView.insertItemsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)])
             }, completion: nil)
-
-
     }
 
     func getItemsCount() -> NSInteger {
