@@ -13,7 +13,7 @@
 
 #import "M13ProgressViewRing.h"
 #import <CoreGraphics/CoreGraphics.h>
-#import "GoodCity-Swift.h"
+//#import "GoodCity-Swift.h"
 
 @interface M13ProgressViewRing ()
 /**The number formatter to display the progress percentage.*/
@@ -371,6 +371,7 @@
     
     //Update font size
     //_percentageLabel.font = [UIFont systemFontOfSize:(self.bounds.size.width / 5)];
+    _percentageLabel.font =  [UIFont fontWithName:@"AvenirNext-UltraLight" size:(self.bounds.size.width / 4)];
     _percentageLabel.textColor = [UIColor whiteColor];
     _explanationLabel.textColor = [UIColor whiteColor];
     

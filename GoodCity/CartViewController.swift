@@ -111,7 +111,10 @@ class CartViewController: UIViewController {
 
     func showSubmitConfirmationPopup() {
         let alertView = SIAlertView(title: "Thank you!", andMessage: "This will submit your items for review by one of our volunteers.")
-
+        alertView.titleFont = FONT_MEDIUM_20
+        alertView.messageFont = FONT_16
+        alertView.buttonFont = FONT_MEDIUM_16
+            
         alertView.addButtonWithTitle("Cancel", type: SIAlertViewButtonType.Cancel) { (originatingView) -> Void in
             println("Cancel")
         }
