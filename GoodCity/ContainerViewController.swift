@@ -2,6 +2,7 @@ import UIKit
 
 protocol ChildViewControllerDelegate {
     func scrollToCamera()
+    func scrollToHistory()
 }
 
 class ContainerViewController: UIViewController, UIScrollViewDelegate, ChildViewControllerDelegate {
@@ -174,5 +175,8 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate, ChildView
     // Delegate methods to handle child view controller callbacks
     func scrollToCamera() {
         scrollToViewController(CAMERA_VIEW_CONTROLLER_INDEX, animated: true)
+    }
+    func scrollToHistory() {
+        scrollToViewController(HISTORY_VIEW_CONTROLLER_INDEX, animated: true)
     }
 }

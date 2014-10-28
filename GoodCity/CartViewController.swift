@@ -13,6 +13,9 @@ class CartViewController: UIViewController {
     var cameraViewDelegate: CameraViewDelegate?
     var delegate: ChildViewControllerDelegate?
     var submitButton: UIBarButtonItem!
+    
+    // Show a special empty cart view message right after submitting the items
+    var showSubmitEmptyMessage = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,6 +98,7 @@ class CartViewController: UIViewController {
     }
 
     func submitCartItems() {
+        showSubmitEmptyMessage = true
         for item in cartItems as AnyObject as [DonationItem] {
             item.state = ItemState.Pending.rawValue
         }
@@ -158,6 +162,9 @@ extension CartViewController: UICollectionViewDataSource {
             addEmptyView()
             return 0;
         }
+        else {
+            removeEmptyView()
+        }
         return cartItems.count
     }
     
@@ -205,21 +212,37 @@ extension CartViewController: UICollectionViewDataSource {
         emptyView.addSubview(startButton)
         startButton.setButtonColor(UIColor.lightGrayColor())
         startButton.setButtonSytle(1)
-        startButton.setButtonTitle("Get Started")
-        startButton.addTarget(self, action: "onTapGetStarted", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        self.cartCollectionView.backgroundView = emptyView;
+        if showSubmitEmptyMessage {
+            startButton.setButtonTitle("Check Status")
+            startButton.addTarget(self, action: "onTapCheckStatus", forControlEvents: UIControlEvents.TouchUpInside)
+        }
+        else {
+            startButton.setButtonTitle("Get Started")
+            startButton.addTarget(self, action: "onTapGetStarted", forControlEvents: UIControlEvents.TouchUpInside)
+        }
+        self.cartCollectionView.backgroundView = emptyView
     }
-    
+    func removeEmptyView() {
+        self.cartCollectionView.backgroundView = nil
+    }
+
     func onTapGetStarted() {
         self.delegate?.scrollToCamera()
     }
-    
+    func onTapCheckStatus() {
+        self.delegate?.scrollToHistory()
+        showSubmitEmptyMessage = false
+    }
     func getEmptyString() -> String {
-        var strings = ["Clear out your closet.", "Give back to the community.", "Be a hero."]
-        let index = Int(arc4random_uniform(UInt32(strings.count)))
-        
-        return strings[index] + "\nDonate something today."
+        if showSubmitEmptyMessage {
+            return "Thank you for your donation!"
+        }
+        else {
+            var strings = ["Clear out your closet.", "Give back to the community.", "Be a hero."]
+            let index = Int(arc4random_uniform(UInt32(strings.count)))
+            
+            return strings[index] + "\nDonate something today."
+        }
     }
 }
 
