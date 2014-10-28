@@ -152,9 +152,15 @@ extension CartViewController: UICollectionViewDataSource {
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if cartItems.count == 0 {
+            // Empty view
+            addEmptyView()
+            return 0;
+        }
         return cartItems.count
     }
-
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell = cartCollectionView.dequeueReusableCellWithReuseIdentifier("cartItemCell", forIndexPath: indexPath) as CartItemCell
         cell.donationItem = cartItems[indexPath.row] as? DonationItem
@@ -168,6 +174,36 @@ extension CartViewController: UICollectionViewDataSource {
         cell.contentView.addGestureRecognizer(longPressRecognizer)
 
         return cell
+    }
+    
+    func addEmptyView() {
+        let bounds = self.view.bounds
+        let emptyView = UIView(frame: CGRectMake(0, 0,bounds.width, bounds.height))
+        
+        // Add the icon
+        let communityIcon = UIImage(named: "community")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        let imageView = UIImageView(image: communityIcon)
+        imageView.tintColor = UIColor(white: 0.8, alpha: 1)
+        imageView.frame = CGRectMake((bounds.width-100)/2, (bounds.height-100)/2-80, 100, 100)
+        emptyView.addSubview(imageView)
+        
+        // Add the message label
+        let messageLabel = UILabel(frame: CGRectMake(0, 0, bounds.width, bounds.height))
+        messageLabel.text = getEmptyString()
+        messageLabel.textColor = UIColor.lightGrayColor()
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = NSTextAlignment.Center
+        messageLabel.font = FONT_18
+        emptyView.addSubview(messageLabel)
+        
+        self.cartCollectionView.backgroundView = emptyView;
+    }
+    
+    func getEmptyString() -> String {
+        var strings = ["Clear out your closet.", "Give back to the community.", "Be a hero."]
+        let index = Int(arc4random_uniform(UInt32(strings.count)))
+        
+        return strings[index] + "\nDonate something today."
     }
 }
 

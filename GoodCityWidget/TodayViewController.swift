@@ -15,11 +15,10 @@ let MEMBER_SINCE_KEY = "member_since"
 
 class TodayViewController: UIViewController, NCWidgetProviding {
 
-    @IBOutlet weak var donationCountLabel: UILabel!
-    @IBOutlet weak var donationValueLabel: UILabel!
-    @IBOutlet weak var memberSinceLabel: UILabel!
-    @IBOutlet weak var badgeImage: UIImageView!
-
+    @IBOutlet weak var totalCountView: UIView!
+    @IBOutlet weak var scheduleView: UIView!
+    @IBOutlet weak var addItemView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         println("In viewDidLoad...")
@@ -28,8 +27,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         self.view.addGestureRecognizer(tapGestureRecognizer)
         self.preferredContentSize = CGSizeMake(0, 100);
         self.updateFromUserDefaults()
-    }
+        
+        totalCountView.layer.cornerRadius = 40
+        totalCountView.layer.masksToBounds = true
+        totalCountView.backgroundColor = blueHighlight
 
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+    }
+    
+    
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)!) {
         println("In widgetPerformUpdateWithCompletionHandler...")
 
@@ -42,13 +50,13 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     func updateFromUserDefaults() {
         if let userDefaults = NSUserDefaults(suiteName: "group.com.codepath.goodcity") {
             if let donationValue = userDefaults.valueForKey(TOTAL_DONATION_VALUE_KEY) as? Double {
-                self.donationValueLabel.text = NSString(format: "$%.2f", donationValue)
+                //self.donationValueLabel.text = NSString(format: "$%.2f", donationValue)
             }
             if let donationCount = userDefaults.valueForKey(TOTAL_DONATION_COUNT_KEY) as? Int {
-                self.donationCountLabel.text = "\(donationCount)"
+                //self.donationCountLabel.text = "\(donationCount)"
             }
             if let memberSince = userDefaults.objectForKey(MEMBER_SINCE_KEY) as? String {
-                self.memberSinceLabel.text = memberSince
+                //self.memberSinceLabel.text = memberSince
             }
         }
     }
