@@ -210,7 +210,11 @@ extension CartViewController: CartViewDelegate {
     func addNewItem(newItem: DonationItem) {
         cartItems.insertObject(newItem, atIndex: 0)
         self.updateCount(true)
-        cartCollectionView.reloadData()
+        self.cartCollectionView.performBatchUpdates({ () -> Void in
+            self.cartCollectionView.insertItemsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)])
+            }, completion: nil)
+
+
     }
 
     func getItemsCount() -> NSInteger {
