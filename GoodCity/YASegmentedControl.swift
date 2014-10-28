@@ -10,7 +10,6 @@ import UIKit
 
 private let gapWidth : CGFloat = 4
 private let offWhite = offWhiteColor
-private let blueTintColor = tintColor
 
 class YASegmentedControl: UIView {
 
@@ -93,7 +92,7 @@ class YASegmentedControl: UIView {
         var index = 0
         for label in sectionTitleLabels {
             if index == selectedSegmentIndex {
-                label.textColor = blueTintColor
+                label.textColor = blueHighlight
             }
             else {
                 label.textColor = UIColor.lightTextColor()

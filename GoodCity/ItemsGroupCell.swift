@@ -94,7 +94,7 @@ class ItemsGroupCell: UITableViewCell {
         }
         else if itemsState == ItemState.Scheduled {
             stateIcon.image = UIImage(named: "history_scheduled")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-            stateIcon.tintColor = tintColor
+            stateIcon.tintColor = blueHighlight
         }
         else if itemsState == ItemState.Pending {
             stateIcon.image = UIImage(named: "history_pending")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)

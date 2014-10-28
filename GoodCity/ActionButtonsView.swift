@@ -57,7 +57,7 @@ class ActionButtonsView: UIView {
         if itemsState == ItemState.Approved {
             button2.hidden = false
             button2.setButtonTitle("Schedule Pickup")
-            button2.setButtonColor(tintColor)
+            button2.setButtonColor(blueHighlight)
             button2.setButtonSytle(1)
             button2.frame = CGRectMake((width-BUTTON_SPACING)/2+BUTTON_SPACING, 0, (width-BUTTON_SPACING)/2, self.frame.height)
             button2.addTarget(self, action: "onTapSchedulePickup", forControlEvents: UIControlEvents.TouchUpInside)
@@ -67,7 +67,7 @@ class ActionButtonsView: UIView {
         else if itemsState == ItemState.Scheduled {
             button2.hidden = false
             button2.setButtonTitle("Edit Schedule")
-            button2.setButtonColor(tintColor)
+            button2.setButtonColor(blueHighlight)
             button2.setButtonSytle(1)
             button2.frame = CGRectMake((width-BUTTON_SPACING)/2+BUTTON_SPACING, 0, (width-BUTTON_SPACING)/2, self.frame.height)
             button2.addTarget(self, action: "onTapSchedulePickup", forControlEvents: UIControlEvents.TouchUpInside)

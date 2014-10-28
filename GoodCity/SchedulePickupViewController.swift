@@ -145,8 +145,8 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
         calendarView.weekdayTextColor = UIColor.darkTextColor()
         calendarView.cellBackgroundColor = UIColor.whiteColor()
         
-        calendarView.highlightColor = tintColor
-        calendarView.indicatorColor = tintColor
+        calendarView.highlightColor = blueHighlight
+        calendarView.indicatorColor = blueHighlight
         
         let startDate = NSDate()
         let endDate = startDate.dateByAddingMonths(12*25)
@@ -229,7 +229,7 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     func selectSlot(slot: PickupScheduleSlot) {
         println("Selecting slot: \(slot.startDateTime)")
         selectedSlot = slot
-        scheduleButton.setButtonColor(tintColor)
+        scheduleButton.setButtonColor(blueHighlight)
     }
     @IBAction func confirmSchedule(sender: AnyObject) {
         if (selectedSlot != nil) {

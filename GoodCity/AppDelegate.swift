@@ -86,7 +86,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //application.setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.tintColor = tintColor
+        self.window?.tintColor = blueHighlight
+        //self.window?.tintColor = UIColor.orangeColor()
 
         self.setupParse()
         self.registerForPushNotifications(application)

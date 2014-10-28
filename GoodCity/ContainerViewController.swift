@@ -89,7 +89,7 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
         
         // header status bar hack
         let headerView = UIView(frame: CGRectMake(0, 0, containerScrollView.frame.width, 20))
-        headerView.backgroundColor = tintColor
+        headerView.backgroundColor = blueHighlight
         self.view.insertSubview(headerView, belowSubview: containerScrollView)
     }
 

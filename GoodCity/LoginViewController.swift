@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
 
         //self.view.backgroundColor = tintColor
         
-        FBLoginButton.backgroundColor = tintColor
+        FBLoginButton.backgroundColor = blueHighlight
         FBLoginButton.layer.cornerRadius = 25
         FBLoginButton.layer.masksToBounds = true
         let attributedTitle = NSMutableAttributedString(string: "Connect with Facebook")

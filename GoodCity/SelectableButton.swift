@@ -96,7 +96,7 @@ class SelectableButton: UIButton {
     private func formatSelectedButton() {
         let text = self.titleLabel?.text
         self.setAttributedTitle(formatTitle(text!,color:  UIColor.whiteColor()), forState: .Normal)
-        setButtonColor(tintColor!)
+        setButtonColor(blueHighlight)
         self.layer.borderWidth = 0
     }
     private func formatAvailableButton() {
