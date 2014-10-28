@@ -137,6 +137,9 @@
     _explanationLabel.frame = self.bounds;
     _explanationLabel.text = @"Donated Items";
 
+    //By default, the donation count level is 100
+    _donationLevelCount = 100;
+    
     [self addSubview:_percentageLabel];
     [self addSubview:_explanationLabel];
 }
@@ -520,7 +523,7 @@
     [_progressLayer setPath:path.CGPath];
     
     //Update label
-    _percentageLabel.text = [_percentageFormatter stringFromNumber:[NSNumber numberWithFloat:self.progress*100]];
+    _percentageLabel.text = [_percentageFormatter stringFromNumber:[NSNumber numberWithFloat:self.progress*_donationLevelCount]];
 }
 
 - (void)drawIcon

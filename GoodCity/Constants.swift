@@ -14,6 +14,8 @@ let BUTTON_SPACING = CGFloat(8)
 let BUTTON_HEIGHT = CGFloat(40)
 let SECTION_HEADER_HEIGHT = CGFloat(36)
 
+let DONATION_LEVEL_COUNT = 25
+
 let FONT_14 = UIFont(name: "Avenir Next", size: 14.0)
 let FONT_15 = UIFont(name: "Avenir Next", size: 15.0)
 let FONT_16 = UIFont(name: "Avenir Next", size: 16.0)

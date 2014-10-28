@@ -25,4 +25,6 @@
 /**Wether or not to display a percentage inside the ring.*/
 @property (nonatomic, assign) BOOL showPercentage;
 
+@property (nonatomic) NSInteger donationLevelCount;
+
 @end

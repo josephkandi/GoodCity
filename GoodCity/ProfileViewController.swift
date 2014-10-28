@@ -53,9 +53,10 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
         profileInfoContainerView.addGestureRecognizer(tapGesture)
         
         logoutButton.setButtonColor(UIColor(white: 0.2, alpha: 0.6))
-        
+        progressRing.donationLevelCount = DONATION_LEVEL_COUNT
+            
         addressLabel.sizeToFit()
-                
+        
         if let currentUser = GoodCityUser.currentUser {
             profileImage.fadeInImageFromURL(NSURL(string: currentUser.profilePhotoUrlString)!, border: true)
             usernameLabel.text = currentUser.firstName + " " + currentUser.lastName
@@ -91,7 +92,7 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
                 println("Updating progress ring count to: \(count)")
             }
         }
-        progressRing.setProgress(count, animated: true)
+        progressRing.setProgress(count/CGFloat(DONATION_LEVEL_COUNT), animated: true)
     }
 
     override func viewDidAppear(animated: Bool) {
