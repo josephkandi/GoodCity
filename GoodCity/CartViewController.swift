@@ -126,7 +126,7 @@ class CartViewController: UIViewController {
     }
 
     private func deleteItem(indexPath: NSIndexPath) {
-        if let donationItem = self.cartItems[indexPath.row] as? DonationItem {
+        if let donationItem = self.cartItems[indexPath.item] as? DonationItem {
             println("Found donationitem to delete....deleting")
             cartItems.removeObject(donationItem)
             donationItem.deleteEventually()
@@ -184,9 +184,9 @@ extension CartViewController: GHContextOverlayViewDelegate, GHContextOverlayView
     }
 
     func didSelectItemAtIndex(selectedIndex: Int, forMenuAtPoint point: CGPoint) {
+        println("Detected tap at point: \(point)")
         if let indexPath = self.cartCollectionView.indexPathForItemAtPoint(point) {
-            println("Found the indexPath to delete")
-
+            println("Found the indexPath to delete: \(indexPath.item)")
             var message = ""
 
             switch selectedIndex {

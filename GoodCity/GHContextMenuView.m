@@ -174,8 +174,8 @@ CGFloat const   GHAnimationDelay = GHAnimationDuration/5;
     
     // Only trigger if we're using the GHContextMenuActionTypePan (default)
     if( gestureRecognizer.state == UIGestureRecognizerStateEnded && self.menuActionType == GHContextMenuActionTypePan ) {
-        CGPoint menuAtPoint = [self convertPoint:self.longPressLocation toView:gestureRecognizer.view];
-        [self dismissWithSelectedIndexForMenuAtPoint:menuAtPoint];
+        //CGPoint menuAtPoint = [self convertPoint:self.longPressLocation toView:gestureRecognizer.view];
+        [self dismissWithSelectedIndexForMenuAtPoint:self.longPressLocation];
     }
 }
 
