@@ -79,7 +79,7 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
     func schedulePickup(donationGroup: DonationItemsAggregator.DonationGroup) {
         let scheduleViewController = SchedulePickupViewController(nibName: "SchedulePickupViewController", bundle: nil)
         scheduleViewController.itemsGroup = donationGroup
-        scheduleViewController.bgImage = takeSnapshot()
+        scheduleViewController.modalPresentationStyle = .Custom
         self.navigationController?.presentViewController(scheduleViewController, animated: false,
             completion: { () -> Void in
             println("launched the schedule view controller")
@@ -89,12 +89,12 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
     func launchProfile() {
         println("launched profile view")
         let profileViewController = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
-        profileViewController.bgImage = takeSnapshot()
         
         // Custom view controller animation
         //profileViewController.transitioningDelegate = self;
         //profileViewController.modalPresentationStyle = UIModalPresentationStyle.Custom
         
+        profileViewController.modalPresentationStyle = .Custom
         self.navigationController?.presentViewController(profileViewController, animated: false, completion: { () -> Void in
             println("launched the profile view controller")
         })

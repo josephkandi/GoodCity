@@ -19,7 +19,6 @@ protocol SlotPickerDelegate {
 
 class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPickerDelegate, EditAddressViewDelegate {
 
-    @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var closeButton: UIButton!
     
@@ -44,7 +43,6 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bgImageView.image = bgImage
         contentContainerView.alpha = 0
         contentContainerView.layer.cornerRadius = ROUNDED_CORNER
         contentContainerView.layer.masksToBounds = true
@@ -169,7 +167,6 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     override func viewWillLayoutSubviews() {
         let bounds = self.view.bounds
         
-        bgImageView.frame = bounds
         blurView.frame = bounds
         contentContainerView.frame = CGRectMake(marginLeftRight, marginTopBottom, bounds.width - marginLeftRight * 2, bounds.height - marginTopBottom * 3)
         schedulePickupView.frame = contentContainerView.bounds

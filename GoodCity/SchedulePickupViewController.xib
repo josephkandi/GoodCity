@@ -6,7 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SchedulePickupViewController" customModule="GoodCity" customModuleProvider="target">
             <connections>
-                <outlet property="bgImageView" destination="FUA-sF-ZdW" id="bPy-DN-yh2"/>
                 <outlet property="blurView" destination="5cY-k9-jrb" id="VBn-Tp-B4w"/>
                 <outlet property="closeButton" destination="EPQ-G3-gZc" id="La4-Oo-5hh"/>
                 <outlet property="contentContainerView" destination="I1y-Zm-uLC" id="WIT-r0-mxy"/>
@@ -26,10 +25,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="FUA-sF-ZdW" userLabel="bgImage View">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" id="5cY-k9-jrb">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

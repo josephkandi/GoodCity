@@ -7,7 +7,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="GoodCity" customModuleProvider="target">
             <connections>
                 <outlet property="addressLabel" destination="CqK-Ku-5Nu" id="BDP-Xf-wQ2"/>
-                <outlet property="bgImageView" destination="zf8-Qb-TL1" id="WHt-dF-ODq"/>
                 <outlet property="blurView" destination="QMl-vo-jyI" id="YhK-qX-i76"/>
                 <outlet property="closeButton" destination="dVT-iR-gXv" id="s8S-2S-hy3"/>
                 <outlet property="contentContainerView" destination="tQw-Tf-EcG" id="asj-Va-JDd"/>
@@ -26,10 +25,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="zf8-Qb-TL1">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" id="QMl-vo-jyI">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

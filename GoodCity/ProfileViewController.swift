@@ -17,7 +17,6 @@ private let profileImageSize: CGFloat = 60
 class ProfileViewController: UIViewController, EditAddressViewDelegate {
 
     var bgImage: UIImage!
-    @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var blurView: UIVisualEffectView!
    
     @IBOutlet weak var contentContainerView: UIView!
@@ -37,7 +36,7 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bgImageView.image = bgImage
+        
         contentContainerView.alpha = 0
         editAddressview.alpha = 0
         editAddressview.delegate = self
