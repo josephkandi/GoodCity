@@ -1,6 +1,6 @@
 
 var _scheduleSlotKey = "claimedCount";
-var _claimedCountMax = 2; // Max amount of people that can grab a slot
+var _claimedCountMax = 1; // Max amount of people that can grab a slot
 
 
 Parse.Cloud.afterSave("ReviewComplete", function(request) {
@@ -109,12 +109,20 @@ Parse.Cloud.define("grabPickupScheduleSlot", function(request, response) {
                 itemQuery.containedIn("objectId", items);
                 itemQuery.find({
                   success: function (donationItems) {
-                    for (var j = 0; j < results.length; j++) {
+                    for (var j = 0; j < donationItems.length; j++) {
                       donationItems[j].set("state", "Scheduled");
                       donationItems[j].set("pickupScheduledAt", results[0].get("startDateTime"));
-                      donationItems[j].save();
                     }
-                    response.success("Slot claimed and all donation items updated!");
+                    Parse.Object.saveAll(donationItems, {
+                      success: function (savedItems) {
+                        console.log("saving the following items:");
+                        console.log(savedItems);
+                        response.success("All items were saved!");
+                      },
+                      error: function(error) {
+                        response.failure("Failure saving the updated items");
+                      }
+                    });
                   },
                   error: function() {
                     response.failure("Could not find donationItem with specified Id");
