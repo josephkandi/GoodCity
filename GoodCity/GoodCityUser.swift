@@ -66,7 +66,7 @@ class GoodCityUser: PFUser, PFSubclassing {
         }
         self.saveInBackgroundWithTarget(nil, selector: nil)
     }
-
+    /*
     func updateAddress(line1: String, line2: String, city: String, zip: String, state: String = "CA") {
         let newAddress = Address()
         newAddress.line1 = line1
@@ -78,12 +78,12 @@ class GoodCityUser: PFUser, PFSubclassing {
         self.address = newAddress
         self.saveEventually()
     }
+    */
+    /*
     func updateAddress(newAddress: Address) {
         newAddress.saveEventually()
-        self.address = newAddress
-        self.saveEventually()
     }
-
+    */
     func logout() {
         PFUser.logOut()
         _currentUser = nil

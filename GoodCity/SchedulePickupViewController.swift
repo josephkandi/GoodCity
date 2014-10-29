@@ -260,8 +260,6 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
         }) { (finished) -> Void in
             println("animation completed")
         }
-        if let currentUser = GoodCityUser.currentUser {
-            currentUser.updateAddress(address)
-        }
+        address.saveEventually()
     }
 }

@@ -14,6 +14,7 @@ import Foundation
     @NSManaged var city: String
     @NSManaged var state: String
     @NSManaged var zip: String
+    @NSManaged var user: GoodCityUser
 
     // Must be called before Parse is initialized
     override class func load() {
@@ -27,22 +28,23 @@ import Foundation
     func description() -> String {
         return self.line1
     }
-    
-    /*
-    class func getAddressForCurrentUser() {
-        var query = GoodCityUser.query()
-        //query.includeKey("address")
-        //query.whereKey("user", equalTo: GoodCityUser.currentUser)
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]!, error: NSError!) -> Void in
-            println(objects)
-            println(error)
-            if objects.count > 0 {
-                println("User has address")
-            } else {
-                println("User DOES NOT HAVE ADDRESS")
+
+    class func getAddressForCurrentUserWithBlock(completion: (address: Address?, error: NSError?) -> ()) {
+        var query = Address.query()
+        query.whereKey("user", equalTo: GoodCityUser.currentUser)
+        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            if error == nil {
+                println("Got addresses back: \(objects)")
+                if objects != nil && objects.count == 1 {
+                    if let address = objects[0] as? Address {
+                        completion(address: address, error: nil)
+                        println("Sending completion for address")
+                        return
+                    }
+                }
             }
+            println("Sending error for address")
+            completion(address: nil, error: error)
         }
     }
-    */
 }

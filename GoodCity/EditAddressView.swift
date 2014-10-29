@@ -55,7 +55,7 @@ class EditAddressView: UIView, UITextFieldDelegate {
         
         explanationLabel = UILabel()
         explanationLabel.numberOfLines = 0
-        explanationLabel.text = "Since this is your first time scheduling a pickup, please enter your address."
+        explanationLabel.text = "Please enter the address where we can pick up your items."
         explanationLabel.textAlignment = .Left
         explanationLabel.font = FONT_14
         
@@ -192,23 +192,32 @@ class EditAddressView: UIView, UITextFieldDelegate {
         self.userAddress = address
         populateAddressFields()
     }
+
     func populateAddressFields() {
-        if userAddress.line1 != "" {
-            addressLine1.text = userAddress.line1
-        }
-        if userAddress.line2 != "" {
-            addressLine2.text = userAddress.line2
-        }
-        if userAddress.city != "" {
-            city.text = userAddress.city
-        }
-        if userAddress.state != "" {
-            state.text = userAddress.state
-        }
-        if userAddress.zip != "" {
-            zipcode.text = userAddress.zip
+        Address.getAddressForCurrentUserWithBlock {(address, error) -> () in
+            if address != nil {
+                self.userAddress = address
+                if self.userAddress.line1 != "" {
+                    self.addressLine1.text = self.userAddress.line1
+                }
+                if self.userAddress.line2 != "" {
+                    self.addressLine2.text = self.userAddress.line2
+                }
+                if self.userAddress.city != "" {
+                    self.city.text = self.userAddress.city
+                }
+                if self.userAddress.state != "" {
+                    self.state.text = self.userAddress.state
+                }
+                if self.userAddress.zip != "" {
+                    self.zipcode.text = self.userAddress.zip
+                }
+            } else {
+                println("Error getting current user's address")
+            }
         }
     }
+
     func saveAddressFields() {
         // TODO: need to add validation logic here
         userAddress.line1 = addressLine1.text
@@ -216,5 +225,6 @@ class EditAddressView: UIView, UITextFieldDelegate {
         userAddress.city = city.text
         userAddress.state = state.text
         userAddress.zip = zipcode.text
+        userAddress.user = GoodCityUser.currentUser()
     }
 }
