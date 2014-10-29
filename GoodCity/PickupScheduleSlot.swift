@@ -53,6 +53,12 @@ class PickupScheduleSlot : PFObject, PFSubclassing {
             userDefaults.setObject(dateString, forKey: NEXT_SCHEDULE_PICKUP_KEY)
             println("Setting next pickup slot to: \(dateString)")
 
+            if let oldCount = userDefaults.objectForKey(TOTAL_DONATION_COUNT_KEY) as? Int {
+                userDefaults.setInteger(oldCount + count, forKey: TOTAL_DONATION_COUNT_KEY)
+            } else {
+                println("Cound not find old count in user defaults")
+            }
+
             userDefaults.synchronize()
         } else {
             println("Error retrieving user defaults")
