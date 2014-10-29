@@ -34,9 +34,28 @@ class PickupScheduleSlot : PFObject, PFSubclassing {
             (result, error) -> Void in
             if error == nil {
                 println("Result from Parse Cloud Code: \(result)")
+                let countOfItems = result["countOfItems"] as Int
+                self.persistSlotToUserDefaults(countOfItems, dateTime: self.startDateTime)
             } else {
                 println("Error from Parse Cloud Code: \(error)")
             }
+        }
+    }
+
+    func persistSlotToUserDefaults(count: Int, dateTime: NSDate) {
+        println("Persisting next schedule slot to user defaults...")
+        if let userDefaults = NSUserDefaults(suiteName: "group.com.codepath.goodcity") {
+
+            println("Setting next pickup count to: \(count)")
+            userDefaults.setInteger(count, forKey: NUMBER_ITEMS_NEXT_PICKUP_KEY)
+
+            let dateString = getFriendlyDateFormatterWithTime().stringFromDate(dateTime)
+            userDefaults.setObject(dateString, forKey: NEXT_SCHEDULE_PICKUP_KEY)
+            println("Setting next pickup slot to: \(dateString)")
+
+            userDefaults.synchronize()
+        } else {
+            println("Error retrieving user defaults")
         }
     }
 

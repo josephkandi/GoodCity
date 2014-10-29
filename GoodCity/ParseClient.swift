@@ -11,10 +11,6 @@ import Foundation
 let PARSE_APPLICATION_ID = "I3aRv2pcl7byfah51bfTSupsZtjQ81F8Jp2jmEyE"
 let PARSE_CLIENT_KEY = "mza3JWqSDyWpDZyNeTdGzEYw0A0W8jlZMuvvTM2w"
 
-let TOTAL_DONATION_VALUE_KEY = "total_donation_value"
-let TOTAL_DONATION_COUNT_KEY = "total_donation_count"
-let MEMBER_SINCE_KEY = "member_since"
-
 private let parseClientSharedInstance = ParseClient()
 
 typealias ParseResponse = (objects: [AnyObject], error: NSError?) -> ()
@@ -77,14 +73,11 @@ class ParseClient: NSObject {
                 if error == nil {
                     let userDefaults = NSUserDefaults(suiteName: "group.com.codepath.goodcity")
 
-                    let totalDonationsValue = result["totalDonationsValue"] as? Double ?? 0
-                    userDefaults?.setDouble(totalDonationsValue, forKey: TOTAL_DONATION_VALUE_KEY)
-                    println("Setting total donation value to: \(totalDonationsValue)")
                     let totalDonationsCount = result["totalDonationsCount"] as? Int ?? 0
                     userDefaults?.setInteger(totalDonationsCount, forKey: TOTAL_DONATION_COUNT_KEY)
                     println("Setting total donation count to: \(totalDonationsCount)")
                     if let member = result["user"] as? PFUser {
-                        let dateString = getFriendlyDateFormatter().stringFromDate(member.createdAt)
+                        let dateString = getMonthYearDateFormatter().stringFromDate(member.createdAt)
                         userDefaults?.setObject(dateString, forKey: MEMBER_SINCE_KEY)
                         println("Setting member since to: \(dateString)")
                     }

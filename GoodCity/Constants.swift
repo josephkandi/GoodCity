@@ -8,6 +8,11 @@
 
 import Foundation
 
+let TOTAL_DONATION_COUNT_KEY = "total_donation_count"
+let MEMBER_SINCE_KEY = "member_since"
+let NEXT_SCHEDULE_PICKUP_KEY = "next_schedule_pickup"
+let NUMBER_ITEMS_NEXT_PICKUP_KEY = "number_items_next_pickup"
+
 let ROUNDED_CORNER = CGFloat(4)
 let SPACING = CGFloat(5)
 let BUTTON_SPACING = CGFloat(8)
@@ -48,7 +53,17 @@ let pinkHighlight = UIColorFromRGB(0xcb398d)
 
 // Date Formatter
 private var friendlyDateFormatter: NSDateFormatter?
+private var friendlyDateFormatterWithTime: NSDateFormatter?
 private var friendlyShortDateFormatter: NSDateFormatter?
+private var monthYearDateFormatter: NSDateFormatter?
+
+func getMonthYearDateFormatter() -> NSDateFormatter {
+    if monthYearDateFormatter == nil {
+        monthYearDateFormatter = NSDateFormatter()
+        monthYearDateFormatter!.dateFormat = "MMM YYYY"
+    }
+    return monthYearDateFormatter!
+}
 
 func getFriendlyDateFormatter() -> NSDateFormatter {
     if friendlyDateFormatter == nil {
@@ -64,6 +79,14 @@ func getFriendlyShortDateFormatter() -> NSDateFormatter {
         friendlyShortDateFormatter!.dateFormat = "MMM dd"
     }
     return friendlyShortDateFormatter!
+}
+
+func getFriendlyDateFormatterWithTime() -> NSDateFormatter {
+    if friendlyDateFormatterWithTime == nil {
+        friendlyDateFormatterWithTime = NSDateFormatter()
+        friendlyDateFormatterWithTime!.dateFormat = "EEE, MMM dd 'at' h a"
+    }
+    return friendlyDateFormatterWithTime!
 }
 
 // Helper function

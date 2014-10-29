@@ -9,25 +9,26 @@
 import UIKit
 import NotificationCenter
 
-let TOTAL_DONATION_VALUE_KEY = "total_donation_value"
-let TOTAL_DONATION_COUNT_KEY = "total_donation_count"
-let MEMBER_SINCE_KEY = "member_since"
-
 class TodayViewController: UIViewController, NCWidgetProviding {
 
     @IBOutlet weak var totalCountView: UIView!
     @IBOutlet weak var scheduleView: UIView!
     @IBOutlet weak var addItemView: UIView!
-    
+
+    var donationCount = 0
+    var nextScheduledPickup = ""
+    var numberOfItemsInNextPickup = 0
+    var memberSince = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
         println("In viewDidLoad...")
 
+        self.updateFromUserDefaults()
         setup()
 
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "launchContainingApp")
-        self.view.addGestureRecognizer(tapGestureRecognizer)
-        self.updateFromUserDefaults()
+        //let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "launchContainingApp")
+        //self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     func setup() {
@@ -50,14 +51,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
         yOffset += scheduleLabel.frame.height
         let scheduleTime = UILabel(frame: CGRectMake(xOffset, yOffset, bounds.width - scheduleIcon.frame.width - 10, 10))
-        scheduleTime.text = "Wed, Nov 12 at 3pm"
+        scheduleTime.text = "\(self.nextScheduledPickup)"
         scheduleTime.font = FONT_MEDIUM_16
         scheduleTime.textColor = UIColor.whiteColor()
         scheduleTime.sizeToFit()
         
         yOffset += scheduleTime.frame.height
         let scheduleItems = UILabel(frame: CGRectMake(xOffset, yOffset, bounds.width - scheduleIcon.frame.width - 10, 10))
-        scheduleItems.text = "3 items"
+        scheduleItems.text = "\(self.numberOfItemsInNextPickup) items"
         scheduleItems.font = FONT_12
         scheduleItems.textColor = UIColor.whiteColor()
         scheduleItems.sizeToFit()
@@ -81,14 +82,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         yOffset = 0
         let totalLabel = UILabel(frame: CGRectMake(xOffset, yOffset, bounds.width - donatedIcon.frame.width - 10, 10))
-        totalLabel.text = "56 items donated"
+        totalLabel.text = "\(self.donationCount) items donated"
         totalLabel.font = FONT_MEDIUM_16
         totalLabel.textColor = UIColor.whiteColor()
         totalLabel.sizeToFit()
         
         yOffset += totalLabel.frame.height
         let memberSince = UILabel(frame: CGRectMake(xOffset, yOffset, bounds.width - scheduleIcon.frame.width - 10, 10))
-        memberSince.text = "Member since June 2014"
+        memberSince.text = "Member since \(self.memberSince)"
         memberSince.font = FONT_12
         memberSince.textColor = UIColor.whiteColor()
         memberSince.sizeToFit()
@@ -130,14 +131,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
     func updateFromUserDefaults() {
         if let userDefaults = NSUserDefaults(suiteName: "group.com.codepath.goodcity") {
-            if let donationValue = userDefaults.valueForKey(TOTAL_DONATION_VALUE_KEY) as? Double {
-                //self.donationValueLabel.text = NSString(format: "$%.2f", donationValue)
+            if let dc = userDefaults.valueForKey(TOTAL_DONATION_COUNT_KEY) as? Int {
+                self.donationCount = dc
             }
-            if let donationCount = userDefaults.valueForKey(TOTAL_DONATION_COUNT_KEY) as? Int {
-                //self.donationCountLabel.text = "\(donationCount)"
+            if let ms = userDefaults.objectForKey(MEMBER_SINCE_KEY) as? String {
+                self.memberSince = ms
             }
-            if let memberSince = userDefaults.objectForKey(MEMBER_SINCE_KEY) as? String {
-                //self.memberSinceLabel.text = memberSince
+            if let np = userDefaults.objectForKey(NEXT_SCHEDULE_PICKUP_KEY) as? String {
+                self.nextScheduledPickup = np
+            }
+            if let npc = userDefaults.objectForKey(NUMBER_ITEMS_NEXT_PICKUP_KEY) as? Int {
+                self.numberOfItemsInNextPickup = npc
             }
         }
     }

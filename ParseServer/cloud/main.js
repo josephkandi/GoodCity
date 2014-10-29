@@ -117,7 +117,9 @@ Parse.Cloud.define("grabPickupScheduleSlot", function(request, response) {
                       success: function (savedItems) {
                         console.log("saving the following items:");
                         console.log(savedItems);
-                        response.success("All items were saved!");
+                        var jsonResponse = {};
+                        jsonResponse["countOfItems"] = donationItems.length;
+                        response.success(jsonResponse);
                       },
                       error: function(error) {
                         response.failure("Failure saving the updated items");
