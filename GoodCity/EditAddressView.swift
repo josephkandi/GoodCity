@@ -49,7 +49,7 @@ class EditAddressView: UIView, UITextFieldDelegate {
 
     func setup() {
         viewTitleLabel = UILabel()
-        viewTitleLabel.text = "Enter Pickup Address"
+        viewTitleLabel.text = "Confirm Pickup Address"
         viewTitleLabel.font = FONT_MEDIUM_17
         viewTitleLabel.textAlignment = .Center
         

@@ -215,7 +215,7 @@ extension HistoryViewController: UITableViewDataSource {
         } else {
             // Empty view
             let messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
-            messageLabel.text = activitiesChooser.selectedSegmentIndex == 0 ? "There are no active items right now." : "There are no items in history."
+            messageLabel.text = activitiesChooser.selectedSegmentIndex == 0 ? "There are no active items." : "There are no items in history."
             messageLabel.textColor = UIColor.lightGrayColor()
             messageLabel.numberOfLines = 0;
             messageLabel.textAlignment = NSTextAlignment.Center
