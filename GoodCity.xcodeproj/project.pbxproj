@@ -56,6 +56,7 @@
 		3A1506A219EBAC910020DF10 /* DropoffAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1506A119EBAC910020DF10 /* DropoffAnnotation.swift */; };
 		3A1506A419EBB1940020DF10 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1506A319EBB1940020DF10 /* CoreLocation.framework */; };
 		3A62769A19FF7E2400D3F244 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15069519EB86B00020DF10 /* Constants.swift */; };
+		3A62769B1A00C81400D3F244 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15069319EB85D80020DF10 /* RoundedButton.swift */; };
 		3A661F6619F769B800DEB7C1 /* MMPopLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A661F6119F769B800DEB7C1 /* MMPopLabel.m */; };
 		3A661F6719F769B800DEB7C1 /* MMLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A661F6219F769B800DEB7C1 /* MMLabel.m */; };
 		3A687C7419E9104F005351B0 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A687C7219E9104F005351B0 /* CartItemCell.swift */; };
@@ -713,6 +714,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A12071019FF71DB00B1AA1E /* M13ProgressViewRing.m in Sources */,
+				3A62769B1A00C81400D3F244 /* RoundedButton.swift in Sources */,
 				0A2015C719FA140400A7CB57 /* TodayViewController.swift in Sources */,
 				3A12070F19FF71D700B1AA1E /* M13ProgressView.m in Sources */,
 				3A62769A19FF7E2400D3F244 /* Constants.swift in Sources */,
