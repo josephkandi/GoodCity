@@ -60,7 +60,16 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
         if let currentUser = GoodCityUser.currentUser {
             profileImage.fadeInImageFromURL(NSURL(string: currentUser.profilePhotoUrlString)!, border: true)
             usernameLabel.text = currentUser.firstName + " " + currentUser.lastName
-            
+
+            /*
+            Address.getAddressForCurrentUserWithBlock({ (address, error) -> () in
+                if address != nil {
+                    self.userAddress = address
+                    self.setAddressLabelText(self.userAddress!)
+                    self.editAddressview.setAddress(self.userAddress!)
+                }
+            });
+            */
             // TODO: Access real address data from parse
             userAddress = Address()
             userAddress!.line1 = "300 Berry St"
@@ -68,11 +77,12 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
             userAddress!.city = "San Francisco"
             userAddress!.state = "CA"
             userAddress!.zip = "94158"
+
             setAddressLabelText(userAddress!)
             editAddressview.setAddress(userAddress!)
         }
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         self.contentContainerView.transform = CGAffineTransformMakeScale(1.2, 1.2)
         UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
@@ -161,7 +171,7 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
                 println("animation completed")
         }
         if let currentUser = GoodCityUser.currentUser {
-            currentUser.updateAddress(address)
+            address.saveEventually()
             userAddress = address
             setAddressLabelText(address)
         }
