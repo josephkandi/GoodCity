@@ -104,33 +104,31 @@ Parse.Cloud.define("grabPickupScheduleSlot", function(request, response) {
             if (updatedScheduleSlot.get(_scheduleSlotKey) <= _claimedCountMax) {
               // got the slot...update all items to "scheduled"
               var items = request.params.donationItemIds;
-              for (var i = 0; i < items.length; i++) {
-                var itemQuery = new Parse.Query("DonationItem");
-                itemQuery.containedIn("objectId", items);
-                itemQuery.find({
-                  success: function (donationItems) {
-                    for (var j = 0; j < donationItems.length; j++) {
-                      donationItems[j].set("state", "Scheduled");
-                      donationItems[j].set("pickupScheduledAt", results[0].get("startDateTime"));
-                    }
-                    Parse.Object.saveAll(donationItems, {
-                      success: function (savedItems) {
-                        console.log("saving the following items:");
-                        console.log(savedItems);
-                        var jsonResponse = {};
-                        jsonResponse["countOfItems"] = donationItems.length;
-                        response.success(jsonResponse);
-                      },
-                      error: function(error) {
-                        response.failure("Failure saving the updated items");
-                      }
-                    });
-                  },
-                  error: function() {
-                    response.failure("Could not find donationItem with specified Id");
+              var itemQuery = new Parse.Query("DonationItem");
+              itemQuery.containedIn("objectId", items);
+              itemQuery.find({
+                success: function (donationItems) {
+                  for (var j = 0; j < donationItems.length; j++) {
+                    donationItems[j].set("state", "Scheduled");
+                    donationItems[j].set("pickupScheduledAt", results[0].get("startDateTime"));
                   }
-                });
-              }
+                  Parse.Object.saveAll(donationItems, {
+                    success: function (savedItems) {
+                      console.log("saving the following items:");
+                      console.log(savedItems);
+                      var jsonResponse = {};
+                      jsonResponse["countOfItems"] = donationItems.length;
+                      response.success(jsonResponse);
+                    },
+                    error: function(error) {
+                      response.failure("Failure saving the updated items");
+                    }
+                  });
+                },
+                error: function() {
+                  response.failure("Could not find donationItem with specified Id");
+                }
+              });
             } else {
               response.failure("Slot claimed by someone else at the last second");
             }
