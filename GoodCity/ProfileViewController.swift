@@ -54,14 +54,11 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
         
         logoutButton.setButtonColor(UIColor(white: 0.2, alpha: 0.6))
         progressRing.donationLevelCount = DONATION_LEVEL_COUNT
-            
-        addressLabel.sizeToFit()
-        
+                    
         if let currentUser = GoodCityUser.currentUser {
             profileImage.fadeInImageFromURL(NSURL(string: currentUser.profilePhotoUrlString)!, border: true)
             usernameLabel.text = currentUser.firstName + " " + currentUser.lastName
 
-            /*
             Address.getAddressForCurrentUserWithBlock({ (address, error) -> () in
                 if address != nil {
                     self.userAddress = address
@@ -69,17 +66,6 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
                     self.editAddressview.setAddress(self.userAddress!)
                 }
             });
-            */
-            // TODO: Access real address data from parse
-            userAddress = Address()
-            userAddress!.line1 = "300 Berry St"
-            userAddress!.line2 = "#405"
-            userAddress!.city = "San Francisco"
-            userAddress!.state = "CA"
-            userAddress!.zip = "94158"
-
-            setAddressLabelText(userAddress!)
-            editAddressview.setAddress(userAddress!)
         }
     }
 
@@ -123,7 +109,10 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
         usernameLabel.frame = CGRectMake(profileImage.frame.width + gapMargin, 4, profileInfoContainerView.frame.width - profileImage.frame.width - gapMargin, 20)
         usernameLabel.sizeToFit()
         addressLabel.frame = CGRectMake(usernameLabel.frame.origin.x, usernameLabel.frame.height + 4, profileInfoContainerView.frame.width - profileImage.frame.width - gapMargin, 40)
-        addressLabel.sizeToFit()
+       
+        if (self.userAddress != nil) {
+            addressLabel.sizeToFit()
+        }
         // Resize and recenter the profile info container in view
         let width = max(usernameLabel.frame.width, addressLabel.frame.width) + usernameLabel.frame.origin.x
         let height = addressLabel.frame.height+addressLabel.frame.origin.y
@@ -131,7 +120,7 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
         
         // setup the log out button
         logoutButton.frame = CGRectMake((bounds.width-150)/2, bounds.height-marginTopBottom*2-40, 150, 40)
-        
+    
         let progressRingSize: CGFloat = 220
         let yOffset = (bounds.height - profileInfoContainerView.frame.height - profileInfoContainerView.frame.origin.y - progressRingSize) / 2 + profileInfoContainerView.frame.height + profileInfoContainerView.frame.origin.y - 50
         
@@ -182,6 +171,12 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
         let state = address.state == "" ? "" : ", \(address.state)"
         let zip = address.zip == "" ? "" : " \(address.zip)"
         
-        addressLabel.text = address.line1 + line2 + city + state + zip
+        UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            self.addressLabel.text = address.line1 + line2 + city + state + zip
+            self.addressLabel.sizeToFit()
+            }) { (finished) -> Void in
+                println("set address")
+        }
+
     }
 }
