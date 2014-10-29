@@ -52,7 +52,9 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
         tapGesture.addTarget(self, action: "launchEditAddressView")
         profileInfoContainerView.addGestureRecognizer(tapGesture)
         
-        logoutButton.setButtonColor(UIColor(white: 0.2, alpha: 0.6))
+        logoutButton.setButtonColor(UIColor.lightGrayColor())
+        logoutButton.setButtonSytle(1)
+        logoutButton.setButtonTitle("Log Out")
         progressRing.donationLevelCount = DONATION_LEVEL_COUNT
                     
         if let currentUser = GoodCityUser.currentUser {

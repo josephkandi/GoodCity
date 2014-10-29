@@ -66,7 +66,7 @@ class EditAddressView: UIView, UITextFieldDelegate {
         fieldsContainerView = UIView(frame: CGRectZero)
         fieldsContainerView.layer.cornerRadius = 4
         fieldsContainerView.layer.masksToBounds = true
-        fieldsContainerView.layer.borderColor = UIColor.grayColor().CGColor
+        fieldsContainerView.layer.borderColor = UIColor.lightGrayColor().CGColor
         fieldsContainerView.layer.borderWidth = 1
         
         addressLine1 = UITextField(frame: CGRectZero)
@@ -110,7 +110,7 @@ class EditAddressView: UIView, UITextFieldDelegate {
         //textField.borderStyle = UITextBorderStyle.Line
         textField.placeholder = placeholder
         textField.font = FONT_14
-        textField.layer.borderColor = UIColor.grayColor().CGColor
+        textField.layer.borderColor = UIColor.lightGrayColor().CGColor
         textField.layer.borderWidth = 1.0
         
         let spacerView = UIView(frame: CGRectMake(0, 0, 10, 10))
