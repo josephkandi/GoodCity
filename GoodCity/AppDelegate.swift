@@ -34,6 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFFacebookUtils.initializeFacebook()
     }
 
+    func setupGlobalNavBarAttributes() {
+        UIBarButtonItem.appearance().tintColor = UIColor.whiteColor()
+    }
     func registerForPushNotifications(application: UIApplication) {
 
         let dropoffAction = UIMutableUserNotificationAction()
@@ -94,7 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Listen for log out notifications
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
-
+        self.setupGlobalNavBarAttributes()
         if GoodCityUser.currentUser != nil {
             println("User is already logged in.  Going straight to home screen")
             self.displayHomeScreen()
