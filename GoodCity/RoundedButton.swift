@@ -63,8 +63,8 @@ class RoundedButton: UIButton {
         }
         else {
             self.layer.borderColor = color.colorWithAlphaComponent(0.5).CGColor
-            self.layer.borderWidth = 2
-            self.layer.backgroundColor = UIColor.clearColor().CGColor
+            self.layer.borderWidth = 1
+            self.layer.backgroundColor = color.colorWithAlphaComponent(0.2).CGColor
             setButtonTitle(self.text)
         }
         self.style = style

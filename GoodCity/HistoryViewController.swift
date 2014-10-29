@@ -51,13 +51,16 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
         let mapIcon = UIImage(named: "map")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         mapButton = UIBarButtonItem(image: mapIcon, style: UIBarButtonItemStyle.Plain, target: self, action: "viewDropoffLocations")
         mapButton.tintColor = UIColor.whiteColor()
-        self.navigationItem.setLeftBarButtonItem(mapButton, animated: true)
+        var negativeSpacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        negativeSpacer.width = -8;
+        self.navigationItem.setLeftBarButtonItems([negativeSpacer, mapButton], animated: true)
 
         // Add the profile icon to the right nav bar
         let profileIcon = UIImage(named: "profile")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         profileButton = UIBarButtonItem(image: profileIcon, style: UIBarButtonItemStyle.Plain, target: self, action: "launchProfile")
         profileButton.tintColor = UIColor.whiteColor()
-        self.navigationItem.setRightBarButtonItem(profileButton, animated: true)
+        self.navigationItem.setRightBarButtonItems([negativeSpacer, profileButton], animated: true)
+        
         refreshDataFromServerForAllSegments()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshDataFromServerForCurrentlySelectedSegment", name: HistoryItemsDidChangeNotifications, object: nil)
     }
@@ -266,8 +269,8 @@ extension HistoryViewController: UITableViewDelegate {
         let sortedSection = itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections[section]
         let header = historyTableView.dequeueReusableHeaderFooterViewWithIdentifier("sectionHeader") as SectionHeaderView
         header.setSectionTitle(sortedSection.name)
+        
         return header
-
     }
 
     // HACK: Hardcoding the row height based on the different sections right now. Need to update with real model
