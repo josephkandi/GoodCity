@@ -54,7 +54,7 @@ Parse.Cloud.define("getDonationStats", function(request, response) {
       var query = new Parse.Query("DonationItem");
       query.include("user");
       query.equalTo("user", result);
-      query.containedIn("state", ["Pickedup", "Approved", "Scheduled", "Notified"]);
+      query.containedIn("state", ["Picked up", "Approved", "Scheduled", "Notified"]);
       query.find({
         success: function (results) {
           var sum = 0;
