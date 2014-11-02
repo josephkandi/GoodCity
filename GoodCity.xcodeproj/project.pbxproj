@@ -65,10 +65,13 @@
 		3A81925319F59AB5001F2EB5 /* SlotPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A81925219F59AB5001F2EB5 /* SlotPickerView.swift */; };
 		3A82271B19F2485900007C6C /* EditItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A82271A19F2485900007C6C /* EditItemView.xib */; };
 		3A8D35FF19F3683400CE3B73 /* CartItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8D35FE19F3683400CE3B73 /* CartItemCell.xib */; };
+		3A9086351A05EE4D003DE201 /* ReviewItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9086331A05EE4D003DE201 /* ReviewItemsViewController.swift */; };
+		3A9086361A05EE4D003DE201 /* ReviewItemsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A9086341A05EE4D003DE201 /* ReviewItemsViewController.xib */; };
 		3A93C0E719F77FB400EAF2D7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A93C0E619F77FB400EAF2D7 /* QuartzCore.framework */; };
 		3A93C0E919F7842E00EAF2D7 /* YASegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A93C0E819F7842E00EAF2D7 /* YASegmentedControl.swift */; };
 		3A9D64FA19F21320008A64F2 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9D64F919F21320008A64F2 /* UIViewController+Extensions.swift */; };
 		3ABF2C9219ECF508005EF442 /* ActionButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */; };
+		3AC6CD6E1A05EA5B00B3EC00 /* DraggableItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6CD6D1A05EA5B00B3EC00 /* DraggableItemImageView.swift */; };
 		3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */; };
 		3AE42EE619E8F98500D7A6F5 /* ContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AE42EE419E8F98500D7A6F5 /* ContainerViewController.xib */; };
 		3AE42EE919E8FB8300D7A6F5 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE42EE719E8FB8300D7A6F5 /* CartViewController.swift */; };
@@ -180,10 +183,13 @@
 		3A82271A19F2485900007C6C /* EditItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditItemView.xib; sourceTree = "<group>"; };
 		3A8D35F519F3587700CE3B73 /* CartViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartViewDelegate.h; sourceTree = "<group>"; };
 		3A8D35FE19F3683400CE3B73 /* CartItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartItemCell.xib; sourceTree = "<group>"; };
+		3A9086331A05EE4D003DE201 /* ReviewItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewItemsViewController.swift; sourceTree = "<group>"; };
+		3A9086341A05EE4D003DE201 /* ReviewItemsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewItemsViewController.xib; sourceTree = "<group>"; };
 		3A93C0E619F77FB400EAF2D7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3A93C0E819F7842E00EAF2D7 /* YASegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YASegmentedControl.swift; sourceTree = "<group>"; };
 		3A9D64F919F21320008A64F2 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButtonsView.swift; sourceTree = "<group>"; };
+		3AC6CD6D1A05EA5B00B3EC00 /* DraggableItemImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableItemImageView.swift; sourceTree = "<group>"; };
 		3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		3AE42EE419E8F98500D7A6F5 /* ContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerViewController.xib; sourceTree = "<group>"; };
 		3AE42EE719E8FB8300D7A6F5 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				0A2015D119FA27BC00A7CB57 /* GoodCity.entitlements */,
+				3AC6CD681A05E5EF00B3EC00 /* Reviewer */,
 				0A0B08F419E22A0F0059A82C /* Core */,
 				0A0B08F319E229C10059A82C /* Controllers */,
 				0A0B08F519E22A3A0059A82C /* Extensions */,
@@ -454,6 +461,16 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		3AC6CD681A05E5EF00B3EC00 /* Reviewer */ = {
+			isa = PBXGroup;
+			children = (
+				3AC6CD6D1A05EA5B00B3EC00 /* DraggableItemImageView.swift */,
+				3A9086331A05EE4D003DE201 /* ReviewItemsViewController.swift */,
+				3A9086341A05EE4D003DE201 /* ReviewItemsViewController.xib */,
+			);
+			name = Reviewer;
+			sourceTree = "<group>";
+		};
 		9949D72350174EE69E60CF63 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -591,6 +608,7 @@
 				0A0B08D419E2283F0059A82C /* Images.xcassets in Resources */,
 				3AE42EEE19E8FBA400D7A6F5 /* HistoryViewController.xib in Resources */,
 				0A14FFBB19E2354000D11CE2 /* SchedulePickupViewController.xib in Resources */,
+				3A9086361A05EE4D003DE201 /* ReviewItemsViewController.xib in Resources */,
 				3A8D35FF19F3683400CE3B73 /* CartItemCell.xib in Resources */,
 				0A14FFBF19E2355F00D11CE2 /* MapViewController.xib in Resources */,
 				0A14FFA919E230E800D11CE2 /* LoginViewController.xib in Resources */,
@@ -665,6 +683,7 @@
 				3A050C8B19FB6EEC00981C7D /* ProfileViewController.swift in Sources */,
 				0A14FFAB19E2314200D11CE2 /* ParseClient.swift in Sources */,
 				0A0B08F919E22AD00059A82C /* NSDate+Extensions.swift in Sources */,
+				3AC6CD6E1A05EA5B00B3EC00 /* DraggableItemImageView.swift in Sources */,
 				3AE42EED19E8FBA400D7A6F5 /* HistoryViewController.swift in Sources */,
 				3A687C7419E9104F005351B0 /* CartItemCell.swift in Sources */,
 				3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */,
@@ -696,6 +715,7 @@
 				0A14FFBA19E2354000D11CE2 /* SchedulePickupViewController.swift in Sources */,
 				0AC31B0219EA3F1F00BB815F /* ItemState.swift in Sources */,
 				3A0F375119FDE42F0062E965 /* EditAddressView.swift in Sources */,
+				3A9086351A05EE4D003DE201 /* ReviewItemsViewController.swift in Sources */,
 				3A661F6719F769B800DEB7C1 /* MMLabel.m in Sources */,
 				3A9D64FA19F21320008A64F2 /* UIViewController+Extensions.swift in Sources */,
 			);
