@@ -68,7 +68,7 @@ import Foundation
     }
 
     // States is optional
-    class func getAllItemsWithStates(completion: ParseResponse, states: [ItemState]? = nil) {
+    class func getAllItemsWithStates(completion: ParseResponse, states: [ItemState]? = nil, user: GoodCityUser? = GoodCityUser.currentUser()) {
         var query = DonationItem.query()
 
         if states != nil {
@@ -76,7 +76,10 @@ import Foundation
             println("stateStrings: \(stateStrings)")
             query.whereKey("state", containedIn: stateStrings)
         }
-        query.whereKey("user", equalTo: GoodCityUser.currentUser)
+        if user != nil {
+            query.whereKey("user", equalTo: user)
+        }
+        query.includeKey("user")
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             completion(objects: objects, error: error)

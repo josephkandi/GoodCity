@@ -88,7 +88,7 @@ class CartViewController: UIViewController {
     }
 
     func updateCount(animated: Bool) {
-        var string = "CART"
+        var string = "DRAFT"
         let count = self.cartItems.count > 0 ? " (\(String(self.cartItems.count)))" : ""
         string = string + count
         self.navigationItem.title = string

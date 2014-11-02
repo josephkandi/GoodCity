@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReviewItemsViewController" customModule="GoodCity" customModuleProvider="target">
             <connections>
+                <outlet property="currentItemView" destination="oNb-6b-hKj" id="M67-9N-XNH"/>
+                <outlet property="navBar" destination="h95-ae-EIT" id="DGK-qj-zbr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,18 +16,29 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kitty" id="oNb-6b-hKj" customClass="DraggableItemImageView" customModule="GoodCity" customModuleProvider="target">
-                    <rect key="frame" x="11" y="46" width="299" height="268"/>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="oNb-6b-hKj" customClass="DraggableItemImageView" customModule="GoodCity" customModuleProvider="target">
+                    <rect key="frame" x="11" y="91" width="299" height="268"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
+                <navigationBar contentMode="scaleToFill" id="h95-ae-EIT">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <items>
+                        <navigationItem title="REVIEW ITEMS" id="YDd-KI-SCB">
+                            <barButtonItem key="rightBarButtonItem" title="Done" id="3jm-bq-3CN">
+                                <connections>
+                                    <action selector="onTapDismiss:" destination="-1" id="dLL-E9-i91"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <point key="canvasLocation" x="411" y="341"/>
         </view>
     </objects>
-    <resources>
-        <image name="kitty" width="1000" height="1000"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
