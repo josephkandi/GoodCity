@@ -45,11 +45,6 @@ class CartViewController: UIViewController {
         submitButton = UIBarButtonItem(image: submitIcon, style: UIBarButtonItemStyle.Plain, target: self, action: "showSubmitConfirmationPopup")
         submitButton.tintColor = UIColor.whiteColor()
         self.navigationItem.setRightBarButtonItem(submitButton, animated: true)
-        
-        // Temporary: Add reviewer view button on the left
-        let reviewerButton = UIBarButtonItem(title: "Reviewer", style: UIBarButtonItemStyle.Plain, target: self, action: "launchReviewerApp")
-        reviewerButton.tintColor = UIColor.whiteColor()
-        self.navigationItem.setLeftBarButtonItem(reviewerButton, animated: true)
     }
 
     private func configureCollectionView() {
@@ -150,16 +145,6 @@ class CartViewController: UIViewController {
                     }
             })
         }
-    }
-    
-    func launchReviewerApp() {
-        println("launched reviewer app")
-        let reviewItemsViewController = ReviewItemsViewController(nibName: "ReviewItemsViewController", bundle: nil)
-        
-        //profileViewController.modalPresentationStyle = .Custom
-        self.navigationController?.presentViewController(reviewItemsViewController, animated: true, completion: { () -> Void in
-            println("launched the profile view controller")
-        })
     }
 }
 

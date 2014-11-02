@@ -25,10 +25,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func displayHomeScreen() {
         println("Displaying home screen from AppDelegate")
-        self.containerViewController = ContainerViewController(nibName: "ContainerViewController", bundle: nil)
-        self.window?.rootViewController = containerViewController
+        
+        let userDefaults = NSUserDefaults(suiteName: "group.com.codepath.goodcity")
+        if let volunteer = userDefaults?.valueForKey(LOGGED_IN_AS_VOLUNTEER_KEY) as? Bool {
+            if volunteer {
+                println("launched reviewer app")
+                let reviewItemsViewController = ReviewItemsViewController(nibName: "ReviewItemsViewController", bundle: nil)
+                self.window?.rootViewController = reviewItemsViewController
+            }
+            else {
+                let containerViewController = ContainerViewController(nibName: "ContainerViewController", bundle: nil)
+                self.window?.rootViewController = containerViewController
+            }
+        }
+        else {
+            println("User Logged In as State key missing")
+            GoodCityUser.currentUser().logout()
+            displayLoginScreen()
+        }
     }
 
+    
     func setupParse() {
         Parse.setApplicationId(PARSE_APPLICATION_ID, clientKey: PARSE_CLIENT_KEY)
         PFFacebookUtils.initializeFacebook()

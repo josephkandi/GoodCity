@@ -41,9 +41,7 @@ class ReviewItemsViewController: UIViewController, DraggableItemImageViewDelegat
     }
     
     @IBAction func onTapDismiss(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            println("dismissed reviewer app")
-        })
+        GoodCityUser.currentUser().logout()
     }
 
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

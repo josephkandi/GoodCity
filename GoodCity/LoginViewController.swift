@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
       }
     }
 
-    private func loginWithParse() {
+    private func loginWithParse(volunteer: Bool = false) {
         ParseClient.sharedInstance.loginOrSignupWithCompletion { (user, error) -> () in
             if error == nil {
                 ParseClient.sharedInstance.refreshUserInfoFromFacebookWithCompletion({ (dictionary, error) -> () in
@@ -47,7 +47,7 @@ class LoginViewController: UIViewController {
                         println("Got a successful response from Facebook...going to home screen")
                         GoodCityUser.currentUser?.updateFacebookInfo(dict)
                         self.updateCurrentInstallationUserInfo()
-                        self.goToHomeScreen()
+                        self.goToHomeScreen(volunteer)
                     } else {
                         println("Facebook user info dict is nil")
                     }
@@ -63,15 +63,32 @@ class LoginViewController: UIViewController {
         self.loginWithParse()
     }
     
-    private func goToHomeScreen() {
-        let containerViewController = ContainerViewController(nibName: "ContainerViewController", bundle: nil)
-        self.presentViewController(containerViewController, animated: true, completion: { () -> Void in
-            NSLog("Successfully pushed the container view")
-        })
+    @IBAction func loginAsVolunteer(sender: AnyObject) {
+        self.loginWithParse(volunteer: true)
     }
     
-    @IBAction func onTapSkip(sender: AnyObject) {
-        goToHomeScreen()
+    private func goToHomeScreen(volunteer: Bool) {
+        if volunteer {
+            println("launched reviewer app")
+            let reviewItemsViewController = ReviewItemsViewController(nibName: "ReviewItemsViewController", bundle: nil)
+            self.presentViewController(reviewItemsViewController, animated: true, completion: { () -> Void in
+                println("launched the profile view controller")
+                self.saveLogInAsState(volunteer)
+            })
+        }
+        else {
+            let containerViewController = ContainerViewController(nibName: "ContainerViewController", bundle: nil)
+            self.presentViewController(containerViewController, animated: true, completion: { () -> Void in
+                NSLog("Successfully pushed the container view")
+                self.saveLogInAsState(volunteer)
+            })
+        }
+    }
+    
+    private func saveLogInAsState(volunteer: Bool) {
+        let userDefaults = NSUserDefaults(suiteName: "group.com.codepath.goodcity")
+        userDefaults?.setBool(volunteer, forKey: LOGGED_IN_AS_VOLUNTEER_KEY)
+        userDefaults?.synchronize()
     }
     
     override func prefersStatusBarHidden() -> Bool {

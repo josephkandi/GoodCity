@@ -25,7 +25,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <items>
                         <navigationItem title="REVIEW ITEMS" id="YDd-KI-SCB">
-                            <barButtonItem key="rightBarButtonItem" title="Done" id="3jm-bq-3CN">
+                            <barButtonItem key="rightBarButtonItem" title="Log Out" id="3jm-bq-3CN">
                                 <connections>
                                     <action selector="onTapDismiss:" destination="-1" id="dLL-E9-i91"/>
                                 </connections>

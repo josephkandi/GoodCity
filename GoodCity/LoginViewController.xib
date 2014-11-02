@@ -19,7 +19,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tma-1K-pmU">
-                    <rect key="frame" x="200" y="457" width="200" height="50"/>
+                    <rect key="frame" x="200" y="420" width="200" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="7Be-4c-VKR"/>
                         <constraint firstAttribute="height" constant="50" id="VsY-vL-gYY"/>
@@ -44,11 +44,27 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOv-y3-LZB">
+                    <rect key="frame" x="200" y="490" width="200" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="1MM-74-G1z"/>
+                        <constraint firstAttribute="width" constant="200" id="pQX-6z-S0k"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                    <state key="normal" title="Log in as Volunteer">
+                        <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="loginAsVolunteer:" destination="-1" eventType="touchUpInside" id="erj-m4-zLS"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="tma-1K-pmU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="18" id="0hh-GW-jFs"/>
                 <constraint firstAttribute="centerX" secondItem="tma-1K-pmU" secondAttribute="centerX" id="0qC-bZ-Kqg"/>
+                <constraint firstItem="eOv-y3-LZB" firstAttribute="top" secondItem="tma-1K-pmU" secondAttribute="bottom" constant="20" id="8vh-bc-zvD"/>
                 <constraint firstItem="jJ4-zS-3ag" firstAttribute="top" secondItem="xye-Qu-vv3" secondAttribute="top" constant="-190" id="AOU-Af-Kj6"/>
                 <constraint firstItem="pa6-zD-MJI" firstAttribute="centerX" secondItem="xye-Qu-vv3" secondAttribute="centerX" id="JLL-bT-mfX"/>
                 <constraint firstAttribute="bottom" secondItem="jJ4-zS-3ag" secondAttribute="bottom" id="LLI-Ed-hMb"/>
@@ -58,7 +74,8 @@
                 <constraint firstAttribute="trailing" secondItem="tma-1K-pmU" secondAttribute="trailing" constant="18" id="UL8-Qo-AYP"/>
                 <constraint firstItem="jJ4-zS-3ag" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Xny-s9-c0r"/>
                 <constraint firstItem="xye-Qu-vv3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="eWh-5S-b7O"/>
-                <constraint firstItem="tma-1K-pmU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="457" id="gkD-eA-xXU"/>
+                <constraint firstItem="tma-1K-pmU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="420" id="gkD-eA-xXU"/>
+                <constraint firstAttribute="centerX" secondItem="eOv-y3-LZB" secondAttribute="centerX" id="hqX-G3-dUl"/>
                 <constraint firstItem="jJ4-zS-3ag" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lR2-43-xz2"/>
                 <constraint firstItem="pa6-zD-MJI" firstAttribute="top" secondItem="xye-Qu-vv3" secondAttribute="bottom" constant="8" id="xbA-b5-Qka"/>
             </constraints>

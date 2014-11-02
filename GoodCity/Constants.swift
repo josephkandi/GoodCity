@@ -12,6 +12,8 @@ let TOTAL_DONATION_COUNT_KEY = "total_donation_count"
 let MEMBER_SINCE_KEY = "member_since"
 let NEXT_SCHEDULE_PICKUP_KEY = "next_schedule_pickup"
 let NUMBER_ITEMS_NEXT_PICKUP_KEY = "number_items_next_pickup"
+let LOGGED_IN_AS_VOLUNTEER_KEY = "logged_in_as_volunteer"
+
 
 let ROUNDED_CORNER = CGFloat(4)
 let SPACING = CGFloat(5)
