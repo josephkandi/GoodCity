@@ -9,3 +9,4 @@ pod 'ParseFacebookUtils'
 pod 'MDCalendar', :inhibit_warnings => true
 pod 'SIAlertView', :inhibit_warnings => true
 pod 'Toast'
+pod 'PubNub', '3.6.1', :inhibit_warnings => true
