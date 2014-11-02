@@ -86,14 +86,22 @@ class ReviewItemsViewController: UIViewController, DraggableItemImageViewDelegat
     
     // DraggableItemImageView delegate methods
     func onApprove() {
-        approvedItems.addObject(itemsToReview.firstObject as DonationItem)
+        let item = itemsToReview.firstObject as DonationItem
+        item.state = ItemState.Approved.rawValue
+        item.saveEventually()
+    
+        approvedItems.addObject(item)
         itemsToReview.removeObjectAtIndex(0)
         currentItemView.restoreImage()
         updateView()
     }
     
     func onReject() {
-        rejectedItems.addObject(itemsToReview.firstObject as DonationItem)
+        let item = itemsToReview.firstObject as DonationItem
+        item.state = ItemState.NotNeeded.rawValue
+        item.saveEventually()
+        
+        rejectedItems.addObject(item)
         itemsToReview.removeObjectAtIndex(0)
         currentItemView.restoreImage()
         updateView()
