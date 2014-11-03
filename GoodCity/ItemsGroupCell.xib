@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dUK-3W-yly">
-                        <rect key="frame" x="8" y="14" width="95" height="170"/>
+                        <rect key="frame" x="8" y="14" width="150" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
                     <view contentMode="scaleToFill" id="WPR-0q-2lT" userLabel="action buttons">

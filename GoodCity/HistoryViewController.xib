@@ -20,11 +20,18 @@
                 </tableView>
             </subviews>
             <constraints>
+                <constraint firstItem="pWQ-sd-8RX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="1CB-2O-Ube"/>
                 <constraint firstItem="pWQ-sd-8RX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Jsa-MV-zW6"/>
                 <constraint firstItem="pWQ-sd-8RX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WUF-xL-kdj"/>
                 <constraint firstAttribute="trailing" secondItem="pWQ-sd-8RX" secondAttribute="trailing" id="oqP-ID-bnr"/>
                 <constraint firstAttribute="bottom" secondItem="pWQ-sd-8RX" secondAttribute="bottom" id="sET-Vc-cdM"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Jsa-MV-zW6"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="313" y="242"/>
         </view>
     </objects>
 </document>

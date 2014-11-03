@@ -1,8 +1,8 @@
 import UIKit
 
-let TOP_MARGIN = CGFloat(20)
+let TOP_MARGIN = CGFloat(10)
 let BOTTOM_MARGIN = CGFloat(20)
-let SIDE_MARGIN = CGFloat(12)
+let SIDE_MARGIN = CGFloat(10)
 let ITEM_SPACING = CGFloat(10)
 
 class CartViewController: UIViewController {
@@ -19,7 +19,7 @@ class CartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = LIGHT_GRAY_BG
+        self.view.backgroundColor = DARK_GRAY_BG
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -48,7 +48,7 @@ class CartViewController: UIViewController {
     }
 
     private func configureCollectionView() {
-        cartCollectionView.backgroundColor = LIGHT_GRAY_BG
+        cartCollectionView.backgroundColor = DARK_GRAY_BG
         cartCollectionView.dataSource = self
 
         let cellNib = UINib(nibName: "CartItemCell", bundle: nil)

@@ -129,6 +129,8 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
                 
         historyTableView.dataSource = self
         historyTableView.delegate = self
+        historyTableView.backgroundColor = DARK_GRAY_BG
+        
         //historyTableView.rowHeight = UITableViewAutomaticDimension
         //historyTableView.estimatedRowHeight = 200
         registerTableViewCellNib("ItemsGroupCell", reuseIdentifier: "itemsGroupCell")
