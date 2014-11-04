@@ -35,6 +35,7 @@ let FONT_MEDIUM_17 = UIFont(name: "AvenirNext-Medium", size: 17.0)
 let FONT_MEDIUM_18 = UIFont(name: "AvenirNext-Medium", size: 18.0)
 let FONT_MEDIUM_20 = UIFont(name: "AvenirNext-Medium", size: 20.0)
 let FONT_BOLD_14 = UIFont(name: "AvenirNext-Bold", size: 14.0)
+let FONT_BOLD_15 = UIFont(name: "AvenirNext-Bold", size: 15.0)
 let FONT_BOLD_18 = UIFont(name: "AvenirNext-Bold", size: 18.0)
 
 // Colors
@@ -51,7 +52,7 @@ let HEADER_COLOR = UIColor(white: 0.25, alpha: 0.9)
 let blueHighlight = BLUE_TEAL
 let offWhiteColor = UIColorFromRGB(0xf5f5f5)
 let yellowHighlight = UIColorFromRGB(0xfcc82f)
-let greenHighlight = UIColorFromRGB(0x67993c)
+let greenHighlight = UIColorFromRGB(0x70ad3c)
 let pinkHighlight = UIColorFromRGB(0xcb398d)
 let redHighlight = UIColorFromRGB(0xe24d52)
 
