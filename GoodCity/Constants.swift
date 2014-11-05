@@ -38,7 +38,7 @@ let FONT_BOLD_14 = UIFont(name: "AvenirNext-Bold", size: 14.0)
 let FONT_BOLD_18 = UIFont(name: "AvenirNext-Bold", size: 18.0)
 
 // Colors
-let LIGHT_GRAY_BG = UIColorFromRGB(0xe1e1e1)
+let LIGHT_GRAY_BG = UIColorFromRGB(0xe7e7e7)
 let GRAY_TEXT = UIColorFromRGB(0x9B9B9B)
 //let FB_BLUE = UIColor(red: 0.278, green: 0.3843, blue: 0.6078, alpha: 1.0)
 let FB_BLUE = UIColorFromRGB(0x153f77)

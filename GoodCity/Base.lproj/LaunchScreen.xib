@@ -15,15 +15,15 @@
                     <color key="backgroundColor" red="0.03529411927" green="0.73333334920000004" blue="0.9450981021" alpha="1" colorSpace="deviceRGB"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Rgq-uC-032">
-                    <rect key="frame" x="160" y="120" width="160" height="160"/>
+                    <rect key="frame" x="160" y="110" width="160" height="160"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="160" id="2Wa-sP-eNh"/>
                         <constraint firstAttribute="height" constant="160" id="FhO-te-YLD"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GoodCity" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
-                    <rect key="frame" x="20" y="285" width="440" height="41"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="30"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="G  O  O  D  C  I  T  Y" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
+                    <rect key="frame" x="20" y="280" width="440" height="36"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="26"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -31,11 +31,11 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Rx2-ey-VeI" secondAttribute="bottom" id="8cY-G7-IzH"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="Rgq-uC-032" secondAttribute="bottom" constant="5" id="IuV-24-coi"/>
+                <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="Rgq-uC-032" secondAttribute="bottom" constant="10" id="IuV-24-coi"/>
                 <constraint firstAttribute="centerX" secondItem="kId-c2-rCX" secondAttribute="centerX" id="Koa-jz-hwk"/>
                 <constraint firstAttribute="trailing" secondItem="Rx2-ey-VeI" secondAttribute="trailing" id="OpG-SS-99l"/>
                 <constraint firstItem="Rx2-ey-VeI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="VCI-YX-MUR"/>
-                <constraint firstAttribute="centerY" secondItem="Rgq-uC-032" secondAttribute="centerY" constant="40" id="cWV-FV-FD4"/>
+                <constraint firstAttribute="centerY" secondItem="Rgq-uC-032" secondAttribute="centerY" constant="50" id="cWV-FV-FD4"/>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="fvb-Df-36g"/>
                 <constraint firstItem="Rx2-ey-VeI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wTl-4V-Fqt"/>
                 <constraint firstAttribute="centerX" secondItem="Rgq-uC-032" secondAttribute="centerX" id="xLy-wS-Xnj"/>
