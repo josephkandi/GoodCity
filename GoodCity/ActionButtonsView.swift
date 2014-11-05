@@ -42,7 +42,7 @@ class ActionButtonsView: UIView {
         button2.layer.masksToBounds = true
         
         line = UIView()
-        //line.backgroundColor = UIColor(white: 0.7, alpha: 1)
+        line.backgroundColor = UIColor(white: 0.7, alpha: 1)
         line.frame = CGRectZero
         
         self.addSubview(line)
@@ -59,11 +59,9 @@ class ActionButtonsView: UIView {
             button2.setButtonTitle("Schedule Pickup")
             button2.setButtonColor(greenHighlight)
             button2.setButtonSytle(1)
-            
-            let buttonWidth = (width-BUTTON_SPACING)/2
-            button2.frame = CGRectMake((width-buttonWidth)/2, 0, buttonWidth, self.frame.height)
+            button2.frame = CGRectMake((width-BUTTON_SPACING)/2+BUTTON_SPACING, 0, (width-BUTTON_SPACING)/2, self.frame.height)
             button2.addTarget(self, action: "onTapSchedulePickup", forControlEvents: UIControlEvents.TouchUpInside)
-            //line.frame = CGRectMake(0, self.frame.height / 2, width - button2.frame.width - SPACING, 0.5)
+            line.frame = CGRectMake(0, self.frame.height / 2, width - button2.frame.width - SPACING, 0.5)
         }
         // Scheduled => lay out 1 button
         else if itemsState == ItemState.Scheduled {
@@ -71,10 +69,9 @@ class ActionButtonsView: UIView {
             button2.setButtonTitle("Edit Schedule")
             button2.setButtonColor(blueHighlight)
             button2.setButtonSytle(1)
-            let buttonWidth = (width-BUTTON_SPACING)/2
-            button2.frame = CGRectMake((width-buttonWidth)/2, 0, buttonWidth, self.frame.height)
+            button2.frame = CGRectMake((width-BUTTON_SPACING)/2+BUTTON_SPACING, 0, (width-BUTTON_SPACING)/2, self.frame.height)
             button2.addTarget(self, action: "onTapSchedulePickup", forControlEvents: UIControlEvents.TouchUpInside)
-            //line.frame = CGRectMake(0, self.frame.height / 2, width - button2.frame.width - SPACING, 0.5)
+            line.frame = CGRectMake(0, self.frame.height / 2, width - button2.frame.width - SPACING, 0.5)
         }
         // All other states => no buttons
         else {

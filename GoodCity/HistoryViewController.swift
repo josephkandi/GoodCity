@@ -262,7 +262,7 @@ extension HistoryViewController: UITableViewDataSource {
 
 // TableView Delegate
 extension HistoryViewController: UITableViewDelegate {
-    /*func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
         if (itemGroupsArray[activitiesChooser.selectedSegmentIndex] == nil) {
             return nil
@@ -273,7 +273,7 @@ extension HistoryViewController: UITableViewDelegate {
         header.setSectionTitle(sortedSection.name)
         
         return header
-    }*/
+    }
 
     // HACK: Hardcoding the row height based on the different sections right now. Need to update with real model
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -295,11 +295,6 @@ extension HistoryViewController: UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
-    
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.backgroundColor = UIColor.clearColor()
+        return SECTION_HEADER_HEIGHT
     }
 }
