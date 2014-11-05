@@ -21,4 +21,11 @@ extension Double {
     static func preserveSignMod(a: Double, _ b: Double) -> Double {
         return (a % b + b) % b
     }
+
+    static func angleDiff(angle1: Double, _ angle2: Double) -> Double {
+        var diff = angle1 - angle2
+        diff = Double.preserveSignMod(diff + 180, 360) - 180
+
+        return diff
+    }
 }
