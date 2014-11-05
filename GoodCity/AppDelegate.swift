@@ -9,7 +9,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
 
     private let PICKUP_ACTION_IDENTIFIER = "PICKUP_IDENTIFIER"
     private let DROPOFF_ACTION_IDENTIFIER = "DROPOFF_IDENTIFIER"
@@ -49,6 +49,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupParse() {
         Parse.setApplicationId(PARSE_APPLICATION_ID, clientKey: PARSE_CLIENT_KEY)
         PFFacebookUtils.initializeFacebook()
+    }
+
+    func setupPubNub() {
+        PubNub.setDelegate(self)
+        let configuration = PNConfiguration(publishKey: PUB_NUB_PUBLISH_KEY, subscribeKey: PUB_NUB_SUBSCRIBE_KEY, secretKey: PUB_NUB_SECRET_KEY)
+        PubNub.setConfiguration(configuration)
     }
 
     func setupGlobalNavBarAttributes() {
@@ -109,6 +115,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.tintColor = blueHighlight
         //self.window?.tintColor = UIColor.orangeColor()
 
+        // TODO: Move this to ONLY reviewer when reviewer goes into "Pick up" mode
+        LocationManager.sharedInstance.startStandardUpdates()
+
         self.setupParse()
         self.registerForPushNotifications(application)
 
@@ -124,6 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         self.window?.makeKeyAndVisible()
+        setupPubNub()
         return true
     }
 
@@ -168,6 +178,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let currentIntallation = PFInstallation.currentInstallation()
         currentIntallation.setDeviceTokenFromData(deviceToken)
         currentIntallation.saveEventually()
+    }
+
+    func pubnubClient(client: PubNub!, didReceiveMessage message: PNMessage!) {
+        println("PubNub client received message: \(message)")
+        NSNotificationCenter.defaultCenter().postNotificationName(LocationDidChangeNotification, object: nil, userInfo: ["message": message.message])
     }
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {

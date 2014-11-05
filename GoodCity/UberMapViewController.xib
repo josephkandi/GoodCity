@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UberMapViewController" customModule="GoodCity" customModuleProvider="target">
+            <connections>
+                <outlet property="driverView" destination="hdx-tQ-sBT" id="B8y-nw-OQV"/>
+                <outlet property="mapView" destination="Gtp-Xx-0w2" id="x2W-ZV-Tji"/>
+                <outlet property="timeRemainingLabel" destination="Pyt-tw-kIU" id="vAa-nz-6ne"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Gtp-Xx-0w2">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </mapView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdx-tQ-sBT">
+                    <rect key="frame" x="0.0" y="500" width="600" height="100"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pyt-tw-kIU">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Pyt-tw-kIU" secondAttribute="bottom" id="EPt-zt-cqW"/>
+                        <constraint firstItem="Pyt-tw-kIU" firstAttribute="leading" secondItem="hdx-tQ-sBT" secondAttribute="leading" id="Mxt-7i-3kc"/>
+                        <constraint firstAttribute="trailing" secondItem="Pyt-tw-kIU" secondAttribute="trailing" id="ocM-ar-iJU"/>
+                        <constraint firstAttribute="height" constant="100" id="qRQ-GI-AAm"/>
+                        <constraint firstItem="Pyt-tw-kIU" firstAttribute="top" secondItem="hdx-tQ-sBT" secondAttribute="top" id="qV3-LN-K4i"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="hdx-tQ-sBT" secondAttribute="bottom" id="DKC-PL-qnX"/>
+                <constraint firstItem="hdx-tQ-sBT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Vfu-2g-pD0"/>
+                <constraint firstAttribute="trailing" secondItem="Gtp-Xx-0w2" secondAttribute="trailing" id="WbV-nH-ikT"/>
+                <constraint firstAttribute="trailing" secondItem="hdx-tQ-sBT" secondAttribute="trailing" id="aa3-WG-asX"/>
+                <constraint firstAttribute="bottom" secondItem="Gtp-Xx-0w2" secondAttribute="bottom" id="iVH-vA-cPN"/>
+                <constraint firstItem="Gtp-Xx-0w2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jSl-HE-clT"/>
+                <constraint firstItem="Gtp-Xx-0w2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sLh-q1-YrY"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

@@ -9,17 +9,41 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     var locationManager: CLLocationManager?
     var lastUserLocation: CLLocation?
+    var dropoffLocationsHaveBeenRequested = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mapView.delegate = self
-        startStandardUpdates()
+        // NSNotificationCenter.defaultCenter().addObserver(self, selector: "userLocationUpdated:", name: UserLocationDidUpdateNotificiation, object: nil)
+
+        LocationManager.sharedInstance.startStandardUpdates()
+        if let loc = LocationManager.sharedInstance.coreLocationManager?.location {
+            self.lastUserLocation = loc
+            self.getNearbyDropOffLocationsFromParse(PFGeoPoint(location: loc), radiusInMiles: 15)
+        }
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.styleNavBar(navigationBar)
+    }
+
+    func userLocationUpdated(notification: NSNotification) {
+        if let loc = notification.userInfo!["loc"] as? CLLocation {
+            let pfLocation = PFGeoPoint(location: loc)
+            if !dropoffLocationsHaveBeenRequested {
+                println("Sending request to get nearby dropoff locations")
+
+                self.getNearbyDropOffLocationsFromParse(pfLocation)
+                dropoffLocationsHaveBeenRequested = true
+            }
+        }
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        LocationManager.sharedInstance.stopStandardUpdates()
+        // NSNotificationCenter.defaultCenter().removeObserver(self, name: UserLocationDidUpdateNotificiation, object: nil)
     }
 
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
@@ -37,7 +61,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         return nil
     }
-
+    /*
     // MARK: Location Manager related methods
     func startStandardUpdates() {
         // Create the location manager if this object doesn't already exist
@@ -71,7 +95,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             self.getNearbyDropOffLocationsFromParse(pfLocation)
         }
     }
-
+    */
     func getNearbyDropOffLocationsFromParse(userCurrentLocation: PFGeoPoint, radiusInMiles: Int = 15) {
         var query = DropoffLocation.query()
         query.whereKey("location", nearGeoPoint: userCurrentLocation, withinMiles: Double(radiusInMiles))

@@ -72,6 +72,8 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
     // Custom protocol methods
     func viewDropoffLocations() {
         let dropoffViewController = MapViewController(nibName: "MapViewController", bundle: nil)
+        // Uncomment for testing Uber
+        //let dropoffViewController = UberMapViewController(nibName: "UberMapViewController", bundle: nil)
         dropoffViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
         
         self.navigationController?.presentViewController(dropoffViewController, animated: true, completion: { () -> Void in
