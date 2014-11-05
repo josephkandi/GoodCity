@@ -66,7 +66,7 @@ class DonationItemsAggregator {
 
         func sort() {
             self.sortedDonationGroups = sorted(donationGroupsByDate.values.array) {
-                $0.originalDate.compare($1.originalDate) == NSComparisonResult.OrderedAscending }
+                $0.originalDate.compare($1.originalDate) == NSComparisonResult.OrderedDescending }
             for donationGroup in sortedDonationGroups {
                 donationGroup.sort()
             }
@@ -97,7 +97,7 @@ class DonationItemsAggregator {
 
         func sort() {
             self.sortedDonationItems = sorted(donationItems) {
-                $0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedAscending }
+                $0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedDescending }
         }
     }
 }
