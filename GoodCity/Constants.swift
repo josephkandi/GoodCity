@@ -39,14 +39,12 @@ let FONT_BOLD_18 = UIFont(name: "AvenirNext-Bold", size: 18.0)
 
 // Colors
 let LIGHT_GRAY_BG = UIColorFromRGB(0xe1e1e1)
-let DARK_GRAY_BG = UIColorFromRGB(0x303134)
 let GRAY_TEXT = UIColorFromRGB(0x9B9B9B)
 //let FB_BLUE = UIColor(red: 0.278, green: 0.3843, blue: 0.6078, alpha: 1.0)
 let FB_BLUE = UIColorFromRGB(0x153f77)
 let DARK_GRAY = UIColor(white: 0.25, alpha: 1.0)
 let BLUE_TEAL = UIColorFromRGB(0x03b7e7)
-//let NAV_BAR_COLOR = UIColorFromRGB(0x1c1c1e)
-let NAV_BAR_COLOR = DARK_GRAY_BG
+let NAV_BAR_COLOR = BLUE_TEAL
 let HEADER_COLOR = UIColor(white: 0.25, alpha: 0.9)
 let blueHighlight = BLUE_TEAL
 let offWhiteColor = UIColorFromRGB(0xf5f5f5)
