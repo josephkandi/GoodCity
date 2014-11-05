@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
                 self.window?.rootViewController = reviewItemsViewController
             }
             else {
-                let containerViewController = ContainerViewController(nibName: "ContainerViewController", bundle: nil)
+                self.containerViewController = ContainerViewController(nibName: "ContainerViewController", bundle: nil)
                 self.window?.rootViewController = containerViewController
             }
         }
