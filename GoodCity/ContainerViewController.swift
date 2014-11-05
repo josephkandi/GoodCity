@@ -8,6 +8,9 @@ protocol ChildViewControllerDelegate {
 class ContainerViewController: UIViewController, UIScrollViewDelegate, ChildViewControllerDelegate {
 
     @IBOutlet weak var containerScrollView: UIScrollView!
+    // Header status bar hack
+    var headerView: UIView!
+    
     private var statusBarHidden = true
     var historyViewController: UIViewController?
 
@@ -93,7 +96,7 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate, ChildView
         containerScrollView.addSubview(navController2.view)
         
         // header status bar hack
-        let headerView = UIView(frame: CGRectMake(0, 0, containerScrollView.frame.width, 20))
+        headerView = UIView()
         headerView.backgroundColor = blueHighlight
         self.view.insertSubview(headerView, belowSubview: containerScrollView)
     }
@@ -107,6 +110,7 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate, ChildView
         }
         containerScrollView.contentSize = CGSize(width: containerSize.width * 3, height: containerSize.height)
         scrollToViewController(activeViewIndex)
+        headerView.frame = CGRectMake(0, 0, containerSize.width, 20)
     }
 
     func scrollToViewController(index: Int, animated: Bool = false) {
