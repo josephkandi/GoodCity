@@ -78,6 +78,7 @@
 		3A93C0E719F77FB400EAF2D7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A93C0E619F77FB400EAF2D7 /* QuartzCore.framework */; };
 		3A93C0E919F7842E00EAF2D7 /* YASegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A93C0E819F7842E00EAF2D7 /* YASegmentedControl.swift */; };
 		3A9D64FA19F21320008A64F2 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9D64F919F21320008A64F2 /* UIViewController+Extensions.swift */; };
+		3AB3A5C61A0B53CD00B8E0BD /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB3A5C51A0B53CD00B8E0BD /* EventManager.swift */; };
 		3ABF2C9219ECF508005EF442 /* ActionButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */; };
 		3AC6CD6E1A05EA5B00B3EC00 /* DraggableItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6CD6D1A05EA5B00B3EC00 /* DraggableItemImageView.swift */; };
 		3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */; };
@@ -86,6 +87,7 @@
 		3AE42EEA19E8FB8300D7A6F5 /* CartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AE42EE819E8FB8300D7A6F5 /* CartViewController.xib */; };
 		3AE42EED19E8FBA400D7A6F5 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE42EEB19E8FBA400D7A6F5 /* HistoryViewController.swift */; };
 		3AE42EEE19E8FBA400D7A6F5 /* HistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AE42EEC19E8FBA400D7A6F5 /* HistoryViewController.xib */; };
+		3AE568911A0B4DFC0037149D /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE568901A0B4DFC0037149D /* EventKit.framework */; };
 		F0A127534C434217A3BD30C5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C88CD10F2CA444FF9DAA3D07 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -204,6 +206,7 @@
 		3A93C0E619F77FB400EAF2D7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3A93C0E819F7842E00EAF2D7 /* YASegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YASegmentedControl.swift; sourceTree = "<group>"; };
 		3A9D64F919F21320008A64F2 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		3AB3A5C51A0B53CD00B8E0BD /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButtonsView.swift; sourceTree = "<group>"; };
 		3AC6CD6D1A05EA5B00B3EC00 /* DraggableItemImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableItemImageView.swift; sourceTree = "<group>"; };
 		3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +215,7 @@
 		3AE42EE819E8FB8300D7A6F5 /* CartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartViewController.xib; sourceTree = "<group>"; };
 		3AE42EEB19E8FBA400D7A6F5 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		3AE42EEC19E8FBA400D7A6F5 /* HistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryViewController.xib; sourceTree = "<group>"; };
+		3AE568901A0B4DFC0037149D /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		75FCECAE3B3976641AA35271 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		AE0B27FD39151ABE14D2A503 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C88CD10F2CA444FF9DAA3D07 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AE568911A0B4DFC0037149D /* EventKit.framework in Frameworks */,
 				3A93C0E719F77FB400EAF2D7 /* QuartzCore.framework in Frameworks */,
 				3A1506A419EBB1940020DF10 /* CoreLocation.framework in Frameworks */,
 				3A1506A019EBABCA0020DF10 /* MapKit.framework in Frameworks */,
@@ -395,6 +400,7 @@
 			children = (
 				0A0B08CC19E2283F0059A82C /* AppDelegate.swift */,
 				0A4EE3471A061A2A0059E6F7 /* LocationManager.swift */,
+				3AB3A5C51A0B53CD00B8E0BD /* EventManager.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -506,6 +512,7 @@
 		9949D72350174EE69E60CF63 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AE568901A0B4DFC0037149D /* EventKit.framework */,
 				3A93C0E619F77FB400EAF2D7 /* QuartzCore.framework */,
 				3A1506A319EBB1940020DF10 /* CoreLocation.framework */,
 				3A15069F19EBABCA0020DF10 /* MapKit.framework */,
@@ -742,6 +749,7 @@
 				0AFB6E2319F2432200E89AFC /* EditItemView.swift in Sources */,
 				3A76A00E19F4D05F0036A0EC /* DatePickerButton.swift in Sources */,
 				3A15069219EB81220020DF10 /* UIImageView+Extensions.swift in Sources */,
+				3AB3A5C61A0B53CD00B8E0BD /* EventManager.swift in Sources */,
 				3A050C8E19FB8C9400981C7D /* ScaleModalAnimator.swift in Sources */,
 				3A15069019EB71AA0020DF10 /* SectionHeaderView.swift in Sources */,
 				0A4EE3481A061A2A0059E6F7 /* LocationManager.swift in Sources */,

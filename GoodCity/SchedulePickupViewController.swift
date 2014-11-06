@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EventKit
 
 private let DATE_PICKER_HEIGHT = CGFloat(260)
 private let marginTopBottom: CGFloat = 40
@@ -85,7 +86,7 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     
     @IBAction func onTapClose(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            println("dismissed schedule view")
+            println("******* dismissed schedule view")
             NSNotificationCenter.defaultCenter().postNotificationName(HistoryItemsDidChangeNotifications, object: self)
         })
     }
@@ -234,7 +235,11 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     @IBAction func confirmSchedule(sender: AnyObject) {
         if (selectedSlot != nil) {
             if let donationItems = self.itemsGroup?.sortedDonationItems {
-                selectedSlot!.grabSlot(donationItems)
+                selectedSlot!.grabSlot(donationItems, completion: { (result, error) -> () in
+                    if error == nil {
+                        self.showScheduleConfirmation(self.selectedSlot!)
+                    }
+                })
             }
             onTapClose(sender)
         }
@@ -242,6 +247,27 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
             println("must first select a slot before confirming")
         }
     }
+    
+    private func showScheduleConfirmation(timeSlot: PickupScheduleSlot) {
+        let message = "Would you like to add this to your calendar?"
+        let alertView = SIAlertView(title: "Pickup Confirmed", andMessage: message)
+        alertView.titleFont = FONT_MEDIUM_20
+        alertView.messageFont = FONT_16
+        alertView.buttonFont = FONT_MEDIUM_16
+        
+        alertView.addButtonWithTitle("No", type: SIAlertViewButtonType.Cancel) { (originatingView) -> Void in
+            println("No")
+        }
+        
+        alertView.addButtonWithTitle("Yes", type: SIAlertViewButtonType.Default) { (originatingView) -> Void in
+            println("Add to calendar")
+            EventManager.sharedInstance.addEventToCalendar(timeSlot)
+        }
+        
+        alertView.transitionStyle = SIAlertViewTransitionStyle.DropDown
+        alertView.show()
+    }
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
@@ -262,4 +288,21 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
         }
         address.saveEventually()
     }
+    
+    
+
+    
+    
+    /*-(void)requestAccessToEvents{
+    [self.appDelegate.eventManager.eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+    if (error == nil) {
+    // Store the returned granted value.
+    self.appDelegate.eventManager.eventsAccessGranted = granted;
+    }
+    else{
+    // In case of error, just log its description to the debugger.
+    NSLog(@"%@", [error localizedDescription]);
+    }
+    }];
+    }*/
 }

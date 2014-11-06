@@ -62,10 +62,12 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
         self.navigationItem.setRightBarButtonItems([negativeSpacer, profileButton], animated: true)
         
         refreshDataFromServerForAllSegments()
+        println("-----> add notification")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshDataFromServerForCurrentlySelectedSegment", name: HistoryItemsDidChangeNotifications, object: nil)
     }
 
     override func viewWillDisappear(animated: Bool) {
+        println("-----> remove notification")
         NSNotificationCenter.defaultCenter().removeObserver(self, name: HistoryItemsDidChangeNotifications, object: nil)
     }
 

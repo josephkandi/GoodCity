@@ -27,7 +27,7 @@ class PickupScheduleSlot : PFObject, PFSubclassing {
         return self.startDateTime.description
     }
 
-    func grabSlot(items: [DonationItem]) {
+    func grabSlot(items: [DonationItem], completion: (result: AnyObject?, error: NSError?)->()) {
         PFCloud.callFunctionInBackground("grabPickupScheduleSlot",
             withParameters: ["objectId": self.objectId,
                 "donationItemIds": items.map { $0.objectId }]) {
@@ -39,6 +39,7 @@ class PickupScheduleSlot : PFObject, PFSubclassing {
             } else {
                 println("Error from Parse Cloud Code: \(error)")
             }
+            completion(result: result, error: error)
         }
     }
 
