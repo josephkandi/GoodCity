@@ -21,13 +21,18 @@ class SocialSharing {
     presentingViewController: UIViewController,
     urlString: String? = "http://www.goodcity.hk/",
     image: UIImage? = nil) {
+      var serviceType: NSString?
 
       if socialNetwork == .Facebook {
-        postToNetwork(SLServiceTypeFacebook, message: message, presentingViewController: presentingViewController, image: image, urlString: urlString)
+        serviceType = SLServiceTypeFacebook
       } else if socialNetwork == .Twitter {
-        postToNetwork(SLServiceTypeTwitter, message: message, presentingViewController: presentingViewController, image: image, urlString: urlString)
+        serviceType = SLServiceTypeTwitter
+      }
+
+      if (serviceType != nil) {
+        postToNetwork(serviceType!, message: message, presentingViewController: presentingViewController, urlString: urlString, image: image)
       } else {
-        println("Error: Unknown social network requested for post")
+        println("Error: Tried to post to unknown social network")
       }
   }
 
