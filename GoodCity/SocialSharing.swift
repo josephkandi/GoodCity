@@ -19,8 +19,8 @@ class SocialSharing {
     socialNetwork: SocialNetwork,
     message: String,
     presentingViewController: UIViewController,
-    image: UIImage? = nil,
-    urlString: String? = nil) {
+    urlString: String? = "http://www.goodcity.hk/",
+    image: UIImage? = nil) {
 
       if socialNetwork == .Facebook {
         postToNetwork(SLServiceTypeFacebook, message: message, presentingViewController: presentingViewController, image: image, urlString: urlString)
@@ -31,7 +31,7 @@ class SocialSharing {
       }
   }
 
-  private class func postToNetwork(type: NSString, message: String, presentingViewController: UIViewController, image: UIImage? = nil, urlString: String? = "http://www.goodcity.hk/") {
+  private class func postToNetwork(type: NSString, message: String, presentingViewController: UIViewController, urlString: String?, image: UIImage?) {
 
     if SLComposeViewController.isAvailableForServiceType(type) {
       let sheet = SLComposeViewController(forServiceType: type)
