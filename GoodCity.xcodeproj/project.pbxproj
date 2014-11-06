@@ -39,6 +39,8 @@
 		0A508DB219FC556A00341499 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A0B08D319E2283F0059A82C /* Images.xcassets */; };
 		0A674E0E19ED0434001A5664 /* AVCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A674E0B19ED0434001A5664 /* AVCamViewController.m */; };
 		0A674E0F19ED0434001A5664 /* AVCamPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A674E0D19ED0434001A5664 /* AVCamPreviewView.m */; };
+		0AA72EEA1A0B4DBA00B60612 /* SocialSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA72EE91A0B4DBA00B60612 /* SocialSharing.swift */; };
+		0AA72EEC1A0B55B500B60612 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA72EEB1A0B55B500B60612 /* Social.framework */; };
 		0AC31AFC19E9EDA300BB815F /* DropoffLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC31AFB19E9EDA300BB815F /* DropoffLocation.swift */; };
 		0AC31AFE19EA2F6800BB815F /* PickupScheduleSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC31AFD19EA2F6800BB815F /* PickupScheduleSlot.swift */; };
 		0AC31B0019EA33CB00BB815F /* DonationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC31AFF19EA33CB00BB815F /* DonationItem.swift */; };
@@ -165,6 +167,8 @@
 		0A674E0B19ED0434001A5664 /* AVCamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamViewController.m; sourceTree = "<group>"; };
 		0A674E0C19ED0434001A5664 /* AVCamPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamPreviewView.h; sourceTree = "<group>"; };
 		0A674E0D19ED0434001A5664 /* AVCamPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamPreviewView.m; sourceTree = "<group>"; };
+		0AA72EE91A0B4DBA00B60612 /* SocialSharing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialSharing.swift; sourceTree = "<group>"; };
+		0AA72EEB1A0B55B500B60612 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		0AC31AFB19E9EDA300BB815F /* DropoffLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropoffLocation.swift; sourceTree = "<group>"; };
 		0AC31AFD19EA2F6800BB815F /* PickupScheduleSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickupScheduleSlot.swift; sourceTree = "<group>"; };
 		0AC31AFF19EA33CB00BB815F /* DonationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationItem.swift; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AE568911A0B4DFC0037149D /* EventKit.framework in Frameworks */,
+				0AA72EEC1A0B55B500B60612 /* Social.framework in Frameworks */,
 				3A93C0E719F77FB400EAF2D7 /* QuartzCore.framework in Frameworks */,
 				3A1506A419EBB1940020DF10 /* CoreLocation.framework in Frameworks */,
 				3A1506A019EBABCA0020DF10 /* MapKit.framework in Frameworks */,
@@ -277,6 +282,7 @@
 		0A0B08C919E2283F0059A82C /* GoodCity */ = {
 			isa = PBXGroup;
 			children = (
+				0AA72EE81A0B4DAD00B60612 /* Sharing */,
 				0A4EE3491A0721910059E6F7 /* GPX */,
 				0A2015D119FA27BC00A7CB57 /* GoodCity.entitlements */,
 				3AC6CD681A05E5EF00B3EC00 /* Reviewer */,
@@ -445,6 +451,14 @@
 			name = GPX;
 			sourceTree = "<group>";
 		};
+		0AA72EE81A0B4DAD00B60612 /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				0AA72EE91A0B4DBA00B60612 /* SocialSharing.swift */,
+			);
+			name = Sharing;
+			sourceTree = "<group>";
+		};
 		394B7266BE82DCA2C64EA8D9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,6 +527,7 @@
 			isa = PBXGroup;
 			children = (
 				3AE568901A0B4DFC0037149D /* EventKit.framework */,
+				0AA72EEB1A0B55B500B60612 /* Social.framework */,
 				3A93C0E619F77FB400EAF2D7 /* QuartzCore.framework */,
 				3A1506A319EBB1940020DF10 /* CoreLocation.framework */,
 				3A15069F19EBABCA0020DF10 /* MapKit.framework */,
@@ -733,6 +748,7 @@
 				3AC6CD6E1A05EA5B00B3EC00 /* DraggableItemImageView.swift in Sources */,
 				3AE42EED19E8FBA400D7A6F5 /* HistoryViewController.swift in Sources */,
 				3A687C7419E9104F005351B0 /* CartItemCell.swift in Sources */,
+				0AA72EEA1A0B4DBA00B60612 /* SocialSharing.swift in Sources */,
 				3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */,
 				3A0F374C19FDA3A40062E965 /* M13ProgressViewRing.m in Sources */,
 				0A25CD6519FC9AC800390674 /* GHContextMenuView.m in Sources */,
