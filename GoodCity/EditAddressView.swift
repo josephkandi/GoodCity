@@ -83,7 +83,7 @@ class EditAddressView: UIView, UITextFieldDelegate {
         zipcode.keyboardType = UIKeyboardType.NumberPad
         
         doneButton = RoundedButton(frame: CGRectMake(0, 0, 180, 40))
-        doneButton.setButtonColor(BLUE_TEAL)
+        doneButton.setButtonColor(blueHighlight)
         doneButton.setButtonTitle("Next")
         doneButton.addTarget(self, action: "onTapDoneButton", forControlEvents: UIControlEvents.TouchUpInside)
         
