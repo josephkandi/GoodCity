@@ -11,6 +11,7 @@ import UIKit
 private let marginTopBottom: CGFloat = 30
 private let marginLeftRight: CGFloat = 20
 private let gapMargin: CGFloat = 24
+private let placeholderText = "Enter Description"
 
 class EditItemView: UIView, UITextViewDelegate {
 
@@ -156,7 +157,7 @@ class EditItemView: UIView, UITextViewDelegate {
     }
     
     private func showPlaceholderText() {
-        descriptionText.text = "What is it? How many items are there?\nHow big is it?"
+        descriptionText.text = placeholderText
     }
 
 }
