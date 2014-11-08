@@ -16,6 +16,7 @@ enum ItemState: String {
     MoreInfoNeeded = "More information needed",
     NotNeeded = "Not needed",
     Scheduled = "Scheduled",
+    OnTheWay = "On the way",
     PickedUp = "Picked up"
 
     func getSortValue() -> Int {
@@ -34,9 +35,11 @@ enum ItemState: String {
             return 5
         case .Scheduled:
             return 6
+        case .OnTheWay:
+            return 7
         default:
             println("Uknown sort value in ItemState")
-            return 7
+            return 8
         }
     }
 
