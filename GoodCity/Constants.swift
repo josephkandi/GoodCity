@@ -43,15 +43,15 @@ let GRAY_TEXT = UIColorFromRGB(0x9B9B9B)
 //let FB_BLUE = UIColor(red: 0.278, green: 0.3843, blue: 0.6078, alpha: 1.0)
 let FB_BLUE = UIColorFromRGB(0x153f77)
 let DARK_GRAY = UIColor(white: 0.25, alpha: 1.0)
-let BLUE_TEAL = UIColorFromRGB(0x03b7e7)
-let NAV_BAR_COLOR = BLUE_TEAL
 let HEADER_COLOR = UIColor(white: 0.25, alpha: 0.9)
-let blueHighlight = BLUE_TEAL
+let blueHighlight = UIColorFromRGB(0x03b7e7)
 let offWhiteColor = UIColorFromRGB(0xf5f5f5)
 let yellowHighlight = UIColorFromRGB(0xfcc82f)
 let greenHighlight = UIColorFromRGB(0x67993c)
 let pinkHighlight = UIColorFromRGB(0xcb398d)
 let redHighlight = UIColorFromRGB(0xe24d52)
+let NAV_BAR_COLOR = blueHighlight
+
 
 // Date Formatter
 private var friendlyDateFormatter: NSDateFormatter?
