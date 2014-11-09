@@ -32,9 +32,12 @@ class PickupAnnotation: NSObject, MKAnnotation {
         let annotationView = MKAnnotationView(annotation: self, reuseIdentifier: "dropoffAnnotation")
         annotationView.enabled = true
         annotationView.canShowCallout = true
-        annotationView.image = UIImage(named: "marker")
+        annotationView.image = UIImage(named: "map_pickup")
         
-        markerLabel = UILabel(frame: CGRectMake(0,0,30,22))
+        println("anchor \(annotationView.layer.anchorPoint)")
+        //annotationView.layer.anchorPoint = CGPointMake(10, 0)
+        
+        markerLabel = UILabel(frame: CGRectMake(6,6,30,22))
         markerLabel.text = markerText
         markerLabel.textAlignment = NSTextAlignment.Center
         markerLabel.baselineAdjustment = UIBaselineAdjustment.AlignCenters

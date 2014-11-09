@@ -6,8 +6,9 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var driverView: UIView!
-    @IBOutlet weak var timeRemainingLabel: UILabel!
     @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var driverNameLabel: UILabel!
     
     var YAHOO_COORDINATE = CLLocationCoordinate2DMake(37.419029, -122.025733)
     var lastUserLocation: CLLocation?
@@ -26,6 +27,8 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     
         mapView.delegate = self
 
+        setupDriverInfo()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "driverLocationUpdateHandler:", name: DriverLocationDidChangeNotification, object: nil)
         /*
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userLocationUpdateHandler:", name: UserLocationDidUpdateNotificiation, object: nil)
@@ -47,6 +50,16 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
     }
 
+    func setupDriverInfo() {
+        profileImage.layer.cornerRadius = 4
+        profileImage.layer.masksToBounds = true
+        
+        if driverUser != nil {
+            profileImage.fadeInImageFromURL(NSURL(string: driverUser!.profilePhotoUrlString)!, border: true)
+            driverNameLabel.text = driverUser!.firstName
+        }
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: DriverLocationDidChangeNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UserLocationDidUpdateNotificiation, object: nil)
@@ -133,7 +146,6 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             directions.calculateETAWithCompletionHandler { (response, error) -> Void in
                 println("Got directions, expected time in seconds is: \(response.expectedTravelTime)")
                 let timeRemainingInMinutes = String(format: "%.0f", response.expectedTravelTime / 60)
-                self.timeRemainingLabel.text = "\(timeRemainingInMinutes) mins away"
                 self.pickupAnnotation?.markerText = "\(timeRemainingInMinutes)"
             }
         } else {

@@ -355,10 +355,10 @@
 		0A0B08F219E229BC0059A82C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3AB3A5CB1A0F28A700B8E0BD /* Annotations */,
 				3A15069519EB86B00020DF10 /* Constants.swift */,
 				3A81925519F5A5E8001F2EB5 /* Cells */,
 				3A81925419F5A5D9001F2EB5 /* Buttons */,
-				3A1506A119EBAC910020DF10 /* DropoffAnnotation.swift */,
 				3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */,
 				0AFB6E2219F2432200E89AFC /* EditItemView.swift */,
 				3A82271A19F2485900007C6C /* EditItemView.xib */,
@@ -369,8 +369,6 @@
 				3A93C0E819F7842E00EAF2D7 /* YASegmentedControl.swift */,
 				3A050C8D19FB8C9400981C7D /* ScaleModalAnimator.swift */,
 				3A0F375019FDE42F0062E965 /* EditAddressView.swift */,
-				0A4EE3411A05EF070059E6F7 /* UberAnnotationView.swift */,
-				3AB3A5C91A0F258F00B8E0BD /* PickupAnnotation.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -514,6 +512,16 @@
 				3A15068C19EB60BA0020DF10 /* ItemsGroupCell.xib */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		3AB3A5CB1A0F28A700B8E0BD /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				3A1506A119EBAC910020DF10 /* DropoffAnnotation.swift */,
+				3AB3A5C91A0F258F00B8E0BD /* PickupAnnotation.swift */,
+				0A4EE3411A05EF070059E6F7 /* UberAnnotationView.swift */,
+			);
+			name = Annotations;
 			sourceTree = "<group>";
 		};
 		3AC6CD681A05E5EF00B3EC00 /* Reviewer */ = {

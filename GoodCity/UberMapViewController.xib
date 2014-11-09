@@ -6,10 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UberMapViewController" customModule="GoodCity" customModuleProvider="target">
             <connections>
+                <outlet property="driverNameLabel" destination="cMq-Ly-60c" id="vgP-Lt-nhA"/>
                 <outlet property="driverView" destination="hdx-tQ-sBT" id="B8y-nw-OQV"/>
                 <outlet property="mapView" destination="Gtp-Xx-0w2" id="x2W-ZV-Tji"/>
                 <outlet property="navigationBar" destination="0ns-sk-K7N" id="Yhw-Qz-gla"/>
-                <outlet property="timeRemainingLabel" destination="Pyt-tw-kIU" id="vAa-nz-6ne"/>
+                <outlet property="profileImage" destination="uaA-2T-eiz" id="OYq-ZJ-IEb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,23 +23,53 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </mapView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdx-tQ-sBT">
-                    <rect key="frame" x="0.0" y="500" width="600" height="100"/>
+                    <rect key="frame" x="0.0" y="526" width="600" height="74"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pyt-tw-kIU">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kitty" translatesAutoresizingMaskIntoConstraints="NO" id="uaA-2T-eiz" userLabel="profile image">
+                            <rect key="frame" x="10" y="10" width="54" height="54"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="54" id="cPy-vN-RoU"/>
+                                <constraint firstAttribute="height" constant="54" id="dhq-Me-6qN"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Community Champion" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ai-my-NmG">
+                            <rect key="frame" x="74" y="38" width="145" height="20"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uber_call" translatesAutoresizingMaskIntoConstraints="NO" id="sCy-s5-CwZ" userLabel="call">
+                            <rect key="frame" x="550" y="17" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="7ZQ-yB-q6A"/>
+                                <constraint firstAttribute="width" constant="40" id="pBR-0t-laS"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMq-Ly-60c">
+                            <rect key="frame" x="74" y="14" width="48" height="24"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="Pyt-tw-kIU" secondAttribute="bottom" id="EPt-zt-cqW"/>
-                        <constraint firstItem="Pyt-tw-kIU" firstAttribute="leading" secondItem="hdx-tQ-sBT" secondAttribute="leading" id="Mxt-7i-3kc"/>
-                        <constraint firstAttribute="trailing" secondItem="Pyt-tw-kIU" secondAttribute="trailing" id="ocM-ar-iJU"/>
-                        <constraint firstAttribute="height" constant="100" id="qRQ-GI-AAm"/>
-                        <constraint firstItem="Pyt-tw-kIU" firstAttribute="top" secondItem="hdx-tQ-sBT" secondAttribute="top" id="qV3-LN-K4i"/>
+                        <constraint firstAttribute="centerY" secondItem="sCy-s5-CwZ" secondAttribute="centerY" id="0KC-b4-oKb"/>
+                        <constraint firstItem="uaA-2T-eiz" firstAttribute="leading" secondItem="hdx-tQ-sBT" secondAttribute="leading" constant="10" id="EJI-ot-BN1"/>
+                        <constraint firstItem="0Ai-my-NmG" firstAttribute="top" secondItem="cMq-Ly-60c" secondAttribute="bottom" id="L6o-db-jQh"/>
+                        <constraint firstAttribute="trailing" secondItem="sCy-s5-CwZ" secondAttribute="trailing" constant="10" id="bLY-Yx-XKk"/>
+                        <constraint firstItem="uaA-2T-eiz" firstAttribute="top" secondItem="cMq-Ly-60c" secondAttribute="top" constant="-4" id="dgq-6M-zjA"/>
+                        <constraint firstItem="cMq-Ly-60c" firstAttribute="leading" secondItem="uaA-2T-eiz" secondAttribute="trailing" constant="10" id="ecv-NI-cxu"/>
+                        <constraint firstAttribute="centerY" secondItem="uaA-2T-eiz" secondAttribute="centerY" id="iKh-Jv-JFL"/>
+                        <constraint firstAttribute="height" constant="74" id="qRQ-GI-AAm"/>
+                        <constraint firstItem="uaA-2T-eiz" firstAttribute="top" secondItem="hdx-tQ-sBT" secondAttribute="top" constant="10" id="qbt-FN-TL9"/>
+                        <constraint firstItem="0Ai-my-NmG" firstAttribute="leading" secondItem="cMq-Ly-60c" secondAttribute="leading" id="xHM-b0-hZn"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="qbt-FN-TL9"/>
+                        </mask>
+                    </variation>
                 </view>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ns-sk-K7N">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
@@ -72,6 +103,8 @@
         </view>
     </objects>
     <resources>
+        <image name="kitty" width="1000" height="1000"/>
         <image name="modal_close_nocircle" width="12" height="13"/>
+        <image name="uber_call" width="40" height="40"/>
     </resources>
 </document>
