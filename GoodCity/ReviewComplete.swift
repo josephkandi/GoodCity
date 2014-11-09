@@ -34,6 +34,7 @@ class ReviewComplete : PFObject, PFSubclassing {
                 if objects.count > 0 {
                     if let row = objects[0] as? ReviewComplete {
                         row.incrementKey("reviews", byAmount: 1)
+                        row.saveEventually()
                         println("Triggering push notifs")
                     }
                 }

@@ -34,6 +34,7 @@ class DriverOnTheWay : PFObject, PFSubclassing {
                 if objects.count > 0 {
                     if let row = objects[0] as? DriverOnTheWay {
                         row.incrementKey("drivers", byAmount: 1)
+                        row.saveEventually()
                         println("Triggering push notifs")
                     }
                 }

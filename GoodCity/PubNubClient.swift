@@ -21,8 +21,12 @@ class PubNubClient: NSObject {
 
     private var publishChannel: PNChannel?
 
-    func getPublishChannelName() -> String {
-        return GoodCityUser.currentUser().username
+    func getPublishChannelName() -> String? {
+        if (GoodCityUser.currentUser() != nil) {
+            return GoodCityUser.currentUser().username
+        } else {
+            return nil
+        }
     }
 
     func subscribeToChannel(channelName: String) {
@@ -45,6 +49,10 @@ class PubNubClient: NSObject {
     }
 
     func publishHeadingToChannel(heading: CLHeading) {
+        if getPublishChannelName() == nil {
+            return
+        }
+
         if publishChannel == nil {
             publishChannel = PNChannel.channelWithName(getPublishChannelName()) as? PNChannel
         }
@@ -54,6 +62,10 @@ class PubNubClient: NSObject {
     }
 
     func publishLocationToChannel(lat: Double, _ lng: Double) {
+        if getPublishChannelName() == nil {
+            return
+        }
+
         if publishChannel == nil {
             publishChannel = PNChannel.channelWithName(getPublishChannelName()) as? PNChannel
         }
