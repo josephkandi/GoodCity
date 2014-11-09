@@ -136,4 +136,8 @@ class ReviewItemsViewController: UIViewController, DraggableItemImageViewDelegat
             }
             }, states: [ItemState.Scheduled], user: nil, driverUser: GoodCityUser.currentUser())
     }
+
+    func doneReviewing() {
+        ReviewComplete.sendReviewCompletePushNotifs()
+    }
 }

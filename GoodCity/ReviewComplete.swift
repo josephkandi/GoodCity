@@ -1,5 +1,5 @@
 //
-//  DriverOnTheWay.swift
+//  ReviewComplete
 //  GoodCity
 //
 //  Created by Nick Aiwazian on 11/9/14.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-class DriverOnTheWay : PFObject, PFSubclassing {
-    @NSManaged var drivers: Int
+class ReviewComplete : PFObject, PFSubclassing {
+    @NSManaged var reviews: Int
 
     // Must be called before Parse is initialized
     override class func load() {
@@ -17,28 +17,28 @@ class DriverOnTheWay : PFObject, PFSubclassing {
     }
 
     class func parseClassName() -> String! {
-        return "DriverOnTheWay"
+        return "ReviewComplete"
     }
 
     func description() -> String {
-        return "\(self.drivers)"
+        return "\(self.reviews)"
     }
 
-    class func sendOnTheWayPushNotifs() {
-        var query = DriverOnTheWay.query()
+    class func sendReviewCompletePushNotifs() {
+        var query = ReviewComplete.query()
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error != nil {
-                println("Error trying to get driverOnTheWay object: \(error)")
+                println("Error trying to get ReviewComplete object: \(error)")
             } else {
                 if objects.count > 0 {
-                    if let row = objects[0] as? DriverOnTheWay {
-                        row.incrementKey("drivers", byAmount: 1)
+                    if let row = objects[0] as? ReviewComplete {
+                        row.incrementKey("reviews", byAmount: 1)
                         println("Triggering push notifs")
                     }
                 }
             }
         }
-
+        
     }
 }
