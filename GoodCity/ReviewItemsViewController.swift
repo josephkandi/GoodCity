@@ -86,6 +86,7 @@ class ReviewItemsViewController: UIViewController, DraggableItemImageViewDelegat
     func onApprove() {
         let item = itemsToReview.firstObject as DonationItem
         item.state = ItemState.Approved.rawValue
+        item.driverUser = GoodCityUser.currentUser()
         item.saveEventually()
     
         approvedItems.addObject(item)
