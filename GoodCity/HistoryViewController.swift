@@ -143,7 +143,6 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
     }
 
     func refreshDataFromServerForCurrentlySelectedSegment() {
-        println("refreshing for current index")
         let index = activitiesChooser.selectedSegmentIndex
         if (index == 0) {
             getItemGroups(states: [ItemState.Scheduled, ItemState.Approved, ItemState.Pending], index: index)
