@@ -363,8 +363,8 @@
 		0A0B08F219E229BC0059A82C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3AB3A5CB1A0F28A700B8E0BD /* Annotations */,
 				3A15069519EB86B00020DF10 /* Constants.swift */,
+				3AB3A5CB1A0F28A700B8E0BD /* Annotations */,
 				3A81925519F5A5E8001F2EB5 /* Cells */,
 				3A81925419F5A5D9001F2EB5 /* Buttons */,
 				3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */,

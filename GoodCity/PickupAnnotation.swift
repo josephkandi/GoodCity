@@ -35,7 +35,8 @@ class PickupAnnotation: NSObject, MKAnnotation {
         annotationView.image = UIImage(named: "uber_pickup")
         
         println("anchor \(annotationView.layer.anchorPoint)")
-        //annotationView.layer.anchorPoint = CGPointMake(10, 0)
+        // Offset center point based on the annotation marker
+        annotationView.centerOffset = CGPointMake(18, -33)
         
         markerLabel = UILabel(frame: CGRectMake(8,6,28,20))
         markerLabel.text = markerText
