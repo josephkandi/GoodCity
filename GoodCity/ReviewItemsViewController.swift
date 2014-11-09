@@ -23,6 +23,7 @@ class ReviewItemsViewController: UIViewController, DraggableItemImageViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.styleNavBar(navBar)
+        
         currentItemView.frame = CGRectMake(marginLeftRight, marginTop+64, self.view.frame.width-marginLeftRight*2, self.view.frame.width-marginLeftRight*2 + 70)
         currentItemView.delegate = self
 
@@ -106,6 +107,15 @@ class ReviewItemsViewController: UIViewController, DraggableItemImageViewDelegat
         updateView()
     }
 
+    @IBAction func onTapDoneReviewing(sender: AnyObject) {
+        println("Tapped on Done Reviewing Button")
+    }
+    
+    @IBAction func onTapDrive(sender: AnyObject) {
+        println("Tapped the drive button")
+        goOnlineAsDriver()
+    }
+    
     func goOnlineAsDriver() {
         DonationItem.getAllItemsWithStates({
             (objects, error) -> () in
