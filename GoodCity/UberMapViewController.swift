@@ -37,7 +37,6 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         /*
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userLocationUpdateHandler:", name: UserLocationDidUpdateNotificiation, object: nil)
         */
-        self.zoomMap()
         self.subscribeForDriverUpdates()
 
         /*
@@ -48,7 +47,9 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             self.zoomMap()
         }
         */
+
         if let coordinate = self.destinationCoordinate {
+            self.zoomMap(20, center: coordinate, animated: false)
             addDropoffLocationsToMap(coordinate)
         }
     }
@@ -132,6 +133,9 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                 newCoordinate = CLLocationCoordinate2DMake(lat!, lng!)
                 if self.driverAnnotation == nil {
                     self.addDriverLocationToMap(newCoordinate!)
+                    if self.destinationCoordinate != nil && newCoordinate != nil {
+                        self.zoomMap(self.destinationCoordinate!, newCoordinate!)
+                    }
                 }
             }
         }
@@ -196,20 +200,33 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             return annotationView
         }
     }
-    
-    func zoomMap() {
-        if let centerCoordinate = self.destinationCoordinate {
-            let radiusInMiles = 15.0
-            let scalingFactor = abs(cos(2 * M_PI * centerCoordinate.latitude / 360.0))
 
-            let span = MKCoordinateSpanMake(radiusInMiles / 69.0, radiusInMiles / (scalingFactor * 69.0))
+    func center(coord1: CLLocationCoordinate2D, _ coord2: CLLocationCoordinate2D) -> CLLocationCoordinate2D {
+        return CLLocationCoordinate2DMake(
+            (coord1.latitude + coord2.latitude) / 2,
+            (coord1.longitude + coord2.longitude) / 2
+        )
+    }
 
-            let region = MKCoordinateRegionMake(centerCoordinate, span)
+    func distanceInMiles(coord1: CLLocationCoordinate2D, _ coord2: CLLocationCoordinate2D) -> Double {
+        let loc1 = CLLocation(latitude: coord1.latitude, longitude: coord1.longitude)
+        let loc2 = CLLocation(latitude: coord2.latitude, longitude: coord2.longitude)
+        let distanceInMeters = loc1.distanceFromLocation(loc2)
 
-            mapView.setRegion(region, animated: true)
-        } else {
-            println("Error: Tried to zoom map, but did not have user location yet")
-        }
+        return distanceInMeters * 0.000621371
+    }
+
+    func zoomMap(destinationCoordinate: CLLocationCoordinate2D, _ driverCoordinate: CLLocationCoordinate2D) {
+        let centerCoordinate = center(destinationCoordinate, driverCoordinate)
+        let radiusInMiles = distanceInMiles(destinationCoordinate, driverCoordinate) + 2
+        self.zoomMap(radiusInMiles, center: centerCoordinate, animated: true)
+    }
+
+    func zoomMap(radiusInMiles: Double, center: CLLocationCoordinate2D, animated: Bool) {
+        let scalingFactor = abs(cos(2 * M_PI * center.latitude / 360.0))
+        let span = MKCoordinateSpanMake(radiusInMiles / 69.0, radiusInMiles / (scalingFactor * 69.0))
+        let region = MKCoordinateRegionMake(center, span)
+        mapView.setRegion(region, animated: animated)
     }
 
     func addDriverLocationToMap(loc: CLLocationCoordinate2D) {
@@ -222,7 +239,6 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     func addDropoffLocationsToMap(location: CLLocationCoordinate2D) {
         pickupAnnotation = PickupAnnotation(markerText: "--", title: "Address goes here", coordinate: location)
         mapView.addAnnotation(pickupAnnotation)
-        self.zoomMap()
     }
 
     
