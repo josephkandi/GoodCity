@@ -367,10 +367,10 @@
     _backgroundLayer.frame = self.bounds;
     _progressLayer.frame = self.bounds;
     _iconLayer.frame = self.bounds;
-    _percentageLabel.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height-20);
+    _percentageLabel.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height-66);
     
     [_explanationLabel sizeToFit];
-    _explanationLabel.frame = CGRectMake(0, 50, self.bounds.size.width, self.bounds.size.height-50);
+    _explanationLabel.frame = CGRectMake(0, 50, self.bounds.size.width, self.bounds.size.height-94);
     
     //Update font size
     //_percentageLabel.font = [UIFont systemFontOfSize:(self.bounds.size.width / 5)];

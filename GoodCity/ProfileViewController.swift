@@ -30,9 +30,12 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
     @IBOutlet weak var progressRing: M13ProgressViewRing!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var logoutButton: RoundedButton!
+    @IBOutlet weak var shareTwitter: UIButton!
+    @IBOutlet weak var shareFB: UIButton!
     
     @IBOutlet weak var editAddressview: EditAddressView!
     var userAddress: Address?
+    var donationCount: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +59,14 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
         logoutButton.setButtonSytle(1)
         logoutButton.setButtonTitle("Log Out")
         progressRing.donationLevelCount = DONATION_LEVEL_COUNT
-                    
+        
+
+        shareFB.setImage(UIImage(named: "profile_fb")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: .Normal)
+        shareTwitter.setImage(UIImage(named: "profile_twitter")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: .Normal)
+        shareFB.tintColor = UIColor.whiteColor()
+        shareTwitter.tintColor = UIColor.whiteColor()
+        
+        
         if let currentUser = GoodCityUser.currentUser {
             profileImage.fadeInImageFromURL(NSURL(string: currentUser.profilePhotoUrlString)!, border: true)
             usernameLabel.text = currentUser.firstName + " " + currentUser.lastName
@@ -91,6 +101,7 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
             }
         }
         progressRing.setProgress(count/CGFloat(DONATION_LEVEL_COUNT), animated: true)
+        donationCount = Int(count)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -127,6 +138,12 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
         let yOffset = (bounds.height - profileInfoContainerView.frame.height - profileInfoContainerView.frame.origin.y - progressRingSize) / 2 + profileInfoContainerView.frame.height + profileInfoContainerView.frame.origin.y - 50
         
         progressRing.frame = CGRectMake((bounds.width - progressRingSize) / 2, yOffset, progressRingSize, progressRingSize)
+        
+        let iconSize: CGFloat = 30
+        let iconGap: CGFloat = 15
+        shareFB.frame = CGRectMake(progressRing.frame.origin.x+(progressRingSize-iconSize*2-iconGap)/2, progressRing.frame.origin.y+progressRingSize-85, iconSize, iconSize)
+        shareTwitter.frame = CGRectMake(shareFB.frame.origin.x+iconSize+iconGap, progressRing.frame.origin.y+progressRingSize-85, iconSize, iconSize)
+
     }
 
     @IBAction func onTapClose(sender: AnyObject) {
@@ -181,4 +198,12 @@ class ProfileViewController: UIViewController, EditAddressViewDelegate {
         }
 
     }
+    @IBAction func onTapFBShare(sender: AnyObject) {
+        SocialSharing.postToSocialNetwork(.Facebook, message: "I donated \(donationCount) items to GoodCity. You can do it too!", presentingViewController: self, image: UIImage(named: "profile_share_image"))
+    }
+    
+    @IBAction func onTapTwitterShare(sender: AnyObject) {
+        SocialSharing.postToSocialNetwork(.Twitter, message: "I donated \(donationCount) items to GoodCity. You can do it too!", presentingViewController: self, image: UIImage(named: "profile_share_image"))
+    }
+    
 }
