@@ -49,7 +49,9 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     func setupPubnub() {
-        PubNubClient.sharedInstance.subscribeToChannel(self.channelSubscriptionName!)
+        if let channelName = self.channelSubscriptionName {
+            PubNubClient.sharedInstance.subscribeToChannel(channelName)
+        }
     }
 
     func userLocationUpdateHandler(notification: NSNotification) {
