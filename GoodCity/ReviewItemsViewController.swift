@@ -105,4 +105,19 @@ class ReviewItemsViewController: UIViewController, DraggableItemImageViewDelegat
         currentItemView.restoreImage()
         updateView()
     }
+
+    func goOnlineAsDriver() {
+        DonationItem.getAllItemsWithStates({
+            (objects, error) -> () in
+            if let donationItems = objects as? [DonationItem] {
+                for donationItem in donationItems {
+                    donationItem.state = ItemState.OnTheWay.rawValue
+                    donationItem.saveEventually()
+                }
+            }
+            else {
+                println("Error trying to get scheduled items from server: \(error)")
+            }
+            }, states: [ItemState.Scheduled], user: nil, driverUser: GoodCityUser.currentUser())
+    }
 }

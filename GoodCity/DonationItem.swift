@@ -68,7 +68,11 @@ import Foundation
     }
 
     // States is optional
-    class func getAllItemsWithStates(completion: ParseResponse, states: [ItemState]? = nil, user: GoodCityUser? = GoodCityUser.currentUser()) {
+    class func getAllItemsWithStates(
+        completion: ParseResponse,
+        states: [ItemState]? = nil,
+        user: GoodCityUser? = GoodCityUser.currentUser(),
+        driverUser: GoodCityUser? = nil) {
         var query = DonationItem.query()
 
         if states != nil {
@@ -77,6 +81,9 @@ import Foundation
         }
         if user != nil {
             query.whereKey("user", equalTo: user)
+        }
+        if driverUser != nil {
+            query.whereKey("driverUser", equalTo: driverUser)
         }
         query.includeKey("user")
         query.includeKey("driverUser")
