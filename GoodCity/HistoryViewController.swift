@@ -52,7 +52,7 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
         mapButton = UIBarButtonItem(image: mapIcon, style: UIBarButtonItemStyle.Plain, target: self, action: "viewDropoffLocations")
         mapButton.tintColor = UIColor.whiteColor()
         var negativeSpacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
-        negativeSpacer.width = -8;
+        negativeSpacer.width = -4;
         self.navigationItem.setLeftBarButtonItems([negativeSpacer, mapButton], animated: true)
 
         // Add the profile icon to the right nav bar
