@@ -1,15 +1,15 @@
 //
-//  DropoffAnnotation.swift
+//  PickupAnnotation.swift
 //  GoodCity
 //
-//  Created by Yili Aiwazian on 10/12/14.
+//  Created by Yili Aiwazian on 11/8/14.
 //  Copyright (c) 2014 codepath. All rights reserved.
 //
 
 import UIKit
 import MapKit
 
-class DropoffAnnotation: NSObject, MKAnnotation {
+class PickupAnnotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     var markerText: String {
         didSet(oldItemOrNil) {
@@ -33,20 +33,20 @@ class DropoffAnnotation: NSObject, MKAnnotation {
         annotationView.enabled = true
         annotationView.canShowCallout = true
         annotationView.image = UIImage(named: "marker")
-            
+        
         markerLabel = UILabel(frame: CGRectMake(0,0,30,22))
         markerLabel.text = markerText
         markerLabel.textAlignment = NSTextAlignment.Center
         markerLabel.baselineAdjustment = UIBaselineAdjustment.AlignCenters
         markerLabel.font = FONT_MEDIUM_14
         markerLabel.textColor = UIColor.whiteColor()
-        annotationView.addSubview(markerLabel)
-            
+        annotationView.addSubview(markerLabel!)
+        
         return annotationView
     }
     
     func setCoordinate(newCoordinate: CLLocationCoordinate2D) {
         self.coordinate = newCoordinate
     }
-    
+
 }

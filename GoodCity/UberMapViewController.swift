@@ -7,16 +7,19 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var driverView: UIView!
     @IBOutlet weak var timeRemainingLabel: UILabel!
-
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    
     var YAHOO_COORDINATE = CLLocationCoordinate2DMake(37.419029, -122.025733)
     var lastUserLocation: CLLocation?
     var driverAnnotation: MKAnnotation?
+    var pickupAnnotation: PickupAnnotation?
 
     var hasUserLocation = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.styleNavBar(navigationBar)
+    
         mapView.delegate = self
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "driverLocationUpdateHandler:", name: DriverLocationDidChangeNotification, object: nil)
@@ -32,6 +35,7 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
 
         self.timeRemainingLabel.text = "Update pending..."
+        addDropoffLocationsToMap(YAHOO_COORDINATE)
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -120,6 +124,7 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                 println("Got directions, expected time in seconds is: \(response.expectedTravelTime)")
                 let timeRemainingInMinutes = String(format: "%.0f", response.expectedTravelTime / 60)
                 self.timeRemainingLabel.text = "\(timeRemainingInMinutes) mins away"
+                self.pickupAnnotation?.markerText = "\(timeRemainingInMinutes)"
             }
         } else {
             println("Request already in progress for ETA")
@@ -130,13 +135,18 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         if annotation.isKindOfClass(MKUserLocation) {
             println("User location annotation")
             return nil;
-        } else {
+        }
+        else if annotation.isKindOfClass(PickupAnnotation) {
+            let dropoffAnnotation = annotation as PickupAnnotation
+            return dropoffAnnotation.annotationView
+        }
+        else {
             // TODO: reuse
             var annotationView = UberAnnotationView(annotation: annotation, reuseIdentifier: "MyCustom")
             return annotationView
         }
     }
-
+    
     func zoomMap() {
         if let centerCoordinate = self.lastUserLocation?.coordinate {
             let radiusInMiles = 10.0
@@ -157,5 +167,19 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         annotation.setCoordinate(CLLocationCoordinate2DMake(loc.latitude, loc.longitude))
         self.driverAnnotation = annotation
         mapView.addAnnotation(self.driverAnnotation)
+    }
+    
+    func addDropoffLocationsToMap(location: CLLocationCoordinate2D) {
+        pickupAnnotation = PickupAnnotation(markerText: "ETA", title: "Address goes here", coordinate: location)
+        mapView.addAnnotation(pickupAnnotation)
+        self.zoomMap()
+    }
+
+    
+    @IBAction func onTapDismiss(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion:nil)
+    }
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
 }

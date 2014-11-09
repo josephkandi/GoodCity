@@ -81,6 +81,7 @@
 		3A93C0E919F7842E00EAF2D7 /* YASegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A93C0E819F7842E00EAF2D7 /* YASegmentedControl.swift */; };
 		3A9D64FA19F21320008A64F2 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9D64F919F21320008A64F2 /* UIViewController+Extensions.swift */; };
 		3AB3A5C61A0B53CD00B8E0BD /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB3A5C51A0B53CD00B8E0BD /* EventManager.swift */; };
+		3AB3A5CA1A0F258F00B8E0BD /* PickupAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB3A5C91A0F258F00B8E0BD /* PickupAnnotation.swift */; };
 		3ABF2C9219ECF508005EF442 /* ActionButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */; };
 		3AC6CD6E1A05EA5B00B3EC00 /* DraggableItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6CD6D1A05EA5B00B3EC00 /* DraggableItemImageView.swift */; };
 		3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */; };
@@ -211,6 +212,7 @@
 		3A93C0E819F7842E00EAF2D7 /* YASegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YASegmentedControl.swift; sourceTree = "<group>"; };
 		3A9D64F919F21320008A64F2 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		3AB3A5C51A0B53CD00B8E0BD /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		3AB3A5C91A0F258F00B8E0BD /* PickupAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickupAnnotation.swift; sourceTree = "<group>"; };
 		3ABF2C9119ECF508005EF442 /* ActionButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButtonsView.swift; sourceTree = "<group>"; };
 		3AC6CD6D1A05EA5B00B3EC00 /* DraggableItemImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableItemImageView.swift; sourceTree = "<group>"; };
 		3AE42EE319E8F98500D7A6F5 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 				3A050C8D19FB8C9400981C7D /* ScaleModalAnimator.swift */,
 				3A0F375019FDE42F0062E965 /* EditAddressView.swift */,
 				0A4EE3411A05EF070059E6F7 /* UberAnnotationView.swift */,
+				3AB3A5C91A0F258F00B8E0BD /* PickupAnnotation.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -750,6 +753,7 @@
 				3A687C7419E9104F005351B0 /* CartItemCell.swift in Sources */,
 				0AA72EEA1A0B4DBA00B60612 /* SocialSharing.swift in Sources */,
 				3AE42EE519E8F98500D7A6F5 /* ContainerViewController.swift in Sources */,
+				3AB3A5CA1A0F258F00B8E0BD /* PickupAnnotation.swift in Sources */,
 				3A0F374C19FDA3A40062E965 /* M13ProgressViewRing.m in Sources */,
 				0A25CD6519FC9AC800390674 /* GHContextMenuView.m in Sources */,
 				0A14FFBE19E2355F00D11CE2 /* MapViewController.swift in Sources */,

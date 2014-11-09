@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="driverView" destination="hdx-tQ-sBT" id="B8y-nw-OQV"/>
                 <outlet property="mapView" destination="Gtp-Xx-0w2" id="x2W-ZV-Tji"/>
+                <outlet property="navigationBar" destination="0ns-sk-K7N" id="Yhw-Qz-gla"/>
                 <outlet property="timeRemainingLabel" destination="Pyt-tw-kIU" id="vAa-nz-6ne"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -39,6 +40,21 @@
                         <constraint firstItem="Pyt-tw-kIU" firstAttribute="top" secondItem="hdx-tQ-sBT" secondAttribute="top" id="qV3-LN-K4i"/>
                     </constraints>
                 </view>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ns-sk-K7N">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="kII-7w-nDt"/>
+                    </constraints>
+                    <items>
+                        <navigationItem title="Track Your Pick Up" id="r1U-8X-CDw">
+                            <barButtonItem key="rightBarButtonItem" image="modal_close_nocircle" id="wgL-3d-tw6">
+                                <connections>
+                                    <action selector="onTapDismiss:" destination="-1" id="Dc5-qQ-IFg"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -46,10 +62,16 @@
                 <constraint firstItem="hdx-tQ-sBT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Vfu-2g-pD0"/>
                 <constraint firstAttribute="trailing" secondItem="Gtp-Xx-0w2" secondAttribute="trailing" id="WbV-nH-ikT"/>
                 <constraint firstAttribute="trailing" secondItem="hdx-tQ-sBT" secondAttribute="trailing" id="aa3-WG-asX"/>
+                <constraint firstItem="0ns-sk-K7N" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bQo-6W-9Iu"/>
                 <constraint firstAttribute="bottom" secondItem="Gtp-Xx-0w2" secondAttribute="bottom" id="iVH-vA-cPN"/>
                 <constraint firstItem="Gtp-Xx-0w2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jSl-HE-clT"/>
+                <constraint firstAttribute="trailing" secondItem="0ns-sk-K7N" secondAttribute="trailing" id="olE-rU-sTY"/>
+                <constraint firstItem="0ns-sk-K7N" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qzN-NW-Htb"/>
                 <constraint firstItem="Gtp-Xx-0w2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sLh-q1-YrY"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="modal_close_nocircle" width="12" height="13"/>
+    </resources>
 </document>

@@ -26,7 +26,7 @@
                     </constraints>
                     <items>
                         <navigationItem title="Dropoff Locations" id="BTR-Nj-9ge">
-                            <barButtonItem key="rightBarButtonItem" systemItem="done" id="WcO-E6-9w5">
+                            <barButtonItem key="rightBarButtonItem" image="modal_close_nocircle" id="WcO-E6-9w5">
                                 <connections>
                                     <action selector="onDismiss:" destination="-1" id="1yu-Vh-klH"/>
                                 </connections>
@@ -47,4 +47,7 @@
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="modal_close_nocircle" width="12" height="13"/>
+    </resources>
 </document>
