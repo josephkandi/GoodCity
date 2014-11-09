@@ -96,6 +96,8 @@ class ActionButtonsView: UIView {
     
     func setItemsState(state: ItemState) {
         self.itemsState = state
+        button1.removeTarget(self, action: nil, forControlEvents: UIControlEvents.AllEvents)
+        button2.removeTarget(self, action: nil, forControlEvents: UIControlEvents.AllEvents)
     }
     func setDelegate(delegate: ItemsActionDelegate) {
         self.delegate = delegate
