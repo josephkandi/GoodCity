@@ -106,7 +106,7 @@ class ReviewItemsViewController: UIViewController, DraggableItemImageViewDelegat
         currentItemView.restoreImage()
         updateView()
     }
-
+    
     @IBAction func onTapDoneReviewing(sender: AnyObject) {
         println("Tapped on Done Reviewing Button")
     }
@@ -116,14 +116,20 @@ class ReviewItemsViewController: UIViewController, DraggableItemImageViewDelegat
         goOnlineAsDriver()
     }
     
+    // All items that are "SCHEDULED" that have "me" as driver are set to "ONTHEWAY"
+    // Then push notifications are triggered
     func goOnlineAsDriver() {
         DonationItem.getAllItemsWithStates({
             (objects, error) -> () in
             if let donationItems = objects as? [DonationItem] {
-                for donationItem in donationItems {
-                    donationItem.state = ItemState.OnTheWay.rawValue
-                    donationItem.saveEventually()
-                }
+                donationItems.map { $0.state = ItemState.OnTheWay.rawValue }
+                PFObject.saveAllInBackground(donationItems, block: { (success, error) -> Void in
+                    if success {
+                        DriverOnTheWay.sendOnTheWayPushNotifs()
+                    } else {
+                        println("Error: Failed trying to save donationItems when going online: \(error)")
+                    }
+                })
             }
             else {
                 println("Error trying to get scheduled items from server: \(error)")

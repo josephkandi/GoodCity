@@ -42,6 +42,7 @@
 		0AA72EEA1A0B4DBA00B60612 /* SocialSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA72EE91A0B4DBA00B60612 /* SocialSharing.swift */; };
 		0AA72EEC1A0B55B500B60612 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA72EEB1A0B55B500B60612 /* Social.framework */; };
 		0AB960241A0F6A84003D7334 /* Yahoo.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 0AB960231A0F6A84003D7334 /* Yahoo.gpx */; };
+		0AB960261A100948003D7334 /* DriverOnTheWay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB960251A100948003D7334 /* DriverOnTheWay.swift */; };
 		0AC31AFC19E9EDA300BB815F /* DropoffLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC31AFB19E9EDA300BB815F /* DropoffLocation.swift */; };
 		0AC31AFE19EA2F6800BB815F /* PickupScheduleSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC31AFD19EA2F6800BB815F /* PickupScheduleSlot.swift */; };
 		0AC31B0019EA33CB00BB815F /* DonationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC31AFF19EA33CB00BB815F /* DonationItem.swift */; };
@@ -172,6 +173,7 @@
 		0AA72EE91A0B4DBA00B60612 /* SocialSharing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialSharing.swift; sourceTree = "<group>"; };
 		0AA72EEB1A0B55B500B60612 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		0AB960231A0F6A84003D7334 /* Yahoo.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Yahoo.gpx; sourceTree = "<group>"; };
+		0AB960251A100948003D7334 /* DriverOnTheWay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverOnTheWay.swift; sourceTree = "<group>"; };
 		0AC31AFB19E9EDA300BB815F /* DropoffLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropoffLocation.swift; sourceTree = "<group>"; };
 		0AC31AFD19EA2F6800BB815F /* PickupScheduleSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickupScheduleSlot.swift; sourceTree = "<group>"; };
 		0AC31AFF19EA33CB00BB815F /* DonationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationItem.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				0AC31B0319EA40E700BB815F /* ItemCondition.swift */,
 				0A02838A19F342B70070E374 /* DonationItemsAggregator.swift */,
 				0A22810D19FDE93E008C51FD /* Address.swift */,
+				0AB960251A100948003D7334 /* DriverOnTheWay.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -749,6 +752,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AB960261A100948003D7334 /* DriverOnTheWay.swift in Sources */,
 				3A15068D19EB60BA0020DF10 /* ItemsGroupCell.swift in Sources */,
 				3A76A01019F4ECB90036A0EC /* SelectableButton.swift in Sources */,
 				0AD128B519E92215002E47E5 /* GoodCityUser.swift in Sources */,
