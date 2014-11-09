@@ -27,7 +27,7 @@ class DropoffAnnotation: NSObject, MKAnnotation {
         self.coordinate = coordinate
         self.markerText = markerText
         self.title = title
-        self.icon = icon ?? "marker"
+        self.icon = icon != nil ? "map_\(icon!)" : "marker"
     }
     
     var annotationView: MKAnnotationView {
