@@ -35,7 +35,7 @@ class DropoffAnnotation: NSObject, MKAnnotation {
         annotationView.enabled = true
         annotationView.canShowCallout = true
         annotationView.image = UIImage(named: self.icon)
-            
+        /*
         markerLabel = UILabel(frame: CGRectMake(0,0,30,22))
         markerLabel.text = markerText
         markerLabel.textAlignment = NSTextAlignment.Center
@@ -43,7 +43,7 @@ class DropoffAnnotation: NSObject, MKAnnotation {
         markerLabel.font = FONT_MEDIUM_14
         markerLabel.textColor = UIColor.whiteColor()
         annotationView.addSubview(markerLabel)
-            
+        */
         return annotationView
     }
     
