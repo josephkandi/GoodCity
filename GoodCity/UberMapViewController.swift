@@ -191,7 +191,7 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     
     func addDropoffLocationsToMap(location: CLLocationCoordinate2D) {
-        pickupAnnotation = PickupAnnotation(markerText: "ETA", title: "Address goes here", coordinate: location)
+        pickupAnnotation = PickupAnnotation(markerText: "--", title: "Address goes here", coordinate: location)
         mapView.addAnnotation(pickupAnnotation)
         self.zoomMap()
     }

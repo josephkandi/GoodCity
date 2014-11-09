@@ -32,18 +32,26 @@ class PickupAnnotation: NSObject, MKAnnotation {
         let annotationView = MKAnnotationView(annotation: self, reuseIdentifier: "dropoffAnnotation")
         annotationView.enabled = true
         annotationView.canShowCallout = true
-        annotationView.image = UIImage(named: "map_pickup")
+        annotationView.image = UIImage(named: "uber_pickup")
         
         println("anchor \(annotationView.layer.anchorPoint)")
         //annotationView.layer.anchorPoint = CGPointMake(10, 0)
         
-        markerLabel = UILabel(frame: CGRectMake(6,6,30,22))
+        markerLabel = UILabel(frame: CGRectMake(8,6,28,20))
         markerLabel.text = markerText
         markerLabel.textAlignment = NSTextAlignment.Center
         markerLabel.baselineAdjustment = UIBaselineAdjustment.AlignCenters
-        markerLabel.font = FONT_MEDIUM_14
+        markerLabel.font = FONT_MEDIUM_12
         markerLabel.textColor = UIColor.whiteColor()
-        annotationView.addSubview(markerLabel!)
+        
+        let minLabel = UILabel(frame: CGRectMake(8, 16, markerLabel.frame.width,  markerLabel.frame.height))
+        minLabel.text = "MIN"
+        minLabel.textAlignment = .Center
+        minLabel.font = FONT_8
+        minLabel.textColor = UIColor.whiteColor()
+        
+        annotationView.addSubview(markerLabel)
+        annotationView.addSubview(minLabel)
         
         return annotationView
     }
