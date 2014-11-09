@@ -5,7 +5,7 @@ let PUB_NUB_SUBSCRIBE_KEY = "sub-c-91ed8d4c-625e-11e4-8dc6-02ee2ddab7fe"
 let PUB_NUB_SECRET_KEY = "sec-c-ODVhYzFhMTAtNmQ0OC00MmZkLThmZGItZDc2MTIyODM4ZGNj"
 let HEADING_CHANNEL = "heading_channel"
 
-let LocationDidChangeNotification = "location_did_change"
+let DriverLocationDidChangeNotification = "driver_location_did_change"
 
 private let pubNubClientSharedInstance = PubNubClient()
 

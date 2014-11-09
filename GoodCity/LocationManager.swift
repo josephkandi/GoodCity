@@ -8,7 +8,7 @@
 
 import Foundation
 
-let UserLocationDidUpdateNotificiation = "user_location_did_change"
+let UserLocationDidUpdateNotificiation = "user_location_did_update"
 
 private let sharedLocationManager = LocationManager()
 

@@ -182,7 +182,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
 
     func pubnubClient(client: PubNub!, didReceiveMessage message: PNMessage!) {
         println("PubNub client received message: \(message)")
-        NSNotificationCenter.defaultCenter().postNotificationName(LocationDidChangeNotification, object: nil, userInfo: ["message": message.message])
+        NSNotificationCenter.defaultCenter().postNotificationName(DriverLocationDidChangeNotification, object: nil, userInfo: ["message": message.message])
     }
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {

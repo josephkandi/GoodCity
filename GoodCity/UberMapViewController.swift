@@ -5,45 +5,63 @@ import CoreLocation
 class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-
     @IBOutlet weak var driverView: UIView!
-    
     @IBOutlet weak var timeRemainingLabel: UILabel!
+
+    var YAHOO_COORDINATE = CLLocationCoordinate2DMake(37.419029, -122.025733)
     var lastUserLocation: CLLocation?
     var driverAnnotation: MKAnnotation?
+
+    var hasUserLocation = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mapView.delegate = self
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateMapAnnotation:", name: LocationDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "driverLocationUpdateHandler:", name: DriverLocationDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userLocationUpdateHandler:", name: UserLocationDidUpdateNotificiation, object: nil)
 
         self.setupPubnub()
 
         LocationManager.sharedInstance.startStandardUpdates()
         if let loc = LocationManager.sharedInstance.coreLocationManager?.location {
             self.lastUserLocation = loc
-            println("user location is: \(loc)")
+            self.hasUserLocation = true
+            self.zoomMap()
         }
 
         self.timeRemainingLabel.text = "Update pending..."
     }
 
     override func viewWillDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: LocationDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: DriverLocationDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UserLocationDidUpdateNotificiation, object: nil)
         LocationManager.sharedInstance.stopStandardUpdates()
-    }
-
-    func updateMapAnnotation(notification: NSNotification) {
-        println("Received observer event to update map heading: \(notification.userInfo)")
-        if let message = notification.userInfo!["message"] as? NSDictionary {
-            updateUberAnnotation(message)
-        }
     }
 
     func setupPubnub() {
         PubNubClient.sharedInstance.subscribeToChannel(HEADING_CHANNEL)
+    }
+
+    func userLocationUpdateHandler(notification: NSNotification) {
+        // User the first update to zoom map (if it hasn't happened already)
+        if !hasUserLocation {
+            if let loc = LocationManager.sharedInstance.coreLocationManager?.location {
+                self.lastUserLocation = loc
+                self.zoomMap()
+                self.hasUserLocation = true
+            } else {
+                println("Error: Could not get user location even after location notification")
+            }
+            return
+        }
+    }
+
+    func driverLocationUpdateHandler(notification: NSNotification) {
+        if let message = notification.userInfo!["message"] as? NSDictionary {
+            updateUberAnnotation(message)
+        }
     }
 
     func updateUberAnnotation(dictionary: NSDictionary) {
@@ -55,7 +73,6 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             let lng = loc["lng"] as? Double
             if lat != nil && lng != nil {
                 // We have a location update
-                println("Received a new location broadcast: lat:\(lat), lng:\(lng)")
                 newCoordinate = CLLocationCoordinate2DMake(lat!, lng!)
                 if self.driverAnnotation == nil {
                     self.addDriverLocationToMap(newCoordinate!)
@@ -65,19 +82,20 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
         if let heading = dictionary["heading"] as? Double {
             // We have a heading
-            println("Received a new heading broadcast: \(heading)")
             newHeading = heading
+        }
+        // We have both user and driver location, so compute ETA
+        if (self.hasUserLocation && self.driverAnnotation != nil &&
+            newCoordinate != nil && self.lastUserLocation != nil) {
+                self.getPathEstimatedTime(newCoordinate!, destination: self.YAHOO_COORDINATE)
         }
 
         if let annotationView = mapView.viewForAnnotation(self.driverAnnotation) as? UberAnnotationView {
             UIView.animateWithDuration(1, animations: { () -> Void in
                 if newCoordinate != nil {
-                    println("Setting new location")
                     self.driverAnnotation!.setCoordinate!(newCoordinate!)
-                    // self.getPathEstimatedTime(newCoordinate!, destination: self.lastUserLocation!.coordinate)
                 }
                 if newHeading != nil {
-                    println("Setting new angle")
                     annotationView.rotationAngle = newHeading!
                 }
             })
@@ -100,7 +118,8 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         if !directions.calculating {
             directions.calculateETAWithCompletionHandler { (response, error) -> Void in
                 println("Got directions, expected time in seconds is: \(response.expectedTravelTime)")
-                self.timeRemainingLabel.text = "\(response.expectedTravelTime) seconds"
+                let timeRemainingInMinutes = String(format: "%.0f", response.expectedTravelTime / 60)
+                self.timeRemainingLabel.text = "\(timeRemainingInMinutes) mins away"
             }
         } else {
             println("Request already in progress for ETA")
@@ -119,15 +138,18 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     func zoomMap() {
-        let userAnnotationPoint = MKMapPointForCoordinate(self.lastUserLocation!.coordinate)
-        var zoomRect = MKMapRectMake(userAnnotationPoint.x, userAnnotationPoint.y, 0.1, 0.1)
+        if let centerCoordinate = self.lastUserLocation?.coordinate {
+            let radiusInMiles = 10.0
+            let scalingFactor = abs(cos(2 * M_PI * centerCoordinate.latitude / 360.0))
 
-        let annotationPoint = MKMapPointForCoordinate(self.driverAnnotation!.coordinate);
-        let pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.1, 0.1)
-        zoomRect = MKMapRectUnion(zoomRect, pointRect)
+            let span = MKCoordinateSpanMake(radiusInMiles / 69.0, radiusInMiles / (scalingFactor * 69.0))
 
-        let inset = -zoomRect.size.width * 0.15
-        mapView.setVisibleMapRect(MKMapRectInset(zoomRect, inset, inset), animated:true)
+            let region = MKCoordinateRegionMake(centerCoordinate, span)
+
+            mapView.setRegion(region, animated: true)
+        } else {
+            println("Error: Tried to zoom map, but did not have user location yet")
+        }
     }
 
     func addDriverLocationToMap(loc: CLLocationCoordinate2D) {
@@ -135,6 +157,5 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         annotation.setCoordinate(CLLocationCoordinate2DMake(loc.latitude, loc.longitude))
         self.driverAnnotation = annotation
         mapView.addAnnotation(self.driverAnnotation)
-        //self.zoomMap()
     }
 }
