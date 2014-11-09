@@ -55,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
         PubNub.setDelegate(self)
         let configuration = PNConfiguration(publishKey: PUB_NUB_PUBLISH_KEY, subscribeKey: PUB_NUB_SUBSCRIBE_KEY, secretKey: PUB_NUB_SECRET_KEY)
         PubNub.setConfiguration(configuration)
+        PubNub.connect()
     }
 
     func setupGlobalNavBarAttributes() {

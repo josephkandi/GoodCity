@@ -26,15 +26,22 @@ class PubNubClient: NSObject {
     }
 
     func subscribeToChannel(channelName: String) {
-        PubNub.connectWithSuccessBlock({ (origin) -> Void in
-            println("Pubnub client connected to \(origin)")
-            let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC))
-            dispatch_after(popTime, dispatch_get_main_queue(), { () -> Void in
-                PubNub.subscribeOnChannel(PNChannel.channelWithName(channelName, shouldObservePresence: true) as PNChannel)
+        PubNub.subscribeOnChannel(PNChannel.channelWithName(channelName, shouldObservePresence: true) as PNChannel)
+
+        /*
+
+        if !isConnected {
+            PubNub.connectWithSuccessBlock({ (origin) -> Void in
+                println("Pubnub client connected to \(origin)")
+                let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC))
+                dispatch_after(popTime, dispatch_get_main_queue(), { () -> Void in
+                    PubNub.subscribeOnChannel(PNChannel.channelWithName(channelName, shouldObservePresence: true) as PNChannel)
+                });
+                }, errorBlock: { (error) -> Void in
+                    println("Connection failed: \(error.localizedDescription)")
             });
-            }, errorBlock: { (error) -> Void in
-                println("Connection failed: \(error.localizedDescription)")
-        });
+        }
+        */
     }
 
     func publishHeadingToChannel(heading: CLHeading) {
