@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UberMapViewController" customModule="GoodCity" customModuleProvider="target">
             <connections>
+                <outlet property="callImageView" destination="sCy-s5-CwZ" id="W0y-mg-DWV"/>
                 <outlet property="driverNameLabel" destination="cMq-Ly-60c" id="vgP-Lt-nhA"/>
                 <outlet property="driverView" destination="hdx-tQ-sBT" id="B8y-nw-OQV"/>
                 <outlet property="mapView" destination="Gtp-Xx-0w2" id="x2W-ZV-Tji"/>

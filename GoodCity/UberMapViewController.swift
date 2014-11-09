@@ -9,6 +9,7 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var driverNameLabel: UILabel!
+    @IBOutlet weak var callImageView: UIImageView!
     
     var YAHOO_COORDINATE = CLLocationCoordinate2DMake(37.419029, -122.025733)
     var lastUserLocation: CLLocation?
@@ -28,7 +29,10 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         mapView.delegate = self
 
         setupDriverInfo()
-        
+        let tapGesture = UITapGestureRecognizer(target: self, action: "callDriver")
+        callImageView.userInteractionEnabled = true
+        callImageView.addGestureRecognizer(tapGesture)
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "driverLocationUpdateHandler:", name: DriverLocationDidChangeNotification, object: nil)
         /*
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userLocationUpdateHandler:", name: UserLocationDidUpdateNotificiation, object: nil)
@@ -49,6 +53,12 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
     }
 
+    func callDriver() {
+        println("Calling driver")
+        if let phoneNumber = driverUser?.phoneNumber {
+            UIApplication.sharedApplication().openURL(NSURL(string: "telprompt://\(phoneNumber)")!)
+        }
+    }
     func setupDriverInfo() {
         profileImage.layer.cornerRadius = 4
         profileImage.layer.masksToBounds = true
