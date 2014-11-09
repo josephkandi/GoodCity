@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -11,6 +11,8 @@
                 <outlet property="driverView" destination="hdx-tQ-sBT" id="B8y-nw-OQV"/>
                 <outlet property="mapView" destination="Gtp-Xx-0w2" id="x2W-ZV-Tji"/>
                 <outlet property="navigationBar" destination="0ns-sk-K7N" id="Yhw-Qz-gla"/>
+                <outlet property="pickupAddressContainer" destination="ioi-AZ-8yl" id="ngU-Qc-9CI"/>
+                <outlet property="pickupAddressLabel" destination="30V-8g-KOe" id="7ue-lQ-bNV"/>
                 <outlet property="profileImage" destination="uaA-2T-eiz" id="OYq-ZJ-IEb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,7 +25,7 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Gtp-Xx-0w2">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </mapView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdx-tQ-sBT">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdx-tQ-sBT" userLabel="driver info">
                     <rect key="frame" x="0.0" y="526" width="600" height="74"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kitty" translatesAutoresizingMaskIntoConstraints="NO" id="uaA-2T-eiz" userLabel="profile image">
@@ -87,16 +89,46 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ioi-AZ-8yl" userLabel="pickup address">
+                    <rect key="frame" x="16" y="79" width="568" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kug-2e-yqr">
+                            <rect key="frame" x="245" y="6" width="78" height="16"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="11"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown Pickup Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30V-8g-KOe">
+                            <rect key="frame" x="10" y="22" width="548" height="21"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerY" secondItem="30V-8g-KOe" secondAttribute="centerY" constant="-7" id="Anj-2P-fnZ"/>
+                        <constraint firstItem="kug-2e-yqr" firstAttribute="top" secondItem="ioi-AZ-8yl" secondAttribute="top" constant="6" id="FbC-KU-4yW"/>
+                        <constraint firstAttribute="centerX" secondItem="kug-2e-yqr" secondAttribute="centerX" id="HpM-by-NPr"/>
+                        <constraint firstAttribute="trailing" secondItem="30V-8g-KOe" secondAttribute="trailing" constant="10" id="Q9X-Ji-Sd0"/>
+                        <constraint firstAttribute="height" constant="50" id="S5g-Fz-a4V"/>
+                        <constraint firstItem="30V-8g-KOe" firstAttribute="leading" secondItem="ioi-AZ-8yl" secondAttribute="leading" constant="10" id="kFb-uS-qWp"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="hdx-tQ-sBT" secondAttribute="bottom" id="DKC-PL-qnX"/>
+                <constraint firstAttribute="trailing" secondItem="ioi-AZ-8yl" secondAttribute="trailing" constant="16" id="NgU-lw-zmO"/>
                 <constraint firstItem="hdx-tQ-sBT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Vfu-2g-pD0"/>
                 <constraint firstAttribute="trailing" secondItem="Gtp-Xx-0w2" secondAttribute="trailing" id="WbV-nH-ikT"/>
                 <constraint firstAttribute="trailing" secondItem="hdx-tQ-sBT" secondAttribute="trailing" id="aa3-WG-asX"/>
                 <constraint firstItem="0ns-sk-K7N" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bQo-6W-9Iu"/>
+                <constraint firstItem="ioi-AZ-8yl" firstAttribute="top" secondItem="0ns-sk-K7N" secondAttribute="bottom" constant="15" id="ehl-xk-uLd"/>
+                <constraint firstItem="ioi-AZ-8yl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="few-df-MEg"/>
                 <constraint firstAttribute="bottom" secondItem="Gtp-Xx-0w2" secondAttribute="bottom" id="iVH-vA-cPN"/>
                 <constraint firstItem="Gtp-Xx-0w2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jSl-HE-clT"/>
+                <constraint firstAttribute="centerX" secondItem="ioi-AZ-8yl" secondAttribute="centerX" id="nqj-Wu-1cv"/>
                 <constraint firstAttribute="trailing" secondItem="0ns-sk-K7N" secondAttribute="trailing" id="olE-rU-sTY"/>
                 <constraint firstItem="0ns-sk-K7N" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qzN-NW-Htb"/>
                 <constraint firstItem="Gtp-Xx-0w2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sLh-q1-YrY"/>

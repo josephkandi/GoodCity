@@ -10,6 +10,8 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var driverNameLabel: UILabel!
     @IBOutlet weak var callImageView: UIImageView!
+    @IBOutlet weak var pickupAddressContainer: UIView!
+    @IBOutlet weak var pickupAddressLabel: UILabel!
     
     var YAHOO_COORDINATE = CLLocationCoordinate2DMake(37.419029, -122.025733)
     var lastUserLocation: CLLocation?
@@ -29,10 +31,8 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         mapView.delegate = self
 
         setupDriverInfo()
-        let tapGesture = UITapGestureRecognizer(target: self, action: "callDriver")
-        callImageView.userInteractionEnabled = true
-        callImageView.addGestureRecognizer(tapGesture)
-
+        setupPickupAddress()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "driverLocationUpdateHandler:", name: DriverLocationDidChangeNotification, object: nil)
         /*
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userLocationUpdateHandler:", name: UserLocationDidUpdateNotificiation, object: nil)
@@ -67,6 +67,25 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             profileImage.fadeInImageFromURL(NSURL(string: driverUser!.profilePhotoUrlString)!, border: true)
             driverNameLabel.text = driverUser!.firstName
         }
+        let tapGesture = UITapGestureRecognizer(target: self, action: "callDriver")
+        callImageView.userInteractionEnabled = true
+        callImageView.addGestureRecognizer(tapGesture)
+    }
+    
+    func setupPickupAddress() {
+        
+        if destinationAddress != nil {
+            let line2 = destinationAddress!.line2 == "" ? "" : ", \(destinationAddress!.line2)"
+            let city = destinationAddress!.city == "" ? "" : ", \(destinationAddress!.city)"
+
+            pickupAddressLabel.text = destinationAddress!.line1 + line2 + city
+        }
+
+        pickupAddressContainer.backgroundColor = UIColor(white: 1, alpha: 0.9)
+        pickupAddressContainer.layer.cornerRadius = 4
+        pickupAddressContainer.layer.masksToBounds = true
+        pickupAddressContainer.layer.borderWidth = 1
+        pickupAddressContainer.layer.borderColor = UIColorFromRGB(0xdddddd).CGColor
     }
     
     override func viewWillDisappear(animated: Bool) {
