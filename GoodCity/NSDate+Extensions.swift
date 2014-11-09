@@ -31,7 +31,7 @@ extension NSDate {
             return "\(Int(deltaHours))h"
         }
         
-        let deltaDays = deltaMins / 24
+        let deltaDays = deltaHours / 24
         if deltaDays < 7 {
             return "\(Int(deltaDays))d"
         }

@@ -52,6 +52,7 @@ class ActionButtonsView: UIView {
 
     override func layoutSubviews() {
         let width = self.frame.width
+        line.alpha = 1
         
         // Approved => lay out 1 button
         if itemsState == ItemState.Approved {
@@ -78,6 +79,7 @@ class ActionButtonsView: UIView {
             button1.hidden = true
             button2.hidden = true
             line.frame = CGRectMake(0, 0, width, 0.5)
+            line.alpha = 0
             self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.x, self.frame.width, line.frame.height)
         }
     }

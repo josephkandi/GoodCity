@@ -35,6 +35,7 @@ let FONT_MEDIUM_17 = UIFont(name: "AvenirNext-Medium", size: 17.0)
 let FONT_MEDIUM_18 = UIFont(name: "AvenirNext-Medium", size: 18.0)
 let FONT_MEDIUM_20 = UIFont(name: "AvenirNext-Medium", size: 20.0)
 let FONT_BOLD_14 = UIFont(name: "AvenirNext-Bold", size: 14.0)
+let FONT_BOLD_15 = UIFont(name: "AvenirNext-Bold", size: 15.0)
 let FONT_BOLD_18 = UIFont(name: "AvenirNext-Bold", size: 18.0)
 
 // Colors
@@ -57,6 +58,7 @@ let NAV_BAR_COLOR = blueHighlight
 private var friendlyDateFormatter: NSDateFormatter?
 private var friendlyDateFormatterWithTime: NSDateFormatter?
 private var friendlyShortDateFormatter: NSDateFormatter?
+private var friendlyShortDateFormatterWithTime: NSDateFormatter?
 private var monthYearDateFormatter: NSDateFormatter?
 
 func getMonthYearDateFormatter() -> NSDateFormatter {
@@ -81,6 +83,14 @@ func getFriendlyShortDateFormatter() -> NSDateFormatter {
         friendlyShortDateFormatter!.dateFormat = "MMM dd"
     }
     return friendlyShortDateFormatter!
+}
+
+func getFriendlyShortDateFormatterWithTime() -> NSDateFormatter {
+    if friendlyShortDateFormatterWithTime == nil {
+        friendlyShortDateFormatterWithTime = NSDateFormatter()
+        friendlyShortDateFormatterWithTime!.dateFormat = "MMM dd 'at' h a"
+    }
+    return friendlyShortDateFormatterWithTime!
 }
 
 func getFriendlyDateFormatterWithTime() -> NSDateFormatter {

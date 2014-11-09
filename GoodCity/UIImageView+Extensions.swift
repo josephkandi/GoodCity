@@ -11,13 +11,12 @@ import Foundation
 extension UIImageView {
     
     func setRoundedCorners(on: Bool) {
+        self.layer.masksToBounds = true
         if on {
             self.layer.cornerRadius = 4.0
-            self.layer.masksToBounds = true
         }
         else {
             self.layer.cornerRadius = 0.0
-            self.layer.masksToBounds = false
         }
     }
     func fadeInImageFromURL(url: NSURL, border: Bool) {

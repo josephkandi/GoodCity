@@ -9,15 +9,19 @@
 import UIKit
 
 let ITEMS_PER_ROW : CGFloat = 3
-private let marginTopBottom: CGFloat = 20
-private let marginLeftRight: CGFloat = 12
-private let gapMargin: CGFloat = 10
-private let iconWidth: CGFloat = 34
+private let marginTopBottom: CGFloat = 10
+private let marginLeftRight: CGFloat = 14
+private let gapMargin: CGFloat = 6
+private let iconWidth: CGFloat = 30
 
 class ItemsGroupCell: UITableViewCell {
     
+    @IBOutlet weak var cardContainerView: UIView!
+    @IBOutlet weak var headerContainerView: UIView!
+    
     @IBOutlet weak var stateIcon: UIImageView!
     @IBOutlet weak var donationTextLabel: UILabel!
+    var agoLabel: UILabel!
     @IBOutlet weak var buttonContainer: UIView!
     @IBOutlet weak var thumbnailsContainer: UIView!
     
@@ -33,28 +37,50 @@ class ItemsGroupCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        self.contentView.backgroundColor = LIGHT_GRAY_BG
         
         buttonsView = ActionButtonsView(frame: buttonContainer.bounds)
         buttonContainer.addSubview(buttonsView)
+        
+        cardContainerView.layer.cornerRadius = 4
+        cardContainerView.layer.masksToBounds = true
+        
+        donationTextLabel.textAlignment = .Left
+        donationTextLabel.font = FONT_MEDIUM_16
+        donationTextLabel.textColor = UIColor.darkGrayColor()
+        
+        agoLabel = UILabel()
+        headerContainerView.addSubview(agoLabel)
+        agoLabel.textAlignment = .Right
+        agoLabel.font = FONT_12
+        agoLabel.textColor = UIColor.lightGrayColor()
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
     func layoutDonationTextLabel() {
         var text = ""
         var itemsCount = itemsGroup!.sortedDonationItems.count
         var date = getFriendlyShortDateFormatter().stringFromDate(itemsGroup!.originalDate)
         var pickedUpDateString: String
+        
         if let pickupDate = itemsGroup?.pickupDate {
-            pickedUpDateString = getFriendlyShortDateFormatter().stringFromDate(pickupDate)
+            pickedUpDateString = getFriendlyShortDateFormatterWithTime().stringFromDate(pickupDate)
         } else {
             pickedUpDateString = ""
         }
-
+        
+        agoLabel.frame = donationTextLabel.frame
+        agoLabel.text = ""
+        if let donationDate = itemsGroup?.originalDate {
+            agoLabel.text = donationDate.prettyTimestampSinceNow()
+        }
+        
         var s = ""
         var have = "has"
         var are = "is"
@@ -65,29 +91,30 @@ class ItemsGroupCell: UITableViewCell {
         }
         
         if itemsState == ItemState.Approved {
-            text = "\(itemsCount) item\(s) you donated on \(date) \(have) been approved"
+            text = "\(itemsCount) Item\(s) Approved"
+            agoLabel.text = ""
         }
         else if itemsState == ItemState.Scheduled {
-            text = "\(itemsCount) item\(s) \(are) scheduled to be picked up on: \(pickedUpDateString)"
+            text = "Pickup on \(pickedUpDateString)"
+            agoLabel.text = ""
         }
         else if itemsState == ItemState.Pending {
-            text = "\(itemsCount) item\(s) you donated on \(date) \(are) pending review"
+            text = "\(itemsCount) Item\(s) Pending Review"
         }
         else if itemsState == ItemState.PickedUp {
-            text = "\(itemsCount) item\(s) received on \(pickedUpDateString)"
+            text = "\(itemsCount) Item\(s) Received"
         }
         else if itemsState == ItemState.NotNeeded {
-            text = "\(itemsCount) item\(s) donated on \(date) \(are) currently not needed"
+            text = "\(itemsCount) Item\(s) Not Needed"
         }
         else {
             text = "Donated on: Oct 8, 2014"
         }
-        donationTextLabel.numberOfLines = 0
         donationTextLabel.text = text
-        donationTextLabel.sizeToFit()
     }
     
-    func setupStateIcon() {
+    func setupHeaderView() {
+        stateIcon.tintColor = UIColor.whiteColor()
         if itemsState == ItemState.Approved {
             stateIcon.image = UIImage(named: "history_approved")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
             stateIcon.tintColor = greenHighlight
@@ -118,26 +145,31 @@ class ItemsGroupCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let bounds = self.bounds
+        // Set the main container view
+        cardContainerView.frame = CGRectMake(10, 10, self.bounds.width-20, self.bounds.height-10)
+        let bounds = cardContainerView.bounds
+        
+        // Set the header container view at the top of the card
+        headerContainerView.frame = CGRectMake(0, 0, bounds.width, 50)
         
         var xOffset = marginLeftRight
         var yOffset = marginTopBottom
         
         // Set up the state icon image
-        stateIcon.frame = CGRectMake(xOffset, yOffset+4, iconWidth, iconWidth)
+        stateIcon.frame = CGRectMake(xOffset, (headerContainerView.frame.height-iconWidth)/2, iconWidth, iconWidth)
         stateIcon.layer.cornerRadius = stateIcon.frame.height / 2
         stateIcon.layer.masksToBounds = true
-        setupStateIcon()
+        setupHeaderView()
         xOffset += iconWidth + gapMargin + 5
         
         // Set up the donation title text label
-        donationTextLabel.frame = CGRectMake(xOffset, yOffset, bounds.width - xOffset - marginLeftRight, 30)
+        donationTextLabel.frame = CGRectMake(xOffset, 0, bounds.width - xOffset - marginLeftRight, headerContainerView.frame.height)
         layoutDonationTextLabel()
         
-        yOffset += donationTextLabel.frame.height + gapMargin
+        yOffset = headerContainerView.frame.height
         
         // Set up the thumbnails
-        thumbnailsContainer.frame = CGRectMake(xOffset, yOffset, bounds.width - xOffset - marginLeftRight, 60)
+        thumbnailsContainer.frame = CGRectMake(marginLeftRight, yOffset, bounds.width - marginLeftRight*2, 60)
         let frame = thumbnailsContainer.frame
         let rows = Int(ceil(CGFloat(thumbnailsArray.count) / ITEMS_PER_ROW))
         let thumbnailWidth = (frame.width - SPACING * (ITEMS_PER_ROW-1)) / ITEMS_PER_ROW
@@ -156,12 +188,12 @@ class ItemsGroupCell: UITableViewCell {
         }
         
         let thumbnailsContainerHeight = thumbnailWidth * CGFloat(rows) + SPACING * CGFloat(rows-1)
-
+        
         thumbnailsContainer.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.width, thumbnailsContainerHeight)
-        yOffset += thumbnailsContainerHeight + gapMargin * 2
+        yOffset += thumbnailsContainerHeight + 20
         
         // Set up the buttons (optional)
-        buttonContainer.frame = CGRectMake(marginLeftRight, yOffset, bounds.width - 2 * marginLeftRight, 35)
+        buttonContainer.frame = CGRectMake(thumbnailsContainer.frame.origin.x, yOffset, bounds.width - 2 * thumbnailsContainer.frame.origin.x, 35)
         buttonsView.frame = buttonContainer.bounds
         buttonsView.layoutSubviews()
         buttonContainer.frame = CGRectMake(buttonContainer.frame.origin.x, buttonContainer.frame.origin.y, buttonContainer.frame.width, buttonsView.frame.height + marginTopBottom)
@@ -184,7 +216,7 @@ class ItemsGroupCell: UITableViewCell {
         
         // reset
         cleanupThumbs()
-    
+        
         self.itemsGroup = group
         buttonsView.setItemsGroup(group)
         
@@ -194,7 +226,7 @@ class ItemsGroupCell: UITableViewCell {
             thumb.contentMode = UIViewContentMode.ScaleAspectFill
             thumb.file = item.photo
             thumb.loadInBackground(nil)
-
+            
             thumb.backgroundColor = UIColor.darkGrayColor()
             thumbnailsArray.append(thumb)
             thumbnailsContainer.addSubview(thumb)
@@ -210,7 +242,7 @@ class ItemsGroupCell: UITableViewCell {
     
     class func getThumbnailsHeight(width: CGFloat, count: Int) -> CGFloat {
         let rows = Int(ceil(CGFloat(count) / ITEMS_PER_ROW))
-        let xOffset = marginLeftRight * 2 + iconWidth + gapMargin + 5
+        let xOffset = marginLeftRight + 10
         let thumbnailWidth = (width - xOffset - SPACING * (ITEMS_PER_ROW-1)) / ITEMS_PER_ROW
         let height = thumbnailWidth * CGFloat(rows) + SPACING * CGFloat(rows-1)
         return height

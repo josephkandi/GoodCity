@@ -133,6 +133,8 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
                 
         historyTableView.dataSource = self
         historyTableView.delegate = self
+        historyTableView.backgroundColor = LIGHT_GRAY_BG
+        historyTableView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0)
         //historyTableView.rowHeight = UITableViewAutomaticDimension
         //historyTableView.estimatedRowHeight = 200
         registerTableViewCellNib("ItemsGroupCell", reuseIdentifier: "itemsGroupCell")
@@ -264,7 +266,7 @@ extension HistoryViewController: UITableViewDataSource {
 
 // TableView Delegate
 extension HistoryViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    /*func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
         if (itemGroupsArray[activitiesChooser.selectedSegmentIndex] == nil) {
             return nil
@@ -275,7 +277,7 @@ extension HistoryViewController: UITableViewDelegate {
         header.setSectionTitle(sortedSection.name)
         
         return header
-    }
+    }*/
 
     // HACK: Hardcoding the row height based on the different sections right now. Need to update with real model
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -288,7 +290,7 @@ extension HistoryViewController: UITableViewDelegate {
         let state = ItemState(rawValue: sortedSection.name)!
         let numberOfItems = sortedSection.sortedDonationGroups[indexPath.row].sortedDonationItems.count
 
-        var height: CGFloat = 88
+        var height: CGFloat = 70
         if (state == ItemState.Approved || state == ItemState.Scheduled) {
             height += 55
         }
@@ -297,6 +299,6 @@ extension HistoryViewController: UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return SECTION_HEADER_HEIGHT
+        return 0
     }
 }
