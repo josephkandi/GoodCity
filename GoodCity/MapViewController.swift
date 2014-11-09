@@ -20,7 +20,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         LocationManager.sharedInstance.startStandardUpdates()
         if let loc = LocationManager.sharedInstance.coreLocationManager?.location {
             self.lastUserLocation = loc
-            self.getNearbyDropOffLocationsFromParse(PFGeoPoint(location: loc), radiusInMiles: 15)
+            self.getNearbyDropOffLocationsFromParse(PFGeoPoint(location: loc), radiusInMiles: 10)
         }
     }
 
@@ -35,7 +35,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             if !dropoffLocationsHaveBeenRequested {
                 println("Sending request to get nearby dropoff locations")
 
-                self.getNearbyDropOffLocationsFromParse(pfLocation)
+                self.getNearbyDropOffLocationsFromParse(pfLocation, radiusInMiles: 10)
                 dropoffLocationsHaveBeenRequested = true
             }
         }
@@ -96,7 +96,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
     */
-    func getNearbyDropOffLocationsFromParse(userCurrentLocation: PFGeoPoint, radiusInMiles: Int = 15) {
+    func getNearbyDropOffLocationsFromParse(userCurrentLocation: PFGeoPoint, radiusInMiles: Int) {
         var query = DropoffLocation.query()
         query.whereKey("location", nearGeoPoint: userCurrentLocation, withinMiles: Double(radiusInMiles))
         query.findObjectsInBackgroundWithBlock {
@@ -128,7 +128,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         var index = 1
         for location in locations {
             let coordinate = CLLocationCoordinate2DMake(location.location.latitude, location.location.longitude)
-            let dropoffAnnotation = DropoffAnnotation(markerText: String(index), title: location.name, coordinate: coordinate)
+            let dropoffAnnotation = DropoffAnnotation(
+                markerText: String(index),
+                title: location.name,
+                coordinate: coordinate,
+                icon: location.icon
+            )
             annotations.append(dropoffAnnotation)
             index++
         }

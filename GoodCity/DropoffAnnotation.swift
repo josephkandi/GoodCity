@@ -19,20 +19,22 @@ class DropoffAnnotation: NSObject, MKAnnotation {
         }
     }
     var title: String
+    var icon: String
     
     private var markerLabel: UILabel!
     
-    init(markerText: String, title: String, coordinate: CLLocationCoordinate2D) {
+    init(markerText: String, title: String, coordinate: CLLocationCoordinate2D, icon: String? = nil) {
         self.coordinate = coordinate
         self.markerText = markerText
         self.title = title
+        self.icon = icon ?? "marker"
     }
     
     var annotationView: MKAnnotationView {
         let annotationView = MKAnnotationView(annotation: self, reuseIdentifier: "dropoffAnnotation")
         annotationView.enabled = true
         annotationView.canShowCallout = true
-        annotationView.image = UIImage(named: "marker")
+        annotationView.image = UIImage(named: self.icon)
             
         markerLabel = UILabel(frame: CGRectMake(0,0,30,22))
         markerLabel.text = markerText

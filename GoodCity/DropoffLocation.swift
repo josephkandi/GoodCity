@@ -12,7 +12,8 @@ class DropoffLocation : PFObject, PFSubclassing {
     @NSManaged var name: String
     @NSManaged var address: String
     @NSManaged var location: PFGeoPoint
-    
+    @NSManaged var icon: String
+
     // Must be called before Parse is initialized
     override class func load() {
         registerSubclass()
