@@ -19,7 +19,11 @@ class PubNubClient: NSObject {
         return Static.instance
     }
 
-    private var locationChannel: PNChannel?
+    private var publishChannel: PNChannel?
+
+    func getPublishChannelName() -> String {
+        return GoodCityUser.currentUser().username
+    }
 
     func subscribeToChannel(channelName: String) {
         PubNub.connectWithSuccessBlock({ (origin) -> Void in
@@ -33,23 +37,23 @@ class PubNubClient: NSObject {
         });
     }
 
-    func publishToHeadingChannel(heading: CLHeading) {
-        if locationChannel == nil {
-            locationChannel = PNChannel.channelWithName(HEADING_CHANNEL) as? PNChannel
+    func publishHeadingToChannel(heading: CLHeading) {
+        if publishChannel == nil {
+            publishChannel = PNChannel.channelWithName(getPublishChannelName()) as? PNChannel
         }
         var message = ["heading": heading.trueHeading]
         //println("Sending heading update: heading:\(heading)")
-        PubNub.sendMessage(message, toChannel: locationChannel)
+        PubNub.sendMessage(message, toChannel: publishChannel)
     }
 
-    func publishToLocationChannel(lat: Double, _ lng: Double) {
-        if locationChannel == nil {
-            locationChannel = PNChannel.channelWithName(HEADING_CHANNEL) as? PNChannel
+    func publishLocationToChannel(lat: Double, _ lng: Double) {
+        if publishChannel == nil {
+            publishChannel = PNChannel.channelWithName(getPublishChannelName()) as? PNChannel
         }
 
         var loc = ["lat": lat, "lng": lng]
         var message = ["loc": loc]
         //println("Sending location update: lat:\(lat) lng:\(lng)")
-        PubNub.sendMessage(message, toChannel: locationChannel)
+        PubNub.sendMessage(message, toChannel: publishChannel)
     }
 }

@@ -67,12 +67,12 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 // broadcast location change
                 //println("Time to broadcast location change")
 
-                PubNubClient.sharedInstance.publishToLocationChannel(location.coordinate.latitude, location.coordinate.longitude)
+                PubNubClient.sharedInstance.publishLocationToChannel(location.coordinate.latitude, location.coordinate.longitude)
                 self.lastSentLocation = location
             }
         } else {
             // First time
-            PubNubClient.sharedInstance.publishToLocationChannel(location.coordinate.latitude, location.coordinate.longitude)
+            PubNubClient.sharedInstance.publishLocationToChannel(location.coordinate.latitude, location.coordinate.longitude)
             self.lastSentLocation = location
         }
     }
@@ -83,12 +83,12 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             let headingDeltaInDegrees = Double.angleDiff(newHeading.trueHeading, heading.trueHeading)
             if abs(headingDeltaInDegrees) > 20 {
                 //println("Time to broadcast heading change. Old heading: \(heading.trueHeading), New heading: \(newHeading.trueHeading)")
-                PubNubClient.sharedInstance.publishToHeadingChannel(newHeading)
+                PubNubClient.sharedInstance.publishHeadingToChannel(newHeading)
                 self.lastSentHeading = newHeading
             }
         } else {
             // send first heading
-            PubNubClient.sharedInstance.publishToHeadingChannel(newHeading)
+            PubNubClient.sharedInstance.publishHeadingToChannel(newHeading)
             self.lastSentHeading = newHeading
         }
     }

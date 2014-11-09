@@ -16,6 +16,10 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
     var hasUserLocation = false
 
+    var channelSubscriptionName: String?
+    var destinationCoordinate: CLLocationCoordinate2D?
+    var driverUser: GoodCityUser?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.styleNavBar(navigationBar)
@@ -45,7 +49,7 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     func setupPubnub() {
-        PubNubClient.sharedInstance.subscribeToChannel(HEADING_CHANNEL)
+        PubNubClient.sharedInstance.subscribeToChannel(self.channelSubscriptionName)
     }
 
     func userLocationUpdateHandler(notification: NSNotification) {

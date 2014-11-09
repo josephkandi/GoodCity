@@ -15,6 +15,7 @@ import Foundation
     @NSManaged var state: String
     @NSManaged var zip: String
     @NSManaged var user: GoodCityUser
+    @NSManaged var coordinate: PFGeoPoint
 
     // Must be called before Parse is initialized
     override class func load() {

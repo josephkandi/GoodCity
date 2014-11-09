@@ -107,7 +107,7 @@ class ActionButtonsView: UIView {
         self.delegate?.schedulePickup(itemsGroup!)
     }
     func onTapTrackDriver() {
-        self.delegate?.trackPickup()
+        self.delegate?.trackPickup(itemsGroup!)
     }
     func onTapScheduleEdit() {
         

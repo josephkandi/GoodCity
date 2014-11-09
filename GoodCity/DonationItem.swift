@@ -16,8 +16,8 @@ import Foundation
     @NSManaged var condition: String
     @NSManaged var itemDescription: String
     @NSManaged var photo: PFFile
-    @NSManaged var reviewedBy: GoodCityUser
-    @NSManaged var pickedUpBy: GoodCityUser
+    @NSManaged var driverUser: GoodCityUser
+    @NSManaged var pickupAddress: Address
     @NSManaged var pickupScheduledAt: NSDate
     
     // Must be called before Parse is initialized
@@ -79,6 +79,8 @@ import Foundation
             query.whereKey("user", equalTo: user)
         }
         query.includeKey("user")
+        query.includeKey("driverUser")
+        query.includeKey("pickupAddress")
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             completion(objects: objects, error: error)

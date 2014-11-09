@@ -11,7 +11,7 @@ import UIKit
 protocol ItemsActionDelegate {
     func viewDropoffLocations()
     func schedulePickup(donationGroup: DonationItemsAggregator.DonationGroup)
-    func trackPickup()
+    func trackPickup(donationGroup: DonationItemsAggregator.DonationGroup)
 }
 
 let HistoryItemsDidChangeNotifications = "historyItemsDidChangeNotification"
@@ -78,13 +78,22 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
             //println("launched the dropoff view controller")
         })
     }
-    func trackPickup() {
+    func trackPickup(donationGroup: DonationItemsAggregator.DonationGroup) {
         let trackPickupViewController = UberMapViewController(nibName: "UberMapViewController", bundle: nil)
-        trackPickupViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
-        
-        self.navigationController?.presentViewController(trackPickupViewController, animated: true, completion: { () -> Void in
-            println("launched the track pickup view controller")
-        })
+        if donationGroup.sortedDonationItems.count > 0 {
+            let donationItem = donationGroup.sortedDonationItems[0]
+            trackPickupViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+            trackPickupViewController.driverUser = donationItem.driverUser
+            let destinationCoordinate = CLLocationCoordinate2DMake(
+                donationItem.pickupAddress.coordinate.latitude,
+                donationItem.pickupAddress.coordinate.longitude
+            )
+            trackPickupViewController.destinationCoordinate = destinationCoordinate
+            trackPickupViewController.channelSubscriptionName = donationItem.driverUser.username
+            self.navigationController?.presentViewController(trackPickupViewController, animated: true, completion: { () -> Void in
+                println("launched the track pickup view controller")
+            })
+        }
     }
     func schedulePickup(donationGroup: DonationItemsAggregator.DonationGroup) {
         let scheduleViewController = SchedulePickupViewController(nibName: "SchedulePickupViewController", bundle: nil)
