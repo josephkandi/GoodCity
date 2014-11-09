@@ -38,7 +38,7 @@ class PubNubClient: NSObject {
             locationChannel = PNChannel.channelWithName(HEADING_CHANNEL) as? PNChannel
         }
         var message = ["heading": heading.trueHeading]
-        println("Sending heading update: heading:\(heading)")
+        //println("Sending heading update: heading:\(heading)")
         PubNub.sendMessage(message, toChannel: locationChannel)
     }
 
@@ -49,7 +49,7 @@ class PubNubClient: NSObject {
 
         var loc = ["lat": lat, "lng": lng]
         var message = ["loc": loc]
-        println("Sending location update: lat:\(lat) lng:\(lng)")
+        //println("Sending location update: lat:\(lat) lng:\(lng)")
         PubNub.sendMessage(message, toChannel: locationChannel)
     }
 }

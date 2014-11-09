@@ -135,9 +135,6 @@ typedef enum : NSUInteger {
                                   _targetFrame.origin.y,
                                   minWidth + labelLeftRightInset * 2, _targetFrame.size.height + _tipSize * 4 + labelTopBottomInset * 2);
 
-    
-    NSLog(@"button size %f %f", self.label.frame.size.width, self.label.frame.size.height);
-
     /* add buttons, if any */
     if (_buttons.count == 0) return;
     
@@ -208,9 +205,6 @@ typedef enum : NSUInteger {
     CGPoint centerPoint = CGPointMake(position.x, position.y + self.frame.size.height / 2);
     self.center = position;
     
-    NSLog(@"center point %f %f", centerPoint.x, centerPoint.y);
-    NSLog(@"capture button center point %f %f", view.center.x, view.center.y);
-
     NSInteger duration = 1.0f;
     NSInteger delay = 0.0f;
     

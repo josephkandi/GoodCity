@@ -73,7 +73,6 @@ import Foundation
 
         if states != nil {
             let stateStrings = states?.map { $0.rawValue }
-            println("stateStrings: \(stateStrings)")
             query.whereKey("state", containedIn: stateStrings)
         }
         if user != nil {

@@ -34,7 +34,6 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        println("View will appear")
         // Style the nav bar
         self.styleNavBar(self.navigationController!.navigationBar)
 
@@ -62,12 +61,10 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
         self.navigationItem.setRightBarButtonItems([negativeSpacer, profileButton], animated: true)
         
         refreshDataFromServerForAllSegments()
-        println("-----> add notification")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshDataFromServerForCurrentlySelectedSegment", name: HistoryItemsDidChangeNotifications, object: nil)
     }
 
     override func viewWillDisappear(animated: Bool) {
-        println("-----> remove notification")
         NSNotificationCenter.defaultCenter().removeObserver(self, name: HistoryItemsDidChangeNotifications, object: nil)
     }
 
@@ -79,7 +76,7 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
         dropoffViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
         
         self.navigationController?.presentViewController(dropoffViewController, animated: true, completion: { () -> Void in
-            println("launched the dropoff view controller")
+            //println("launched the dropoff view controller")
         })
     }
     
@@ -89,7 +86,7 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
         scheduleViewController.modalPresentationStyle = .Custom
         self.navigationController?.presentViewController(scheduleViewController, animated: false,
             completion: { () -> Void in
-            println("launched the schedule view controller")
+                //println("launched the schedule view controller")
         })
     }
     
@@ -169,7 +166,6 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
     private func getItemGroups(states: [ItemState]? = nil, index: Int) {
         DonationItem.getAllItemsWithStates({
             (objects, error) -> () in
-            println("Completed")
             if error == nil {
                 self.refreshControl.endRefreshing()
                 if (objects.count == 0 ) {
@@ -181,7 +177,8 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
                 let result = DonationItemsAggregator(donationItems: objects as [DonationItem])
                 self.itemGroupsArray[index] = result
                 self.historyTableView.reloadData()
-                
+
+                /* Print debug info
                 for section in result.sortedSections {
                     println(section.name)
                     for donationGroup in section.sortedDonationGroups {
@@ -191,6 +188,7 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
                         }
                     }
                 }
+                */
             } else {
                 self.refreshControl.endRefreshing()
                 println(error)
@@ -217,8 +215,6 @@ extension HistoryViewController: UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if (itemGroupsArray[activitiesChooser.selectedSegmentIndex] != nil &&
             itemGroupsArray[activitiesChooser.selectedSegmentIndex]?.sortedSections.count > 0) {
-
-                println("number of sections: \(itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections.count) ")
                 self.historyTableView.backgroundView = nil
                 return itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections.count
         } else {
@@ -239,7 +235,6 @@ extension HistoryViewController: UITableViewDataSource {
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (itemGroupsArray[activitiesChooser.selectedSegmentIndex] != nil) {
-            println("number of items in section\(section): \(itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections[section].numberOfItems())")
             return itemGroupsArray[activitiesChooser.selectedSegmentIndex]!.sortedSections[section].numberOfItems()
         }
         else {

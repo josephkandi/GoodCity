@@ -57,15 +57,15 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         let location = locations.last as CLLocation
         let eventDate = location.timestamp
         let howRecent = eventDate.timeIntervalSinceNow
-        println("--------------------------Positing notification for user location")
+        //println("--------------------------Positing notification for user location")
         NSNotificationCenter.defaultCenter().postNotificationName(UserLocationDidUpdateNotificiation, object: nil, userInfo: ["loc": location])
 
-        println("Got a location update...lat: \(location.coordinate.latitude), lng: \(location.coordinate.longitude)")
+        //println("Got a location update...lat: \(location.coordinate.latitude), lng: \(location.coordinate.longitude)")
         if let loc = self.lastSentLocation {
             let locationDistanceInMeters = location.distanceFromLocation(loc)
             if abs(locationDistanceInMeters) > 10 {
                 // broadcast location change
-                println("Time to broadcast location change")
+                //println("Time to broadcast location change")
 
                 PubNubClient.sharedInstance.publishToLocationChannel(location.coordinate.latitude, location.coordinate.longitude)
                 self.lastSentLocation = location
@@ -82,7 +82,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         if let heading = self.lastSentHeading {
             let headingDeltaInDegrees = Double.angleDiff(newHeading.trueHeading, heading.trueHeading)
             if abs(headingDeltaInDegrees) > 20 {
-                println("Time to broadcast heading change. Old heading: \(heading.trueHeading), New heading: \(newHeading.trueHeading)")
+                //println("Time to broadcast heading change. Old heading: \(heading.trueHeading), New heading: \(newHeading.trueHeading)")
                 PubNubClient.sharedInstance.publishToHeadingChannel(newHeading)
                 self.lastSentHeading = newHeading
             }
