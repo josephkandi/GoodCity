@@ -41,6 +41,7 @@
 		0A674E0F19ED0434001A5664 /* AVCamPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A674E0D19ED0434001A5664 /* AVCamPreviewView.m */; };
 		0AA72EEA1A0B4DBA00B60612 /* SocialSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA72EE91A0B4DBA00B60612 /* SocialSharing.swift */; };
 		0AA72EEC1A0B55B500B60612 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA72EEB1A0B55B500B60612 /* Social.framework */; };
+		0AB960241A0F6A84003D7334 /* Yahoo.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 0AB960231A0F6A84003D7334 /* Yahoo.gpx */; };
 		0AC31AFC19E9EDA300BB815F /* DropoffLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC31AFB19E9EDA300BB815F /* DropoffLocation.swift */; };
 		0AC31AFE19EA2F6800BB815F /* PickupScheduleSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC31AFD19EA2F6800BB815F /* PickupScheduleSlot.swift */; };
 		0AC31B0019EA33CB00BB815F /* DonationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC31AFF19EA33CB00BB815F /* DonationItem.swift */; };
@@ -170,6 +171,7 @@
 		0A674E0D19ED0434001A5664 /* AVCamPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamPreviewView.m; sourceTree = "<group>"; };
 		0AA72EE91A0B4DBA00B60612 /* SocialSharing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialSharing.swift; sourceTree = "<group>"; };
 		0AA72EEB1A0B55B500B60612 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		0AB960231A0F6A84003D7334 /* Yahoo.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Yahoo.gpx; sourceTree = "<group>"; };
 		0AC31AFB19E9EDA300BB815F /* DropoffLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropoffLocation.swift; sourceTree = "<group>"; };
 		0AC31AFD19EA2F6800BB815F /* PickupScheduleSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickupScheduleSlot.swift; sourceTree = "<group>"; };
 		0AC31AFF19EA33CB00BB815F /* DonationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationItem.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 			children = (
 				0A4EE34A1A0721A20059E6F7 /* MathildeToYahoo.gpx */,
 				0A4EE34B1A0721A20059E6F7 /* MicrosoftToYahoo.gpx */,
+				0AB960231A0F6A84003D7334 /* Yahoo.gpx */,
 			);
 			name = GPX;
 			sourceTree = "<group>";
@@ -685,6 +688,7 @@
 				0A14FFA919E230E800D11CE2 /* LoginViewController.xib in Resources */,
 				0A14FFB319E234DB00D11CE2 /* AVCamViewController.xib in Resources */,
 				3A15068E19EB60BA0020DF10 /* ItemsGroupCell.xib in Resources */,
+				0AB960241A0F6A84003D7334 /* Yahoo.gpx in Resources */,
 				3AE42EE619E8F98500D7A6F5 /* ContainerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
