@@ -84,6 +84,7 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
             let donationItem = donationGroup.sortedDonationItems[0]
             trackPickupViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
             trackPickupViewController.driverUser = donationItem.driverUser
+            trackPickupViewController.destinationAddress = donationItem.pickupAddress
             let destinationCoordinate = CLLocationCoordinate2DMake(
                 donationItem.pickupAddress.coordinate.latitude,
                 donationItem.pickupAddress.coordinate.longitude
