@@ -91,21 +91,25 @@ class ItemsGroupCell: UITableViewCell {
         }
         
         if itemsState == ItemState.Approved {
-            text = "\(itemsCount) Item\(s) Approved"
+            text = "\(itemsCount) item\(s) approved"
             agoLabel.text = ""
         }
         else if itemsState == ItemState.Scheduled {
             text = "Pickup on \(pickedUpDateString)"
             agoLabel.text = ""
         }
+        else if itemsState == ItemState.OnTheWay {
+            text = "Pickup is on the way"
+            agoLabel.text = ""
+        }
         else if itemsState == ItemState.Pending {
-            text = "\(itemsCount) Item\(s) Pending Review"
+            text = "\(itemsCount) item\(s) pending review"
         }
         else if itemsState == ItemState.PickedUp {
-            text = "\(itemsCount) Item\(s) Received"
+            text = "\(itemsCount) item\(s) received"
         }
         else if itemsState == ItemState.NotNeeded {
-            text = "\(itemsCount) Item\(s) Not Needed"
+            text = "\(itemsCount) item\(s) not needed"
         }
         else {
             text = "Donated on: Oct 8, 2014"
@@ -135,9 +139,12 @@ class ItemsGroupCell: UITableViewCell {
             stateIcon.image = UIImage(named: "history_notneeded")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
             stateIcon.tintColor = UIColor.lightGrayColor()
         }
+        else if itemsState == ItemState.OnTheWay {
+            stateIcon.image = UIImage(named: "history_ontheway")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            stateIcon.tintColor = orangeHighlight
+        }
         else {
             stateIcon.image = nil
-            stateIcon.backgroundColor = UIColor.lightGrayColor()
         }
         stateIcon.contentMode = UIViewContentMode.ScaleAspectFill
     }
@@ -157,7 +164,6 @@ class ItemsGroupCell: UITableViewCell {
         
         // Set up the state icon image
         stateIcon.frame = CGRectMake(xOffset, (headerContainerView.frame.height-iconWidth)/2, iconWidth, iconWidth)
-        stateIcon.layer.cornerRadius = stateIcon.frame.height / 2
         stateIcon.layer.masksToBounds = true
         setupHeaderView()
         xOffset += iconWidth + gapMargin + 5

@@ -74,6 +74,16 @@ class ActionButtonsView: UIView {
             button2.addTarget(self, action: "onTapSchedulePickup", forControlEvents: UIControlEvents.TouchUpInside)
             line.frame = CGRectMake(0, self.frame.height / 2, width - button2.frame.width - SPACING, 0.5)
         }
+        // On the way => lay out 1 button
+        else if itemsState == ItemState.OnTheWay {
+            button2.hidden = false
+            button2.setButtonTitle("Track Driver")
+            button2.setButtonColor(orangeHighlight)
+            button2.setButtonSytle(1)
+            button2.frame = CGRectMake((width-BUTTON_SPACING)/2+BUTTON_SPACING, 0, (width-BUTTON_SPACING)/2, self.frame.height)
+            button2.addTarget(self, action: "onTapTrackDriver", forControlEvents: UIControlEvents.TouchUpInside)
+            line.frame = CGRectMake(0, self.frame.height / 2, width - button2.frame.width - SPACING, 0.5)
+        }
         // All other states => no buttons
         else {
             button1.hidden = true
@@ -95,6 +105,9 @@ class ActionButtonsView: UIView {
     }
     func onTapSchedulePickup() {
         self.delegate?.schedulePickup(itemsGroup!)
+    }
+    func onTapTrackDriver() {
+        self.delegate?.trackPickup()
     }
     func onTapScheduleEdit() {
         

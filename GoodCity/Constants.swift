@@ -51,6 +51,7 @@ let yellowHighlight = UIColorFromRGB(0xfcc82f)
 let greenHighlight = UIColorFromRGB(0x67993c)
 let pinkHighlight = UIColorFromRGB(0xcb398d)
 let redHighlight = UIColorFromRGB(0xe24d52)
+let orangeHighlight = UIColorFromRGB(0xfc6621)
 let NAV_BAR_COLOR = blueHighlight
 
 

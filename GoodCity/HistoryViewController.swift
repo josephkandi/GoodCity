@@ -11,6 +11,7 @@ import UIKit
 protocol ItemsActionDelegate {
     func viewDropoffLocations()
     func schedulePickup(donationGroup: DonationItemsAggregator.DonationGroup)
+    func trackPickup()
 }
 
 let HistoryItemsDidChangeNotifications = "historyItemsDidChangeNotification"
@@ -71,15 +72,20 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
     // Custom protocol methods
     func viewDropoffLocations() {
         let dropoffViewController = MapViewController(nibName: "MapViewController", bundle: nil)
-        // Uncomment for testing Uber
-        //let dropoffViewController = UberMapViewController(nibName: "UberMapViewController", bundle: nil)
         dropoffViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
         
         self.navigationController?.presentViewController(dropoffViewController, animated: true, completion: { () -> Void in
             //println("launched the dropoff view controller")
         })
     }
-    
+    func trackPickup() {
+        let trackPickupViewController = UberMapViewController(nibName: "UberMapViewController", bundle: nil)
+        trackPickupViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+        
+        self.navigationController?.presentViewController(trackPickupViewController, animated: true, completion: { () -> Void in
+            println("launched the track pickup view controller")
+        })
+    }
     func schedulePickup(donationGroup: DonationItemsAggregator.DonationGroup) {
         let scheduleViewController = SchedulePickupViewController(nibName: "SchedulePickupViewController", bundle: nil)
         scheduleViewController.itemsGroup = donationGroup
@@ -145,14 +151,14 @@ class HistoryViewController: UIViewController, ItemsActionDelegate, UIViewContro
     func refreshDataFromServerForCurrentlySelectedSegment() {
         let index = activitiesChooser.selectedSegmentIndex
         if (index == 0) {
-            getItemGroups(states: [ItemState.Scheduled, ItemState.Approved, ItemState.Pending], index: index)
+            getItemGroups(states: [ItemState.OnTheWay, ItemState.Scheduled, ItemState.Approved, ItemState.Pending], index: index)
         } else {
             getItemGroups(states: [ItemState.NotNeeded, ItemState.PickedUp], index: index)
         }
     }
 
     func refreshDataFromServerForAllSegments() {
-        getItemGroups(states: [ItemState.Scheduled, ItemState.Approved, ItemState.Pending], index: 0)
+        getItemGroups(states: [ItemState.OnTheWay, ItemState.Scheduled, ItemState.Approved, ItemState.Pending], index: 0)
         getItemGroups(states: [ItemState.NotNeeded, ItemState.PickedUp], index: 1)
     }
 
@@ -285,7 +291,7 @@ extension HistoryViewController: UITableViewDelegate {
         let numberOfItems = sortedSection.sortedDonationGroups[indexPath.row].sortedDonationItems.count
 
         var height: CGFloat = 70
-        if (state == ItemState.Approved || state == ItemState.Scheduled) {
+        if (state == ItemState.Approved || state == ItemState.Scheduled || state == ItemState.OnTheWay) {
             height += 55
         }
         height += ItemsGroupCell.getThumbnailsHeight(tableView.frame.width, count: numberOfItems)
