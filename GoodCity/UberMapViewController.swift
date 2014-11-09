@@ -44,7 +44,6 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             self.zoomMap()
         }
         */
-        self.timeRemainingLabel.text = "Update pending..."
         if let coordinate = self.destinationCoordinate {
             addDropoffLocationsToMap(coordinate)
         }
