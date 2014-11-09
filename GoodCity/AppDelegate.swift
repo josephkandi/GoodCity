@@ -102,7 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
             println("Drop off action recognized.")
             self.containerViewController?.launchMapView()
         } else {
-            println("Eror: Unrecognized identifier sent to handleActionWithIdentifier")
+            println("Error: Unrecognized identifier sent to handleActionWithIdentifier")
         }
         completionHandler()
     }
@@ -169,8 +169,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
     }
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        // Default parse handling of push notif. Will pop alertview is app is in foreground
-        PFPush.handlePush(userInfo)
+        if let desiredViewController = userInfo["vc"] as? NSString {
+            if desiredViewController == "historyView" {
+                println("got a driver notification...going to history view")
+                }
+        } else {
+            // Default parse handling of push notif. Will pop alertview is app is in foreground
+            PFPush.handlePush(userInfo)
+        }
     }
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
@@ -187,6 +193,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         println("Error registering for push notifications: \(error)")
+    }
+
+    func applicationDidEnterBackground(application: UIApplication) {
+        LocationManager.sharedInstance.stopStandardUpdates()
     }
 }
 

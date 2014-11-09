@@ -24,6 +24,48 @@ Parse.Cloud.afterSave("ReviewComplete", function(request) {
   });
 });
 
+
+Parse.Cloud.afterSave("DriverOnTheWay", function(request) {
+  var userQuery = new Parse.Query("User");
+  var promises = [];
+  userQuery.find().then(function(users) {
+    var promise = Parse.Promise.as();
+    for (var i = 0; i < users.length; i++) {
+      var notifQuery = new Parse.Query("DonationItem");
+      notifQuery.equalTo("state", "On the way");
+      notifQuery.equalTo("user", users[i]);
+
+      var pushQuery = new Parse.Query(Parse.Installation);
+      pushQuery.equalTo("deviceType", "ios");
+      pushQuery.equalTo("owner", users[i]);
+      promises.push(maybeSendDriverNotification(notifQuery, pushQuery, users[i].get("username")));
+    }
+    return Parse.Promise.when(promises);
+  }).then(function() {
+    console.log("All push notifications sent!");
+  });
+});
+
+
+function maybeSendDriverNotification(notifQuery, pushQuery, driverObjectId) {
+  notifQuery.count().then(function(countOfOnTheWayItems) {
+    if (countOfOnTheWayItems > 0) {
+      console.log("count of on the way items: " + countOfOnTheWayItems);
+      Parse.Push.send({
+        where: pushQuery,
+        data: {
+          alert: "Your driver is on the way!",
+          driver: driverObjectId,
+          vc: "historyView"
+        }
+      }).then(function() {
+        console.log("Sent a driver push notif");
+      });
+    }
+  });
+}
+
+
 function maybeNotifyUser(notifQuery, pushQuery) {
   notifQuery.count().then(function(countOfApprovedItems) {
         if (countOfApprovedItems > 0) {
@@ -36,7 +78,7 @@ function maybeNotifyUser(notifQuery, pushQuery) {
               category: "DONATION_APPROVED_CATEGORY"
             }
           }).then(function() {
-            console.log("Sent a single push notif");
+            console.log("Sent an items approved push notif");
           });
         }
   });
