@@ -274,6 +274,13 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     
     // Edit Address View delegate
     func onTapDone(address: Address) {
+        if let donationItems = self.itemsGroup?.sortedDonationItems {
+            println("Updating the address for the donation items")
+            for donationItem in donationItems {
+                donationItem.pickupAddress = address
+                donationItem.saveEventually()
+            }
+        }
         let frame = self.editAddressView.frame
         schedulePickupView.frame = CGRectMake(frame.origin.x + self.view.frame.width, frame.origin.y, frame.width, frame.height)
         UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
