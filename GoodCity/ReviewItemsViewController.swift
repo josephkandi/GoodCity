@@ -109,6 +109,7 @@ class ReviewItemsViewController: UIViewController, DraggableItemImageViewDelegat
     
     @IBAction func onTapDoneReviewing(sender: AnyObject) {
         println("Tapped on Done Reviewing Button")
+        doneReviewing()
     }
     
     @IBAction func onTapDrive(sender: AnyObject) {
