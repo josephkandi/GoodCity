@@ -37,6 +37,8 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate, ChildView
     private var currentViewControllerIndex : Int!
     
     override func viewDidLoad() {
+        println("------------In container view controller view did load")
+
         super.viewDidLoad()
         setupViewControllers()
         containerScrollView.delegate = self
@@ -68,7 +70,8 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate, ChildView
     }
 
     func setupViewControllers() {
-        
+        println("------------In container view controller setup view controllers")
+
         // 1. Cart View Controller
         let cartViewController = CartViewController(nibName: "CartViewController", bundle: nil)
         cartViewController.delegate = self

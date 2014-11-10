@@ -14,6 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
     private let PICKUP_ACTION_IDENTIFIER = "PICKUP_IDENTIFIER"
     private let DROPOFF_ACTION_IDENTIFIER = "DROPOFF_IDENTIFIER"
 
+    private let HISTORY_VIEW_CONTROLLER = "history_view_controller"
+    private let DROPOFF_MAP_VIEW_CONTROLLER = "dropoff_map_view_controller"
+    private let SCHEDULE_VIEW_CONTROLLER = "schedule_view_controller"
+
+    private var initialViewController : String?
+
     var window: UIWindow?
     var containerViewController: ContainerViewController?
 
@@ -24,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
     }
 
     private func displayHomeScreen() {
-        println("Displaying home screen from AppDelegate")
-        
+        println("------------In display home screen")
+
         let userDefaults = NSUserDefaults(suiteName: "group.com.codepath.goodcity")
         if let volunteer = userDefaults?.valueForKey(LOGGED_IN_AS_VOLUNTEER_KEY) as? Bool {
             if volunteer {
@@ -45,7 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
         }
     }
 
-    
     func setupParse() {
         Parse.setApplicationId(PARSE_APPLICATION_ID, clientKey: PARSE_CLIENT_KEY)
         PFFacebookUtils.initializeFacebook()
@@ -95,13 +100,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
 
     // Notification action handler
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
-        println("Notification action received.")
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 1
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+
+        println("------------In handleActionWithIdentifier")
         if identifier == PICKUP_ACTION_IDENTIFIER {
             println("Pick up action recognized.")
-            self.containerViewController?.launchScheduleView()
+            self.initialViewController = SCHEDULE_VIEW_CONTROLLER
+            //self.containerViewController?.launchScheduleView()
         } else if identifier == DROPOFF_ACTION_IDENTIFIER {
             println("Drop off action recognized.")
-            self.containerViewController?.launchMapView()
+            self.initialViewController = DROPOFF_MAP_VIEW_CONTROLLER
+            //self.containerViewController?.launchMapView()
         } else {
             println("Error: Unrecognized identifier sent to handleActionWithIdentifier")
         }
@@ -109,6 +120,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        println("------------In didFinishLaunchingWithOptions")
+        // Clear badge on launch
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+        //UIApplication.sharedApplication().cancelAllLocalNotifications()
         // UI setup
         //application.setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
@@ -159,21 +174,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        // Clear badge on launch
-        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
-
+        println("------------In Application did become active")
         FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
+
+        if self.containerViewController == nil {
+            println("Trying to deep link but container view controller is nil")
+        }
+
+        if let vc = self.initialViewController {
+            switch vc {
+            case DROPOFF_MAP_VIEW_CONTROLLER:
+                println("Got a request to nav to map")
+                self.containerViewController?.launchMapView()
+            case HISTORY_VIEW_CONTROLLER:
+                println("Got a request to nav to history")
+                self.containerViewController?.launchHistoryView()
+            case SCHEDULE_VIEW_CONTROLLER:
+                println("Got a request to nav to schedule")
+                self.containerViewController?.launchScheduleView()
+            default:
+                println("ERROR: Unknown nav request")
+            }
+        }
+
     }
-    
+
     func applicationWillTerminate(application: UIApplication) {
         PFFacebookUtils.session().close()
     }
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        println("------------In didReceiveRemoteNotification")
+        println(userInfo)
+        // Clear the badge
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 1
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+
         if let desiredViewController = userInfo["vc"] as? NSString {
             if desiredViewController == "historyView" {
                 println("got a driver notification...going to history view")
-                }
+                self.initialViewController = HISTORY_VIEW_CONTROLLER
+                //self.containerViewController?.launchHistoryView()
+            }
+        } else if let aps = userInfo["aps"] as? NSDictionary {
+            if let cat = aps["category"] as? NSString {
+                println("Notification action went thru remoteNotif path...going to map view")
+                self.initialViewController = DROPOFF_MAP_VIEW_CONTROLLER
+            }
         } else {
             // Default parse handling of push notif. Will pop alertview is app is in foreground
             PFPush.handlePush(userInfo)
@@ -197,6 +245,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
+        println("------------In Application did enter background")
         LocationManager.sharedInstance.stopStandardUpdates()
     }
 }
