@@ -136,6 +136,7 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate, ChildView
     }
 
     func launchHistoryView() {
+        NSNotificationCenter.defaultCenter().postNotificationName(HistoryItemsDidChangeNotifications, object: nil)
         self.scrollToViewController(HISTORY_VIEW_CONTROLLER_INDEX)
     }
 

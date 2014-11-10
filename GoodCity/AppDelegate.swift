@@ -24,18 +24,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
     var containerViewController: ContainerViewController?
 
     func displayLoginScreen() {
-        println("Displaying login screen from AppDelegate")
+        NSLog("Displaying login screen from AppDelegate")
         let loginViewController = LoginViewController(nibName: "LoginViewController", bundle: nil)
         self.window?.rootViewController = loginViewController
     }
 
     private func displayHomeScreen() {
-        println("------------In display home screen")
+        NSLog("------------In display home screen")
 
         let userDefaults = NSUserDefaults(suiteName: "group.com.codepath.goodcity")
         if let volunteer = userDefaults?.valueForKey(LOGGED_IN_AS_VOLUNTEER_KEY) as? Bool {
             if volunteer {
-                println("launched reviewer app")
+                NSLog("launched reviewer app")
                 let reviewItemsViewController = ReviewItemsViewController(nibName: "ReviewItemsViewController", bundle: nil)
                 self.window?.rootViewController = reviewItemsViewController
             }
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
             }
         }
         else {
-            println("User Logged In as State key missing")
+            NSLog("User Logged In as State key missing")
             GoodCityUser.currentUser().logout()
             displayLoginScreen()
         }
@@ -87,13 +87,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
         let categories = NSSet(object: notificationCategory)
 
         if application.respondsToSelector("registerUserNotificationSettings:") {
-            println("Registering for push notifications the iOS8 way")
+            NSLog("Registering for push notifications the iOS8 way")
             let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
             let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: categories)
             application.registerUserNotificationSettings(settings)
             application.registerForRemoteNotifications()
         } else { // Before iOS 8
-            println("Registering for push notifications the pre-iOS8 way")
+            NSLog("Registering for push notifications the pre-iOS8 way")
             application.registerForRemoteNotificationTypes(UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound)
         }
     }
@@ -104,23 +104,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
         UIApplication.sharedApplication().cancelAllLocalNotifications()
 
-        println("------------In handleActionWithIdentifier")
+        NSLog("------------In handleActionWithIdentifier")
         if identifier == PICKUP_ACTION_IDENTIFIER {
-            println("Pick up action recognized.")
-            self.initialViewController = SCHEDULE_VIEW_CONTROLLER
-            //self.containerViewController?.launchScheduleView()
+            NSLog("Pick up action recognized.")
+            //self.initialViewController = SCHEDULE_VIEW_CONTROLLER
+            self.containerViewController?.launchScheduleView()
         } else if identifier == DROPOFF_ACTION_IDENTIFIER {
-            println("Drop off action recognized.")
-            self.initialViewController = DROPOFF_MAP_VIEW_CONTROLLER
-            //self.containerViewController?.launchMapView()
+            NSLog("Drop off action recognized.")
+            //self.initialViewController = DROPOFF_MAP_VIEW_CONTROLLER
+            self.containerViewController?.launchMapView()
         } else {
-            println("Error: Unrecognized identifier sent to handleActionWithIdentifier")
+            NSLog("Error: Unrecognized identifier sent to handleActionWithIdentifier")
         }
         completionHandler()
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        println("------------In didFinishLaunchingWithOptions")
+        NSLog("------------In didFinishLaunchingWithOptions")
         // Clear badge on launch
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
         //UIApplication.sharedApplication().cancelAllLocalNotifications()
@@ -141,10 +141,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
         self.setupGlobalNavBarAttributes()
         if GoodCityUser.currentUser != nil {
-            println("User is already logged in.  Going straight to home screen")
+            NSLog("User is already logged in.  Going straight to home screen")
             self.displayHomeScreen()
         } else {
-            println("No user found.  Going to login screen")
+            NSLog("No user found.  Going to login screen")
             self.displayLoginScreen()
         }
 
@@ -161,40 +161,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         if let scheme = url.scheme {
             if (scheme == "fb373287049514452") {
-                println("Got a facebook url openUrl request")
+                NSLog("Got a facebook url openUrl request")
                 // SSO authorization flow.  Attempt to extract a token from the url
                 return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication, withSession: PFFacebookUtils.session())
             } else if (scheme == "goodcity") {
-                println("Got a goodcity url openUrl request")
+                NSLog("Got a goodcity url openUrl request")
                 return true
             }
         }
-        println("Unrecognized url sent to openUrl")
+        NSLog("Unrecognized url sent to openUrl")
         return false
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        println("------------In Application did become active")
+        NSLog("------------In Application did become active")
         FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
 
         if self.containerViewController == nil {
-            println("Trying to deep link but container view controller is nil")
+            NSLog("Trying to deep link but container view controller is nil")
         }
 
         if let vc = self.initialViewController {
             switch vc {
             case DROPOFF_MAP_VIEW_CONTROLLER:
-                println("Got a request to nav to map")
+                NSLog("Got a request to nav to map")
                 self.containerViewController?.launchMapView()
             case HISTORY_VIEW_CONTROLLER:
-                println("Got a request to nav to history")
+                NSLog("Got a request to nav to history")
                 self.containerViewController?.launchHistoryView()
             case SCHEDULE_VIEW_CONTROLLER:
-                println("Got a request to nav to schedule")
+                NSLog("Got a request to nav to schedule")
                 self.containerViewController?.launchScheduleView()
             default:
-                println("ERROR: Unknown nav request")
+                NSLog("ERROR: Unknown nav request")
             }
+            self.initialViewController = nil
         }
 
     }
@@ -204,7 +205,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
     }
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        println("------------In didReceiveRemoteNotification")
+        NSLog("------------In didReceiveRemoteNotification")
         println(userInfo)
         // Clear the badge
         UIApplication.sharedApplication().applicationIconBadgeNumber = 1
@@ -213,13 +214,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
 
         if let desiredViewController = userInfo["vc"] as? NSString {
             if desiredViewController == "historyView" {
-                println("got a driver notification...going to history view")
+                NSLog("got a driver notification...going to history view")
                 self.initialViewController = HISTORY_VIEW_CONTROLLER
                 //self.containerViewController?.launchHistoryView()
             }
         } else if let aps = userInfo["aps"] as? NSDictionary {
             if let cat = aps["category"] as? NSString {
-                println("Notification action went thru remoteNotif path...going to map view")
+                NSLog("Notification action went thru remoteNotif path...going to map view")
                 self.initialViewController = DROPOFF_MAP_VIEW_CONTROLLER
             }
         } else {
@@ -229,23 +230,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
     }
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        println("APNs registration successful")
+        NSLog("APNs registration successful")
         let currentIntallation = PFInstallation.currentInstallation()
         currentIntallation.setDeviceTokenFromData(deviceToken)
         currentIntallation.saveEventually()
     }
 
     func pubnubClient(client: PubNub!, didReceiveMessage message: PNMessage!) {
-        println("PubNub client received message: \(message)")
+        NSLog("PubNub client received message: \(message)")
         NSNotificationCenter.defaultCenter().postNotificationName(DriverLocationDidChangeNotification, object: nil, userInfo: ["message": message.message])
     }
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        println("Error registering for push notifications: \(error)")
+        NSLog("Error registering for push notifications: \(error)")
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        println("------------In Application did enter background")
+        NSLog("------------In Application did enter background")
         LocationManager.sharedInstance.stopStandardUpdates()
     }
 }
