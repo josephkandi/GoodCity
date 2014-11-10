@@ -124,7 +124,7 @@ class ReviewItemsViewController: UIViewController, DraggableItemImageViewDelegat
     
     func sortDonationItems(items: [DonationItem]) -> [DonationItem] {
         return sorted(items) {
-                $0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedDescending }
+                $0.submittedAt.compare($1.submittedAt) == NSComparisonResult.OrderedDescending }
     }
 
     // All items that are "SCHEDULED" that have "me" as driver are set to "ONTHEWAY"

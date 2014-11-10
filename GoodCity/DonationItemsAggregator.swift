@@ -50,12 +50,12 @@ class DonationItemsAggregator {
             self.name = ItemState(rawValue: donationItem.state)?.getItemStateKey() ?? ""
 
             let donationGroup = DonationGroup(donationItem: donationItem)
-            let key = donationItem.createdAt.dateStringWithTimeTruncated()
+            let key = donationItem.submittedAt.dateStringWithTimeTruncated()
             self.donationGroupsByDate[key] = donationGroup
         }
 
         func addNewDonationItem(donationItem: DonationItem) {
-            let key = donationItem.createdAt.dateStringWithTimeTruncated()
+            let key = donationItem.submittedAt.dateStringWithTimeTruncated()
 
             if let donationGroup = donationGroupsByDate[key] {
                 donationGroup.addNewDonationItem(donationItem)
@@ -79,14 +79,14 @@ class DonationItemsAggregator {
 
      class DonationGroup {
         var name: String // i.e. 09/12/2014
-        var sortedDonationItems = [DonationItem]() // Sorted by createdAt
+        var sortedDonationItems = [DonationItem]() // Sorted by submittedAt
         var originalDate: NSDate
         var pickupDate: NSDate
         private var donationItems = [DonationItem]()
 
         init(donationItem: DonationItem) {
-            self.name = donationItem.createdAt.dateStringWithTimeTruncated()
-            self.originalDate = donationItem.createdAt
+            self.name = donationItem.submittedAt.dateStringWithTimeTruncated()
+            self.originalDate = donationItem.submittedAt
             self.pickupDate = donationItem.pickupScheduledAt
             self.donationItems.append(donationItem)
         }
@@ -97,7 +97,7 @@ class DonationItemsAggregator {
 
         func sort() {
             self.sortedDonationItems = sorted(donationItems) {
-                $0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedDescending }
+                $0.submittedAt.compare($1.submittedAt) == NSComparisonResult.OrderedDescending }
         }
     }
 }

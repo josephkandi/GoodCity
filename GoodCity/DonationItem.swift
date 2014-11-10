@@ -19,6 +19,7 @@ import Foundation
     @NSManaged var driverUser: GoodCityUser
     @NSManaged var pickupAddress: Address
     @NSManaged var pickupScheduledAt: NSDate
+    @NSManaged var submittedAt: NSDate
     
     // Must be called before Parse is initialized
     override class func load() {
@@ -39,6 +40,7 @@ import Foundation
         donationItem.condition = condition
         donationItem.itemDescription = description
         donationItem.user = GoodCityUser.currentUser()
+        donationItem.submittedAt = NSDate()
 
         let w = CGFloat(320)
         let h = CGFloat(480)
