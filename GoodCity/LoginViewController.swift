@@ -77,7 +77,9 @@ class LoginViewController: UIViewController {
             })
         }
         else {
+            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
             let containerViewController = ContainerViewController(nibName: "ContainerViewController", bundle: nil)
+            appDelegate.containerViewController = containerViewController
             self.presentViewController(containerViewController, animated: true, completion: { () -> Void in
                 NSLog("Successfully pushed the container view")
                 self.saveLogInAsState(volunteer)
