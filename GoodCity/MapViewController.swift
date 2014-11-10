@@ -15,18 +15,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         super.viewDidLoad()
 
         mapView.delegate = self
-        // NSNotificationCenter.defaultCenter().addObserver(self, selector: "userLocationUpdated:", name: UserLocationDidUpdateNotificiation, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userLocationUpdated:", name: UserLocationDidUpdateNotificiation, object: nil)
 
-        LocationManager.sharedInstance.startStandardUpdates()
-        if let loc = LocationManager.sharedInstance.coreLocationManager?.location {
-            self.lastUserLocation = loc
-            self.getNearbyDropOffLocationsFromParse(PFGeoPoint(location: loc), radiusInMiles: 10)
-        }
+        LocationManager.sharedInstance.startStandardUpdates(accurary: kCLLocationAccuracyHundredMeters)
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.styleNavBar(navigationBar)
+        if let loc = LocationManager.sharedInstance.coreLocationManager?.location {
+            self.lastUserLocation = loc
+            self.getNearbyDropOffLocationsFromParse(PFGeoPoint(location: loc), radiusInMiles: 10)
+        } else {
+            println("Location was not already available when dropoff location viewController started")
+        }
     }
 
     func userLocationUpdated(notification: NSNotification) {
@@ -43,7 +45,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
     override func viewWillDisappear(animated: Bool) {
         LocationManager.sharedInstance.stopStandardUpdates()
-        // NSNotificationCenter.defaultCenter().removeObserver(self, name: UserLocationDidUpdateNotificiation, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UserLocationDidUpdateNotificiation, object: nil)
     }
 
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {

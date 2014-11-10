@@ -117,7 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
         //self.window?.tintColor = UIColor.orangeColor()
 
         // TODO: Move this to ONLY reviewer when reviewer goes into "Pick up" mode
-        LocationManager.sharedInstance.startStandardUpdates()
+        //LocationManager.sharedInstance.startStandardUpdates()
 
         self.setupParse()
         self.registerForPushNotifications(application)

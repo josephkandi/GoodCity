@@ -25,7 +25,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     var lastSentHeading: CLHeading?
     var lastSentLocation: CLLocation?
 
-    func startStandardUpdates() {
+    func startStandardUpdates(accurary: CLLocationAccuracy = kCLLocationAccuracyBestForNavigation) {
         if (coreLocationManager != nil) {
             coreLocationManager!.startUpdatingLocation()
             return
@@ -38,7 +38,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         }
 
         coreLocationManager!.delegate = self
-        coreLocationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        coreLocationManager!.desiredAccuracy = accurary
         coreLocationManager!.distanceFilter = 10 // meters
 
         // Request location permission
@@ -81,7 +81,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         //        println("Got a heading update \(newHeading.trueHeading)")
         if let heading = self.lastSentHeading {
             let headingDeltaInDegrees = Double.angleDiff(newHeading.trueHeading, heading.trueHeading)
-            if abs(headingDeltaInDegrees) > 20 {
+            if abs(headingDeltaInDegrees) > 10 {
                 //println("Time to broadcast heading change. Old heading: \(heading.trueHeading), New heading: \(newHeading.trueHeading)")
                 PubNubClient.sharedInstance.publishHeadingToChannel(newHeading)
                 self.lastSentHeading = newHeading

@@ -48,7 +48,12 @@ class ReviewItemsViewController: UIViewController, DraggableItemImageViewDelegat
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
-    
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        LocationManager.sharedInstance.stopStandardUpdates()
+    }
+
     func updateView() {
         if itemsToReview.count == 0 {
             return
@@ -120,6 +125,8 @@ class ReviewItemsViewController: UIViewController, DraggableItemImageViewDelegat
     // All items that are "SCHEDULED" that have "me" as driver are set to "ONTHEWAY"
     // Then push notifications are triggered
     func goOnlineAsDriver() {
+        LocationManager.sharedInstance.startStandardUpdates()
+
         DonationItem.getAllItemsWithStates({
             (objects, error) -> () in
             if let donationItems = objects as? [DonationItem] {
