@@ -99,7 +99,7 @@ class ItemsGroupCell: UITableViewCell {
             agoLabel.text = ""
         }
         else if itemsState == ItemState.OnTheWay {
-            text = "Driver is on the way"
+            text = "A GoodCity volunteer is on the way"
             agoLabel.text = ""
         }
         else if itemsState == ItemState.Pending {

@@ -54,7 +54,7 @@ function maybeSendDriverNotification(notifQuery, pushQuery, driverObjectId) {
       Parse.Push.send({
         where: pushQuery,
         data: {
-          alert: "Your driver is on the way!",
+          alert: "A GoodCity volunteer is on the way!",
           driver: driverObjectId,
           vc: "historyView"
         }

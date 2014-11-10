@@ -77,7 +77,7 @@ class ActionButtonsView: UIView {
         // On the way => lay out 1 button
         else if itemsState == ItemState.OnTheWay {
             button2.hidden = false
-            button2.setButtonTitle("Track Driver")
+            button2.setButtonTitle("Track Pickup")
             button2.setButtonColor(orangeHighlight)
             button2.setButtonSytle(1)
             button2.frame = CGRectMake((width-BUTTON_SPACING)/2+BUTTON_SPACING, 0, (width-BUTTON_SPACING)/2, self.frame.height)
