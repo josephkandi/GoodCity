@@ -249,7 +249,7 @@ class ItemsGroupCell: UITableViewCell {
     class func getThumbnailsHeight(width: CGFloat, count: Int) -> CGFloat {
         let rows = Int(ceil(CGFloat(count) / ITEMS_PER_ROW))
         let xOffset = marginLeftRight + 10
-        let thumbnailWidth = (width - xOffset - SPACING * (ITEMS_PER_ROW-1)) / ITEMS_PER_ROW
+        let thumbnailWidth = (width - xOffset*2 - SPACING * (ITEMS_PER_ROW-1)) / ITEMS_PER_ROW
         let height = thumbnailWidth * CGFloat(rows) + SPACING * CGFloat(rows-1)
         return height
     }
