@@ -79,7 +79,7 @@ class ReviewItemsViewController: UIViewController, DraggableItemImageViewDelegat
         DonationItem.getAllItemsWithStates({
             (objects, error) -> () in
             if let donationItems = objects as? [DonationItem] {
-                self.itemsToReview.addObjectsFromArray(donationItems)
+                self.itemsToReview.addObjectsFromArray(self.sortDonationItems(donationItems))
                 self.updateView()
             }
             else {
@@ -122,6 +122,11 @@ class ReviewItemsViewController: UIViewController, DraggableItemImageViewDelegat
         goOnlineAsDriver()
     }
     
+    func sortDonationItems(items: [DonationItem]) -> [DonationItem] {
+        return sorted(items) {
+                $0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedDescending }
+    }
+
     // All items that are "SCHEDULED" that have "me" as driver are set to "ONTHEWAY"
     // Then push notifications are triggered
     func goOnlineAsDriver() {
