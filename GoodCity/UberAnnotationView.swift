@@ -32,11 +32,14 @@ class UberAnnotationView : MKAnnotationView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         var myFrame = self.frame
-        myFrame.size.width = 40
-        myFrame.size.height = 40
+        myFrame.size.width = 22
+        myFrame.size.height = 43
         self.frame = myFrame
         self.opaque = false
         self.initImage()
+        
+        // Offset center point based on the annotation marker
+        self.centerOffset = CGPointMake(-5, 10)
     }
 
     func initImage() {

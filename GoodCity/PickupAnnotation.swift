@@ -33,8 +33,6 @@ class PickupAnnotation: NSObject, MKAnnotation {
         annotationView.enabled = true
         annotationView.canShowCallout = true
         annotationView.image = UIImage(named: "uber_pickup")
-        
-        println("anchor \(annotationView.layer.anchorPoint)")
         // Offset center point based on the annotation marker
         annotationView.centerOffset = CGPointMake(18, -33)
         

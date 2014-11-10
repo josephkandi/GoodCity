@@ -23,6 +23,7 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     var destinationAddress: Address?
 
     var driverUser: GoodCityUser?
+    var driverArrivedPromptShown: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -179,12 +180,33 @@ class UberMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                 println("Got directions, expected time in seconds is: \(response.expectedTravelTime)")
                 let timeRemainingInMinutes = String(format: "%.0f", response.expectedTravelTime / 60)
                 self.pickupAnnotation?.markerText = "\(timeRemainingInMinutes)"
+                if (response.expectedTravelTime < 60 && !self.driverArrivedPromptShown) {
+                    self.promptDriverArrived()
+                }
             }
         } else {
             println("Request already in progress for ETA")
         }
     }
 
+    func promptDriverArrived() {
+        var title = driverUser != nil ? driverUser!.firstName : "Your volunteer"
+        title = title + " is here!"
+        
+        let alertView = SIAlertView(title: title, andMessage: "Your GoodCity volunteer is here to pick up your items.")
+        alertView.titleFont = FONT_MEDIUM_20
+        alertView.messageFont = FONT_16
+        alertView.buttonFont = FONT_MEDIUM_16
+        
+        alertView.addButtonWithTitle("OK", type: SIAlertViewButtonType.Default) { (originatingView) -> Void in
+            println("ok")
+        }
+        
+        alertView.transitionStyle = SIAlertViewTransitionStyle.DropDown
+        alertView.show()
+        driverArrivedPromptShown = true
+    }
+    
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         if annotation.isKindOfClass(MKUserLocation) {
             println("User location annotation")
