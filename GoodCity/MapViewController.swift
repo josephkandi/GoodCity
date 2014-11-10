@@ -25,6 +25,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.styleNavBar(navigationBar)
         if let loc = LocationManager.sharedInstance.coreLocationManager?.location {
             self.lastUserLocation = loc
+            dropoffLocationsHaveBeenRequested = true
             self.getNearbyDropOffLocationsFromParse(PFGeoPoint(location: loc), radiusInMiles: 10)
         } else {
             println("Location was not already available when dropoff location viewController started")
@@ -33,12 +34,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
     func userLocationUpdated(notification: NSNotification) {
         if let loc = notification.userInfo!["loc"] as? CLLocation {
+
             let pfLocation = PFGeoPoint(location: loc)
             if !dropoffLocationsHaveBeenRequested {
+                self.lastUserLocation = loc
                 println("Sending request to get nearby dropoff locations")
-
-                self.getNearbyDropOffLocationsFromParse(pfLocation, radiusInMiles: 10)
                 dropoffLocationsHaveBeenRequested = true
+                self.getNearbyDropOffLocationsFromParse(pfLocation, radiusInMiles: 10)
             }
         }
     }
@@ -63,41 +65,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         return nil
     }
-    /*
-    // MARK: Location Manager related methods
-    func startStandardUpdates() {
-        // Create the location manager if this object doesn't already exist
-        
-        if (locationManager == nil) {
-            locationManager = CLLocationManager()
-        }
-        
-        locationManager!.delegate = self
-        locationManager!.desiredAccuracy = kCLLocationAccuracyKilometer
-        locationManager!.distanceFilter = 1000 // meters
-        
-        // Request location permission
-        locationManager!.requestWhenInUseAuthorization()
-        let authorizationStatus = CLLocationManager.authorizationStatus()
-        if (authorizationStatus == CLAuthorizationStatus.Authorized || authorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse) {
-            locationManager!.startUpdatingLocation()
-            mapView.showsUserLocation = true
-        }
-    }
 
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        let location = locations.last as CLLocation
-        let eventDate = location.timestamp
-        let howRecent = eventDate.timeIntervalSinceNow
-
-        // 15 minutes
-        if (abs(howRecent) < 15.0 * 60) {
-            self.lastUserLocation = location
-            let pfLocation = PFGeoPoint(location: location)
-            self.getNearbyDropOffLocationsFromParse(pfLocation)
-        }
-    }
-    */
     func getNearbyDropOffLocationsFromParse(userCurrentLocation: PFGeoPoint, radiusInMiles: Int) {
         var query = DropoffLocation.query()
         query.whereKey("location", nearGeoPoint: userCurrentLocation, withinMiles: Double(radiusInMiles))
