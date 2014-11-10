@@ -233,7 +233,6 @@ class ItemsGroupCell: UITableViewCell {
             thumb.file = item.photo
             thumb.loadInBackground(nil)
             
-            thumb.backgroundColor = UIColor.darkGrayColor()
             thumbnailsArray.append(thumb)
             thumbnailsContainer.addSubview(thumb)
         }
