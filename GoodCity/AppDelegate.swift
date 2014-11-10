@@ -128,7 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PNDelegate {
         //application.setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.tintColor = blueHighlight
+        //self.window?.tintColor = blueHighlight
         //self.window?.tintColor = UIColor.orangeColor()
 
         // TODO: Move this to ONLY reviewer when reviewer goes into "Pick up" mode
