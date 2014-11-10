@@ -87,7 +87,6 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
     @IBAction func onTapClose(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
             println("******* dismissed schedule view")
-            NSNotificationCenter.defaultCenter().postNotificationName(HistoryItemsDidChangeNotifications, object: self)
         })
     }
     @IBAction func onTapDatePicker(sender: AnyObject) {
@@ -237,6 +236,8 @@ class SchedulePickupViewController: UIViewController, MDCalendarDelegate, SlotPi
             if let donationItems = self.itemsGroup?.sortedDonationItems {
                 selectedSlot!.grabSlot(donationItems, completion: { (result, error) -> () in
                     if error == nil {
+                        NSNotificationCenter.defaultCenter().postNotificationName(HistoryItemsDidChangeNotifications, object: self)
+
                         self.showScheduleConfirmation(self.selectedSlot!)
                     }
                 })
