@@ -43,8 +43,13 @@ The goal of the GoodCity program is to help more than 4000 families in HongKong 
 ![Core experience](Screenshots/goodcity_overview.gif)
 ### Submit new items
 ![Adding a new item](Screenshots/goodcity_newitem.gif)
+### View dropoff locations and scheduling a pickup
+![Schedule pickup](Screenshots/goodcity_schedule.gif)
 ### Track pickup
 ![Track pickup](Screenshots/goodcity_uber.gif)
+### Today Widget
+![Today Widget](Screenshots/goodcity_today.gif)
+
 
 # Setup
 - Run 'pod install' to pull in the necessary pods
