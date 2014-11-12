@@ -39,7 +39,12 @@ The goal of the GoodCity program is to help more than 4000 families in HongKong 
 * [x] Go online to driver mode to pick up items
 
 # Walkthrough
-!(https://drive.google.com/?tab=mo&authuser=1#folders/0B3pl369BIKUEbXhYV0hicG1CWFk)
+### App Overview
+![Core experience](Screenshots/goodcity_overview.gif)
+### Submit new items
+![Adding a new item](Screenshots/goodcity_newitem.gif)
+### Track pickup
+![Track pickup](Screenshots/goodcity_uber.gif)
 
 # Setup
 - Run 'pod install' to pull in the necessary pods
