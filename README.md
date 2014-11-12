@@ -38,5 +38,8 @@ The goal of the GoodCity program is to help more than 4000 families in HongKong 
 * [x] Review a list of submitted items - tinder style. Swipe left to reject; swipe right to approve
 * [x] Go online to driver mode to pick up items
 
+# Walkthrough
+!(https://drive.google.com/?tab=mo&authuser=1#folders/0B3pl369BIKUEbXhYV0hicG1CWFk)
+
 # Setup
 - Run 'pod install' to pull in the necessary pods
